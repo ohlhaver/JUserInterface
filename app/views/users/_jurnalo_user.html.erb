@@ -1,0 +1,19 @@
+<% if jurnalo_user.object.new_record? %>
+Dear user, please provide the following details to register:<br />
+<% end %>
+<%= jurnalo_user.label :login %><br />
+<%= jurnalo_user.text_field :login %><br />
+<br />
+<%= jurnalo_user.label :email %><br />
+<%= jurnalo_user.text_field :email %><br />
+<br />
+<%= jurnalo_user.label :password, jurnalo_user.object.new_record? ? nil : "Change password" %><br />
+<%= jurnalo_user.password_field :password %><br />
+<br />
+<%= jurnalo_user.label :password_confirmation %><br />
+<%= jurnalo_user.password_field :password_confirmation %><br />
+<% if jurnalo_user.object.new_record? %>
+<br />
+<%= jurnalo_user.check_box :terms_and_conditions_accepted %>
+<%= jurnalo_user.label :terms_and_conditions_accepted, 'Accept Jurnalo Terms And Conditions'%><br />
+<% end -%>

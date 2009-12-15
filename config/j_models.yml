@@ -1,0 +1,6 @@
+ram:
+  path: /Users/ram/Workspace/jurnalo/JModels
+development:
+  path: /Users/ram/Workspace/jurnalo/JModels 
+production:
+  path: /home/jurnalo/apps/JModels/current

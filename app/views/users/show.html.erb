@@ -1,0 +1,16 @@
+<% unless @user.third_party? %>
+<p>
+  <b>Login:</b>
+  <%=h @user.login %>
+</p>
+<% else %>
+<p>
+  <b>User Type:</b>
+  <%=h @user.third_party.capitalize %>
+</p>
+<% end %>
+<p>
+  <b>Email:</b>
+  <%=h @user.login_count %>
+</p>
+<%= link_to 'Edit', edit_account_path %>

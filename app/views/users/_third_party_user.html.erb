@@ -1,0 +1,12 @@
+<% if third_party_user.object.new_record? %>
+Dear <% third_party_user.object.third_party.capitalize %> user, please accept the terms and conditions to register at Jurnalo <br />
+<%= third_party_user.hidden_field :email %>
+<%= third_party_user.hidden_field :third_party %>
+<%= third_party_user.check_box :terms_and_conditions_accepted %>
+<%= third_party_user.label :terms_and_conditions_accepted, 'Accept Jurnalo Terms And Conditions'%><br />
+<% end -%>
+
+
+
+
+

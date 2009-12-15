@@ -1,0 +1,7 @@
+development:
+  service: http://localhost:3000
+  cas_server: https://192.168.0.2/
+    
+production:
+  service: http://174.143.171.52
+  cas_server: https://174.143.169.37

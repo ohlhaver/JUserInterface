@@ -1,0 +1,14 @@
+<h1>Register</h1>
+ 
+<% form_for @user, :url => account_path do |f| %>
+  <%= f.error_messages %>
+  <% unless @user.third_party? %>
+    <%= render :partial => 'jurnalo_user', :object => f %>
+  <% else %>
+    <%= render :partial => 'third_party_user', :object => f %>  
+  <% end %>
+  <%= f.submit "Register" %>
+<% end %>
+
+<br/>
+Google/Facebook/Registered users <%= link_to 'click here to login', CASClient::Frameworks::Rails::Filter.login_url(controller)  %>
