@@ -1,0 +1,19 @@
+<h1>Account Activation</h1>
+
+Please enter the activation token to activate your account:<br />
+
+<% form_tag account_activation_path('update') do %>
+  <label>Token:</label><br/>
+  <%= text_field_tag 'id' %><br/>
+  <%= submit_tag "Activate My Account" %>
+<% end %>
+
+<br />
+If you have not received the activation instructions, fill out the form below and instructions to activate your account will be emailed to you: <br/>
+ 
+<% form_tag account_activations_path do %>
+  <label>Email:</label><br />
+  <%= text_field_tag "email" %><br />
+  <br />
+  <%= submit_tag "Send Me Activation Instructions" %>
+<% end %>

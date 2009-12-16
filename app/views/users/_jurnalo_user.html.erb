@@ -7,6 +7,9 @@ Dear user, please provide the following details to register:<br />
 <%= jurnalo_user.label :email %><br />
 <%= jurnalo_user.text_field :email %><br />
 <br />
+<%= jurnalo_user.label :name %><br />
+<%= jurnalo_user.text_field :name %><br />
+<br />
 <%= jurnalo_user.label :password, jurnalo_user.object.new_record? ? nil : "Change password" %><br />
 <%= jurnalo_user.password_field :password %><br />
 <br />

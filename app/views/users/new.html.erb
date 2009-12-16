@@ -4,6 +4,9 @@
   <%= f.error_messages %>
   <% unless @user.third_party? %>
     <%= render :partial => 'jurnalo_user', :object => f %>
+    <br/>
+    <%= show_simple_captcha( :object => "user", :image_style => 'charcoal_grey', :distortion => 'medium' ) %>
+    <br/>
   <% else %>
     <%= render :partial => 'third_party_user', :object => f %>  
   <% end %>
@@ -11,4 +14,11 @@
 <% end %>
 
 <br/>
+
+<h1>Login</h1>
+
 Google/Facebook/Registered users <%= link_to 'click here to login', CASClient::Frameworks::Rails::Filter.login_url(controller)  %>
+
+<h1>Forgot Your Password</h1>
+
+<%= link_to 'Click here', new_password_reset_path %> if you want to reset your password

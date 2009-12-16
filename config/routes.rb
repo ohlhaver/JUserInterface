@@ -38,11 +38,15 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
-  map.cas_proxy_callback 'cas_proxy_callback/:action', :controller => 'cas_proxy_callback'
+  # map.cas_proxy_callback 'cas_proxy_callback/:action', :controller => 'cas_proxy_callback'
+  
+  map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
   map.logout '/logout', :controller => 'application', :action => 'logout'
   map.access_denied '/access_denied', :controller => 'application', :action => 'access_denied'
   map.resource :account, :controller => "users"
   map.resources :users
+  map.resources :password_resets
+  map.resources :account_activations
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   map.root :controller => 'users', :action => 'new'

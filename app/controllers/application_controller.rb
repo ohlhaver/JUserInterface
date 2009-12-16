@@ -6,13 +6,15 @@ class ApplicationController < ActionController::Base
   #helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   include Jurnalo::LoginSystem
-  #
-  #jurnalo_login_required( :except => :index )
+  include SimpleCaptcha::ControllerHelpers
   
   layout 'scaffold'
   
+  before_filter :set_current_user
+  
   def logout
-    CASClient::Frameworks::Rails::Filter.logout( self, CasServerConfig[RAILS_ENV]['service'] )
+    # returns to the application registration page
+    CASClient::Frameworks::Rails::GatewayFilter.logout( self, CasServerConfig[RAILS_ENV]['service'] )
   end
   
   def access_denied
