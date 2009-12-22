@@ -47,11 +47,9 @@ module Jurnalo
       def session_check_for_validation
         last_st = session.try( :[], :cas_last_valid_ticket )
         return unless last_st
-        session[:revalidate] ||= 10.minutes.from_now
-        if session[:revalidate] < Time.now
+        if request.get? && ( session[:revalidate].nil? || session[:revalidate] < Time.now )
           session[:cas_last_valid_ticket] = nil
-          #last_st.response = nil # this will check for the validation next time
-          session[:revalidate] = nil
+          session[:revalidate] = 10.minutes.from_now
         end
       end
 
@@ -134,6 +132,7 @@ module Jurnalo
       
       def jurnalo_login_required( options = {} )
         before_filter :authenticate_using_single_access
+        before_filter :session_check_for_validation
         if options[:only]
           before_filter :authenticate_using_cas_with_gateway,    :except => options[:only]
           before_filter :authenticate_using_cas_without_gateway, :only => options[:only]
@@ -143,7 +142,6 @@ module Jurnalo
         else
           before_filter :authenticate_using_cas_without_gateway
         end
-        #before_filter :session_check_for_validation
         before_filter :set_current_user
         before_filter :check_for_new_users, options
         before_filter :redirect_to_activation_page_if_not_active, options
