@@ -43,8 +43,15 @@ ActionController::Routing::Routes.draw do |map|
   map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
   map.logout '/logout', :controller => 'application', :action => 'logout'
   map.access_denied '/access_denied', :controller => 'application', :action => 'access_denied'
+  map.resources :story_searches
   map.resource :account, :controller => "users"
-  map.resources :users
+  map.resources :preferences
+  map.resources :users do |users|
+    users.resources :author_preferences
+    users.resources :source_preferences
+    users.resources :topic_preferences
+    users.resources :story_preferences
+  end
   map.resources :password_resets
   map.resources :account_activations
   map.connect ':controller/:action/:id'

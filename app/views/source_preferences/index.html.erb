@@ -1,0 +1,24 @@
+<h1>My Source Preferences</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Preference</th>
+  </tr>
+  <% @source_preferences.each do |sp| %>
+  <% @source_preference = sp %>
+  <% form_for( @source_preference, :url => user_source_preference_path(@user, @source_preference) ) do |f| %>
+  <tr>
+    <td><%= @source_preference.source.name %></td>
+    <td><%= f.select( :preference, Preference.for_select( :source ), :include_blank => true ) %></td>
+    <td><%= f.submit( 'Update' ) %></td>
+  </tr>
+  <% end -%>
+  <% end -%>
+</table>
+
+
+<br />
+<%= will_paginate @source_preferences %>
+<br />
+<%= link_to 'New Source Preference', new_user_source_preference_path( @user ) %>

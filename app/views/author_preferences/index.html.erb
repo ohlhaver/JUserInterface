@@ -1,0 +1,30 @@
+<h1>My Authors List</h1>
+
+<%= link_to 'Favorite Authors', user_author_preferences_path( @user ) + "?scope=fav" %> | 
+<%= link_to 'Author Preferences', user_author_preferences_path( @user ) + "?scope=pref" %> | 
+<%= link_to 'All', user_author_preferences_path( @user ) %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Preference</th>
+    <th>Favorite</th>
+  </tr>
+  <% @author_preferences.each do |ap| %>
+  <% @author_preference = ap %>
+  <% form_for( @author_preference, :url => user_author_preference_path(@user, @author_preference) ) do |f| %>
+  <tr>
+    <td><%= @author_preference.author.name %></td>
+    <td><%= f.select( :preference, Preference.for_select( :author ), :include_blank => true ) %></td>
+    <td><%= f.check_box( :subscribed ) %></td>
+    <td><%= hidden_field_tag( :scope, params[:scope] ) %><%= f.submit( 'Update' ) %></td>
+  </tr>
+  <% end -%>
+  <% end -%>
+</table>
+
+
+<br />
+<%= will_paginate @author_preferences %>
+<br />
+<%= link_to 'New Author Preference', new_user_author_preference_path( @user ) + "?scope=#{params[:scope]}" %>

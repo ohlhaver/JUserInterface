@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
   jurnalo_login_required :only => [ :show, :edit, :update ]
+  before_filter :set_user_var, :only => [ :show, :edit, :update ]
   
   def new
     if current_user
@@ -29,15 +30,12 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = @current_user
   end
  
   def edit
-    @user = @current_user
   end
   
   def update
-    @user = @current_user
     if @user.update_attributes( params[:user] )
       flash[:notice] = "Account updated!"
       redirect_to account_path

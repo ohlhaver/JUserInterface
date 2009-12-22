@@ -1,0 +1,2 @@
+module StoryPreferencesHelper
+end

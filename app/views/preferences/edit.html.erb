@@ -1,0 +1,77 @@
+<h1>Editing User Preferences</h1>
+
+<% form_for(@preference) do |f| %>
+  <%= f.error_messages %>
+  <strong>Email Settings</strong>
+  <p>
+    <%= f.label :topic_email, 'Topic Emails' %><br />
+    <%= f.select :topic_email, Preference.for_select( :topic_email ) %>
+  </p>
+  <p>
+    <%= f.label :author_email, 'Author Emails' %><br />
+    <%= f.select :author_email, Preference.for_select( :author_email ) %>
+  </p>
+  <br />
+  <strong>Default Search Settings</strong>
+  <p>
+    <%= f.label :default_sort_criteria, 'Default Sort Criteria' %><br />
+    <%= f.select :default_sort_criteria, Preference.for_select( :default_sort_criteria ) %>
+  </p>
+  <p>
+    <%= f.label :subscription_type, 'Default Subscription Type' %><br />
+    <%= f.select :subscription_type, Preference.for_select( :subscription_type) %>
+  </p>
+  <p>
+    <%= f.label :default_time_span, 'Default Time Span' %><br />
+    <%= f.select :default_time_span, Preference.for_select( :default_time_span ) %>
+  </p>
+  <p>
+    <%= f.label :search_language_ids, 'Default Search Languages' %><br />
+    <% Preference.for_select( :default_language_id ).each do |language| %>
+      <%= hidden_field_tag( "preference[search_language_ids][#{language.last}]", "0") %>
+      <%= check_box_tag( "preference[search_language_ids][#{language.last}]", "1", f.object.search_language_id_exists?( language.last ) ) %> <%= language.first %>
+      <br />
+    <% end %>
+  </p>
+  <br />
+  <strong>Article Type Settings</strong>
+  <p>
+    <%= f.label :video, 'Video Preference' %><br />
+    <%= f.select :video, Preference.for_select( :video ) %>
+  </p>
+  <p>
+    <%= f.label :opinion, 'Opinion Preference' %><br />
+    <%= f.select :opinion, Preference.for_select( :opinion ) %>
+  </p>
+  <p>
+    <%= f.label :blog, 'Blog Preference' %><br />
+    <%= f.select :blog, Preference.for_select( :blog ) %>
+  </p>
+  <strong>Other Settings</strong>
+  <p>
+    <%= f.label :cluster_preview, 'Headlines Per Cluster Preview' %><br />
+    <%= f.select :cluster_preview, Preference.for_select( :cluster_preview ) %>
+  </p>
+  <p>
+    <%= f.label :per_page, 'Headlines Per Page' %><br />
+    <%= f.select :per_page, Preference.for_select( :per_page ) %>
+  </p>
+  <p>
+    <%= f.label :image, 'Image Preference' %><br />
+    <%= f.select :image, Preference.for_select( :image ) %>
+  </p>
+  <p>
+    <%= f.label :interface_language_id, 'Interface Language' %><br />
+    <%= f.select :interface_language_id, Preference.for_select( :interface_language_id ) %>
+  </p>
+  <p>
+    <%= f.label :default_language_id, 'Default Homepage Cluster Group Language' %><br />
+    <%= f.select :default_language_id, Preference.for_select( :default_language_id ) %>
+  </p>
+  <br/>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back to User Profile', user_path( @user ) %>

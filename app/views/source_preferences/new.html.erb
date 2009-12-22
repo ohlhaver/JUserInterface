@@ -1,0 +1,14 @@
+<h1>New Source Preference</h1>
+
+<% form_for @source_preference, :url => user_source_preferences_path( @user ) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :source_id %>
+    <%= source_auto_complete_field( 'source_preference', 'source_id' ) %>
+  </p>
+  <p>
+    <%= f.label :preference %>
+    <%= f.select( :preference, Preference.for_select( :source ) ) %>
+  </p>
+  <%= f.submit 'Create' %>
+<% end %>

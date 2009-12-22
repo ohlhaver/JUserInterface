@@ -1,0 +1,9 @@
+<h1>New Topic</h1>
+
+<% form_for @topic_preference, :url => user_topic_preferences_path( @user ) do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= f.submit 'Create' %> &nbsp;  <%= submit_to_remote 'search_btn', 'Search', :url => story_search_path( :topic ), :update => :results %>
+<% end %>
+
+<div id="results">
+</div>

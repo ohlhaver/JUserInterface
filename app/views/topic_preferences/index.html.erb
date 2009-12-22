@@ -1,0 +1,27 @@
+<h1>My Topics</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Query</th>
+    <th>Filters</th>
+  </tr>
+  <% @topic_preferences.each do |tp| %>
+  <tr>
+    <td><%= tp.name %></td>
+    <td><%= tp.search_terms %></td>
+    <td><% tp.filters.each do |filter| %>
+      <div><%= filter[:name] %>: <%= filter[:value] %></div>
+      <% end %>
+    </td>
+    <td><%= link_to 'Edit', edit_user_topic_preference_path( @user, tp ) %></td>
+    <td><%= link_to 'Destroy', user_topic_preference_path( @user, tp ), :method => :delete, :confirm => 'Are you sure?'  %></td>
+  </tr>
+  <% end -%>
+</table>
+
+
+<br />
+<%= will_paginate @topic_preferences %>
+<br />
+<%= link_to 'New Topic', new_user_topic_preference_path( @user ) %>

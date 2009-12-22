@@ -1,0 +1,48 @@
+<%= f.error_messages %>
+<h3>Label</h3>
+<p>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</p>
+<h3>Find Results</h3>
+<p>
+  <%= f.label :search_all, 'with all of the words' %>
+  <%= f.text_field :search_all %>
+<p>
+  <%= f.label :search_exact_phrase, 'with the exact phrase' %>
+  <%= f.text_field :search_exact_phrase %>
+</p>
+<p>
+  <%= f.label :search_any, 'with at least one of the words' %>
+  <%= f.text_field :search_any %>
+</p>
+<p>
+  <%= f.label :search_except, 'without the words' %>
+  <%= f.text_field :search_except %>
+</p>
+<h3>Sort and Time Range</h3>
+<p>
+  <%= f.label :sort_criteria %>
+  <%= f.select :sort_criteria, Preference.for_select(:sort_criteria), :include_blank => true %>
+</p>
+<p>
+  <%= f.label :time_span %>
+  <%= f.select :time_span, Preference.for_select( :time_span), :include_blank => true %>
+</p>
+<h3>Filters</h3>
+<p>
+  <%= f.label :region_id %>
+  <%= f.select( :region_id, Region.for_select( :reload ), :include_blank => true ) %>
+</p>
+<p>
+  <%= f.label :author_id %>
+  <%= author_auto_complete_field( 'topic_preference', 'author_id', @topic_preference.author ) %>
+</p>
+<p>
+  <%= f.label :source_id %>
+  <%= source_auto_complete_field( 'topic_preference', 'source_id', @topic_preference.source ) %>
+</p>
+<p>
+  <%= f.label :category_id %>
+  <%= f.select( :category_id, Category.for_select( :source ), :include_blank => true ) %>
+</p>
