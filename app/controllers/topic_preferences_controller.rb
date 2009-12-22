@@ -33,16 +33,20 @@ class TopicPreferencesController < ApplicationController
     respond_to do |format|
       if @topic_preference.update_attributes( params[:topic_preference] )
         flash[:notice] = 'Update Successfully'
-        format.html{ redirect_to :action => :index, :scope => params[:scope] }
+        format.html{ redirect_to :action => :index }
       else
         flash[:error] = 'Update Failed'
-        format.html{ redirect_to :action => :index, :scope => params[:scope] }
+        format.html{ redirect_to :action => :index }
       end
     end
   end
   
   def destroy
-    
+    @topic_preference.destroy
+    respond_to do |format|
+      flash[:notice] = 'Destroyed Successfully'
+      format.html{ redirect_to :action => :index }
+    end
   end
   
   protected
