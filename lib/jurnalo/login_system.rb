@@ -47,7 +47,7 @@ module Jurnalo
       def session_check_for_validation
         last_st = session.try( :[], :cas_last_valid_ticket )
         return unless last_st
-        if request.get? && ( session[:revalidate].nil? || session[:revalidate] < Time.now )
+        if request.get? && !request.xhr? && ( session[:revalidate].nil? || session[:revalidate] < Time.now )
           session[:cas_last_valid_ticket] = nil
           session[:revalidate] = 10.minutes.from_now
         end

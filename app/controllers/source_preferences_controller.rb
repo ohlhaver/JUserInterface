@@ -19,7 +19,7 @@ class SourcePreferencesController < ApplicationController
     respond_to do |format|
       if @source_preference.save
         flash[:notice] = 'Created Successfully'
-        format.html{ redirect_to :action => :index, :scope => params[:scope] }
+        format.html{ redirect_to :action => :index }
       else
         format.html{ render :action => :new }
       end
@@ -30,10 +30,10 @@ class SourcePreferencesController < ApplicationController
     respond_to do |format|
       if @source_preference.update_attributes( params[:source_preference] )
         flash[:notice] = 'Update Successfully'
-        format.html{ redirect_to :action => :index, :scope => params[:scope] }
+        format.html{ redirect_to :action => :index }
       else
         flash[:error] = 'Update Failed'
-        format.html{ redirect_to :action => :index, :scope => params[:scope] }
+        format.html{ redirect_to :action => :index }
       end
     end
   end
