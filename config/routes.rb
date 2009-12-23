@@ -39,7 +39,7 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   # map.cas_proxy_callback 'cas_proxy_callback/:action', :controller => 'cas_proxy_callback'
-  
+  map.filter :country
   map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
   map.logout '/logout', :controller => 'application', :action => 'logout'
   map.access_denied '/access_denied', :controller => 'application', :action => 'access_denied'
@@ -51,6 +51,7 @@ ActionController::Routing::Routes.draw do |map|
     users.resources :source_preferences
     users.resources :topic_preferences
     users.resources :story_preferences
+    users.resources :home_cluster_preferences
   end
   map.resources :password_resets
   map.resources :account_activations

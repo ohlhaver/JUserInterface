@@ -49,6 +49,10 @@
   </p>
   <strong>Other Settings</strong>
   <p>
+    <%= f.label :headlines_per_cluster_group, 'Headlines Per Cluster Group' %><br />
+    <%= f.select :headlines_per_cluster_group, Preference.for_select( :headlines_per_cluster_group ) %>
+  </p>
+  <p>
     <%= f.label :cluster_preview, 'Headlines Per Cluster Preview' %><br />
     <%= f.select :cluster_preview, Preference.for_select( :cluster_preview ) %>
   </p>
@@ -59,6 +63,10 @@
   <p>
     <%= f.label :image, 'Image Preference' %><br />
     <%= f.select :image, Preference.for_select( :image ) %>
+  </p>
+  <p>
+    <%= f.label :region_id, 'Country' %><br />
+    <%= f.select :region_id, Preference.for_select( :region_id ) %>
   </p>
   <p>
     <%= f.label :interface_language_id, 'Interface Language' %><br />
@@ -73,5 +81,3 @@
     <%= f.submit 'Update' %>
   </p>
 <% end %>
-
-<%= link_to 'Back to User Profile', user_path( @user ) %>

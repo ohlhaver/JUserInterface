@@ -1,0 +1,19 @@
+<h1>Home Cluster Group Preferences</h1>
+
+<table>
+  <tr>
+    <th>Cluster Group</th>
+  </tr>
+  <% @home_cluster_preferences.each do |hp| %>
+  <tr>
+    <td><%= hp.cluster_group.name %></td>
+    <td><%= link_to '&uarr;', user_home_cluster_preference_path( :user_id => @user, :id => hp, :reorder => 'up' ), :method => :put, :title => 'Move Higher' %></td>
+    <td><%= link_to '&darr;', user_home_cluster_preference_path( :user_id => @user, :id => hp, :reorder => 'down' ), :method => :put, :title => 'Move Lower' %></td>
+    <td><%= link_to '&uArr;', user_home_cluster_preference_path( :user_id => @user, :id => hp, :reorder => 'top' ), :method => :put, :title => 'Move To Top' %></td>
+    <td><%= link_to '&dArr;', user_home_cluster_preference_path( :user_id => @user, :id => hp, :reorder => 'bottom' ), :method => :put, :title => 'Move To Bottom' %></td>
+    <td><%= link_to 'Destroy', user_home_cluster_preference_path( @user, hp ), :method => :delete, :confirm => 'Are you sure?'  %></td>
+  </tr>
+  <% end -%>
+</table>
+<br/>
+<%= render :partial => 'home_cluster_preferences/new' %>

@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   
   def create
     attributes = {}
+    attributes.merge!( :language_id => params[:locale], :region_id => params[:country] )
     attributes.merge!( :email => session[ :cas_user ], :third_party => session[ :cas_extra_attributes ][ 'auth' ] ) if session && session[ :cas_extra_attributes ]
     @user = User.new( params[:user].merge!( attributes ) )
     if @user.save_with_captcha

@@ -32,7 +32,7 @@
 <h3>Filters</h3>
 <p>
   <%= f.label :region_id %>
-  <%= f.select( :region_id, Region.for_select( :reload ), :include_blank => true ) %>
+  <%= f.select( :region_id, Preference.for_select( :region_id ), :include_blank => true ) %>
 </p>
 <p>
   <%= f.label :author_id %>

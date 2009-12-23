@@ -1,0 +1,16 @@
+<h1>My Reading List</h1>
+
+<table>
+  <tr>
+    <th>Story Title</th>
+  </tr>
+  <% @story_preferences.each do |sp| %>
+  <tr>
+    <td><%= sp.story.title %></td>
+    <td><%= link_to 'Destroy', user_story_preference_path( @user, sp ), :method => :delete, :confirm => 'Are you sure?'  %></td>
+  </tr>
+  <% end -%>
+</table>
+
+<br />
+<%= will_paginate @story_preferences %>

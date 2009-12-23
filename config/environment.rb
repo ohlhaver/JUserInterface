@@ -13,7 +13,6 @@ Rails::Initializer.run do |config|
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
-
   config.gem( 'authlogic', :version => '2.1.3', :lib => 'authlogic' )
   config.gem( 'rubycas-client', :version => '2.1.0' )
   require 'casclient'
@@ -41,11 +40,10 @@ end
 
 JModelConfig = YAML.load_file( "#{RAILS_ROOT}/config/j_models.yml" )
 load "#{JModelConfig[RAILS_ENV]['path']}/config/environment.rb"
-
-Dir["#{RAILS_ROOT}/app/models/*.rb"].each do |model_file|
-  load model_file
-end
-
+# Dir["#{RAILS_ROOT}/app/models/*.rb"].each do |model_file|
+#   load model_file
+# end
+I18n.reload!
 CasServerConfig = YAML.load_file( "#{RAILS_ROOT}/config/cas_server.yml" )
 
 cas_logger = Logger.new(RAILS_ROOT+'/log/cas.log')

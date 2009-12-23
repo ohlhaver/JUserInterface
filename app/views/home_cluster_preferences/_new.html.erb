@@ -1,0 +1,5 @@
+<% form_for @home_cluster_preference, :url => user_home_cluster_preferences_path( @user )  do |f| %>
+  <%= f.error_messages %>
+  <%= f.select( :value, ClusterGroup.for_select( :tag => @user.tag ) ) %>
+  <%= f.submit( 'Add To List' ) %>
+<% end %>

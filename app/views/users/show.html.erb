@@ -1,3 +1,7 @@
+<h2>User Dashboard</h2>
+
+<h3>Account Summary</h3>
+
 <% unless @user.third_party? %>
 <p>
   <b>Login:</b>
@@ -13,4 +17,14 @@
   <b>Email:</b>
   <%=h @user.email %>
 </p>
-<%= link_to 'Edit', edit_account_path %>
+<%= link_to 'Edit Account Details', edit_account_path %>
+
+<h3>User Preferences</h3>
+
+<p><%= link_to 'General Preferences', edit_preference_path( @user ) %></p>
+<p><%= link_to 'My Homepage Cluster Groups', user_home_cluster_preferences_path( @user ) %></p>
+<p><%= link_to 'Source Preferences', user_source_preferences_path( @user ) %></p>
+<p><%= link_to 'Author Preferences', user_author_preferences_path( :user_id => @user, :scope => 'pref' ) %></p>
+<p><%= link_to 'My Favorite Authors', user_author_preferences_path( :user_id => @user, :scope => 'fav' ) %></p>
+<p><%= link_to 'My Topics', user_topic_preferences_path( @user ) %></p>
+<p><%= link_to 'My Reading List', user_story_preferences_path( @user ) %></p>
