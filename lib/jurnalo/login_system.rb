@@ -85,7 +85,11 @@ module Jurnalo
       end
       
       def log_session_info
-        logger.info session
+        logger.info "Start Session Info"
+        session.each{ |k,v| 
+          logger.info( "#{k}: #{v}" )
+        }
+        logger.info "End Session Info"
       end
       
       def redirect_to_activation_page_if_not_active
@@ -146,6 +150,7 @@ module Jurnalo
         else
           before_filter :authenticate_using_cas_without_gateway
         end
+        before_filter :log_session_info
         before_filter :set_current_user
         before_filter :check_for_new_users, options
         before_filter :redirect_to_activation_page_if_not_active, options
