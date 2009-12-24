@@ -6,6 +6,7 @@ class PreferencesController < ApplicationController
   
   def show
     respond_to do |format|
+      format.html{ redirect_to :action => :edit }
       format.xml{ render :xml => @preference.to_xml }
     end
   end

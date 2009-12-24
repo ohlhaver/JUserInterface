@@ -32,6 +32,10 @@ module Jurnalo
         end
       end
       
+      def admin?
+        current_user.try( :user_role ).try( :admin? )
+      end
+      
       def current_user
         @current_user
       end

@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   jurnalo_login_required :only => [ :show, :edit, :update ]
   before_filter :set_user_var, :only => [ :show, :edit, :update ]
   
+  def index
+    redirect_to( :action => :show ) && return unless admin?
+    @users = User.paginate( :page => params[:page] || '1' )
+  end
+  
   def new
     if current_user
       flash['notice'] ||= 'You are already registered'

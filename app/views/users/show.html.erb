@@ -17,14 +17,14 @@
   <b>Email:</b>
   <%=h @user.email %>
 </p>
-<%= link_to 'Edit Account Details', edit_account_path %>
+<%= link_to 'Edit Account Details', edit_user_path( @user ) %>
 
 <h3>User Preferences</h3>
 
-<p><%= link_to 'General Preferences', edit_preference_path( @user ) %></p>
-<p><%= link_to 'My Homepage Cluster Groups', user_home_cluster_preferences_path( @user ) %></p>
-<p><%= link_to 'Source Preferences', user_source_preferences_path( @user ) %></p>
-<p><%= link_to 'Author Preferences', user_author_preferences_path( :user_id => @user, :scope => 'pref' ) %></p>
-<p><%= link_to 'My Favorite Authors', user_author_preferences_path( :user_id => @user, :scope => 'fav' ) %></p>
-<p><%= link_to 'My Topics', user_topic_preferences_path( @user ) %></p>
-<p><%= link_to 'My Reading List', user_story_preferences_path( @user ) %></p>
+<p><%= link_to  my_or_user + ' General Preferences', edit_preference_path( @user ) %></p>
+<p><%= link_to  my_or_user + ' Homepage Cluster Groups', user_home_cluster_preferences_path( @user ) %></p>
+<p><%= link_to  my_or_user + ' Source Preferences', user_source_preferences_path( @user ) %></p>
+<p><%= link_to  my_or_user + ' Author Preferences', user_author_preferences_path( :user_id => @user, :scope => 'pref' ) %></p>
+<p><%= link_to  my_or_user + ' Favorite Authors', user_author_preferences_path( :user_id => @user, :scope => 'fav' ) %></p>
+<p><%= link_to  my_or_user + ' Topics', user_topic_preferences_path( @user ) %></p>
+<p><%= link_to  my_or_user + ' Reading List', user_story_preferences_path( @user ) %></p>

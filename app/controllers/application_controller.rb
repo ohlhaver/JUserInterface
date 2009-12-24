@@ -32,4 +32,8 @@ class ApplicationController < ActionController::Base
     #@language_id = Language.find( :first, :conditions => { :code => params[:locale].downcase } )
   end
   
+  def my_page?
+    current_user && @user && @user == current_user
+  end
+  
 end

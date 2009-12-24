@@ -1,0 +1,17 @@
+<h2>User Listing</h2>
+
+<table>
+  <tr>
+    <th>Login</th>
+    <th>Email</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.login %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to 'Profile', user_path( user ) %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @users %>

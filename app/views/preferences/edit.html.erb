@@ -1,6 +1,6 @@
-<h1>Editing User Preferences</h1>
+<h1><%= my_or_user %> General Preferences</h1>
 
-<% form_for(@preference) do |f| %>
+<% form_for(@preference, :url => preference_path( @user ), :html => { :method => :put, :class => "edit_preference", :id => "edit_preference_#{@user.id}" }  ) do |f| %>
   <%= f.error_messages %>
   <strong>Email Settings</strong>
   <p>

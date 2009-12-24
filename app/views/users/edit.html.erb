@@ -1,11 +1,12 @@
-<h1>Edit My Account</h1>
+<h1>Edit <%= my_or_user %> Account</h1>
  
-<% form_for @user, :url => account_path do |f| %>
+<% form_for @user, :url => user_path(@user) do |f| %>
   <%= f.error_messages %>
   <% unless @user.third_party? %>
     <%= render :partial => 'jurnalo_user', :object => f %>
   <% else %>
     <%= render :partial => 'third_party_user', :object => f %>  
   <% end %>
+  <br/>
   <%= f.submit "Update" %>
 <% end %>

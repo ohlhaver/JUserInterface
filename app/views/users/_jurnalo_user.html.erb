@@ -20,3 +20,8 @@ Dear user, please provide the following details to register:<br />
 <%= jurnalo_user.check_box :terms_and_conditions_accepted %>
 <%= jurnalo_user.label :terms_and_conditions_accepted, 'Accept Jurnalo Terms And Conditions'%><br />
 <% end -%>
+<% if admin?  %>
+  <br/>
+  <%= jurnalo_user.check_box :active %>
+  <%= jurnalo_user.label :active, 'Account Active?' %> <br/>
+<% end %>

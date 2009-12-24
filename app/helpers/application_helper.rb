@@ -5,6 +5,14 @@ module ApplicationHelper
     controller.send(:current_user)
   end
   
+  def my_page?
+    controller.send(:my_page?)
+  end
+  
+  def admin?
+    controller.send(:admin?)
+  end
+  
   def author_auto_complete_field( object, method, value = nil )
     @author = value || Author.new
     text_field_with_auto_complete( 'author', 'name', {}, { :url => { :controller => :auto_complete, :action => :author_name }, 
@@ -37,6 +45,10 @@ module ApplicationHelper
       content_tag("span", phrase ? highlight(entry[field], phrase) : h(entry[field]), :class => 'item_name') +
       content_tag("span", entry['id'], :style => 'display:none', :class => 'item_id' ) ) }
     content_tag("ul", items.uniq)
+  end
+  
+  def my_or_user
+    my_page? ? "My" : "User"
   end
   
 end

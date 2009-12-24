@@ -13,18 +13,19 @@
   <% if current_user %>
     <%= link_to( "Account Home", account_path ) %> | <%= link_to("Logout", logout_path) %>
   <% end %>
+  <% if admin? %>
+    | <%= link_to( 'Users Index', users_path ) %>
+  <% end %>
 </div>
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:error] %></p>
 <%= yield %>
 <br />
 <div id="bottom_nav">
-  <% if @user && current_user %>
-    <% if @user == current_user %>
-      <%= link_to( 'My Profile', account_path ) %>
-    <% else %>
-      <%= link_to( 'User Profile', user_path( @user ) ) %>
-    <% end %>
+  <% if admin? && @user %>
+    <%= link_to( 'User Profile', user_path( @user ) ) %> 
+  <% elsif current_user %>
+    <%= link_to( 'My Profile', account_path ) %>
   <% end %>
 </div>
 <% if RAILS_ENV != 'production' %>
