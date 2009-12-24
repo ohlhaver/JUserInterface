@@ -36,6 +36,10 @@ module Jurnalo
         current_user.try( :user_role ).try( :admin? )
       end
       
+      def logged_in?
+        session && session[:cas_user ] && session[:cas_extra_attributes]
+      end
+      
       def current_user
         @current_user
       end

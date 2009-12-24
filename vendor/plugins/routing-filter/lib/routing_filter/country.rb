@@ -48,6 +48,7 @@ module RoutingFilter
       returning yield do |params|                    # invoke the given block (calls more filters and finally routing)
         params[:country] = country if country           # set recognized country to the resulting params hash
         params[:locale] = locale if locale
+        params[:locale] = nil if params[:locale].blank?
       end
     end
 

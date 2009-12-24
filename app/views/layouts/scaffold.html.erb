@@ -9,13 +9,16 @@
   <%= javascript_include_tag :defaults %>
 </head>
 <body>
-<div id="top_nav"> 
-  <% if current_user %>
-    <%= link_to( "Account Home", account_path ) %> | <%= link_to("Logout", logout_path) %>
-  <% end %>
-  <% if admin? %>
-    | <%= link_to( 'Users Index', users_path ) %>
-  <% end %>
+<div id="top_nav">
+  <% if logged_in? %>
+    <%= link_to("Logout", logout_path) %>
+    <% if current_user %>
+      | <%= link_to( "Account Home", account_path ) %>
+      <% if admin? %>
+        | <%= link_to( 'Users Index', users_path ) %>
+      <% end %>
+    <% end %>
+  <% end %> 
 </div>
 <p style="color: green"><%= flash[:notice] %></p>
 <p style="color: red"><%= flash[:error] %></p>
