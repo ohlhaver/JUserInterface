@@ -55,6 +55,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :story_searches
   map.resource :account, :controller => "users"
   map.resources :preferences
+  map.resources :authors
+  map.resources :sources
   map.resources :users do |users|
     users.resources :author_preferences
     users.resources :source_preferences

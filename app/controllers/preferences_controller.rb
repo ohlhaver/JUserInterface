@@ -4,18 +4,20 @@ class PreferencesController < ApplicationController
   
   before_filter :set_user_var, :set_preference_var
   
+  required_api_param :preference_id, :only => [ :index ]
   required_api_param :id, :only => [ :show, :update, :create ]
   required_api_param :preference, :only => [ :update, :create ]
   
   def index
     respond_to do |format|
       format.html{ redirect_to :action => :edit }
-      format.xml{ super }
+      format.xml{ rxml_data( Preference.select_all( params[:preference_id] ), :root => 'preference_options' ) }
     end
   end
   
   def show
     options = params[:only] ? { :only => params[:only] } : {}
+    options.merge!( :set => :long ) if params[:details] == '1' 
     respond_to do |format|
       format.html{ redirect_to :action => :edit }
       format.xml{ rxml_data( @preference, options ) }
