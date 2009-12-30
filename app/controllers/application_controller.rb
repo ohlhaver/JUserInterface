@@ -5,12 +5,12 @@ class ApplicationController < ActionController::Base
   
   #helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  include Jurnalo::ApiSystem
   include Jurnalo::LoginSystem
   include SimpleCaptcha::ControllerHelpers
-  
+
   layout 'scaffold'
   
-  before_filter :set_region_and_language_var
   before_filter :set_current_user
     
   def logout
@@ -18,19 +18,14 @@ class ApplicationController < ActionController::Base
     CASClient::Frameworks::Rails::GatewayFilter.logout( self, CasServerConfig[RAILS_ENV]['service'] )
   end
   
-  def access_denied
+  def access_denied(key = nil)
     respond_to do |format|
       format.html{ render :template => 'shared/access_denied' }
-      format.xml{ render :xml => "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<error>API Key Is Not Valid or Access Denied</error>" }
+      format.xml{ render_xml_error_response( 'Access Denied', 'access.denied', :forbidden ) }
     end
   end
   
   protected
-  
-  def set_region_and_language_var
-    #@region_id = Region.find( :first, :conditions => { :code => params[:country].upcase } )
-    #@language_id = Language.find( :first, :conditions => { :code => params[:locale].downcase } )
-  end
   
   def my_page?
     current_user && @user && @user == current_user

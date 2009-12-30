@@ -4,10 +4,21 @@ class PreferencesController < ApplicationController
   
   before_filter :set_user_var, :set_preference_var
   
-  def show
+  required_api_param :id, :only => [ :show, :update, :create ]
+  required_api_param :preference, :only => [ :update, :create ]
+  
+  def index
     respond_to do |format|
       format.html{ redirect_to :action => :edit }
-      format.xml{ render :xml => @preference.to_xml }
+      format.xml{ super }
+    end
+  end
+  
+  def show
+    options = params[:only] ? { :only => params[:only] } : {}
+    respond_to do |format|
+      format.html{ redirect_to :action => :edit }
+      format.xml{ rxml_data( @preference, options ) }
     end
   end
   
@@ -19,10 +30,10 @@ class PreferencesController < ApplicationController
       if @preference.update_attributes( params[:preference] )
         flash[:notice] = 'Preference was successfully updated.'
         format.html { redirect_to( edit_preference_path(@user) ) }
-        format.xml  { head :ok }
+        format.xml{ rxml_success( @user, :action => :update ) }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
+        format.html{ render :action => "edit" }
+        format.xml{ rxml_error( @preference, :action => :update ) }
       end
     end
   end

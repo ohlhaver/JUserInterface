@@ -25,9 +25,9 @@ class UsersController < ApplicationController
     attributes.merge!( :language_id => params[:locale], :region_id => params[:country] )
     attributes.merge!( :email => session[ :cas_user ], :third_party => session[ :cas_extra_attributes ][ 'auth' ] ) if session && session[ :cas_extra_attributes ]
     @user = User.new( params[:user].merge!( attributes ) )
-    if @user.save_with_captcha
-      flash[:notice] = session && session[ :cas_extra_attributes ] ? "Registration successful!" : "Registration successful! Please check your email account for account activation."
-      default_path = session && session[ :cas_extra_attributes ] ? account_path : new_account_path
+    if ( @user.third_party? ? @user.save : @user.save_with_captcha )
+      flash[:notice] = @user.third_party? ? "Registration successful!" : "Registration successful! Please check your email account for account activation."
+      default_path = @user.third_party? ? account_path : new_account_path
       redirect_back_or_default default_path
     else
       session[:cas_sent_to_gateway] = true

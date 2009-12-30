@@ -4,7 +4,11 @@ class TopicPreferencesController < ApplicationController
   
   before_filter :set_user_var
   before_filter :merge_attributes
-  before_filter :set_topic_preference_var, :only => [ :edit, :destroy, :update ]
+  before_filter :set_topic_preference_var, :only => [ :edit, :show, :destroy, :update ]
+  
+  required_api_param :user_id, :only => [ :index, :create, :update, :destroy ]
+  required_api_param :id, :only => [ :update, :destroy ]
+  required_api_param :topic_preference, :only => [ :create, :update ]
   
   def new
     @topic_preference = @user.topic_subscriptions.build
@@ -15,6 +19,17 @@ class TopicPreferencesController < ApplicationController
   
   def index
     @topic_preferences = @user.topic_subscriptions.paginate( :all, :page => params[:page] || '1', :include => [ :source, :category, :region, :author ] )
+    respond_to do |format|
+      format.html
+      format.xml{ rxml_data( @topic_preferences, :root => 'topic_preferences', :with_pagination => true ) }
+    end
+  end
+  
+  def show
+    respond_to do |format|
+      format.html{ redirect_to :action => :index }
+      format.xml{ rxml_data( @topic_preference, :root => 'topic_preference' ) }
+    end
   end
   
   def create
@@ -23,8 +38,10 @@ class TopicPreferencesController < ApplicationController
       if @topic_preference.save
         flash[:notice] = 'Created Successfully'
         format.html{ redirect_to :action => :index }
+        format.xml{ rxml_success( @topic_preference, :action => :create ) }
       else
         format.html{ render :action => :new }
+        format.xml{ rxml_error( @topic_preference, :action => :create ) }
       end
     end
   end
@@ -34,9 +51,11 @@ class TopicPreferencesController < ApplicationController
       if @topic_preference.update_attributes( params[:topic_preference] )
         flash[:notice] = 'Update Successfully'
         format.html{ redirect_to :action => :index }
+        format.xml{ rxml_success( @topic_preference, :action => :update ) }
       else
         flash[:error] = 'Update Failed'
         format.html{ redirect_to :action => :index }
+        format.xml{ rxml_error( @topic_preference, :action => :update ) }
       end
     end
   end
@@ -46,6 +65,7 @@ class TopicPreferencesController < ApplicationController
     respond_to do |format|
       flash[:notice] = 'Destroyed Successfully'
       format.html{ redirect_to :action => :index }
+      format.xml{ rxml_success( @topic_preference, :action => :delete ) }
     end
   end
   
@@ -56,7 +76,7 @@ class TopicPreferencesController < ApplicationController
   end
   
   def merge_attributes
-    params[:topic_preference] = params[:topic_preference] ? params[:topic_preference].merge!( params[:topic_subscription] ) : params[:topic_subscription]
+    params[:topic_preference] = params[:topic_preference] ? params[:topic_preference].merge!( params[:topic_subscription] || {} ) : params[:topic_subscription]
   end
   
   def set_topic_preference_var

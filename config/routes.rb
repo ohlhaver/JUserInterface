@@ -39,7 +39,16 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   # map.cas_proxy_callback 'cas_proxy_callback/:action', :controller => 'cas_proxy_callback'
+  #map.filter :api
   map.filter :country
+  
+  map.connect '/api/:api_key/update/:controller', :format => 'xml', :action => 'update'
+  map.connect '/api/:api_key/create/:controller', :format => 'xml', :action => 'create'
+  map.connect '/api/:api_key/delete/:controller', :format => 'xml', :action => 'destroy'
+  map.connect '/api/:api_key/read/:controller',   :format => 'xml', :action => 'show'
+  map.connect '/api/:api_key/list/:controller',   :format => 'xml', :action => 'index'
+  map.connect '/api/:api_key/:method/:controller', :action => 'access_denied', :format => 'xml'
+  
   map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
   map.logout '/logout', :controller => 'application', :action => 'logout'
   map.access_denied '/access_denied', :controller => 'application', :action => 'access_denied'

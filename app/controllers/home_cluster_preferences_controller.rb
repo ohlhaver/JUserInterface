@@ -4,13 +4,19 @@ class HomeClusterPreferencesController < ApplicationController
 
   before_filter :set_user_var
   before_filter :merge_attributes
-  before_filter :set_home_cluster_preference_var, :only => [ :update, :destroy ]
+  before_filter :set_home_cluster_preference_var, :only => [ :edit, :show, :update, :destroy ]
+  
+  required_api_param :user_id, :only => [ :index, :create, :update, :destroy ]
+  required_api_param :id, :only => [ :update, :destroy ]
+  required_api_param :reorder, :only => [ :update ]
+  required_api_param :home_cluster_preference, :only => [ :create ]
   
   def index
     @home_cluster_preference = @user.multi_valued_preferences.preference( :homepage_clusters ).build
     @home_cluster_preferences = @user.homepage_cluster_group_preferences
     respond_to do |format|
       format.html
+      format.xml{ rxml_data( @home_cluster_preferences, :root => 'home_cluster_preferences' ) }
     end
   end
   
@@ -20,11 +26,13 @@ class HomeClusterPreferencesController < ApplicationController
       if @home_cluster_preference.save
         flash[:notice] = 'Created Successfully'
         format.html{ redirect_to :action => :index }
+        format.xml{ rxml_success( @home_cluster_preference, :action => :create ) }
       else
         format.html{ 
           @home_cluster_preferences = @user.homepage_cluster_group_preferences
           render :action => :index 
         }
+        format.xml{ rxml_error( @home_cluster_preference, :action => :create ) }
       end
     end
   end
@@ -41,7 +49,8 @@ class HomeClusterPreferencesController < ApplicationController
     end
     respond_to do |format|
       flash[:notice] = 'Updated Successfully'
-      format.html { redirect_to :action => :index }
+      format.html{ redirect_to :action => :index }
+      format.xml{ rxml_success( @home_cluster_preference, :action => :update ) }
     end
   end
   
@@ -50,13 +59,14 @@ class HomeClusterPreferencesController < ApplicationController
     respond_to do |format|
       flash[:notice] = 'Removed Successfully'
       format.html { redirect_to :action => :index }
+      format.xml{ rxml_success( @home_cluster_preference, :action => :delete ) }
     end
   end
   
   protected
   
   def merge_attributes
-    params[:home_cluster_preference] = params[:home_cluster_preference] ? params[:home_cluster_preference].merge!( params[:multi_valued_preference] ) : 
+    params[:home_cluster_preference] = params[:home_cluster_preference] ? params[:home_cluster_preference].merge!( params[:multi_valued_preference] || {}) : 
       params[:multi_valued_preference]
   end
   
