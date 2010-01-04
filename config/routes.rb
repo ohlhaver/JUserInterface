@@ -42,12 +42,24 @@ ActionController::Routing::Routes.draw do |map|
   #map.filter :api
   map.filter :country
   
-  map.connect '/api/:api_key/update/:controller', :format => 'xml', :action => 'update'
-  map.connect '/api/:api_key/create/:controller', :format => 'xml', :action => 'create'
-  map.connect '/api/:api_key/delete/:controller', :format => 'xml', :action => 'destroy'
-  map.connect '/api/:api_key/read/:controller',   :format => 'xml', :action => 'show'
-  map.connect '/api/:api_key/list/:controller',   :format => 'xml', :action => 'index'
-  map.connect '/api/:api_key/:method/:controller', :action => 'access_denied', :format => 'xml'
+  map.connect '/api/:api_key/advance_search/stories',         :format => 'xml', :controller => 'stories', :action => 'by_advance_search'
+  map.connect '/api/:api_key/search/stories/authors',         :format => 'xml', :controller => 'stories', :action => 'by_authors'
+  map.connect '/api/:api_key/search/stories/sources',         :format => 'xml', :controller => 'stories', :action => 'by_sources'
+  map.connect '/api/:api_key/search/stories/cluster_groups',  :format => 'xml', :controller => 'stories', :action => 'by_cluster_groups'
+  map.connect '/api/:api_key/search/stories/clusters',        :format => 'xml', :controller => 'stories', :action => 'by_clusters'
+  map.connect '/api/:api_key/search/stories/topics',          :format => 'xml', :controller => 'stories', :action => 'by_user_topics'
+  map.connect '/api/:api_key/search/stories',                 :format => 'xml', :controller => 'stories', :action => 'index'
+  
+  map.connect '/api/:api_key/update/:controller',             :format => 'xml', :action => 'update'
+  map.connect '/api/:api_key/create/:controller',             :format => 'xml', :action => 'create'
+  map.connect '/api/:api_key/delete/:controller',             :format => 'xml', :action => 'destroy'
+  map.connect '/api/:api_key/read/:controller',               :format => 'xml', :action => 'show'
+  map.connect '/api/:api_key/list/:controller',               :format => 'xml', :action => 'index'
+  
+  map.connect '/api/:api_key/:method/:submethod/:controller', :action => 'access_denied', :format => 'xml'
+  map.connect '/api/:api_key/:controller',                    :action => 'access_denied', :format => 'xml'
+  map.connect '/api/:api_key',                                :action => 'access_denied', :format => 'xml', :controller => 'application'
+  map.connect '/api',                                         :action => 'access_denied', :format => 'xml', :controller => 'application'
   
   map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
   map.logout '/logout', :controller => 'application', :action => 'logout'
