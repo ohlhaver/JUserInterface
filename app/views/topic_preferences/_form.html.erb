@@ -46,3 +46,20 @@
   <%= f.label :category_id %>
   <%= f.select( :category_id, Category.for_select( :source ), :include_blank => true ) %>
 </p>
+<p>
+  <%= f.label :subscription_type %>
+  <%= f.select( :subscription_type, Preference.for_select( :subscription_type), :include_blank => true ) %>
+</p>
+<h3>Preferences</h3>
+<p>
+  <%= f.label :video, 'Video Preference' %>
+  <%= f.select :video, Preference.for_select( :video ), :include_blank => true %>
+</p>
+<p>
+  <%= f.label :opinion, 'Opinion Preference' %>
+  <%= f.select :opinion, Preference.for_select( :opinion ), :include_blank => true %>
+</p>
+<p>
+  <%= f.label :blog, 'Blog Preference' %>
+  <%= f.select :blog, Preference.for_select( :blog ), :include_blank => true %>
+</p>

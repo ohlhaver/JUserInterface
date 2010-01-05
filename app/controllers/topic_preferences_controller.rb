@@ -11,10 +11,11 @@ class TopicPreferencesController < ApplicationController
   required_api_param :topic_preference, :only => [ :create, :update ]
   
   def new
-    @topic_preference = @user.topic_subscriptions.build
+    @topic_preference = @user.topic_subscriptions.build( params[:topic_preference] )
   end
   
   def edit
+    @advance = @topic_preference.advance?
   end
   
   def index
@@ -33,30 +34,58 @@ class TopicPreferencesController < ApplicationController
   end
   
   def create
+    do_search = search_request?
     @topic_preference = @user.topic_subscriptions.build( params[:topic_preference] )
     respond_to do |format|
-      if @topic_preference.save
+      if !do_search && @topic_preference.save
         flash[:notice] = 'Created Successfully'
         format.html{ redirect_to :action => :index }
         format.xml{ rxml_success( @topic_preference, :action => :create ) }
       else
-        format.html{ render :action => :new }
+        format.html{ 
+          populate_topic_stories if @topic_preference.valid? && do_search
+          @advance = @topic_preference.advance?
+          render :action => :new 
+        }
         format.xml{ rxml_error( @topic_preference, :action => :create ) }
       end
     end
   end
   
   def update
+    return reorder unless params[:reorder].blank?
+    do_search = search_request?
+    @topic_preference.attributes = params[:topic_preference]
     respond_to do |format|
-      if @topic_preference.update_attributes( params[:topic_preference] )
+      if !do_search && @topic_preference.save
         flash[:notice] = 'Update Successfully'
         format.html{ redirect_to :action => :index }
         format.xml{ rxml_success( @topic_preference, :action => :update ) }
       else
-        flash[:error] = 'Update Failed'
-        format.html{ redirect_to :action => :index }
+        format.html{ 
+          populate_topic_stories if @topic_preference.valid? && do_search
+          @advance = @topic_preference.advance?
+          render :action => :edit 
+        }
         format.xml{ rxml_error( @topic_preference, :action => :update ) }
       end
+    end
+  end
+  
+  def reorder
+    case params[:reorder] when 'up'
+      @topic_preference.move_higher
+    when 'down'
+      @topic_preference.move_lower
+    when 'top'
+      @topic_preference.move_to_top
+    when 'bottom'
+      @topic_preference.move_to_bottom
+    end
+    respond_to do |format|
+      flash[:notice] = 'Updated Successfully'
+      format.html{ redirect_to :action => :index }
+      format.xml{ rxml_success( @topic_preference, :action => :update ) }
     end
   end
   
@@ -70,6 +99,22 @@ class TopicPreferencesController < ApplicationController
   end
   
   protected
+  
+  def search_request?
+    do_search = !params[:search].blank? || !params[:next].blank? || !params[:prev].blank?
+    if do_search
+      params[:page] = Integer( params[:page] || 1 ) rescue 1
+      params[:page] = 1  unless params[:search].blank?
+      params[:page] += 1 unless params[:next].blank?
+      params[:page] += -1 unless params[:prev].blank?
+    end
+    return do_search
+  end
+  
+  def populate_topic_stories
+    @topic_preference.send( :populate_story_search_hash )
+    @stories = @topic_preference.stories( params )
+  end
   
   def user_id_field
     :user_id

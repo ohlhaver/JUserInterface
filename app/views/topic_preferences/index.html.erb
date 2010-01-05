@@ -9,11 +9,15 @@
   <% @topic_preferences.each do |tp| %>
   <tr>
     <td><%= tp.name %></td>
-    <td><%= tp.search_terms %></td>
+    <td><%= tp.story_search_hash[:string] %></td>
     <td><% tp.filters.each do |filter| %>
       <div><%= filter[:name] %>: <%= filter[:value] %></div>
       <% end %>
     </td>
+    <td><%= link_to '&uarr;', user_topic_preference_path( :user_id => @user, :id => tp, :reorder => 'up' ), :method => :put, :title => 'Move Higher' %></td>
+    <td><%= link_to '&darr;', user_topic_preference_path( :user_id => @user, :id => tp, :reorder => 'down' ), :method => :put, :title => 'Move Lower' %></td>
+    <td><%= link_to '&uArr;', user_topic_preference_path( :user_id => @user, :id => tp, :reorder => 'top' ), :method => :put, :title => 'Move To Top' %></td>
+    <td><%= link_to '&dArr;', user_topic_preference_path( :user_id => @user, :id => tp, :reorder => 'bottom' ), :method => :put, :title => 'Move To Bottom' %></td>
     <td><%= link_to 'Edit', edit_user_topic_preference_path( @user, tp ) %></td>
     <td><%= link_to 'Destroy', user_topic_preference_path( @user, tp ), :method => :delete, :confirm => 'Are you sure?'  %></td>
   </tr>

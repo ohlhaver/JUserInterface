@@ -49,7 +49,7 @@ class StoriesController < ApplicationController
     set_user_var unless params[:user_id].blank?
     params[:cluster_ids] = params[:cluster_id] if params[:cluster_id].is_a?( Array )
     return by_multiple_clusters if params[:cluster_ids]
-    options = { :page => params[:page], :per_page => per_page }
+    options = { :page => page, :per_page => per_page }
     story_group = StoryGroup.find( :first, :conditions => { :id => params[:cluster_id] } ) || StoryGroupArchive.find( :first, :conditions => { :group_id => params[:cluster_id] } )
     story_group.stories_to_serialize = story_group.top_stories.paginate( options )
     rxml_data( story_group, :with_pagination => true, :root => 'cluster' )
@@ -71,7 +71,7 @@ class StoriesController < ApplicationController
       return by_multiple_cluster_groups
     end
     cluster_group_id = params[ :cluster_group_id ]
-    options = { :page => params[:page], :include => :top_stories, :per_page => per_page }
+    options = { :page => page, :include => :top_stories, :per_page => per_page }
     story_groups = StoryGroup.active_session.by_cluster_group_ids( cluster_group_id ).paginate( options )
     StoryGroup.populate_stories_to_serialize( story_groups, per_cluster )
     rxml_data( story_groups, :root => 'clusters', :with_pagination => true )
@@ -128,6 +128,10 @@ class StoriesController < ApplicationController
   
   def by_user_authors
     @user.author_subscriptions.subscribed.all( :select => 'id' ).collect{ |a| a.id }
+  end
+  
+  def page
+    Integer( params[:page] || 1 ) rescue 1
   end
   
   def per_page
