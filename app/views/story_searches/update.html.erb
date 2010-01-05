@@ -1,8 +1,0 @@
-<h3>Search Results</h3>
-<ul>
-<% @stories.each do |story| %>
-  <li><strong><%= story.title %></strong><br/>
-  <%= story.created_at.to_s(:short) %></li>
-<% end %>
-<%= "<li>No such stories found</li>" if @stories.empty? %>
-</ul>
