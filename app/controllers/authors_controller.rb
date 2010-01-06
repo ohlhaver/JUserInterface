@@ -6,11 +6,15 @@ class AuthorsController < ApplicationController
   
   required_api_param :id, :only => [ :show ]
   
+  #
+  # /api/list/authors?top=1 # Top Authors
+  # /api/list/authors?q=james
+  #
   def index
     conditions = {}
     conditions.merge!( :is_opinion => true ) if params[:opinion] == '1'
     conditions.merge!( :is_agency => true )  if params[:agency] == '1'
-    params[:q] ? search( conditions ) : list( conditions )
+    params[:top] == '1' ? top() : ( params[:q] ? search( conditions ) : list( conditions ) )
     rxml_data( @authors, :root => 'authors', :with_pagination => true )
   end
   
@@ -26,6 +30,10 @@ class AuthorsController < ApplicationController
   
   def search( conditions )
     @authors = Author.search( params[:q], :with => conditions, :page => params[:page] )
+  end
+  
+  def top
+    @authors = Author.top.paginate( :page => params[:page] || 1 )
   end
   
   def set_author_var

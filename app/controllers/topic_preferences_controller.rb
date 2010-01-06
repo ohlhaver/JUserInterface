@@ -19,7 +19,12 @@ class TopicPreferencesController < ApplicationController
   end
   
   def index
-    @topic_preferences = @user.topic_subscriptions.paginate( :all, :page => params[:page] || '1', :include => [ :source, :category, :region, :author ] )
+    @home_group = params[:home_group] == '1'
+    if @home_group
+      @topic_preferences = @user.topic_subscriptions.home_group.paginate( :all, :page => params[:page] || '1', :include => [ :source, :category, :region, :author ] )
+    else
+      @topic_preferences = @user.topic_subscriptions.paginate( :all, :page => params[:page] || '1', :include => [ :source, :category, :region, :author ] )
+    end
     respond_to do |format|
       format.html
       format.xml{ rxml_data( @topic_preferences, :root => 'topic_preferences', :with_pagination => true ) }

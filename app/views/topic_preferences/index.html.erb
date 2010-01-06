@@ -29,3 +29,9 @@
 <%= will_paginate @topic_preferences %>
 <br />
 <%= link_to 'New Topic', new_user_topic_preference_path( @user ) %>
+<br />
+<% if @home_group %>
+<%= link_to 'All Topics', user_topic_preferences_path( @user ) %>
+<% else %>
+<%= link_to 'Homepage Topics', user_topic_preferences_path( :user_id => @user.id, :home_group => '1' ) %>
+<% end %>

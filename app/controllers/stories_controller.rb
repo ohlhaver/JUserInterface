@@ -26,15 +26,8 @@ class StoriesController < ApplicationController
   
   def by_authors
     set_user_var unless params[:user_id].blank?
-    params[:sort_criteria] = '2' if params[:sort_criteria].blank?
-    if params[:author_ids] == 'all'
-      params[:author_ids] = @user ? by_user_authors : 0 
-      if params[:cluster_group] == true
-        params[:per_page] = per_cluster_group 
-        params[:page] = 1
-      end
-    end
-    @stories = StorySearch.new( @user, :author, params ).results
+    return by_top_authors if params[:author_ids] == 'top'
+    @stories ||= StorySearch.new( @user, :author, params ).results
     rxml_stories
   end
   
@@ -64,8 +57,8 @@ class StoriesController < ApplicationController
   
   def by_cluster_groups
     set_user_var unless params[:user_id].blank?
-    params[:cluster_group_ids] = params[:cluster_group_id] if params[:cluster_group_id].is_a?( Array ) || params[:cluster_group_id] == 'default'
-    case params[:cluster_group_ids] when 'default'
+    params[:cluster_group_ids] = params[:cluster_group_id] if params[:cluster_group_id].is_a?( Array ) || params[:cluster_group_id] == 'all'
+    case params[:cluster_group_ids] when 'all'
       return( params[:user_id].blank? ? by_default_cluster_groups : by_user_cluster_groups )
     when Array
       return by_multiple_cluster_groups
@@ -113,11 +106,20 @@ class StoriesController < ApplicationController
   def by_multiple_user_topics
     params[:page] = 1
     params[:per_page] = per_cluster_group
-    @topics = @user.topic_subscriptions.all if params[:topic_ids] == 'all'
+    @topics = @user.topic_subscriptions.home_group.all if params[:topic_ids] == 'all'
     @topics ||= @user.topic_subscriptions.find( :all, :conditions => { :id => params[:topic_ids] } )
     @topics.each{ |topic| topic.stories_to_serialize = topic.stories( params ) }
     @topics.delete_if{ |t| t.stories_to_serialize.blank? }
     rxml_data( @topics, :root => 'topics' )
+  end
+  
+  def by_top_authors
+    if params[:cluster_group] == '1'
+      @stories = Story.by_top_authors.paginate( :page => 1, :per_page => per_cluster_group )
+    else
+      @stories = Story.by_top_authors.paginate( :page => page, :per_page => per_page )
+    end
+    rxml_stories
   end
   
   def show
@@ -125,10 +127,6 @@ class StoriesController < ApplicationController
   end
   
   protected
-  
-  def by_user_authors
-    @user.author_subscriptions.subscribed.all( :select => 'id' ).collect{ |a| a.id }
-  end
   
   def page
     Integer( params[:page] || 1 ) rescue 1

@@ -4,17 +4,22 @@
   <%= f.label :name %>
   <%= f.text_field :name %>
 </p>
-<h3>Find Results</h3>
 <p>
-  <%= f.label :search_all, 'with all of the words' %>
-  <%= f.text_field :search_all %>
-<p>
-  <%= f.label :search_exact_phrase, 'with the exact phrase' %>
-  <%= f.text_field :search_exact_phrase %>
+  <%= f.label :home_group, 'Show on My homepage?' %>
+  <%= f.check_box :home_group %>
 </p>
+<h3>Find Results</h3>
 <p>
   <%= f.label :search_any, 'with at least one of the words' %>
   <%= f.text_field :search_any %>
+</p>
+<p>
+  <%= f.label :search_all, 'with all of the words' %>
+  <%= f.text_field :search_all %>
+</p>
+<p>
+  <%= f.label :search_exact_phrase, 'with the exact phrase' %>
+  <%= f.text_field :search_exact_phrase %>
 </p>
 <p>
   <%= f.label :search_except, 'without the words' %>
