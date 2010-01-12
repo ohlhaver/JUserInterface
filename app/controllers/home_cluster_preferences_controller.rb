@@ -13,23 +13,24 @@ class HomeClusterPreferencesController < ApplicationController
   
   def index
     @home_cluster_preference = @user.multi_valued_preferences.preference( :homepage_clusters ).build
-    @home_cluster_preferences = @user.homepage_cluster_group_preferences
+    @home_cluster_preferences = @user.homepage_cluster_group_preferences( :include => :cluster_group )
     respond_to do |format|
       format.html
-      format.xml{ rxml_data( @home_cluster_preferences, :root => 'home_cluster_preferences' ) }
+      format.xml{ rxml_data( @home_cluster_preferences, :set => :homepage_clusters, :root => 'home_cluster_preferences' ) }
     end
   end
   
   def create
     @home_cluster_preference = @user.multi_valued_preferences.preference( :homepage_clusters ).build( params[:home_cluster_preference].merge!( :tag => @user.tag ) )
     respond_to do |format|
+      new_record = @home_cluster_preference.new_record?
       if @home_cluster_preference.save
-        flash[:notice] = 'Created Successfully'
+        flash[:notice] = new_record ? 'Created Successfully' : 'Already In the List'
         format.html{ redirect_to :action => :index }
         format.xml{ rxml_success( @home_cluster_preference, :action => :create ) }
       else
         format.html{ 
-          @home_cluster_preferences = @user.homepage_cluster_group_preferences
+          @home_cluster_preferences = @user.homepage_cluster_group_preferences( :include => :cluster_group )
           render :action => :index 
         }
         format.xml{ rxml_error( @home_cluster_preference, :action => :create ) }
@@ -75,7 +76,7 @@ class HomeClusterPreferencesController < ApplicationController
   end
   
   def set_home_cluster_preference_var
-    @home_cluster_preference = @user.multi_valued_preferences.find( params[:id] )
+    @home_cluster_preference = @user.multi_valued_preferences.preference( :homepage_clusters ).find( params[:id] )
     raise ActiveRecord::RecordNotFound unless @home_cluster_preference
   end
   

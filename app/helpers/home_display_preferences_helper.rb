@@ -1,0 +1,2 @@
+module HomeDisplayPreferencesHelper
+end

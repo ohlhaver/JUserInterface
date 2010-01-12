@@ -97,9 +97,10 @@ module ApiSystem
     
     def rxml_data( data, options = {} )
       include_pagination_data = options.delete( :with_pagination )
+      pagination_results = options.delete( :pagination_results ) || data
       render_xml_success do |opts|
         data.to_xml( opts.merge( options ) )
-        { :total_pages => data.total_pages, :next_page => data.next_page, :previous_page => data.previous_page }.to_xml( opts.merge( :root => 'pagination' ) ) if include_pagination_data
+        { :total_pages => pagination_results.total_pages, :next_page => pagination_results.next_page, :previous_page => pagination_results.previous_page }.to_xml( opts.merge( :root => 'pagination' ) ) if include_pagination_data
         yield( opts ) if block_given?
       end
     end

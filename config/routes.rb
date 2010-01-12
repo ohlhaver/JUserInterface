@@ -75,6 +75,7 @@ ActionController::Routing::Routes.draw do |map|
     users.resources :topic_preferences
     users.resources :story_preferences
     users.resources :home_cluster_preferences
+    users.resources :home_display_preferences
   end
   map.resources :password_resets
   map.resources :account_activations
