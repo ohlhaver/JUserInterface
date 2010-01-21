@@ -31,4 +31,11 @@ class ApplicationController < ActionController::Base
     current_user && @user && @user == current_user
   end
   
+  def scan_multiple_value_param( attribute_name, first = false )
+    param_value = params[ attribute_name ]
+    return nil if param_value.nil?
+    array = param_value.is_a?(Array) ? param_value : param_value.gsub(/\s*,\s*/, ',').split(',')
+    first && array.size == 1 ? array.first : array
+  end
+  
 end

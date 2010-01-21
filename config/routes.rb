@@ -42,13 +42,13 @@ ActionController::Routing::Routes.draw do |map|
   #map.filter :api
   map.filter :country
   
-  map.connect '/api/:api_key/advance_search/stories',         :format => 'xml', :controller => 'stories', :action => 'by_advance_search'
+  map.connect '/api/:api_key/search/stories/advance',         :format => 'xml', :controller => 'stories', :action => 'by_advance_search'
   map.connect '/api/:api_key/search/stories/authors',         :format => 'xml', :controller => 'stories', :action => 'by_authors'
   map.connect '/api/:api_key/search/stories/sources',         :format => 'xml', :controller => 'stories', :action => 'by_sources'
   map.connect '/api/:api_key/search/stories/cluster_groups',  :format => 'xml', :controller => 'stories', :action => 'by_cluster_groups'
   map.connect '/api/:api_key/search/stories/clusters',        :format => 'xml', :controller => 'stories', :action => 'by_clusters'
   map.connect '/api/:api_key/search/stories/topics',          :format => 'xml', :controller => 'stories', :action => 'by_user_topics'
-  map.connect '/api/:api_key/search/stories',                 :format => 'xml', :controller => 'stories', :action => 'index'
+  map.connect '/api/:api_key/search/stories',                   :format => 'xml', :controller => 'stories', :action => 'index'
   
   map.connect '/api/:api_key/update/:controller',             :format => 'xml', :action => 'update'
   map.connect '/api/:api_key/create/:controller',             :format => 'xml', :action => 'create'

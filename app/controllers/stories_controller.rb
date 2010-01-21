@@ -26,12 +26,14 @@ class StoriesController < ApplicationController
   
   def by_authors
     set_user_var unless params[:user_id].blank?
+    params[:author_ids] = scan_multiple_value_param( :author_ids, :first) || scan_multiple_value_param( :author_id, :first )
     return by_top_authors if params[:author_ids] == 'top'
     @stories ||= StorySearch.new( @user, :author, params ).results
     rxml_stories
   end
   
   def by_sources
+    params[:source_id] = scan_multiple_value_param( :source_id, :first ) || scan_multiple_value_param( :source_ids )
     set_user_var unless params[:user_id].blank?
     params[:sort_criteria] = '2' if params[:sort_criteria].blank?
     @stories = StorySearch.new( @user, :source, params ).results
@@ -40,43 +42,46 @@ class StoriesController < ApplicationController
   
   def by_clusters
     set_user_var unless params[:user_id].blank?
-    params[:cluster_ids] = params[:cluster_id] if params[:cluster_id].is_a?( Array )
-    return by_multiple_clusters if params[:cluster_ids]
+    param_value = scan_multiple_value_param( :cluster_id, :first ) || scan_multiple_value_param( :cluster_ids )
+    return by_multiple_clusters( param_value ) if param_value.is_a?( Array )
     options = { :page => page, :per_page => per_page, :user => @user }
-    story_group = StoryGroup.find( :first, :conditions => { :id => params[:cluster_id] } ) || StoryGroupArchive.find( :first, :conditions => { :group_id => params[:cluster_id] } )
+    story_group = StoryGroup.find( :first, :conditions => { :id => param_value } ) || StoryGroupArchive.find( param_value )
     story_group.stories_to_serialize = story_group.top_stories.paginate( options )
     rxml_data( story_group, :pagination_results => story_group.stories_to_serialize, :with_pagination => true, :root => 'cluster' )
   end
   
-  def by_multiple_clusters
-    params[:cluster_ids] = Array( params[:cluster_ids] ) rescue []
-    params[:cluster_ids].uniq!
-    story_groups_hash = StoryGroup.find( :all, :conditions => { :id => params[:cluster_ids] } ).group_by{ |sg| sg.id }
-    story_groups_hash.merge! StoryGroupArchive.find( :all, :conditions => { :group_id => params[:cluster_ids] } ).group_by{ |sg| sg.group_id }
-    story_groups = params[:cluster_ids].collect{ |cid| story_groups_hash[ cid.to_i ].first }
+  def by_multiple_clusters( cluster_ids )
+    cluster_ids.uniq!
+    story_groups_hash = StoryGroup.find( :all, :conditions => { :id => cluster_ids } ).group_by{ |sg| sg.id }
+    story_groups_hash.merge! StoryGroupArchive.find( :all, :conditions => { :group_id => cluster_ids } ).group_by{ |sg| sg.group_id }
+    story_groups = cluster_ids.collect{ |cid| story_groups_hash[ cid.to_i ].first }
     StoryGroup.populate_stories_to_serialize( @user, story_groups, per_cluster )
     rxml_data( story_groups, :root => 'clusters' )
   end
   
   def by_cluster_groups
     set_user_var unless params[:user_id].blank?
-    params[:cluster_group_ids] = params[:cluster_group_id] if params[:cluster_group_id].is_a?( Array ) || params[:cluster_group_id] == 'all'
-    case params[:cluster_group_ids] when 'all'
+    param_value = scan_multiple_value_param( :cluster_group_id, :first ) || scan_multiple_value_param( :cluster_group_ids )
+    case param_value when 'all'
       return( params[:user_id].blank? ? by_default_cluster_groups : by_user_cluster_groups )
+    when 'top'
+      return by_top_cluster_group
     when Array
-      return by_multiple_cluster_groups
+      return by_multiple_cluster_groups( param_value )
     end
-    return by_top_cluster_group if params[:cluster_group_id] == 'top' 
     options = { :page => page, :include => :top_stories, :per_page => per_page }
-    story_groups = StoryGroup.active_session.by_cluster_group_id( params[ :cluster_group_id ] ).paginate( options )
+    cluster_group = ClusterGroup.find( param_value )
+    story_groups = StoryGroup.active_session.by_cluster_group_id( cluster_group.id ).paginate( options )
     StoryGroup.populate_stories_to_serialize( @user, story_groups, per_cluster )
-    rxml_data( story_groups, :root => 'clusters', :with_pagination => true )
+    cluster_group_hash = { :id => cluster_group.id, :name => cluster_group.name, :clusters => story_groups } 
+    rxml_data( cluster_group_hash, :root => 'cluster_group', :pagination_results => story_groups , :with_pagination => true )
   end
   
   def by_top_cluster_group
     story_groups = StoryGroup.active_session.top_clusters( :user => @user, :region_id => params[:region_id], :language_id => params[:language_id] ).paginate( :per_page => per_page, :page => page )
     StoryGroup.populate_stories_to_serialize( @user, story_groups, per_cluster )
-    rxml_data( story_groups, :root => 'clusters', :with_pagination => true )
+    cluster_group_hash = { :id => 'top', :name => 'Top Stories', :clusters => story_groups } 
+    rxml_data( cluster_group_hash, :root => 'cluster_group', :pagination_results => story_groups , :with_pagination => true )
   end
   
   def by_default_cluster_groups
@@ -85,7 +90,7 @@ class StoriesController < ApplicationController
     tag = "Region:#{region_id}:#{language_id}"
     params[:cluster_group_ids] = ClusterGroup.homepage(:tag => tag).all( :select => 'id' ).collect{ |x| x.id }
     params[:top] = '1' if params[:top].blank?
-    by_multiple_cluster_groups
+    by_multiple_cluster_groups( params[:cluster_group_ids] )
   end
   
   def by_user_cluster_groups
@@ -98,11 +103,10 @@ class StoriesController < ApplicationController
     end
     params[:top] = @user.show_top_stories_cluster_group? ? '1' : '0'
     params[:per_page] ||= @user.preference.try( :headlines_per_cluster_group )
-    by_multiple_cluster_groups
+    by_multiple_cluster_groups( params[:cluster_group_ids] )
   end
   
-  def by_multiple_cluster_groups
-    cluster_group_ids = Array( params[:cluster_group_ids] )
+  def by_multiple_cluster_groups( cluster_group_ids )
     top_clusters = []
     top_clusters = StoryGroup.active_session.top_clusters( :user => @user, 
       :region_id => params[:region_id], :language_id => params[:language_id] 
@@ -115,18 +119,18 @@ class StoriesController < ApplicationController
   
   def by_user_topics
     set_user_var
-    params[:topic_ids] = params[:topic_id] if params[:topic_id].is_a?( Array ) || params[:topic_id] == 'all'
-    return by_multiple_user_topics if params[:topic_ids]
+    param_value = scan_multiple_value_param( :topic_id, :first ) || scan_multiple_value_param( :topic_ids )
+    return by_multiple_user_topics( param_value ) if param_value.is_a?( Array ) || param_value == 'all'
     topic = @user.topic_subscriptions.find( params[:topic_id] )
-    @stories = topic.stories( params )
-    rxml_stories
+    topic.stories_to_serialize = topic.stories( params )
+    rxml_data( topic, :pagination_results => topic.stories_to_serialize, :with_pagination => true, :root => 'topic' )
   end
   
-  def by_multiple_user_topics
+  def by_multiple_user_topics( topic_ids )
     params[:page] = 1
     params[:per_page] = per_cluster_group
-    @topics = @user.topic_subscriptions.home_group.all if params[:topic_ids] == 'all'
-    @topics ||= @user.topic_subscriptions.find( :all, :conditions => { :id => params[:topic_ids] } )
+    @topics = @user.topic_subscriptions.home_group if topic_ids == 'all'
+    @topics ||= @user.topic_subscriptions.find( :all, :conditions => { :id => topic_ids } )
     @topics.each{ |topic| topic.stories_to_serialize = topic.stories( params ) }
     @topics.delete_if{ |t| t.stories_to_serialize.blank? }
     rxml_data( @topics, :root => 'topics' )
