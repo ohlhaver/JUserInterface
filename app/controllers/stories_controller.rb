@@ -69,7 +69,7 @@ class StoriesController < ApplicationController
     when Array
       return by_multiple_cluster_groups( param_value )
     end
-    options = { :page => page, :include => :top_stories, :per_page => per_page }
+    options = params[:preview] == '1' ?  { :page => 1, :per_page => per_cluster_group } : { :page => page, :per_page => per_page }
     cluster_group = ClusterGroup.find( param_value )
     story_groups = StoryGroup.active_session.by_cluster_group_id( cluster_group.id ).paginate( options )
     StoryGroup.populate_stories_to_serialize( @user, story_groups, per_cluster )
@@ -78,7 +78,8 @@ class StoriesController < ApplicationController
   end
   
   def by_top_cluster_group
-    story_groups = StoryGroup.active_session.top_clusters( :user => @user, :region_id => params[:region_id], :language_id => params[:language_id] ).paginate( :per_page => per_page, :page => page )
+    options = ( params[:preview] == '1' ? { :page => 1, :per_page => per_cluster_group } : { :per_page => per_page, :page => page } )
+    story_groups = StoryGroup.active_session.top_clusters( :user => @user, :region_id => params[:region_id], :language_id => params[:language_id] ).paginate( options )
     StoryGroup.populate_stories_to_serialize( @user, story_groups, per_cluster )
     cluster_group_hash = { :id => 'top', :name => 'Top Stories', :clusters => story_groups } 
     rxml_data( cluster_group_hash, :root => 'cluster_group', :pagination_results => story_groups , :with_pagination => true )
@@ -137,11 +138,9 @@ class StoriesController < ApplicationController
   end
   
   def by_top_authors
-    if params[:cluster_group] == '1'
-      @stories = Story.by_top_authors.paginate( :page => 1, :per_page => per_cluster_group )
-    else
-      @stories = Story.by_top_authors.paginate( :page => page, :per_page => per_page )
-    end
+    conditions = params[:language_id].blank? ? {} : { :language_id => params[:language_id] }
+    pagination_options = params[:preview] == '1' ? { :page => 1, :per_page => per_cluster_group } : { :page => page, :per_page => per_page }
+    @stories = Story.by_top_authors.paginate( pagination_options.merge( :conditions => conditions, :include => [ :authors, :source ] ) )
     rxml_stories
   end
   
@@ -150,6 +149,10 @@ class StoriesController < ApplicationController
   end
   
   protected
+  
+  def user_id_field
+    :user_id
+  end
   
   def page
     Integer( params[:page] || 1 ) rescue 1
@@ -167,9 +170,9 @@ class StoriesController < ApplicationController
     Integer( params[:per_cluster_group] || @user.try(:preference).try( :headlines_per_cluster_group ) || 2 ) rescue 2
   end
   
-  def set_user_var
-    @user = User.find( params[:user_id] )
-  end
+  # def set_user_var
+  #   @user = User.find( params[:user_id] )
+  # end
   
   def rxml_stories
     rxml_data( @stories, :with_pagination => true, :root => 'stories' )

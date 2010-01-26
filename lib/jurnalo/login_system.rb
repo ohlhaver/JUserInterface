@@ -50,7 +50,13 @@ module Jurnalo
       end
       
       def set_user_var
-        @user = (current_user.user_role.try( :admin? ) && !params[ user_id_field ].blank?) ? User.find( params[ user_id_field ] ) : current_user
+        @user = (current_user.user_role.try( :admin? ) && !params[ user_id_field ].blank?) ? user_from_user_id_field : current_user
+      end
+      
+      def user_from_user_id_field
+        user = params[user_id_field] == 'default' ? User.first( :conditions => { :login => 'jadmin' } ) : User.find( params[user_id_field] )
+        ActiveRecord::RecordNotFound.new if user.nil?
+        user
       end
 
       def session_check_for_validation

@@ -1,7 +1,7 @@
 class HomeDisplayPreferencesController < ApplicationController
   
   jurnalo_login_required
-
+  
   before_filter :set_user_var
   before_filter :merge_attributes
   before_filter :set_home_display_preference_var, :only => [ :edit, :show, :update, :destroy ]
