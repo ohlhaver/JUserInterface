@@ -100,10 +100,23 @@ module ApiSystem
       pagination_results = options.delete( :pagination_results ) || data
       render_xml_success do |opts|
         data.to_xml( opts.merge( options ) )
-        { :total_pages => pagination_results.total_pages, 
-          :next_page => pagination_results.next_page,
-          :current_page => pagination_results.current_page,
-          :previous_page => pagination_results.previous_page }.to_xml( opts.merge( :root => 'pagination' ) ) if include_pagination_data
+        if include_pagination_data
+          { 
+            :total_pages => pagination_results.total_pages, 
+            :next_page => pagination_results.next_page,
+            :current_page => pagination_results.current_page,
+            :previous_page => pagination_results.previous_page 
+          }.to_xml( opts.merge( :root => 'pagination' ) )
+          facets = Array.new
+          if pagination_results.respond_to?( :facets )
+            pagination_results.facets.each{ |key, value|
+              value.each{ |fid, fcount|
+                facets.push( { :filter => key, :value => fid, :count => fcount } )
+              }
+            }
+          end
+          facets.to_xml( opts.merge( :root => 'facets' ) )
+        end
         yield( opts ) if block_given?
       end
     end
