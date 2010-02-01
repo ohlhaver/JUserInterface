@@ -42,6 +42,7 @@ ActionController::Routing::Routes.draw do |map|
   #map.filter :api
   map.filter :country
   
+  map.connect '/api/:api_key/search/stories/list',            :format => 'xml', :controller => 'stories', :action => 'by_story_ids'
   map.connect '/api/:api_key/search/stories/advance',         :format => 'xml', :controller => 'stories', :action => 'by_advance_search'
   map.connect '/api/:api_key/search/stories/authors',         :format => 'xml', :controller => 'stories', :action => 'by_authors'
   map.connect '/api/:api_key/search/stories/sources',         :format => 'xml', :controller => 'stories', :action => 'by_sources'

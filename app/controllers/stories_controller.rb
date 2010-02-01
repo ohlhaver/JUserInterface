@@ -5,6 +5,7 @@ class StoriesController < ApplicationController
   before_filter :set_story_var, :only => [ :edit, :show, :update, :destroy ]
   
   required_api_param :id, :only => [ :show ]
+  required_api_param :story_ids, :only => [ :by_story_ids ], :if => Proc.new{ |p| p[:story_id].blank? }
   required_api_param :author_id, :only => [ :by_authors ], :if => Proc.new{ |p| p[:author_ids].blank? }
   required_api_param :source_id, :only => [ :by_sources ], :if => Proc.new{ |p| p[:source_ids].blank? }
   required_api_param :cluster_group_id, :only => [ :by_cluster_groups ], :if => Proc.new{ |p| p[:cluster_group_ids].blank? }
@@ -16,6 +17,15 @@ class StoriesController < ApplicationController
     set_user_var unless params[:user_id].blank?
     @stories = StorySearch.new( @user, :simple, params ).results
     rxml_stories
+  end
+  
+  def by_story_ids
+    story_ids = scan_multiple_value_param( :story_id, :first ) || scan_multiple_value_param( :story_ids )
+    @stories = Story.find( :all, :conditions => { :id => story_ids }, :include => [ :authors, :source, :active_story_group_membership ] )
+    group_ids = @stories.collect{ |s| s.active_story_group_membership.try(:group_id) }.select{ |i| !i.nil? }
+    cluster_hash = StoryGroup.find( :all, :conditions => { :id => group_ids } ).each{ |g| g.stories_to_serialize = [] }.inject({}){ |h,g| h[g.id] = g; h }
+    @stories.collect{ |x| x.group_to_serialize = cluster_hash[ x.active_story_group_membership.try(:group_id) ] }
+    rxml_data( @stories, :root => 'stories' )
   end
   
   def by_advance_search
@@ -121,7 +131,7 @@ class StoriesController < ApplicationController
   def by_user_topics
     set_user_var
     param_value = scan_multiple_value_param( :topic_id, :first ) || scan_multiple_value_param( :topic_ids )
-    return by_multiple_user_topics( param_value ) if param_value.is_a?( Array ) || param_value == 'all'
+    return by_multiple_user_topics( param_value ) if param_value.is_a?( Array ) || param_value == 'all' || param_value == 'my'
     topic = @user.topic_subscriptions.find( params[:topic_id] )
     topic.stories_to_serialize = topic.stories( params )
     rxml_data( topic, :pagination_results => topic.stories_to_serialize, :with_pagination => true, :root => 'topic' )
@@ -131,6 +141,7 @@ class StoriesController < ApplicationController
     params[:page] = 1
     params[:per_page] = per_cluster_group
     @topics = @user.topic_subscriptions.home_group if topic_ids == 'all'
+    @topics = @user.topic_subscriptions.all if topic_ids == 'my'
     @topics ||= @user.topic_subscriptions.find( :all, :conditions => { :id => topic_ids } )
     @topics.each{ |topic| topic.stories_to_serialize = topic.stories( params ) }
     @topics.delete_if{ |t| t.stories_to_serialize.blank? }
