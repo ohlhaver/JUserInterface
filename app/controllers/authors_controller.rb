@@ -14,6 +14,10 @@ class AuthorsController < ApplicationController
     conditions = {}
     conditions.merge!( :is_opinion => true ) if params[:opinion] == '1'
     conditions.merge!( :is_agency => true )  if params[:agency] == '1'
+    if params[:author_ids]
+      author_ids = scan_multiple_value_param( :author_id, :first ) || scan_multiple_value_param( :author_ids )
+      conditions.merge!( :id => author_ids )
+    end
     params[:top] == '1' ? top() : ( params[:q] ? search( conditions ) : list( conditions ) )
     rxml_data( @authors, :root => 'authors', :with_pagination => true )
   end

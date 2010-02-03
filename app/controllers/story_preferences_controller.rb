@@ -6,8 +6,8 @@ class StoryPreferencesController < ApplicationController
   before_filter :merge_attributes
   before_filter :set_story_preference_var, :only => [ :edit, :show, :update, :destroy ]
   
-  required_api_param :user_id, :only => [ :index, :create, :destroy ]
-  required_api_param :id, :only => [ :destroy ]
+  required_api_param :user_id, :only => [ :index, :create, :destroy, :show ]
+  required_api_param :id, :only => [ :destroy, :show ]
   required_api_param :story_preference, :only => [ :create ]
   
   def index
@@ -15,6 +15,13 @@ class StoryPreferencesController < ApplicationController
     respond_to do |format|
       format.html 
       format.xml{ rxml_data( @story_preferences, :root => 'story_preferences', :with_pagination => true ) }
+    end
+  end
+  
+  def show
+    respond_to do |format|
+      format.html{ redirect_to :action => :index }
+      format.xml{ rxml_data( @story_preference, :root => 'story_preference' ) }
     end
   end
   
