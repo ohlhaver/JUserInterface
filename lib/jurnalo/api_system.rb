@@ -124,7 +124,11 @@ module ApiSystem
     def rxml_error( data, options = {}, &block )
       action = options.delete(:action) || 'action'
       render_xml_error( "entity.#{action}.failure", :unprocessable_entity ) do |opts|
-        data.errors.to_xml( opts.merge( options ) )
+        errors = Array.new
+        data.errors.each_error{ |err| 
+          errors << { :attribute => err.last.attribute, :type => err.last.type, :message => err.last.message }  
+        }
+        errors.to_xml( opts.merge( options ).merge( :root => 'errors') )
         yield( opts ) if block_given?
       end
     end
@@ -139,7 +143,7 @@ module ApiSystem
     end
     
     def render_xml_error( message = 'internal.server.error', status = :internal_server_error, &block )
-      xml =  { :error => false, :message => message }.to_xml( :root => 'response', :dasherize => false ) do |x|
+      xml =  { :error => true, :message => message }.to_xml( :root => 'response', :dasherize => false ) do |x|
           x.tag!( 'data' ) do |y|
             block.call( :dasherize => false, :builder => y, :skip_instruct => true )
           end
