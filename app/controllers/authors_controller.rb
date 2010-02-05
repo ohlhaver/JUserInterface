@@ -14,7 +14,7 @@ class AuthorsController < ApplicationController
     conditions = {}
     conditions.merge!( :is_opinion => true ) if params[:opinion] == '1'
     conditions.merge!( :is_agency => true )  if params[:agency] == '1'
-    unless param[:author_id].blank? && params[:author_ids].blank?
+    unless params[:author_id].blank? && params[:author_ids].blank?
       author_ids = scan_multiple_value_param( :author_id, :first ) || scan_multiple_value_param( :author_ids )
       conditions.merge!( :id => author_ids )
     end
