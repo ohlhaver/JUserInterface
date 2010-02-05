@@ -33,7 +33,9 @@ class AuthorsController < ApplicationController
   end
   
   def search( conditions )
-    @authors = Author.search( params[:q], :with => conditions, :page => params[:page] )
+    per_page = params[:per_page]
+    per_page = 10 if per_page.blank?
+    @authors = Author.search( params[:q], :with => conditions, :page => params[:page], :per_page => per_page )
   end
   
   def top
