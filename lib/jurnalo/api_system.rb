@@ -108,7 +108,7 @@ module ApiSystem
             :previous_page => pagination_results.previous_page 
           }.to_xml( opts.merge( :root => 'pagination' ) )
           facets = Array.new
-          if pagination_results.respond_to?( :facets )
+          if pagination_results.respond_to?( :facets ) && pagination_results.facets.is_a?(Hash)
             pagination_results.facets.each{ |key, value|
               value.each{ |fid, fcount|
                 facets.push( { :filter => key, :value => fid, :count => fcount } )
