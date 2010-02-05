@@ -5,13 +5,21 @@ class PreferencesController < ApplicationController
   before_filter :set_user_var, :set_preference_var
   
   required_api_param :preference_id, :only => [ :index ]
+  required_api_param :region_id, :only => [ :index ],   :if => Proc.new{ |p| p[:preference_id] == 'homepage_cluster_groups' || p[:preference_id] == 'homepage_cluster_group' }
+  required_api_param :language_id, :only => [ :index ], :if => Proc.new{ |p| p[:preference_id] == 'homepage_cluster_groups' || p[:preference_id] == 'homepage_cluster_group' }
   required_api_param :id, :only => [ :show, :update, :create ]
   required_api_param :preference, :only => [ :update, :create ]
   
   def index
     respond_to do |format|
       format.html{ redirect_to :action => :edit }
-      format.xml{ rxml_data( Preference.select_all( params[:preference_id] ), :root => 'preference_options' ) }
+      format.xml{ 
+        preferences = case( params[:preference_id] ) when 'homepage_cluster_groups', 'homepage_cluster_group' :
+          Preference.select_all_homepage_cluster_group( params[:region_id], params[:language_id] )
+        else
+          Preference.select_all( params[:preference_id] )
+        end
+        rxml_data( preferences, :root => 'preference_options' ) }
     end
   end
   
