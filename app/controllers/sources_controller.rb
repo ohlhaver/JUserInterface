@@ -25,7 +25,7 @@ class SourcesController < ApplicationController
   def search( conditions )
     per_page = params[:per_page]
     per_page = 10 if per_page.blank?
-    @sources = Source.name_like( params[:q] ).paginate( :page => params[:page] || 1, :per_page => per_page, :conditions => conditions, :order => 'name ASC' )
+    @sources = Source.name_like( params[:q] ).paginate( :page => params[:page] || 1, :per_page => per_page.to_i, :conditions => conditions, :order => 'name ASC' )
   end
   
   def set_source_var
