@@ -76,7 +76,8 @@ class HomeDisplayPreferencesController < ApplicationController
   end
   
   def set_home_display_preference_var
-    @home_display_preference = @user.multi_valued_preferences.preference( :homepage_boxes ).find( params[:id] )
+    @home_display_preference = @user.multi_valued_preferences.preference( :homepage_boxes ).find( :first, :conditions => { :value => params[:homepage_box_id] } ) unless params[:homepage_box_id].blank?
+    @home_display_preference ||= @user.multi_valued_preferences.preference( :homepage_boxes ).find( params[:id] ) if params[:homepage_box_id] != params[:id]
     raise ActiveRecord::RecordNotFound unless @home_display_preference
   end
   

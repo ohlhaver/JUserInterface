@@ -82,7 +82,9 @@ class HomeClusterPreferencesController < ApplicationController
   end
   
   def set_home_cluster_preference_var
-    @home_cluster_preference = @user.multi_valued_preferences.preference( :homepage_clusters ).find( params[:id] )
+    @home_cluster_preference = @user.multi_valued_preferences.preference( :homepage_clusters ).find( :first, :conditions => { 
+      :value => params[:cluster_group_id], :tag => @user.tag( @region_id, @language_id ) } ) unless params[:cluster_group_id].blank?
+    @home_cluster_preference ||= @user.multi_valued_preferences.preference( :homepage_clusters ).find( params[:id] ) if params[:cluster_group_id] != params[:id]
     raise ActiveRecord::RecordNotFound unless @home_cluster_preference
   end
   

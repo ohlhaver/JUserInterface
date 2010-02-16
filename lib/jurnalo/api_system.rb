@@ -125,9 +125,12 @@ module ApiSystem
       action = options.delete(:action) || 'action'
       render_xml_error( "entity.#{action}.failure", :unprocessable_entity ) do |opts|
         errors = Array.new
-        data.errors.each_error{ |err| 
-          errors << { :attribute => err.last.attribute, :type => err.last.type, :message => err.last.message }  
-        }
+        begin
+          data.errors.each_error{ |err| 
+            errors << { :attribute => err.last.attribute, :type => err.last.type, :message => err.last.message }  
+          } if data.errors
+        rescue StandardError
+        end
         errors.to_xml( opts.merge( options ).merge( :root => 'errors') )
         yield( opts ) if block_given?
       end
