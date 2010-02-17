@@ -54,7 +54,12 @@ class StoriesController < ApplicationController
     set_user_var unless params[:user_id].blank?
     param_value = scan_multiple_value_param( :cluster_id, :first ) || scan_multiple_value_param( :cluster_ids )
     return by_multiple_clusters( param_value ) if param_value.is_a?( Array )
-    options = { :page => page, :per_page => per_page, :user => @user }
+    options = { :page => page, :per_page => per_page, :user => @user, :conditions => {} }
+    filter = [ :blog, :video, :opinion ].select{ |x| params[x] == '1' }.first
+    options[ :conditions ][ "is_#{filter}".to_sym ] = true  if filter
+    require 'pp'
+    pp options
+    puts "-"*80
     story_group = StoryGroup.find( :first, :conditions => { :id => param_value } ) || StoryGroupArchive.find( param_value )
     story_group.stories_to_serialize = story_group.top_stories.paginate( options )
     rxml_data( story_group, :pagination_results => story_group.stories_to_serialize, :with_pagination => true, :root => 'cluster' )
