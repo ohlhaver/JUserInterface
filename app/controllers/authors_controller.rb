@@ -32,10 +32,27 @@ class AuthorsController < ApplicationController
     @authors = Author.paginate( :page => params[:page] || 1, :conditions => conditions, :order => 'name ASC' )
   end
   
+  def auto_complete( conditions )
+    find_options = {
+      :select => 'authors.*',
+      :joins => 'LEFT OUTER JOIN author_aliases ON ( author_aliases.author_id = authors.id )',
+      :conditions => [ "author_aliases.name LIKE ? OR author_aliases.name LIKE ?",
+        "#{params[:q].upcase}%", "% #{params[:q].upcase}%" ],
+      :group => 'author_id',
+      :order => "name ASC",
+      :per_page => @per_page.to_i,
+      :page => 1
+    }
+    Author.send( :with_scope, :find => { :conditions => conditions } )  do
+      @authors = Author.paginate( find_options )
+    end
+  end
+  
   def search( conditions )
-    per_page = params[:per_page]
-    per_page = 10 if per_page.blank?
-    @authors = Author.search( params[:q], :with => conditions, :page => params[:page], :per_page => per_page.to_i )
+    @per_page = params[:per_page]
+    @per_page = 10 if @per_page.blank?
+    return auto_complete( conditions ) if params[:ac] == '1'
+    @authors = Author.search( params[:q], :with => conditions, :page => params[:page], :per_page => @per_page.to_i )
   end
   
   def top
