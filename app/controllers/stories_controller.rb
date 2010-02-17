@@ -56,11 +56,21 @@ class StoriesController < ApplicationController
     return by_multiple_clusters( param_value ) if param_value.is_a?( Array )
     options = { :page => page, :per_page => per_page, :user => @user, :conditions => {} }
     filter = [ :blog, :video, :opinion ].select{ |x| params[x] == '1' }.first
-    options[ :conditions ][ "is_#{filter}".to_sym ] = true  if filter
-    require 'pp'
-    pp options
-    puts "-"*80
+    if filter
+      options[ :conditions ][ "is_#{filter}".to_sym ] = true
+      options[ :video ] = 2
+      options[ :blog ] = 2
+      options[ :opinion ] = 2
+    end
     story_group = StoryGroup.find( :first, :conditions => { :id => param_value } ) || StoryGroupArchive.find( param_value )
+    if params[:sort_criteria] == '2'
+      options.delete( :user )
+      if story_group.is_a?( StoryGroup )
+        options.merge!( :order => 'story_group_memberships.created_at DESC' )
+      else
+        options.merge!( :order => 'story_group_membership_archives.created_at DESC' )
+      end
+    end
     story_group.stories_to_serialize = story_group.top_stories.paginate( options )
     rxml_data( story_group, :pagination_results => story_group.stories_to_serialize, :with_pagination => true, :root => 'cluster' )
   end
