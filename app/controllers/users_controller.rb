@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   jurnalo_login_required :only => [ :show, :edit, :update ]
   before_filter :set_user_var, :only => [ :show, :edit, :update ]
+  layout 'scaffold'
   
   def index
     redirect_to( :action => :show ) && return unless admin?
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
   end
   
   def show
+    render :action => :show, :layout => 'default'
   end
  
   def edit
@@ -46,7 +48,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Account updated!"
       redirect_to account_path
     else
-      render :action => :edit
+      render :action => :show, :layout => 'default'
     end
   end
   

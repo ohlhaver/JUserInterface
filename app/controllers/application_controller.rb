@@ -9,9 +9,11 @@ class ApplicationController < ActionController::Base
   include Jurnalo::LoginSystem
   include SimpleCaptcha::ControllerHelpers
 
-  layout 'scaffold'
+  layout 'default'
   
   before_filter :set_current_user
+  before_filter :set_service_session_var
+  before_filter :set_edition_session_var
     
   def logout
     # returns to the application registration page
@@ -36,6 +38,22 @@ class ApplicationController < ActionController::Base
     return nil if param_value.nil?
     array = param_value.is_a?(Array) ? param_value : param_value.gsub(/\s*,\s*/, ',').split(',')
     first && array.size == 1 ? array.first : array
+  end
+  
+  def set_service_session_var
+    params[:service] = nil if params[:service].blank?
+    params[:jwa]   = nil if params[:jwa].blank?
+    params[:jwa] ||= '0' if params[:service]
+    params[:service]  ||= session[:service]
+    session[:service]   = params[:service]
+    params[:jwa]  ||= session[:jwa]
+    session[:jwa]   = params[:jwa]
+  end
+  
+  def set_edition_session_var
+    params[:edition] = nil if params[:edition].blank?
+    params[:edition] ||= session[:edition]
+    session[:edition] = params[:edition] || 'int-en'
   end
   
 end

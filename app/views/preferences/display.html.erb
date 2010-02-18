@@ -1,0 +1,44 @@
+<% form_id = "edit_preference_#{@user.id}" %>
+<% content_for :custom_javascript do %>
+  <%= observe_form( form_id, :function => "$('#{form_id}').submit();" ) %>
+<% end %>
+<div class='news_block'>
+  <h2><%=t( 'navigation.main.display_preferences') %></h2>
+</div>
+<div class='news_block'>
+  <% form_for(@preference, :url => preference_path( @user ), :html => { :method => :put, :class => "edit_preference", :id => form_id }  ) do |f| %>
+    <div class='clearfix'>
+      <div class='grid_1'>
+        <%= f.label :per_page, t('prefs.labels.per_page') %>
+      </div>
+      <div class='grid_1'>
+        <%= f.select :per_page, Preference.for_select( :per_page ) %>
+      </div>
+    </div>
+    <div class='clearfix'>
+      <div class='grid_1'>
+        <%= f.label :headlines_per_cluster_group, t('prefs.labels.per_cluster_group') %>
+      </div>
+      <div class='grid_1'>
+        <%= f.select :headlines_per_cluster_group, Preference.for_select( :headlines_per_cluster_group ) %>
+      </div>
+    </div>
+    <div class='clearfix'>
+      <div class='grid_1'>
+        <%= f.label :cluster_preview, t('prefs.labels.per_cluster') %>
+      </div>
+      <div class='grid_1'>
+        <%= f.select :cluster_preview, Preference.for_select( :cluster_preview ) %>
+      </div>
+    </div>
+    <div class='clearfix'>
+      <div class='grid_1'>
+        <%= f.label :image, t('prefs.labels.show_images') %>
+      </div>
+      <div class='grid_1'>
+        <%= f.select :image, Preference.for_select( :image ) %>
+      </div>
+    </div>
+    <%= hidden_field_tag( :return_to, request.url ) %>
+  <% end %>
+</div>

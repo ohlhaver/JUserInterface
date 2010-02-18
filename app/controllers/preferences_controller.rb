@@ -36,16 +36,33 @@ class PreferencesController < ApplicationController
   end
   
   def update
+    unless params[:format] == 'xml'
+      return_to = params[:return_to]
+      return_to = nil if return_to.blank?
+      return_to ||= edit_preference_path( @user )
+    end
     respond_to do |format|
       if @preference.update_attributes( params[:preference] )
         flash[:notice] = 'Preference was successfully updated.'
-        format.html { redirect_to( edit_preference_path(@user) ) }
+        format.html { redirect_to( return_to ) }
         format.xml{ rxml_success( @user, :action => :update ) }
       else
         format.html{ render :action => "edit" }
         format.xml{ rxml_error( @preference, :action => :update ) }
       end
     end
+  end
+  
+  def display
+  end
+  
+  def alert
+  end
+  
+  def edition
+  end
+  
+  def search
   end
   
   alias_method :create, :update

@@ -1,0 +1,100 @@
+en:
+  account:
+    current: 'Current Plan'
+    upgrade: 'upgrade to'
+    downgrade: 'downgrade to'
+    basic:
+      label: Jurnalo Basic Account
+      info: "upto 10 authors, sources and search topics preferences."
+      cost: free
+    power:
+      label: "Jurnalo Power Account"
+      info: "unlimited settings"
+      cost: "EUR 5 per month"
+  edition:
+    other: "other news edition"
+  more:
+    info: "more info"
+  prefix:
+    my: "My"
+    user: "User"
+  prefs:
+    labels:
+      per_page: "Results per page"
+      per_cluster_group: "Clusters per section preview"
+      per_cluster: "Headlines per cluster preview"
+      show_images: "Show Images"
+      topic_email: "Topic Emails"
+      author_email: "Author Emails"
+      sort_criteria: "Default sort criteria"
+      time_span: "Default time span"
+      video_pref: "Video preference"
+      blog_pref: "Blog preference"
+      opinion_pref: "Opinion preference"
+      subscription_type: "Default subscription type"
+      search_languages: "Search language(s)"
+      edition: "Default top stories"
+      interface_language: "Interface language"
+    image:
+      'off': "no"
+      'on': "yes"
+    lang:
+      english: "English"
+      german: "Deutsch"
+  navigation:
+    bottom:
+      about: "About Jurnalo"
+      feedback: "Feedback"
+      imprint: "Imprint"
+      privacy: "Privacy"
+    main:
+      back_to_home: "back to home"
+      account_details: "Account Details"
+      my_sources: "{{prefix}} Sources"
+      my_authors: "{{prefix}} Authors"
+      my_search_topics: "{{prefix}} Search Topics"
+      search_and_sorting: "Search and Sorting"
+      display_preferences: "Display Preferences"
+      alert_settings: "Alert Settings"
+      language_and_region: "Language and Region"
+      homepage_settings: "Homepage Settings"
+    top:
+      help: "Help"
+      login: "Login"
+      logout: "{{name}} (logout)"
+      reading_list: "Reading list"
+      register: "Register"
+      settings: "Settings"
+  search:
+    page:
+      title: "Search results For: {{query}}"
+    results:
+      per_page: "show {{count}} results per page"
+    topic:
+      add: "add to My Topics"
+    simple: "search news"
+    advance: 
+      label: "Advanced search"
+      find: 
+        label: "Find results"
+        at_least: "with at least one of these words:"
+        all: "with all these words:"
+        exact: "with the exact phrase:"
+        without: "without these words:"
+      sorting: "Sort by:"
+      timespan: "Timespan:"
+      filter: 
+        label: "Filter"
+        source: "Publication:"
+        author: "Author:"
+        region: "Region:"
+        category: "Section:"
+        subscription: "Subscription:"
+      preferences: 
+        label: "Preferences"
+        video: "Videos:"
+        opinion: "Opinions:"
+        blog: "Blogs:"
+  seo:
+    page:
+      default_title: "Jurnalo - User Settings"

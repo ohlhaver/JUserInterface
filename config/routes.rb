@@ -67,10 +67,11 @@ ActionController::Routing::Routes.draw do |map|
   map.access_denied '/access_denied', :controller => 'application', :action => 'access_denied'
   map.resources :story_searches
   map.resource :account, :controller => "users"
-  map.resources :preferences
+  map.resources :preferences, :member => [ :display, :alert, :edition, :search ]
   map.resources :authors
   map.resources :sources
   map.resources :users do |users|
+    users.resources :home_preferences
     users.resources :author_preferences
     users.resources :source_preferences
     users.resources :topic_preferences

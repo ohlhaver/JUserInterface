@@ -1,0 +1,40 @@
+<% form_id = "edit_preference_#{@user.id}" %>
+<% content_for :custom_javascript do %>
+  <%= observe_form( form_id, :function => "$('#{form_id}').submit();" ) %>
+<% end %>
+<div class='news_block'>
+  <h2><%=t( 'navigation.main.language_and_region') %></h2>
+</div>
+<% form_for(@preference, :url => preference_path( @user ), :html => { :method => :put, :class => "edit_preference", :id => form_id }  ) do |f| %>
+  <div class='news_block'>
+    <div class='clearfix'>
+      <div class='grid_1'>
+        <%= label :default_edition_id, t('prefs.labels.edition') %>
+      </div>
+      <div class='grid_1'>
+        <%= f.select :default_edition_id, edition_options %>
+      </div>
+    </div>
+    <div class='clearfix'>
+      <div class='grid_1'>
+        <%= f.label :interface_language_id, t('prefs.labels.interface_language') %>
+      </div>
+      <div class='grid_1'>
+        <%= f.select :interface_language_id, Preference.for_select( :interface_language_id ) %>
+      </div>
+    </div>
+  </div>
+  <div class='news_block'>
+    <div class='clearfix'>
+      <div class='grid_2'>
+        <%= f.label :search_language_ids, t('prefs.labels.search_languages') %><br />
+        <% Preference.for_select( :default_language_id ).each do |language| %>
+          <%= hidden_field_tag( "preference[search_language_ids][#{language.last}]", "0") %>
+          <%= check_box_tag( "preference[search_language_ids][#{language.last}]", "1", f.object.search_language_id_exists?( language.last ) ) %> <%= language.first %>
+          <br />
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= hidden_field_tag( :return_to, request.url ) %>
+<% end %>

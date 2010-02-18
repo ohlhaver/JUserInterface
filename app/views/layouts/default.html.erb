@@ -1,0 +1,54 @@
+<% content_for :page_title do -%>
+  <%= @page_title || t( 'seo.page.default_title' ) %>
+<% end -%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= I18n.locale  %>" lang="<%= I18n.locale  %>">
+  <head>
+    <title><%= yield :page_title %></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="verify-v1" content="uktXEFRkC4oLS3pjPi7ZkolIVksbOF8D7PRiyCDs+fM=" />
+    <%= stylesheet_link_tag 'reset' %>
+    <%= stylesheet_link_tag 'grid' %>
+    <%= stylesheet_link_tag 'simple' %>
+  </head>
+  <body>
+    <div class="container_4">
+      <div id= "top_frame" class = "grid_3">
+        <%= link_to( image_tag( 'logo.gif'), jurnalo_root_path ) %>
+        <% form_tag( jurnalo_stories_path, :id => 'search_form', :method => :get, :class => 'inline_form' ) do -%>
+          <input type="text" title="Search News" autocomplete="off" tabindex="1" name="q" id = 'searchfield' class ="text"  value="<%= params[:q] -%>" />
+          <input type="submit" value="<%= t( 'search.simple' ) -%>" tabindex="2" id = 'searchbutton' class ="button"/>
+          <div class='search-box-link'>
+            <%= link_to( t( 'search.advance.label' ), jurnalo_advanced_stories_path ) %>
+          </div>
+        <% end -%>
+      </div>
+      <div id="top_navigation" class="grid_1">
+        <%= render :partial => 'shared/top_navigation' %>
+      </div>
+      <div id="edition" class="grid_1">
+        <%= render :partial => 'shared/edition' %>
+      </div>
+      <div id="content" class="grid_3">
+        <%= yield %>
+        <div>&nbsp;</div>
+      </div>
+      <div id="module" class="grid_1">
+        <div id='home_link'>
+          <%= link_to t( 'navigation.main.back_to_home' ), japp_root_path %> &nbsp;
+        </div>
+        <div id="navigation" >
+          <%= render :partial => 'shared/navigation' %>
+        </div>
+      </div>
+    <div id="footer" class = "grid_4">
+      <%= render :partial => 'shared/footer' %>
+    </div>
+  </div>
+  <%= javascript_include_tag 'prototype' %>
+  <%= javascript_include_tag 'effects' %>
+  <%= javascript_include_tag 'controls' %>
+  <%= yield :custom_javascript %>
+</body>
+</html>
