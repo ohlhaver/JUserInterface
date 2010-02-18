@@ -203,15 +203,18 @@ class StoriesController < ApplicationController
   end
   
   def per_page
-    Integer( params[:per_page] || @user.try(:preference).try( :per_page ) || 10 ) rescue 10
+    per_page = params[:per_page].blank? ? nil : params[:per_page]
+    Integer( per_page || @user.try(:preference).try( :per_page ) || 10 ) rescue 10
   end
   
   def per_cluster
-    Integer( params[:per_cluster] || @user.try(:preference).try( :cluster_preview ) || 3 ) rescue 3
+    per_cluster = params[:per_cluster].blank? ? nil : params[:per_cluster]
+    Integer( per_cluster || @user.try(:preference).try( :cluster_preview ) || 3 ) rescue 3
   end
   
   def per_cluster_group
-    Integer( params[:per_cluster_group] || @user.try(:preference).try( :headlines_per_cluster_group ) || 2 ) rescue 2
+    per_cluster_group = params[:per_cluster_group].blank? ? nil : params[:per_cluster_group]
+    Integer( per_cluster_group || @user.try(:preference).try( :headlines_per_cluster_group ) || 2 ) rescue 2
   end
   
   # def set_user_var
