@@ -26,7 +26,7 @@ class HomeDisplayPreferencesController < ApplicationController
       new_record = @home_display_preference.new_record?
       if @home_display_preference.save
         flash[:notice] = new_record ? 'Created Successfully' : 'Already In the List'
-        format.html{ redirect_to :action => :index }
+        format.html{ redirect_to :controller => :home_preferences, :action => :index }
         format.xml{ rxml_success( @home_display_preference, :action => :create ) }
       else
         format.html{ 
@@ -50,7 +50,7 @@ class HomeDisplayPreferencesController < ApplicationController
     end
     respond_to do |format|
       flash[:notice] = 'Updated Successfully'
-      format.html{ redirect_to :action => :index }
+      format.html{ redirect_to :controller => :home_preferences, :action => :index }
       format.xml{ rxml_success( @home_display_preference, :action => :update ) }
     end
   end
@@ -59,7 +59,7 @@ class HomeDisplayPreferencesController < ApplicationController
     @home_display_preference.destroy
     respond_to do |format|
       flash[:notice] = 'Removed Successfully'
-      format.html { redirect_to :action => :index }
+      format.html { redirect_to :controller => :home_preferences, :action => :index }
       format.xml{ rxml_success( @home_display_preference, :action => :delete ) }
     end
   end

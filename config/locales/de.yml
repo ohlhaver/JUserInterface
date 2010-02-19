@@ -19,6 +19,10 @@ de:
     my: "My"
     user: "User"
   prefs:
+    homepage_preview:
+      elements: "Homepage elements preview"
+      sections: "Homepage sections preview"
+      topics: "My topics preview"
     home_action:
       show: 'zeigen'
       hide: 'verstecken'
@@ -43,6 +47,7 @@ de:
       interface_language: "Interface language"
       rate: "rate"
       subscribe: "subscribe"
+      add_to_list: "add to list"
     image:
       'off': "no"
       'on': "yes"

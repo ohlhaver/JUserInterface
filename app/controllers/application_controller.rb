@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_user
   before_filter :set_service_session_var
   before_filter :set_edition_session_var
+  
+  helper_method :base_url, :base_url?
     
   def logout
     # returns to the application registration page
@@ -31,6 +33,17 @@ class ApplicationController < ActionController::Base
   
   def my_page?
     current_user && @user && @user == current_user
+  end
+  
+  def base_url( url = nil )
+    url ||= request.url
+    url.gsub(/\?.*/, '')
+  end
+  
+  # Matches whether the current request == navigational url
+  def base_url?( url_path )
+    @base_url ||= base_url.gsub(/http\:\/\/[^\/]+/, '')
+    @base_url == url_path
   end
   
   def scan_multiple_value_param( attribute_name, first = false )

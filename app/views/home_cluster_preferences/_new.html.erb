@@ -1,5 +1,7 @@
 <% form_for @home_cluster_preference, :url => user_home_cluster_preferences_path( @user )  do |f| %>
   <%= f.error_messages %>
-  <%= f.select( :value, ClusterGroup.for_select( :tag => @user.tag ) ) %>
-  <%= f.submit( 'Add To List' ) %>
+  <%= f.select( :value, ClusterGroup.for_select( :tag => @user.tag( @region_id, @language_id ) ) ) %>
+  <%= hidden_field_tag( :region_id, @region_id ) %>
+  <%= hidden_field_tag( :language_id, @language_id ) %>
+  <%= f.submit( t('prefs.labels.add_to_list') ) %>
 <% end %>

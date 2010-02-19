@@ -42,17 +42,6 @@ module ApplicationHelper
     CASClient::Frameworks::Rails::Filter.login_url( self )
   end
   
-  def base_url( url = nil )
-    url ||= controller.request.url
-    url.gsub(/\?.*/, '')
-  end
-  
-  # Matches whether the current request == navigational url
-  def base_url?( url_path )
-    @base_url ||= base_url.gsub(/http\:\/\/[^\/]+/, '')
-    @base_url == url_path
-  end
-  
   def current_user
     controller.send(:current_user)
   end

@@ -27,7 +27,7 @@ class HomeClusterPreferencesController < ApplicationController
       new_record = @home_cluster_preference.new_record?
       if @home_cluster_preference.save
         flash[:notice] = new_record ? 'Created Successfully' : 'Already In the List'
-        format.html{ redirect_to :action => :index }
+        format.html{ redirect_to :controller => :home_preferences, :action => :index }
         format.xml{ rxml_success( @home_cluster_preference, :action => :create ) }
       else
         format.html{ 
@@ -51,7 +51,7 @@ class HomeClusterPreferencesController < ApplicationController
     end
     respond_to do |format|
       flash[:notice] = 'Updated Successfully'
-      format.html{ redirect_to :action => :index }
+      format.html{ redirect_to :controller => :home_preferences, :action => :index }
       format.xml{ rxml_success( @home_cluster_preference, :action => :update ) }
     end
   end
@@ -60,7 +60,7 @@ class HomeClusterPreferencesController < ApplicationController
     @home_cluster_preference.destroy
     respond_to do |format|
       flash[:notice] = 'Removed Successfully'
-      format.html { redirect_to :action => :index }
+      format.html { redirect_to :controller => :home_preferences, :action => :index }
       format.xml{ rxml_success( @home_cluster_preference, :action => :delete ) }
     end
   end

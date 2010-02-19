@@ -15,7 +15,12 @@ class SourcePreferencesController < ApplicationController
   end
   
   def index
-    @source_preferences = @user.source_subscriptions.paginate( :all, :page => params[:page] || '1', :include => :source )
+    @source_preferences = @user.source_subscriptions.paginate( :all, 
+      :joins => ' LEFT OUTER JOIN sources ON (sources.id = source_subscriptions.source_id)',
+      :order => 'source_subscriptions.preference DESC, sources.name ASC', 
+      :page => params[:page] || '1', 
+      :include => :source 
+    )
     respond_to do |format|
       format.html
       format.xml{ rxml_data( @source_preferences, :root => 'source_preferences', :with_pagination => true ) }

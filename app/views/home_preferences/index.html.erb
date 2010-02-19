@@ -1,1 +1,87 @@
-Home Preferences Goes Here
+<% content_for :custom_javascript do %>
+  <script type='text/javascript'>
+    Event.observe($('prefs'), 'mouseover', showMouseOvers );
+    Event.observe($('prefs'), 'mouseout', hideMouseOvers );
+  </script>
+  <%= render :partial => 'topic_preferences/js', :locals => { :form_path => new_user_topic_preference_path( @user ), :test_path => jurnalo_search_results_stories_path }%>
+<% end %>
+<div id='prefs'>
+  <div class='news_block'>
+    <h2><%= t('prefs.homepage_preview.elements') %></h2>
+    <% @home_display_preferences.each do |hp| %>
+      <% mouse_over( :dialog ) do |dialogEventClass, dialogItemClass| -%>
+        <div class='news_block <%= dialogEventClass %>'>
+          <span><%= hp.homepage_element %></span>
+          <span class='right <%= dialogItemClass %>'>
+            <%= link_to( image_tag('up.gif') + t('prefs.home_action.up'), user_home_display_preference_path( :user_id => @user, :id => hp, :reorder => 'up' ), :method => :put ) %>
+            &nbsp;&nbsp;
+            <%= link_to( image_tag('down.gif')+t('prefs.home_action.down'), user_home_display_preference_path( :user_id => @user, :id => hp, :reorder => 'down' ), :method => :put ) %>
+            &nbsp;&nbsp;
+            <%= link_to( image_tag('close.gif') + t('prefs.home_action.delete'), user_home_display_preference_path( @user, hp ), :method => :delete, :confirm => 'Are you sure?' ) %>
+          </span>
+        </div>
+      <% end -%>
+    <% end -%>
+    <%= render :partial => 'home_display_preferences/new' %>
+  </div>
+  <br/>
+  <div class='news_block'>
+    <h2><%= t('prefs.homepage_preview.sections') %></h2>
+    <% @home_cluster_preferences.each do |hp| %>
+      <% mouse_over( :dialog ) do |dialogEventClass, dialogItemClass| -%>
+        <div class='news_block <%= dialogEventClass %>'>
+          <span><%= t("prefs.category.#{hp.cluster_group.name.underscore}") %></span>
+          <span class='right <%= dialogItemClass %>'>
+            <%= link_to( image_tag('up.gif') + t('prefs.home_action.up'), user_home_cluster_preference_path( :user_id => @user, :id => hp, :reorder => 'up' ), :method => :put ) %>
+            &nbsp;&nbsp;
+            <%= link_to( image_tag('down.gif')+t('prefs.home_action.down'), user_home_cluster_preference_path( :user_id => @user, :id => hp, :reorder => 'down' ), :method => :put ) %>
+            &nbsp;&nbsp;
+            <%= link_to( image_tag('close.gif') + t('prefs.home_action.delete'), user_home_cluster_preference_path( @user, hp ), :method => :delete, :confirm => 'Are you sure?' ) %>
+          </span>
+        </div>
+      <% end -%>
+    <% end %>
+    <%= render :partial => 'home_cluster_preferences/new' %>
+  </div>
+  <br/>
+  <div class='news_block'>
+    <h2><%= t('prefs.homepage_preview.topics') %></h2>
+    <% @topic_preferences.each do | topic_preference | %>
+      <% mouse_over( :dialog ) do |dialogEventClass, dialogItemClass| %>
+        <div class='news_block <%= dialogEventClass %>'>
+          <span><%= link_to( topic_preference.name, edit_user_topic_preference_path( @user, topic_preference ) ) %></span>
+          <span class='right <%= dialogItemClass %>'>
+            <% form_id = "topic_preference_#{topic_preference.id}" %>
+            <% content_for :custom_javascript do %>
+              <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
+            <% end %>
+            <% form_for( topic_preference, :url => user_topic_preference_path( @user, topic_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
+              <%= f.check_box( :email_alert ) %> <%= t('prefs.labels.email_alerts') %>
+            <% end %>
+            &nbsp;&nbsp; 
+            <%= link_to( image_tag('up.gif') + t('prefs.home_action.up'), user_topic_preference_path(:user_id => @user, :id => topic_preference, :reorder => 'up'), :method => :put ) %>
+            &nbsp;&nbsp;
+            <%= link_to( image_tag('down.gif')+t('prefs.home_action.down'), user_topic_preference_path(:user_id => @user, :id => topic_preference, :reorder => 'down'), :method => :put ) %>
+            &nbsp;&nbsp;
+            <% if topic_preference.home_group? %>
+              <%= link_to( image_tag('hide.gif') + t('prefs.home_action.hide'), hide_user_topic_preference_path( @user, topic_preference ), :method => :put ) %>
+            <% else %>
+              <%= link_to( image_tag('hide.gif') + t('prefs.home_action.show'), unhide_user_topic_preference_path( @user, topic_preference ), :method => :put ) %>
+            <% end %>
+            &nbsp;&nbsp;
+            <%= link_to( image_tag('close.gif') + t('prefs.home_action.delete'), user_topic_preference_path( @user, topic_preference ), :method => :delete, :confirm => 'Are you sure?' ) %>
+          </span>
+        </div>
+      <% end %>
+    <% end %>
+    
+    <div class='news_block'>
+      <h2><%= t('topic.label.new') %>:</h2>
+      <div class= 'adv_search_lines'>
+        <% form_for( @topic_preference, :url => user_topic_preferences_path(@user), :html => { :id => 'simple_topic_form' }, :method => :post ) do |f| %>
+          <%= render :partial => 'topic_preferences/simple_form', :locals => { :f => f } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

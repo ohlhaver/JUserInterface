@@ -19,6 +19,10 @@ en:
     my: "My"
     user: "User"
   prefs:
+    homepage_preview:
+      elements: "Homepage elements preview"
+      sections: "Homepage sections preview"
+      topics: "My topics preview"
     home_action:
       show: 'show'
       hide: 'hide'
@@ -44,6 +48,7 @@ en:
       rate: "rate"
       subscribe: "subscribe"
       email_alerts: "email alerts"
+      add_to_list: "add to list"
     image:
       'off': "no"
       'on': "yes"
