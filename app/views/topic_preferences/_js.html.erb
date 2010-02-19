@@ -4,7 +4,7 @@
     form.action = '<%= test_path %>';
     form.method = 'GET';
     var field = form.getElementsBySelector('input').first();
-    field.setValue('');
+    field.remove();
     form.submit();
   }
   function advance_topic( form_id ){
@@ -12,7 +12,7 @@
     form.action = '<%= form_path %>';
     form.method = 'GET';
     var field = form.getElementsBySelector('input').first();
-    field.setValue('');
+    field.remove();
     form.submit();
   }
 </script>
