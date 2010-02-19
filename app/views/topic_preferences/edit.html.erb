@@ -8,6 +8,7 @@
     <div class='adv_search_lines'>
     <% form_for( @topic_preference, :url => user_topic_preference_path(@user, @topic_preference), :html => { :id => 'advance_topic_form' }, :method => :post ) do |f| %>
       <%= render :partial => 'form', :locals => { :f => f } %>
+      <%= link_to( t('topic.action.test'), jurnalo_topic_path( @topic_preference ) ) %>
     <% end %>
     </div>
   </div>

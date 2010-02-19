@@ -6,8 +6,9 @@
     <h2><%= t('topic.label.new_advanced') %></h2>
     <div class='results_module'> </div>
     <div class='adv_search_lines'>
-      <% form_for( @topic_preference, :url => user_topic_preferences_path(@user), :html => { :id => 'simple_topic_form' }, :method => :post ) do |f| %>
+      <% form_for( @topic_preference, :url => user_topic_preferences_path(@user), :html => { :id => 'advance_topic_form' }, :method => :post ) do |f| %>
         <%= render :partial => 'form', :locals => { :f => f } %>
+        <%= link_to_function( t('topic.action.test'), "test_topic( 'advance_topic_form' )"  ) %>
       <% end %>
     </div>
   </div>

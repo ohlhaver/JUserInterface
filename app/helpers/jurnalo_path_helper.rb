@@ -37,6 +37,10 @@ module JurnaloPathHelper
     jurnalo_url_for( :controller => '/stories' )
   end
   
+  def jurnalo_topic_path( topic )
+    jurnalo_url_for( :controller => '/topics', :action => :show, :id => topic )
+  end
+  
   def jurnalo_search_results_stories_path
     jurnalo_url_for( :controller => '/stories/search_results')
   end
