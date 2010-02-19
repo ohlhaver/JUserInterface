@@ -4,7 +4,7 @@ class TopicPreferencesController < ApplicationController
   
   before_filter :set_user_var
   before_filter :merge_attributes
-  before_filter :set_topic_preference_var, :only => [ :edit, :show, :destroy, :update ]
+  before_filter :set_topic_preference_var, :only => [ :edit, :show, :destroy, :update, :hide, :unhide ]
   
   required_api_param :user_id, :only => [ :index, :create, :update, :destroy ]
   required_api_param :id, :only => [ :update, :destroy ]
@@ -19,6 +19,7 @@ class TopicPreferencesController < ApplicationController
   end
   
   def index
+    @topic_preference = @user.topic_subscriptions.build
     @home_group = params[:home_group] == '1'
     if @home_group
       @topic_preferences = @user.topic_subscriptions.home_group.paginate( :all, :page => params[:page] || '1', :include => [ :source, :category, :region, :author ] )
@@ -75,6 +76,16 @@ class TopicPreferencesController < ApplicationController
         format.xml{ rxml_error( @topic_preference, :action => :update ) }
       end
     end
+  end
+  
+  def unhide
+    @topic_preference.update_attribute( :home_group, true )
+    redirect_to :action => :index
+  end
+  
+  def hide
+    @topic_preference.update_attribute( :home_group, false )
+    redirect_to :action => :index
   end
   
   def reorder

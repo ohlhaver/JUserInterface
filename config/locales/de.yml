@@ -19,6 +19,12 @@ de:
     my: "My"
     user: "User"
   prefs:
+    home_action:
+      show: 'zeigen'
+      hide: 'verstecken'
+      delete: 'entfernen'
+      up: 'hoch bewegen'
+      down: 'runter bewegen'
     labels:
       per_page: "Results per page"
       per_cluster_group: "Clusters per section preview"
@@ -43,6 +49,47 @@ de:
     lang:
       english: "English"
       german: "Deutsch"
+    country:
+      int: 'Global'
+      de: 'Deutschland'
+      at: 'Österreich'
+      ch: 'Schweiz'
+    val:
+      nil: 'nicht gewichtet'
+      none: 'ignorieren'
+      ban: 'ignorieren'
+      low: 'niedrig'
+      medium: 'mittel'
+      neutral: 'neutral'
+      high: 'hoch'
+      only: 'nur'
+    label:
+      remove: 'entfernen'
+      add_to_reading_list: 'zur Leseliste hinzufügen'
+    category:
+      politics: 'Politik'
+      business: 'Wirtschaft'
+      culture: 'Feuilleton'
+      science: 'Wissen'
+      technology: 'Technik'
+      sport: 'Sport'
+      mixed: 'Vermischtes'
+      opinions: 'Meinungen'
+    sort:
+      relevance: "Relevanz"
+      time: "Zeit"
+      cluster: 
+        relevance: "Relevanz in Gruppen"
+        time: "Zeit in Gruppen"
+    subscription:
+      all: "alle"
+      free: "gratis"
+      no_login: "ohne Login"
+    time_span:
+      last_hour: 'letzte Stunde'
+      last_day: 'letzter Tag'
+      last_week: 'letzte Woche'
+      last_month: 'letzter Monat'
   navigation:
     bottom:
       about: "Über Jurnalo"
@@ -100,3 +147,17 @@ de:
   seo:
     page:
       default_title: "Jurnalo - User Settings"
+  topic:
+    label:
+      new: 'Neues Thema'
+      new_advanced: 'Erweitert Neues Thema'
+    action:
+      add: 'Thema hinzufügen'
+      test: 'testen'
+      advance: 'Erweitert'
+      simple: 'Einfach'
+    name: 'Name des Themas:'
+    query: 'Suchbegriff:'
+  rate:
+    source: 'Quelle gewichten'
+    author: 'Autoren gewichten'

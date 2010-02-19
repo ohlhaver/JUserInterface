@@ -1,74 +1,82 @@
 <%= f.error_messages %>
-<h3>Label</h3>
-<p>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-</p>
-<p>
-  <%= f.label :home_group, 'Show on My homepage?' %>
-  <%= f.check_box :home_group %>
-</p>
-<p>
-  <%= f.label :email_alert, 'Eligible for Email Alert?' %>
-  <%= f.check_box :email_alert %>
-</p>
-<h3>Find Results</h3>
-<p>
-  <%= f.label :search_any, 'with at least one of the words' %>
-  <%= f.text_field :search_any %>
-</p>
-<p>
-  <%= f.label :search_all, 'with all of the words' %>
-  <%= f.text_field :search_all %>
-</p>
-<p>
-  <%= f.label :search_exact_phrase, 'with the exact phrase' %>
-  <%= f.text_field :search_exact_phrase %>
-</p>
-<p>
-  <%= f.label :search_except, 'without the words' %>
-  <%= f.text_field :search_except %>
-</p>
-<h3>Sort and Time Range</h3>
-<p>
-  <%= f.label :sort_criteria %>
-  <%= f.select :sort_criteria, Preference.for_select(:sort_criteria), :include_blank => true %>
-</p>
-<p>
-  <%= f.label :time_span %>
-  <%= f.select :time_span, Preference.for_select( :time_span), :include_blank => true %>
-</p>
-<h3>Filters</h3>
-<p>
-  <%= f.label :region_id %>
-  <%= f.select( :region_id, Preference.for_select( :region_id ), :include_blank => true ) %>
-</p>
-<p>
-  <%= f.label :author_id %>
-  <%= author_auto_complete_field( 'topic_preference', 'author_id', @topic_preference.author ) %>
-</p>
-<p>
-  <%= f.label :source_id %>
-  <%= source_auto_complete_field( 'topic_preference', 'source_id', @topic_preference.source ) %>
-</p>
-<p>
-  <%= f.label :category_id %>
-  <%= f.select( :category_id, Category.for_select( :source ), :include_blank => true ) %>
-</p>
-<p>
-  <%= f.label :subscription_type %>
-  <%= f.select( :subscription_type, Preference.for_select( :subscription_type), :include_blank => true ) %>
-</p>
-<h3>Preferences</h3>
-<p>
-  <%= f.label :video, 'Video Preference' %>
-  <%= f.select :video, Preference.for_select( :video ), :include_blank => true %>
-</p>
-<p>
-  <%= f.label :opinion, 'Opinion Preference' %>
-  <%= f.select :opinion, Preference.for_select( :opinion ), :include_blank => true %>
-</p>
-<p>
-  <%= f.label :blog, 'Blog Preference' %>
-  <%= f.select :blog, Preference.for_select( :blog ), :include_blank => true %>
-</p>
+<div id = "topic_label">
+  <span><%= t('topic.name') -%> </span>
+  <span><%= f.text_field(:name, :id => "adv_searchfield" ) %></span>
+</div>
+<div class = "results_module"></div>
+<%= t('search.advance.find.label') -%>
+<div>
+  <span><%= t('search.advance.find.at_least') -%></span>
+  <span><%= f.text_field(:search_any, :id => "adv_searchfield") %></span>
+</div>
+<div>
+  <span ><%= t('search.advance.find.all') -%></span>
+  <span><%= f.text_field(:search_all, :id => "adv_searchfield") %></span>
+</div>
+<div>
+  <span><%= t('search.advance.find.exact') -%></span>
+  <span><%= f.text_field(:search_exact_phrase, :id => "adv_searchfield") %></span>
+</div>
+<div>
+  <span><%= t('search.advance.find.without') -%></span>
+  <span><%= f.text_field(:search_except, :id => "adv_searchfield") %></span>
+  </div>
+<div class = 'form_area'>
+  <div> 
+    <%= t('search.advance.sorting') -%>
+    <span class='adv_search_menu'>
+      <%= f.select( :sort_criteria, Preference.for_select(:sort_criteria), :include_blank => true ) %>
+    </span>
+  </div>
+  <div>
+    <%= t('search.advance.timespan') -%>	<span class='adv_search_menu'>
+    <%= f.select( :time_span, Preference.for_select( :time_span), :include_blank => true ) %></span>
+  </div>
+</div>
+<div class = "results_module"></div>
+<%= t('search.advance.filter.label') -%>
+<div>
+  <%= t('search.advance.filter.source') -%>
+  <span class='adv_search_menu'>
+    <%= source_auto_complete_field( 'topic_preference', 'source_id', @topic_preference.source ) %>
+  </span>
+</div>
+<div>
+  <%= t('search.advance.filter.author') -%>
+  <span class='adv_search_menu'>
+    <%= author_auto_complete_field( 'topic_preference', 'author_id', @topic_preference.author ) %>
+  </span>
+</div>
+<div class = 'form_area'>
+  <div>
+    <%= t('search.advance.filter.region') -%><span class='adv_search_menu'>
+    <%= f.select( :region_id, Preference.for_select( :region_id ), :include_blank => true ) %></span>
+  </div>
+  <div>
+    <%= t('search.advance.filter.category') -%><span class='adv_search_menu'>
+    <%= f.select(:category_id, Preference.for_select( :category_id ), :include_blank => true ) %></span>
+  </div>
+  <div>
+    <%= t('search.advance.filter.subscription') -%><span class='adv_search_menu'>
+    <%= f.select( :subscription_type, Preference.for_select( :subscription_type), :include_blank => true ) %></span>
+  </div>
+</div>
+<div class = "results_module"></div>
+<%= t('search.advance.preferences.label') -%>
+<div class = 'form_area'>
+  <div>
+    <%= t('search.advance.preferences.video') -%>
+    <span><%= f.select(:video, Preference.for_select( :video ), :include_blank => true ) %></span>
+  </div>
+  <div>
+    <%= t('search.advance.preferences.opinion') -%>
+    <span><%= f.select(:opinion, Preference.for_select( :opinion ), :include_blank => true ) %></span>
+  </div>
+  <div>
+    <%= t('search.advance.preferences.blog') -%>
+    <span><%= f.select(:blog, Preference.for_select( :blog ), :include_blank => true ) %></span>
+  </div>
+</div>
+
+<%= submit_tag( t('topic.action.add'), :class => "adv_searchbutton" ) %><br>
+<%= link_to_function( t('topic.action.test'), "test_topic( 'advance_topic_form' )"  ) %>

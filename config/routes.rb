@@ -74,7 +74,7 @@ ActionController::Routing::Routes.draw do |map|
     users.resources :home_preferences
     users.resources :author_preferences
     users.resources :source_preferences
-    users.resources :topic_preferences
+    users.resources :topic_preferences, :member => [ :hide, :unhide ]
     users.resources :story_preferences
     users.resources :home_cluster_preferences
     users.resources :home_display_preferences

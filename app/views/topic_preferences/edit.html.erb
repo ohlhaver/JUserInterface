@@ -1,25 +1,14 @@
-<h1>Edit Topic</h1>
-
-<div id="advance_form" style="<%= "display:none;" unless @advance %>">
-  <% form_for @topic_preference, :url => user_topic_preference_path( @user, @topic_preference ) do |f| %>
-    <%= render :partial => 'form', :locals => { :f => f } %>
-    <%= f.submit 'Update' %> &nbsp;  <%= f.submit 'Test', :name => 'search' %>
-    <%= form_pagination( @stories ) %>
-  <% end %>
-  <%= link_to_simple_form('Simple Form') unless @advance %>
-</div>
-<div id="simple_form" style="<%= "display:none;" if @advance %>">
-  <% form_for @topic_preference,:url => user_topic_preference_path( @user, @topic_preference )  do |f| %>
-    <%= render :partial => 'simple_form', :locals => { :f => f } %>
-    <%= f.submit 'Update' %> &nbsp;  <%= f.submit 'Test', :name => 'search' %>
-    <%= form_pagination( @stories ) %>
-  <% end %>
-  <%= link_to_advance_form 'Advance Form' %>
-</div>
-<br/>
-<%= link_to 'Topic Index', user_topic_preferences_path( @user )  %>
-<% if @stories %>
-<div id="results">
-  <%= render :partial => '/shared/stories' %>
-</div>
+<% content_for :custom_javascript do %>
+  <%= render :partial => 'js', :locals => { :form_path => user_topic_preference_path( @user, @topic_preference ), :test_path => jurnalo_search_results_stories_path } %>
 <% end %>
+<div class='news_group'>
+  <div class='news_block'>
+    <h2><%= t('topic.label.new_advanced') %></h2>
+    <div class='results_module'> </div>
+    <div class='adv_search_lines'>
+    <% form_for( @topic_preference, :url => user_topic_preference_path(@user, @topic_preference), :html => { :id => 'advance_topic_form' }, :method => :post ) do |f| %>
+      <%= render :partial => 'form', :locals => { :f => f } %>
+    <% end %>
+    </div>
+  </div>
+</div>

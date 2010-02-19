@@ -19,6 +19,12 @@ en:
     my: "My"
     user: "User"
   prefs:
+    home_action:
+      show: 'show'
+      hide: 'hide'
+      delete: 'remove'
+      up: 'move up'
+      down: 'move down'
     labels:
       per_page: "Results per page"
       per_cluster_group: "Clusters per section preview"
@@ -37,12 +43,54 @@ en:
       interface_language: "Interface language"
       rate: "rate"
       subscribe: "subscribe"
+      email_alerts: "email alerts"
     image:
       'off': "no"
       'on': "yes"
     lang:
       english: "English"
       german: "Deutsch"
+    country:
+      int: 'Global'
+      de: 'Germany'
+      at: 'Austria'
+      ch: 'Switzerland'
+    val:
+      nil: 'not weighted'
+      none: 'ignore'
+      ban: 'ignore'
+      low: 'low'
+      medium: 'medium'
+      neutral: 'neutral'
+      high: 'high'
+      only: 'only'
+    label:
+      remove: 'remove'
+      add_to_reading_list: 'add to my reading-list'
+    category:
+      politics: 'Politics'
+      business: 'Business'
+      culture: 'Culture'
+      science: 'Science'
+      technology: 'Technology'
+      sport: 'Sport'
+      mixed: 'Mixed'
+      opinions: 'Opinions'
+    sort:
+      relevance: "relevance"
+      time: "time"
+      cluster: 
+        relevance: "relevance as groups"
+        time: "time as groups"
+    subscription:
+      all: "all articles"
+      free: "only free articles"
+      no_login: "only login-free articles"
+    time_span:
+      last_hour: 'last hour'
+      last_day: 'last day'
+      last_week: 'last week'
+      last_month: 'last month'
   navigation:
     bottom:
       about: "About Jurnalo"
@@ -100,3 +148,14 @@ en:
   seo:
     page:
       default_title: "Jurnalo - User Settings"
+  topic:
+    label:
+      new: 'New Topic'
+      new_advanced: 'Advanced New Topic'
+    action:
+      add: 'Add Topic'
+      test: 'test'
+      advance: 'Advanced'
+      simple: 'Simple'
+    name: 'Topic label:'
+    query: 'Search query:'

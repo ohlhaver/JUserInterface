@@ -1,17 +1,6 @@
-<%= f.error_messages %>
-<p>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-</p>
-<p>
-  <%= f.label :search_any, 'Query' %>
-  <%= f.text_field :search_any %>
-</p>
-<p>
-  <%= f.label :home_group, 'Show on My homepage?' %>
-  <%= f.check_box :home_group %>
-</p>
-<p>
-  <%= f.label :email_alert, 'Eligible for Email Alert?' %>
-  <%= f.check_box :email_alert %>
-</p>
+<div id = "topic_label">
+  <span><%= f.text_field(:search_any) %></span>
+  <span><%= submit_tag( t('topic.action.add') ) %></span>
+</div>
+<%= link_to_function( t('topic.action.advance'), "advance_topic( 'simple_topic_form' )" ) %> |
+<%= link_to_function( t('topic.action.test'), "test_topic( 'simple_topic_form' )"  ) %>

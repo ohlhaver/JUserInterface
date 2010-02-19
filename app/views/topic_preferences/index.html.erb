@@ -1,37 +1,50 @@
-<h1><%= my_or_user %> Topics</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Query</th>
-    <th>Filters</th>
-  </tr>
-  <% @topic_preferences.each do |tp| %>
-  <tr>
-    <td><%= tp.name %></td>
-    <td><%= tp.story_search_hash[:string] %></td>
-    <td><% tp.filters.each do |filter| %>
-      <div><%= filter[:name] %>: <%= filter[:value] %></div>
-      <% end %>
-    </td>
-    <td><%= link_to '&uarr;', user_topic_preference_path( :user_id => @user, :id => tp, :reorder => 'up' ), :method => :put, :title => 'Move Higher' %></td>
-    <td><%= link_to '&darr;', user_topic_preference_path( :user_id => @user, :id => tp, :reorder => 'down' ), :method => :put, :title => 'Move Lower' %></td>
-    <td><%= link_to '&uArr;', user_topic_preference_path( :user_id => @user, :id => tp, :reorder => 'top' ), :method => :put, :title => 'Move To Top' %></td>
-    <td><%= link_to '&dArr;', user_topic_preference_path( :user_id => @user, :id => tp, :reorder => 'bottom' ), :method => :put, :title => 'Move To Bottom' %></td>
-    <td><%= link_to 'Edit', edit_user_topic_preference_path( @user, tp ) %></td>
-    <td><%= link_to 'Destroy', user_topic_preference_path( @user, tp ), :method => :delete, :confirm => 'Are you sure?'  %></td>
-  </tr>
-  <% end -%>
-</table>
-
-
+<% content_for :custom_javascript do %>
+  <script type='text/javascript'>
+    Event.observe($('prefs'), 'mouseover', showMouseOvers );
+    Event.observe($('prefs'), 'mouseout', hideMouseOvers );
+  </script>
+  <%= render :partial => 'js', :locals => { :form_path => new_user_topic_preference_path( @user ), :test_path => jurnalo_search_results_stories_path }%>
+<% end %>
+<div class='news_block'>
+<h2><%= t('navigation.main.my_search_topics', :prefix => my_or_user) %></h2>
+</div>
+<div id='prefs'>
+<% @topic_preferences.each do | topic_preference | %>
+  <% mouse_over( :dialog ) do |dialogEventClass, dialogItemClass| %>
+    <div class='news_block <%= dialogEventClass %>'>
+      <span><%= link_to( topic_preference.name, edit_user_topic_preference_path( @user, topic_preference ) ) %></span>
+      <span class='right <%= dialogItemClass %>'>
+        <% form_id = "topic_preference_#{topic_preference.id}" %>
+        <% content_for :custom_javascript do %>
+          <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
+        <% end %>
+        <% form_for( topic_preference, :url => user_topic_preference_path( @user, topic_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
+          <%= f.check_box( :email_alert ) %> <%= t('prefs.labels.email_alerts') %>
+        <% end %>
+        &nbsp;&nbsp; 
+        <%= link_to( image_tag('up.gif') + t('prefs.home_action.up'), user_topic_preference_path(:user_id => @user, :id => topic_preference, :reorder => 'up'), :method => :put ) %>
+        &nbsp;&nbsp;
+        <%= link_to( image_tag('down.gif')+t('prefs.home_action.down'), user_topic_preference_path(:user_id => @user, :id => topic_preference, :reorder => 'down'), :method => :put ) %>
+        &nbsp;&nbsp;
+        <% if topic_preference.home_group? %>
+          <%= link_to( image_tag('hide.gif') + t('prefs.home_action.hide'), hide_user_topic_preference_path( @user, topic_preference ), :method => :put ) %>
+        <% else %>
+          <%= link_to( image_tag('hide.gif') + t('prefs.home_action.show'), unhide_user_topic_preference_path( @user, topic_preference ), :method => :put ) %>
+        <% end %>
+        &nbsp;&nbsp;
+        <%= link_to( image_tag('close.gif') + t('prefs.home_action.delete'), user_topic_preference_path( @user, topic_preference ), :method => :delete, :confirm => 'Are you sure?' ) %>
+      </span>
+    </div>
+  <% end %>
+<% end %>
+</div>
 <br />
 <%= will_paginate @topic_preferences %>
-<br />
-<%= link_to 'New Topic', new_user_topic_preference_path( @user ) %>
-<br />
-<% if @home_group %>
-<%= link_to 'All Topics', user_topic_preferences_path( @user ) %>
-<% else %>
-<%= link_to 'Homepage Topics', user_topic_preferences_path( :user_id => @user.id, :home_group => '1' ) %>
-<% end %>
+<div class='news_block'>
+  <h2><%= t('topic.label.new') %>:</h2>
+  <div class= 'adv_search_lines'>
+    <% form_for( @topic_preference, :url => user_topic_preferences_path(@user), :html => { :id => 'simple_topic_form' }, :method => :post ) do |f| %>
+      <%= render :partial => 'simple_form', :locals => { :f => f } %>
+    <% end %>
+  </div>
+</div>
