@@ -35,6 +35,8 @@ de:
       search_languages: "Search language(s)"
       edition: "Default top stories"
       interface_language: "Interface language"
+      rate: "rate"
+      subscribe: "subscribe"
     image:
       'off': "no"
       'on': "yes"

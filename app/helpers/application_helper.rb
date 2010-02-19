@@ -3,6 +3,13 @@ module ApplicationHelper
   
   include JurnaloPathHelper
   
+  def mouse_over( event_target, &block )
+    content = capture do 
+      block.call( "mo_#{event_target}_event_src", "mo_#{event_target}" )
+    end
+    block_called_from_erb?( block ) ? concat( content ) : content
+  end
+  
   def navigation_links
     @nav_links = [ 
       [ 'navigation.main.my_sources', user_source_preferences_path( @user ) ],

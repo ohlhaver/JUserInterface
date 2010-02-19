@@ -1,30 +1,29 @@
-<h1><%= my_or_user %> Authors List</h1>
-
-<%= link_to 'Favorite Authors', user_author_preferences_path( @user ) + "?scope=fav" %> | 
-<%= link_to 'Author Preferences', user_author_preferences_path( @user ) + "?scope=pref" %> | 
-<%= link_to 'All', user_author_preferences_path( @user ) %>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Preference</th>
-    <th>Favorite</th>
-  </tr>
-  <% @author_preferences.each do |ap| %>
-  <% @author_preference = ap %>
-  <% form_for( @author_preference, :url => user_author_preference_path(@user, @author_preference) ) do |f| %>
-  <tr>
-    <td><%= @author_preference.author.name %></td>
-    <td><%= f.select( :preference, Preference.for_select( :author ), :include_blank => true ) %></td>
-    <td><%= f.check_box( :subscribed ) %></td>
-    <td><%= hidden_field_tag( :scope, params[:scope] ) %><%= f.submit( 'Update' ) %></td>
-  </tr>
-  <% end -%>
-  <% end -%>
-</table>
-
-
+<% content_for :custom_javascript do %>
+  <script type='text/javascript'>
+    Event.observe($('prefs'), 'mouseover', showMouseOvers );
+    Event.observe($('prefs'), 'mouseout', hideMouseOvers );
+  </script>
+<% end %>
+<div class='news_block'>
+<h2><%= t('navigation.main.my_authors', :prefix => my_or_user) %></h2>
+</div>
+<div id='prefs'>
+<% @author_preferences.each do | author_preference | %>
+  <% mouse_over( :dialog ) do |dialogEventClass, dialogItemClass| %>
+    <div class='news_block <%= dialogEventClass %>'>
+      <span><%= author_preference.author.name %></span>
+      <span class='right <%= dialogItemClass %>'>
+        <% form_id = "author_preference_#{author_preference.id}" %>
+        <% content_for :custom_javascript do %>
+          <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
+        <% end %>
+        <% form_for( author_preference, :url => user_author_preference_path( @user, author_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
+          <%= f.check_box( :subscribed ) %> <%= t('prefs.labels.subscribe') %> - <%= t('prefs.labels.rate') %> <%= f.select( :preference, Preference.for_select( :author ), :include_blank => true )%>
+        <% end %>
+      </span>
+    </div>
+  <% end %>
+<% end %>
+</div>
 <br />
 <%= will_paginate @author_preferences %>
-<br />
-<%= link_to 'New Author Preference', new_user_author_preference_path( @user ) + "?scope=#{params[:scope]}" %>

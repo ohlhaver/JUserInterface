@@ -1,24 +1,29 @@
-<h1><%= my_or_user %> Source Preferences</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Preference</th>
-  </tr>
-  <% @source_preferences.each do |sp| %>
-  <% @source_preference = sp %>
-  <% form_for( @source_preference, :url => user_source_preference_path(@user, @source_preference) ) do |f| %>
-  <tr>
-    <td><%= @source_preference.source.name %></td>
-    <td><%= f.select( :preference, Preference.for_select( :source ), :include_blank => true ) %></td>
-    <td><%= f.submit( 'Update' ) %></td>
-  </tr>
-  <% end -%>
-  <% end -%>
-</table>
-
-
+<% content_for :custom_javascript do %>
+  <script type='text/javascript'>
+    Event.observe($('prefs'), 'mouseover', showMouseOvers );
+    Event.observe($('prefs'), 'mouseout', hideMouseOvers );
+  </script>
+<% end %>
+<div class='news_block'>
+<h2><%= t('navigation.main.my_sources', :prefix => my_or_user) %></h2>
+</div>
+<div id='prefs'>
+<% @source_preferences.each do | source_preference | %>
+  <% mouse_over( :dialog ) do |dialogEventClass, dialogItemClass| %>
+    <div class='news_block <%= dialogEventClass %>'>
+      <span><%= source_preference.source.name %></span>
+      <span class='right <%= dialogItemClass %>'>
+        <% form_id = "source_preference_#{source_preference.id}" %>
+        <% content_for :custom_javascript do %>
+          <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
+        <% end %>
+        <% form_for( source_preference, :url => user_source_preference_path( @user, source_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
+          <%= t('prefs.labels.rate') %> <%= f.select( :preference, Preference.for_select( :source ), :include_blank => true )%>
+        <% end %>
+      </span>
+    </div>
+  <% end %>
+<% end %>
+</div>
 <br />
 <%= will_paginate @source_preferences %>
-<br />
-<%= link_to 'New Source Preference', new_user_source_preference_path( @user ) %>
