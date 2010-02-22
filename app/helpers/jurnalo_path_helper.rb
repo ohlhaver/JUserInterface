@@ -29,8 +29,16 @@ module JurnaloPathHelper
     url_for( :host => service_host( true ), :port => service_port( true ), :controller => '/' )
   end
   
+  def japp_logout_path
+    url_for( :host => service_host( true ), :port => service_port( true ), :controller => '/logout' )
+  end
+  
   def jurnalo_root_path
     jurnalo_url_for( :controller => '/' )
+  end
+  
+  def jurnalo_logout_path
+    jurnalo_url_for( :controller => '/logout' )
   end
   
   def jurnalo_stories_path

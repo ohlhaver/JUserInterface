@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   include Jurnalo::ApiSystem
   include Jurnalo::LoginSystem
+  include JurnaloPathHelper
   include SimpleCaptcha::ControllerHelpers
 
   layout 'default'
@@ -20,7 +21,7 @@ class ApplicationController < ActionController::Base
   
   def logout
     # returns to the application registration page
-    CASClient::Frameworks::Rails::GatewayFilter.logout( self, CasServerConfig[RAILS_ENV]['service'] )
+    CASClient::Frameworks::Rails::GatewayFilter.logout( self, japp_logout_path )
   end
   
   def access_denied(key = nil)

@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   
   def login
     if current_user
-      flash['notice'] ||= 'You are already logged in'
-      redirect_back_or_default account_url
+      uri = URI.parse CASClient::Frameworks::Rails::Filter.client.login_url
+      redirect_to url_for( params.merge!( :host => uri.host, :protocol => uri.scheme, :port => uri.port ) )
       return
     end
   end
