@@ -40,7 +40,7 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing or commenting them out if you're using named routes and resources.
   # map.cas_proxy_callback 'cas_proxy_callback/:action', :controller => 'cas_proxy_callback'
   #map.filter :api
-  map.filter :country
+  #map.filter :country
   
   map.connect '/api/:api_key/search/stories/list',            :format => 'xml', :controller => 'stories', :action => 'by_story_ids'
   map.connect '/api/:api_key/search/stories/advance',         :format => 'xml', :controller => 'stories', :action => 'by_advance_search'
@@ -64,6 +64,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.simple_captcha '/simple_captcha/:action', :controller => 'simple_captcha'
   map.logout '/logout', :controller => 'application', :action => 'logout'
+  map.login '/login', :controller => 'users', :action => 'login'
   map.access_denied '/access_denied', :controller => 'application', :action => 'access_denied'
   map.resources :story_searches
   map.resource :account, :controller => "users"
@@ -81,6 +82,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :password_resets
   map.resources :account_activations
+  map.connect ':controller/:id', :action => :show
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   map.root :controller => 'users', :action => 'new'

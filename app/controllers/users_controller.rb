@@ -1,12 +1,19 @@
 class UsersController < ApplicationController
   
-  jurnalo_login_required :only => [ :show, :edit, :update ]
+  jurnalo_login_required :only => [ :index, :show, :edit, :update ]
   before_filter :set_user_var, :only => [ :show, :edit, :update ]
-  layout 'scaffold'
   
   def index
     redirect_to( :action => :show ) && return unless admin?
     @users = User.paginate( :page => params[:page] || '1' )
+  end
+  
+  def login
+    if current_user
+      flash['notice'] ||= 'You are already logged in'
+      redirect_back_or_default account_url
+      return
+    end
   end
   
   def new
@@ -15,7 +22,7 @@ class UsersController < ApplicationController
       redirect_back_or_default account_url
     else
       session[:cas_sent_to_gateway] = true
-      attributes = {}
+      attributes = { :terms_and_conditions_accepted => true }
       attributes.merge!( :email => session[ :cas_user ], :third_party => session[ :cas_extra_attributes ][ 'auth' ] ) if session && session[ :cas_extra_attributes ]
       @user = User.new( attributes )
     end
@@ -37,7 +44,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    render :action => :show, :layout => 'default'
+    render :action => :show
   end
  
   def edit
@@ -48,7 +55,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Account updated!"
       redirect_to account_path
     else
-      render :action => :show, :layout => 'default'
+      render :action => :show
     end
   end
   

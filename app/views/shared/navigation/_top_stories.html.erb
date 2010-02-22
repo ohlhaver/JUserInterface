@@ -1,0 +1,9 @@
+<% mouse_over( :dialog ) do | dialogEventClass, dialogItemClass | %>
+  <li class='<%= dialogEventClass -%>'>
+    <%= link_to( t('navigation.main.top_stories') , jurnalo_section_path( 'top' ) ) %>
+    <span class='navDialogBox <%= dialogItemClass -%>'>
+      <%= link_to image_tag('up.gif'), jurnalo_up_section_path( 'top' ) %>
+      <%= link_to image_tag('down.gif'), jurnalo_down_section_path( 'top' ) %>
+    </span>
+  </li>
+<% end %>

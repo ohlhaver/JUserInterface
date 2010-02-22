@@ -1,0 +1,33 @@
+<% mouse_over( :dialog ) do | dialogEventClass, dialogItemClass | %>
+  <li class='<%= dialogEventClass -%>'>
+    <%= t('navigation.main.sections') %>
+    <span class='navDialogBox <%= dialogItemClass -%>'>
+      <%= link_to image_tag('up.gif'), jurnalo_up_section_path( 'all' ) %>
+      <%= link_to image_tag('down.gif'), jurnalo_down_section_path( 'all' ) %>
+    </span>
+  </li>
+<% end %>
+<% default_section_options.each do |section| %>
+  <% mouse_over( :dialog ) do | dialogEventClass, dialogItemClass | %>
+    <li class='<%= dialogEventClass -%>'>
+      <%= link_to( section.first , jurnalo_section_path( section.last ) ) %>
+      <span class='navDialogBox <%= dialogItemClass -%>'>
+        <%= link_to image_tag('up.gif'), jurnalo_up_section_path( section.last ) %>
+        <%= link_to image_tag('down.gif'), jurnalo_down_section_path( section.last ) %>
+        <%= link_to image_tag('close.gif'), jurnalo_section_path( section.last ), :method => :delete, :confirm => 'Are you sure?' %>
+      </span>
+    </li>
+  <% end %>
+<% end %>
+<li class="grey">
+  <span id='add_section_link'><%= link_to_function( t('navigation.main.add_section'), 'Element.show("add_section_form");Element.hide("add_section_link")' ) %></span>
+  <span id='add_section_form' style='display:none;'>
+    <% content_for :custom_javascript do %>
+      <%= observe_field( "create_section_form_select", :function => "$('create_section_form').submit();" ) %>
+    <% end %>
+    <% form_tag( jurnalo_create_section_path, :class => 'inline_form', :id => 'create_section_form' ) do %>
+      <%= select_tag( :preference_id, options_for_select( default_section_options, :include_blank => true ), :id => 'create_section_form_select' ) %>
+    <% end %>
+    <%= link_to_function( 'Hide', 'Element.show("add_section_link");Element.hide("add_section_form")' ) %>
+  </span>
+</li>

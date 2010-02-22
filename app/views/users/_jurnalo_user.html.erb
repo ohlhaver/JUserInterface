@@ -1,27 +1,19 @@
-<% if jurnalo_user.object.new_record? %>
-Dear user, please provide the following details to register:<br />
-<% end %>
-<%= jurnalo_user.label :login %><br />
+<%= jurnalo_user.label :login, t('jurnalo.register.login') %><br />
 <%= jurnalo_user.text_field :login %><br />
 <br />
-<%= jurnalo_user.label :email %><br />
+<%= jurnalo_user.label :email, t('jurnalo.register.email') %><br />
 <%= jurnalo_user.text_field :email %><br />
 <br />
-<%= jurnalo_user.label :name %><br />
+<%= jurnalo_user.label :name, t('jurnalo.register.name') %><br />
 <%= jurnalo_user.text_field :name %><br />
 <br />
-<%= jurnalo_user.label :password, jurnalo_user.object.new_record? ? nil : "Change password" %><br />
+<%= jurnalo_user.label :password, jurnalo_user.object.new_record? ? t('jurnalo.register.password') : t('jurnalo.register.change_password') %><br />
 <%= jurnalo_user.password_field :password %><br />
 <br />
-<%= jurnalo_user.label :password_confirmation %><br />
+<%= jurnalo_user.label :password_confirmation, t('jurnalo.register.confirm_password') %><br />
 <%= jurnalo_user.password_field :password_confirmation %><br />
-<% if jurnalo_user.object.new_record? %>
-<br />
-<%= jurnalo_user.check_box :terms_and_conditions_accepted %>
-<%= jurnalo_user.label :terms_and_conditions_accepted, 'Accept Jurnalo Terms And Conditions'%><br />
-<% end -%>
 <% if admin?  %>
   <br/>
   <%= jurnalo_user.check_box :active %>
-  <%= jurnalo_user.label :active, 'Account Active?' %> <br/>
+  <%= jurnalo_user.label :active, t('jurnalo.register.active') %> <br/>
 <% end %>

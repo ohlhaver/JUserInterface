@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="verify-v1" content="uktXEFRkC4oLS3pjPi7ZkolIVksbOF8D7PRiyCDs+fM=" />
+    <%= yield :header_javascript %>
     <%= stylesheet_link_tag 'reset' %>
     <%= stylesheet_link_tag 'grid' %>
     <%= stylesheet_link_tag 'simple' %>
@@ -35,12 +36,7 @@
         <div>&nbsp;</div>
       </div>
       <div id="module" class="grid_1">
-        <div id='home_link'>
-          <%= link_to t( 'navigation.main.back_to_home' ), japp_root_path %> &nbsp;
-        </div>
-        <div id="navigation" >
-          <%= render :partial => 'shared/navigation' %>
-        </div>
+        <%= render :partial => 'shared/navigation' %>
       </div>
     <div id="footer" class = "grid_4">
       <%= render :partial => 'shared/footer' %>

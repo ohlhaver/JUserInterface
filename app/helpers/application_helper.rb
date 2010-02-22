@@ -4,11 +4,37 @@ module ApplicationHelper
   include JurnaloPathHelper
   include AutoCompleteHelper
   
+  def cas_login_form_url
+    CASClient::Frameworks::Rails::Filter.login_url(controller) + "&onlyLoginForm=1"
+  end
+  
+  def cas_login_js_url
+    CASClient::Frameworks::Rails::Filter.login_url(controller) + "&format=js&v=#{Time.now.to_i}"
+  end
+  
+  def cas_service_url
+    session[:service] ? service_return_path : CasServerConfig[RAILS_ENV]['service']+account_path
+  end
+  
+  def cas_on_error_url
+    CasServerConfig[RAILS_ENV]['service']+login_path(:e => '1')
+  end
+  
   def mouse_over( event_target, &block )
     content = capture do 
       block.call( "mo_#{event_target}_event_src", "mo_#{event_target}" )
     end
     block_called_from_erb?( block ) ? concat( content ) : content
+  end
+  
+  def default_section_options( region_id = nil, language_id = nil )
+    if region_id.blank? && language_id.blank?
+      p = Preference.new( :default_edition_id => session[:edition] )
+      region_id = p.region_id
+      language_id = p.default_language_id
+    end
+    tag = User.new.tag( region_id, language_id )
+    ClusterGroup.for_select( :tag => tag ).collect{ |x| [ t("navigation.main.#{x.first.underscore}"), x.last ] }
   end
   
   def navigation_links
@@ -36,10 +62,6 @@ module ApplicationHelper
     else
       link_to( t(link.first, :prefix => my_or_user), link.last )
     end
-  end
-  
-  def login_path( params = {} )
-    CASClient::Frameworks::Rails::Filter.login_url( self )
   end
   
   def current_user

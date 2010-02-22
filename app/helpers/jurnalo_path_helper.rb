@@ -37,8 +37,52 @@ module JurnaloPathHelper
     jurnalo_url_for( :controller => '/stories' )
   end
   
+  def jurnalo_author_path( author )
+    jurnalo_url_for( :controller => "/authors", :action => :show, :id => author )
+  end
+  
+  def jurnalo_up_author_path( author )
+    jurnalo_url_for( :controller => '/authors', :action => :up, :id => author )
+  end
+  
+  def jurnalo_down_author_path( author )
+    jurnalo_url_for( :controller => '/authors', :action => :down, :id => author )
+  end
+  
+  def jurnalo_topics_path
+    jurnalo_url_for( :controller => '/topics')
+  end
+  
   def jurnalo_topic_path( topic )
-    jurnalo_url_for( :controller => '/topics', :action => :show, :id => topic )
+    jurnalo_url_for( :controller => "/topics", :action => :show, :id => topic )
+  end
+  
+  def jurnalo_new_topic_path
+    jurnalo_url_for( :controller => "/topics/new" )
+  end
+  
+  def jurnalo_up_topic_path( topic )
+    jurnalo_url_for( :controller => '/topics', :action => :up, :id => topic )
+  end
+  
+  def jurnalo_down_topic_path( topic )
+    jurnalo_url_for( :controller => '/topics', :action => :down, :id => topic )
+  end
+  
+  def jurnalo_section_path( section )
+    jurnalo_url_for( :controller => "/sections", :action => :show, :id => section )
+  end
+  
+  def jurnalo_up_section_path( section )
+    jurnalo_url_for( :controller => '/sections', :action => :up, :id => section )
+  end
+  
+  def jurnalo_down_section_path( section )
+    jurnalo_url_for( :controller => '/sections', :action => :down, :id => section )
+  end
+  
+  def jurnalo_create_section_path
+    jurnalo_url_for( :controller => '/sections/create' )
   end
   
   def jurnalo_search_results_stories_path

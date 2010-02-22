@@ -1,6 +1,3 @@
-<% if third_party_user.object.new_record? %>
-Dear <%= third_party_user.object.third_party.capitalize %> user, please enter the following details to register at Jurnalo <br />
-<% end -%>
 <%= third_party_user.label :name %><br />
 <%= third_party_user.text_field :name %><br />
 <br />

@@ -14,9 +14,10 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_user
   before_filter :set_service_session_var
   before_filter :set_edition_session_var
+  before_filter :set_locale
   
   helper_method :base_url, :base_url?
-    
+  
   def logout
     # returns to the application registration page
     CASClient::Frameworks::Rails::GatewayFilter.logout( self, CasServerConfig[RAILS_ENV]['service'] )
@@ -30,6 +31,14 @@ class ApplicationController < ActionController::Base
   end
   
   protected
+  
+  def set_locale
+    params[:locale] = session[:locale] if params[:locale].blank?
+    session[:locale] = params[:locale]
+    session[:locale] ||= 'en'
+    I18n.locale = session[:locale]
+    params[:locale] = session[:locale] unless params[:locale].blank?
+  end
   
   def my_page?
     current_user && @user && @user == current_user

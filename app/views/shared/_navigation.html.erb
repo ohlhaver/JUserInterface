@@ -1,5 +1,36 @@
-<ul class='nav_block'>
-<% navigation_links.each do |link| %>
-  <li><%= navigation_link_to( link ) %></li>
+<% if logged_in? %>
+  <div id='home_link'>
+    <%= link_to t( 'navigation.main.back_to_home' ), japp_root_path %> &nbsp;
+  </div>
+  <div id="navigation" >
+    <ul class='nav_block'>
+      <% navigation_links.each do |link| %>
+        <li><%= navigation_link_to( link ) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <% content_for :custom_javascript do %>
+    <script type='text/javascript'>
+      Event.observe($('navigation'), 'mouseover', showNavigationMouseOvers );
+      Event.observe($('navigation'), 'mouseout', hideNavigationMouseOvers );
+    </script>
+  <% end %>
+  <div id='home_link'>
+    <%= link_to 'Home', jurnalo_root_path %> &nbsp;
+  </div>
+  <div id="navigation" >
+    <ul class='nav_block'>
+      <%= render :partial => 'shared/navigation/top_stories' %>
+    </ul>
+    <ul class='nav_block'>
+      <%= render :partial => 'shared/navigation/sections' %>
+    </ul>
+    <ul class='nav_block'>
+      <%= render :partial => 'shared/navigation/my_topics'%>
+    </ul>
+    <ul class='nav_block'>
+      <%= render :partial => 'shared/navigation/my_authors' %>
+    </ul>
+  </div>
 <% end %>
-</ul>
