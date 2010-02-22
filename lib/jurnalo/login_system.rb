@@ -75,7 +75,7 @@ module Jurnalo
             session[ :cas_extra_attributes ] = nil
             session[ CASClient::Frameworks::Rails::Filter.client.username_session_key ] = nil
           else
-            session[ :cas_sent_to_gateway ] = true
+            session[ :cas_sent_to_gateway ] = true unless base_url?( login_path )
           end
           return
         end
