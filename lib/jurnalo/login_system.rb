@@ -59,10 +59,27 @@ module Jurnalo
         user
       end
 
+      # def session_check_for_validation
+      #   last_st = session.try( :[], :cas_last_valid_ticket )
+      #   return unless last_st
+      #   if request.get? && !request.xhr? && ( session[:revalidate].nil? || session[:revalidate] < Time.now )
+      #     session[:cas_last_valid_ticket] = nil
+      #     session[:revalidate] = 10.minutes.from_now
+      #   end
+      # end
+      
       def session_check_for_validation
         last_st = session.try( :[], :cas_last_valid_ticket )
-        return unless last_st
-        if request.get? && !request.xhr? && ( session[:revalidate].nil? || session[:revalidate] < Time.now )
+        unless last_st
+          if session[ :cas_extra_attributes ]
+            session[ :cas_extra_attributes ] = nil
+            session[ CASClient::Frameworks::Rails::Filter.client.username_session_key ] = nil
+          else
+            session[ :cas_sent_to_gateway ] = true
+          end
+          return
+        end
+        if request.get? && !request.xhr? && ( session[:revalidate].nil? || session[:revalidate] < Time.now.utc )
           session[:cas_last_valid_ticket] = nil
           session[:revalidate] = 10.minutes.from_now
         end
