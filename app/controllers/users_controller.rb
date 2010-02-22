@@ -11,7 +11,9 @@ class UsersController < ApplicationController
   def login
     if current_user
       uri = URI.parse CASClient::Frameworks::Rails::Filter.client.login_url
-      redirect_to url_for( params.merge!( :host => uri.host, :protocol => uri.scheme, :port => uri.port ) )
+      options = params.dup
+      options.delete(:ticket)
+      redirect_to url_for( options.merge!( :host => uri.host, :protocol => uri.scheme, :port => uri.port ) )
       return
     end
   end
