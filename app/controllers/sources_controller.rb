@@ -26,7 +26,7 @@ class SourcesController < ApplicationController
     @per_page = params[:per_page]
     @per_page = 10 if @per_page.blank?
     return auto_complete( conditions ) if params[:ac] == '1'
-    @sources = Source.name_like( params[:q] ).paginate( :page => params[:page] || 1, :per_page => per_page.to_i, :conditions => conditions, :order => 'name ASC' )
+    @sources = Source.name_like( params[:q] ).paginate( :page => params[:page] || 1, :per_page => @per_page.to_i, :conditions => conditions, :order => 'name ASC' )
   end
   
   def auto_complete( conditions )
