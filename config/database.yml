@@ -19,3 +19,10 @@ production:
     host: 10.176.228.50
     reconnect: true
 
+justus:
+  adapter: mysql
+  encoding: utf8
+  database: tier2_db_prod
+  username: jurnalo
+  password: jp4t2db
+  host: 174.143.172.95

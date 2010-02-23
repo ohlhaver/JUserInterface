@@ -4,3 +4,6 @@ development:
 production:
   service: http://accounts.jurnalo.com
   cas_server: https://login.jurnalo.com
+justus:
+  service: http://localhost:3000
+  cas_server: https://login.jurnalo.com

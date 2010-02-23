@@ -1,0 +1,10 @@
+development:
+  bin_path: '/opt/sphinx-0.9.9/bin'
+  address: 127.0.0.1
+  port: 3312
+production:
+  address: 10.176.238.247
+  port: 3312
+justus:
+  address: 67.23.42.240
+  port: 3312

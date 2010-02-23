@@ -4,3 +4,5 @@ development:
   path: /Users/ram/Workspace/jurnalo/JModels 
 production:
   path: /home/jurnalo/apps/JModels/current
+justus:
+  path: /Users/ram/Workspace/jurnalo/JModels
