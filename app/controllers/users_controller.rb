@@ -15,6 +15,9 @@ class UsersController < ApplicationController
       options.delete(:ticket)
       redirect_to url_for( options.merge!( :host => uri.host, :protocol => uri.scheme, :port => uri.port ) )
       return
+    elsif logged_in?
+      params[:service] = session[:service]
+      CASClient::Frameworks::Rails::GatewayFilter.logout( self, request.request_uri )
     end
   end
   
