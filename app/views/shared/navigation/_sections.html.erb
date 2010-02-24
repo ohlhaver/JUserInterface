@@ -25,7 +25,7 @@
     <% content_for :custom_javascript do %>
       <%= observe_field( "create_section_form_select", :function => "$('create_section_form').submit();" ) %>
     <% end %>
-    <% form_tag( jurnalo_create_section_path, :class => 'inline_form', :id => 'create_section_form' ) do %>
+    <% form_tag( jurnalo_create_section_path, :method => :get, :class => 'inline_form', :id => 'create_section_form' ) do %>
       <%= select_tag( :preference_id, options_for_select( default_section_options, :include_blank => true ), :id => 'create_section_form_select' ) %>
     <% end %>
     <%= link_to_function( 'Hide', 'Element.show("add_section_link");Element.hide("add_section_form")' ) %>
