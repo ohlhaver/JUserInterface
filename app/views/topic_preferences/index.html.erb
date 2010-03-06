@@ -8,12 +8,13 @@
 <div class='news_block'>
 <h2><%= t('navigation.main.my_search_topics', :prefix => my_or_user) %></h2>
 </div>
-<div id='prefs'>
+
 <% @topic_preferences.each do | topic_preference | %>
-  <% mouse_over( :dialog ) do |dialogEventClass, dialogItemClass| %>
-    <div class='news_block <%= dialogEventClass %>'>
+
+    <div class='my_authors_block'>
+	<h2>
       <span><%= link_to( topic_preference.name, edit_user_topic_preference_path( @user, topic_preference ) ) %></span>
-      <span class='right <%= dialogItemClass %>'>
+      <span class='dialogBox'>
         <% form_id = "topic_preference_#{topic_preference.id}" %>
         <% content_for :custom_javascript do %>
           <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
@@ -22,23 +23,19 @@
           <%= f.check_box( :email_alert ) %> <%= t('prefs.labels.email_alerts') %>
         <% end %>
         &nbsp;&nbsp; 
-        <%= link_to( image_tag('up.gif') + t('prefs.home_action.up'), user_topic_preference_path(:user_id => @user, :id => topic_preference, :reorder => 'up'), :method => :put ) %>
+        <%= link_to( image_tag('up.gif'), user_topic_preference_path(:user_id => @user, :id => topic_preference, :reorder => 'up'), :method => :put ) %>
         &nbsp;&nbsp;
-        <%= link_to( image_tag('down.gif')+t('prefs.home_action.down'), user_topic_preference_path(:user_id => @user, :id => topic_preference, :reorder => 'down'), :method => :put ) %>
+        <%= link_to( image_tag('down.gif'), user_topic_preference_path(:user_id => @user, :id => topic_preference, :reorder => 'down'), :method => :put ) %>
         &nbsp;&nbsp;
-        <% if topic_preference.home_group? %>
-          <%= link_to( image_tag('hide.gif') + t('prefs.home_action.hide'), hide_user_topic_preference_path( @user, topic_preference ), :method => :put ) %>
-        <% else %>
-          <%= link_to( image_tag('hide.gif') + t('prefs.home_action.show'), unhide_user_topic_preference_path( @user, topic_preference ), :method => :put ) %>
-        <% end %>
-        &nbsp;&nbsp;
-        <%= link_to( image_tag('close.gif') + t('prefs.home_action.delete'), user_topic_preference_path( @user, topic_preference ), :method => :delete, :confirm => 'Are you sure?' ) %>
+
+        <%= link_to( image_tag('close.gif'), user_topic_preference_path( @user, topic_preference ), :method => :delete, :confirm => 'Are you sure?' ) %>
       </span>
+	</h2>
     </div>
-  <% end %>
+
 <% end %>
-</div>
-<br />
+
+<br /><br /><br /><br />
 <%= will_paginate @topic_preferences %>
 <div class='news_block'>
   <h2><%= t('topic.label.new') %>:</h2>

@@ -1,11 +1,16 @@
-<h1>Forgot Password</h1>
- 
+<div class = "settings_news_block">
+<h2>Forgot Password</h2>
+
+<div class = "about">
 Fill out the form below and instructions to reset your password will be emailed to you:<br />
 <br />
- 
+ <div class= 'adv_search_lines'>
 <% form_tag password_resets_path do %>
-  <label>Email:</label><br />
-  <%= text_field_tag "email" %><br />
-  <br />
-  <%= submit_tag "Reset my password" %>
+
+E-mail:
+<%= text_field_tag "email", params[:email], :id => "settings_field" %>
+<%= submit_tag "Reset my password", :class => "confirmation_button" %>
 <% end %>
+</div>
+</div>
+</div>

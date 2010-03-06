@@ -1,5 +1,6 @@
-<div class='news_block'>
+<div class='settings_news_block'>
 <h2>Account Details</h2>
+<br>
 <% form_for @user, :url => user_path(@user) do |f| %>
   <%= f.error_messages %>
   <% unless @user.third_party? %>
@@ -7,17 +8,27 @@
   <% else %>
     <%= render :partial => 'third_party_user', :object => f %>  
   <% end %>
-  <br/>
-  <%= f.submit "Update" %>
+
+
+  <%= f.submit "Update", :class => "confirmation_button" %>
+
 <% end %>
-<div class='news_block'>
-  <h3>Current Plan</h3>
-  <%= link_to t('account.basic.label') %> (<%= t('account.basic.cost') %>)<br/>
-  <%= t('account.basic.info') %> (<%= link_to t('more.info') %>)
-  <div class='upgrade_box'>
-    upgrade to: <br/>
-    <%= link_to t('account.power.label') %>( <%= t('account.power.cost') -%>)
-    <%= t('account.power.info') %> ( <%= link_to t('more.info') %>)
+</div>
+<br/><br/>
+<div class='settings_news_block'>
+  <h2>Current Plan:</h2>
+	<div class = "about">
+ <h2> <%= link_to t('account.basic.label') %> (<%= t('account.basic.cost') %>)<br/>
+  <%= t('account.basic.info') %> (<%= link_to t('more.info') %>)</h2>
+	</div>
+</div>
+  <div class='settings_news_block'>
+    <h2>Upgrade to:</h2>
+	<div class = "about">
+   <h2> <%= link_to t('account.power.label') %> (<%= t('account.power.cost') -%>)
+    <%= t('account.power.info') %> (<%= link_to t('more.info') %>)</h2>
+	</div>
+	<div class='settings_news_block'> </div>
   </div>
-</div>
-</div>
+
+

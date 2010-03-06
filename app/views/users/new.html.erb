@@ -1,43 +1,53 @@
 <div class='news_group'>
-  <div class='news_block'>
+  <div class='settings_news_block'>
     <h2><%= t('jurnalo.register.title') %></h2>
-    <div>
+    <div class = "about">
       <%= t('jurnalo.register.benefits.body') %>
     </div>
   </div>
 </div>
-<div class='news_group'>
+
   <% form_for @user, :url => account_path do |f| %>
-    <div class='news_block'>
-      <%= t('jurnalo.register.enter_info') %><br/>
+    <div class='settings_news_block'>
+     <h2> <%= t('jurnalo.register.enter_info') %></h2>
+	 <div class='about'>
       <%= f.error_messages %>
       <% unless @user.third_party? %>
         <%= render :partial => 'jurnalo_user', :object => f %>
       <% else %>
         <%= render :partial => 'third_party_user', :object => f %>  
       <% end %>
+	</div>
     </div>
-    <div class='news_block'>
+    <div class='settings_news_block'>
       <h2>Choose your account:</h2>
-      <div>
-        <%= radio_button_tag( 'account', 'basic', true ) %> 
-        <%= t('account.basic.label') %> (<%= t('account.basic.cost') %>)<br/>
-        <%= t('account.basic.info') %> (<%= link_to t('more.info') %>)
+      
+	<div class='about'>
+		<h2>
+	  <div>
+        <%= radio_button_tag( 'account', 'basic', true ) %> 		
+        <%= t('account.basic.label') %> (<%= t('account.basic.cost') %>)<br>
+        <%= t('account.basic.info') %> (<%= link_to t('more.info') %>)	
       </div>
+		<br>
       <div>
         <%= radio_button_tag( 'account', 'power', false, :disabled => true ) %> 
         <%= t('account.power.label') %> ( <%= t('account.power.cost') -%>)<br/>
         <%= t('account.power.info') %> ( <%= link_to t('more.info') %>)
       </div>
+		</h2>
+	</div>
     </div>
-    <div class='news_block'>
-      <%= f.check_box :terms_and_conditions_accepted %>
-      <%= f.label :terms_and_conditions_accepted, t('jurnalo.register.accept_tac') %>
+    <div class='settings_news_block'>
+      <h2><%= f.check_box :terms_and_conditions_accepted %>
+      <%= f.label :terms_and_conditions_accepted, t('jurnalo.register.accept_tac') %></h2>
+	<div class='about'>
+		<br>
       <% unless @user.third_party? %>
-        <br/>
-        <%= show_simple_captcha( :object => "user", :image_style => 'charcoal_grey', :distortion => 'medium', :label => t('jurnalo.register.captcha') ) %>
+        <%= show_simple_captcha( :object => "user", :image_style => 'blue', :distortion => 'high', :label => t('jurnalo.register.captcha') ) %>
       <% end %>
-    </div>
-    <%= f.submit t('navigation.top.register'), :class => 'adv_searchbutton' %>
+    
+    <%= f.submit t('navigation.top.register'), :class => 'confirmation_button' %>
+	</div>
+	</div>
   <% end %>
-</div>

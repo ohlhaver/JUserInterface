@@ -5,25 +5,32 @@
   </script>
 <% end %>
 <div class='news_block'>
+	<div class = "reading_list_label">
 <h2><%= t('navigation.main.my_sources', :prefix => my_or_user) %></h2>
 </div>
-<div id='prefs'>
+</div>
+
+<h2>	
 <% @source_preferences.each do | source_preference | %>
-  <% mouse_over( :dialog ) do |dialogEventClass, dialogItemClass| %>
-    <div class='news_block <%= dialogEventClass %>'>
-      <span><%= source_preference.source.name %></span>
-      <span class='right <%= dialogItemClass %>'>
+ <div class='prefs'>
+    <div class='my_authors_block'>
+   <span><%= source_preference.source.name %></span> 
+ 		<div class = "rater">
         <% form_id = "source_preference_#{source_preference.id}" %>
         <% content_for :custom_javascript do %>
           <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
         <% end %>
+
         <% form_for( source_preference, :url => user_source_preference_path( @user, source_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
-          <%= t('prefs.labels.rate') %> <%= f.select( :preference, Preference.for_select( :source ), :include_blank => true )%>
+          <%= f.select( :preference, Preference.for_select( :source ), :include_blank => true )%>
         <% end %>
-      </span>
+		
+ 		</div>
     </div>
-  <% end %>
-<% end %>
 </div>
+  <% end %>
+
+</h2>
+
 <br />
 <%= will_paginate @source_preferences %>

@@ -1,6 +1,6 @@
 <% mouse_over( :dialog ) do | dialogEventClass, dialogItemClass | %>
   <li class='<%= dialogEventClass -%>'>
-    <%= t('navigation.main.sections') %>
+    <span class= "nav_sections_label"><%= t('navigation.main.sections') %></span>
     <span class='navDialogBox <%= dialogItemClass -%>'>
       <%= link_to image_tag('up.gif'), jurnalo_up_section_path( 'all' ) %>
       <%= link_to image_tag('down.gif'), jurnalo_down_section_path( 'all' ) %>

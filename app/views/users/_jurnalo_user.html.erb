@@ -1,19 +1,36 @@
-<%= jurnalo_user.label :login, t('jurnalo.register.login') %><br />
-<%= jurnalo_user.text_field :login %><br />
-<br />
-<%= jurnalo_user.label :email, t('jurnalo.register.email') %><br />
-<%= jurnalo_user.text_field :email %><br />
-<br />
-<%= jurnalo_user.label :name, t('jurnalo.register.name') %><br />
-<%= jurnalo_user.text_field :name %><br />
-<br />
-<%= jurnalo_user.label :password, jurnalo_user.object.new_record? ? t('jurnalo.register.password') : t('jurnalo.register.change_password') %><br />
-<%= jurnalo_user.password_field :password %><br />
-<br />
-<%= jurnalo_user.label :password_confirmation, t('jurnalo.register.confirm_password') %><br />
-<%= jurnalo_user.password_field :password_confirmation %><br />
+
+
+<div class= 'adv_search_lines'>
+	
+<div>	
+<%= jurnalo_user.label :login, t('jurnalo.register.login') %> 
+<%= jurnalo_user.text_field :login, :id => "settings_field" %> 
+</div>
+
+
+<%= jurnalo_user.label :email, t('jurnalo.register.email') %>
+<%= jurnalo_user.text_field :email, :id => "settings_field" %>
+
+
+<div>
+<%= jurnalo_user.label :name, t('jurnalo.register.name') %>
+<%= jurnalo_user.text_field :name, :id => "settings_field" %>
+</div>
+
+<div>
+<%= jurnalo_user.label :password, jurnalo_user.object.new_record? ? t('jurnalo.register.password') : t('jurnalo.register.change_password') %>
+<%= jurnalo_user.password_field :password, :id => "settings_field" %>
+</div>
+
+<div>
+<%= jurnalo_user.label :password_confirmation, t('jurnalo.register.confirm_password') %>
+<%= jurnalo_user.password_field :password_confirmation, :id => "settings_field" %>
+</div>
+
 <% if admin?  %>
   <br/>
   <%= jurnalo_user.check_box :active %>
-  <%= jurnalo_user.label :active, t('jurnalo.register.active') %> <br/>
+  <%= jurnalo_user.label :active, t('jurnalo.register.active') %> 
 <% end %>
+
+</div>

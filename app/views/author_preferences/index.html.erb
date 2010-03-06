@@ -5,14 +5,21 @@
   </script>
 <% end %>
 <div class='news_block'>
-<h2><%= t('navigation.main.my_authors', :prefix => my_or_user) %></h2>
+		<div class = "reading_list_label">
+			<h2><%= t('navigation.main.my_authors', :prefix => my_or_user) %></h2>
+		</div>
 </div>
-<div id='prefs'>
+
+<h2>
+	
 <% @author_preferences.each do | author_preference | %>
-  <% mouse_over( :dialog ) do |dialogEventClass, dialogItemClass| %>
-    <div class='news_block <%= dialogEventClass %>'>
+   
+	<div class='my_authors_block'>
+
+
+	
       <span><%= author_preference.author.name %></span>
-      <span class='right <%= dialogItemClass %>'>
+      <div class='rater'>
         <% form_id = "author_preference_#{author_preference.id}" %>
         <% content_for :custom_javascript do %>
           <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
@@ -20,10 +27,11 @@
         <% form_for( author_preference, :url => user_author_preference_path( @user, author_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
           <%= f.check_box( :subscribed ) %> <%= t('prefs.labels.subscribe') %> - <%= t('prefs.labels.rate') %> <%= f.select( :preference, Preference.for_select( :author ), :include_blank => true )%>
         <% end %>
-      </span>
-    </div>
-  <% end %>
-<% end %>
+
 </div>
+</div>
+  <% end %>
+
+</h2>
 <br />
 <%= will_paginate @author_preferences %>
