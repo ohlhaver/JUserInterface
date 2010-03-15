@@ -19299,3 +19299,869 @@ Rendered shared/_edition (1.4ms)
 Rendered shared/_navigation (5.5ms)
 Rendered shared/_footer (1.8ms)
 Completed in 897ms (View: 44, DB: 1261) | 200 OK [http://localhost/preferences/10000003/search]
+  [4;36;1mSQL (208.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (207.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (316.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mAuthor Columns (209.7ms)[0m   [0mSHOW FIELDS FROM `authors`[0m
+  [4;36;1mCategory Load (208.9ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`code` IN ('POL','BUS','CUL','SCI','TEC','SPO','MIX','OPI')) [0m
+  [4;35;1mCategory Columns (208.8ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mCategory Load (211.4ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`code` IN ('POL','BUS','CUL','SCI','TEC','OPI')) [0m
+  [4;35;1mLanguage Load (208.8ms)[0m   [0mSELECT * FROM `languages` WHERE (`languages`.`code` IN ('de','en')) ORDER BY code ASC[0m
+  [4;36;1mLanguage Columns (209.4ms)[0m   [0;1mSHOW FIELDS FROM `languages`[0m
+  [4;35;1mRegion Load (208.8ms)[0m   [0mSELECT * FROM `regions` WHERE (`regions`.`code` IN ('DE','AT','CH','INT')) ORDER BY id[0m
+  [4;36;1mRegion Columns (208.4ms)[0m   [0;1mSHOW FIELDS FROM `regions`[0m
+  [4;35;1mSQL (211.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mStory Columns (211.3ms)[0m   [0;1mSHOW FIELDS FROM `stories`[0m
+  [4;35;1mFeedCategory Columns (207.9ms)[0m   [0mSHOW FIELDS FROM `feed_categories`[0m
+  [4;36;1mUser Columns (210.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (209.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (208.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-03-06 10:24:47) [GET]
+Start Session Info
+edition: int-en
+service: 
+locale: en
+session_id: c166ab20fdb13243bef85c1d5d9dd082
+jwa: 
+cas_sent_to_gateway: false
+End Session Info
+Rendering template within layouts/default
+Rendering users/new
+Rendered users/_jurnalo_user (4.1ms)
+DEPRECATION WARNING: ActionController::Session::AbstractStore::SessionHash#session_id has been deprecated. Please use request.session_options[:id] instead.. (called from simple_captcha_key at /Users/justus/JUserInterface/vendor/plugins/simple_captcha/lib/simple_captcha_config.rb:15)
+  [4;35;1mSimpleCaptchaData Columns (208.9ms)[0m   [0mSHOW FIELDS FROM `simple_captcha_data`[0m
+  [4;36;1mSimpleCaptchaData Load (211.0ms)[0m   [0;1mSELECT * FROM `simple_captcha_data` WHERE (`simple_captcha_data`.`key` = 'b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3') LIMIT 1[0m
+  [4;35;1mSQL (207.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mSimpleCaptchaData Create (211.3ms)[0m   [0;1mINSERT INTO `simple_captcha_data` (`updated_at`, `value`, `key`, `created_at`) VALUES('2010-03-06 09:24:47', 'VTOTLV', 'b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3', '2010-03-06 09:24:47')[0m
+  [4;35;1mSQL (228.2ms)[0m   [0mCOMMIT[0m
+Rendered simple_captcha/_simple_captcha (1.2ms)
+Rendered shared/_top_navigation (2.9ms)
+Rendered shared/_edition (2.3ms)
+Rendered shared/navigation/_top_stories (5.3ms)
+  [4;36;1mPreference Columns (311.9ms)[0m   [0;1mSHOW FIELDS FROM `preferences`[0m
+  [4;35;1mUser Load (213.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`login` = 'jadmin') LIMIT 1[0m
+  [4;36;1mMultiValuedPreference Load (215.8ms)[0m   [0;1mSELECT * FROM `multi_valued_preferences` WHERE (((`multi_valued_preferences`.`tag` = 'Region:-1:38' AND `multi_valued_preferences`.`owner_id` = 10000000 AND `multi_valued_preferences`.`owner_type` = 'User')) AND (`multi_valued_preferences`.`preference_id` = 2)) ORDER BY position ASC[0m
+  [4;35;1mMultiValuedPreference Columns (210.3ms)[0m   [0mSHOW FIELDS FROM `multi_valued_preferences`[0m
+  [4;36;1mClusterGroup Load (209.5ms)[0m   [0;1mSELECT id, name FROM `cluster_groups` WHERE (`cluster_groups`.`id` IN (225,226,227,228,229,230,231,232)) [0m
+  [4;35;1mClusterGroup Columns (210.3ms)[0m   [0mSHOW FIELDS FROM `cluster_groups`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'jadmin') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `multi_valued_preferences` WHERE (((`multi_valued_preferences`.`tag` = 'Region:-1:38' AND `multi_valued_preferences`.`owner_id` = 10000000 AND `multi_valued_preferences`.`owner_type` = 'User')) AND (`multi_valued_preferences`.`preference_id` = 2)) ORDER BY position ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT id, name FROM `cluster_groups` WHERE (`cluster_groups`.`id` IN (225,226,227,228,229,230,231,232)) [0m
+Rendered shared/navigation/_sections (1440.5ms)
+Rendered shared/navigation/_my_topics (6.1ms)
+Rendered shared/navigation/_my_authors (5.1ms)
+Rendered shared/_navigation (1476.5ms)
+Rendered shared/_footer (4.1ms)
+Completed in 2729ms (View: 281, DB: 2855) | 200 OK [http://localhost/]
+  [4;35;1mSQL (206.5ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (208.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SimpleCaptchaController#simple_captcha (for 127.0.0.1 at 2010-03-06 10:24:51) [GET]
+  Parameters: {"time"=>"1267867488", "image_style"=>"blue", "simple_captcha_key"=>"b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3", "distortion"=>"high"}
+  [4;35;1mSimpleCaptchaData Load (211.2ms)[0m   [0mSELECT * FROM `simple_captcha_data` WHERE (`simple_captcha_data`.`key` = 'b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3') LIMIT 1[0m
+Sending data simple_captcha.jpg
+Completed in 1006ms (View: 1, DB: 626) | 200 OK [http://localhost/simple_captcha/simple_captcha?distortion=high&image_style=blue&simple_captcha_key=b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3&time=1267867488]
+  [4;36;1mSQL (208.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (207.9ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (320.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mAuthor Columns (211.2ms)[0m   [0mSHOW FIELDS FROM `authors`[0m
+  [4;36;1mCategory Load (213.9ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`code` IN ('POL','BUS','CUL','SCI','TEC','SPO','MIX','OPI')) [0m
+  [4;35;1mCategory Columns (209.5ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mCategory Load (248.9ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`code` IN ('POL','BUS','CUL','SCI','TEC','OPI')) [0m
+  [4;35;1mLanguage Load (217.3ms)[0m   [0mSELECT * FROM `languages` WHERE (`languages`.`code` IN ('de','en')) ORDER BY code ASC[0m
+  [4;36;1mLanguage Columns (209.8ms)[0m   [0;1mSHOW FIELDS FROM `languages`[0m
+  [4;35;1mRegion Load (211.1ms)[0m   [0mSELECT * FROM `regions` WHERE (`regions`.`code` IN ('DE','AT','CH','INT')) ORDER BY id[0m
+  [4;36;1mRegion Columns (209.4ms)[0m   [0;1mSHOW FIELDS FROM `regions`[0m
+  [4;35;1mSQL (211.1ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mStory Columns (211.8ms)[0m   [0;1mSHOW FIELDS FROM `stories`[0m
+  [4;35;1mFeedCategory Columns (209.0ms)[0m   [0mSHOW FIELDS FROM `feed_categories`[0m
+  [4;36;1mUser Columns (211.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (305.6ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (205.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-03-06 10:26:06) [GET]
+Start Session Info
+edition: int-en
+service: 
+simple_captcha: b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3
+locale: en
+session_id: c166ab20fdb13243bef85c1d5d9dd082
+jwa: 
+_csrf_token: GBuhVxxprWy7IG4fXWNPqhe/mgoOQd7md5HVb7TcQIA=
+cas_sent_to_gateway: false
+End Session Info
+Rendering template within layouts/default
+Rendering users/new
+Rendered users/_jurnalo_user (4.1ms)
+  [4;35;1mSimpleCaptchaData Columns (206.4ms)[0m   [0mSHOW FIELDS FROM `simple_captcha_data`[0m
+  [4;36;1mSimpleCaptchaData Load (207.3ms)[0m   [0;1mSELECT * FROM `simple_captcha_data` WHERE (`simple_captcha_data`.`key` = 'b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3') LIMIT 1[0m
+  [4;35;1mSQL (203.7ms)[0m   [0mBEGIN[0m
+  [4;36;1mSimpleCaptchaData Update (205.3ms)[0m   [0;1mUPDATE `simple_captcha_data` SET `value` = 'XENXMN', `updated_at` = '2010-03-06 09:26:06' WHERE `id` = 52[0m
+  [4;35;1mSQL (205.2ms)[0m   [0mCOMMIT[0m
+Rendered simple_captcha/_simple_captcha (1.1ms)
+Rendered shared/_top_navigation (2.8ms)
+Rendered shared/_edition (2.4ms)
+Rendered shared/navigation/_top_stories (5.2ms)
+  [4;36;1mPreference Columns (208.6ms)[0m   [0;1mSHOW FIELDS FROM `preferences`[0m
+  [4;35;1mUser Load (210.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`login` = 'jadmin') LIMIT 1[0m
+  [4;36;1mMultiValuedPreference Load (211.8ms)[0m   [0;1mSELECT * FROM `multi_valued_preferences` WHERE (((`multi_valued_preferences`.`tag` = 'Region:-1:38' AND `multi_valued_preferences`.`owner_id` = 10000000 AND `multi_valued_preferences`.`owner_type` = 'User')) AND (`multi_valued_preferences`.`preference_id` = 2)) ORDER BY position ASC[0m
+  [4;35;1mMultiValuedPreference Columns (207.2ms)[0m   [0mSHOW FIELDS FROM `multi_valued_preferences`[0m
+  [4;36;1mClusterGroup Load (346.8ms)[0m   [0;1mSELECT id, name FROM `cluster_groups` WHERE (`cluster_groups`.`id` IN (225,226,227,228,229,230,231,232)) [0m
+  [4;35;1mClusterGroup Columns (510.8ms)[0m   [0mSHOW FIELDS FROM `cluster_groups`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'jadmin') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `multi_valued_preferences` WHERE (((`multi_valued_preferences`.`tag` = 'Region:-1:38' AND `multi_valued_preferences`.`owner_id` = 10000000 AND `multi_valued_preferences`.`owner_type` = 'User')) AND (`multi_valued_preferences`.`preference_id` = 2)) ORDER BY position ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT id, name FROM `cluster_groups` WHERE (`cluster_groups`.`id` IN (225,226,227,228,229,230,231,232)) [0m
+Rendered shared/navigation/_sections (1768.8ms)
+Rendered shared/navigation/_my_topics (6.0ms)
+Rendered shared/navigation/_my_authors (5.3ms)
+Rendered shared/_navigation (1805.0ms)
+Rendered shared/_footer (4.2ms)
+Completed in 3014ms (View: 280, DB: 3234) | 200 OK [http://localhost/]
+  [4;35;1mSQL (2516.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (2986.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SimpleCaptchaController#simple_captcha (for 127.0.0.1 at 2010-03-06 10:26:20) [GET]
+  Parameters: {"time"=>"1267867567", "image_style"=>"blue", "simple_captcha_key"=>"b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3", "distortion"=>"high"}
+  [4;35;1mSimpleCaptchaData Load (800.1ms)[0m   [0mSELECT * FROM `simple_captcha_data` WHERE (`simple_captcha_data`.`key` = 'b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3') LIMIT 1[0m
+Sending data simple_captcha.jpg
+Completed in 864ms (View: 1, DB: 6302) | 200 OK [http://localhost/simple_captcha/simple_captcha?distortion=high&image_style=blue&simple_captcha_key=b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3&time=1267867567]
+  [4;36;1mSQL (249.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1140.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#login (for 127.0.0.1 at 2010-03-06 10:26:44) [GET]
+Start Session Info
+edition: int-en
+service: 
+simple_captcha: b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3
+locale: en
+session_id: c166ab20fdb13243bef85c1d5d9dd082
+jwa: 
+_csrf_token: GBuhVxxprWy7IG4fXWNPqhe/mgoOQd7md5HVb7TcQIA=
+cas_sent_to_gateway: false
+End Session Info
+Rendering template within layouts/default
+Rendering users/login
+Rendered shared/_top_navigation (1.0ms)
+Rendered shared/_edition (1.3ms)
+Rendered shared/navigation/_top_stories (2.3ms)
+  [4;36;1mUser Load (1678.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'jadmin') LIMIT 1[0m
+  [4;35;1mMultiValuedPreference Load (1635.7ms)[0m   [0mSELECT * FROM `multi_valued_preferences` WHERE (((`multi_valued_preferences`.`tag` = 'Region:-1:38' AND `multi_valued_preferences`.`owner_id` = 10000000 AND `multi_valued_preferences`.`owner_type` = 'User')) AND (`multi_valued_preferences`.`preference_id` = 2)) ORDER BY position ASC[0m
+  [4;36;1mClusterGroup Load (1637.0ms)[0m   [0;1mSELECT id, name FROM `cluster_groups` WHERE (`cluster_groups`.`id` IN (225,226,227,228,229,230,231,232)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`login` = 'jadmin') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `multi_valued_preferences` WHERE (((`multi_valued_preferences`.`tag` = 'Region:-1:38' AND `multi_valued_preferences`.`owner_id` = 10000000 AND `multi_valued_preferences`.`owner_type` = 'User')) AND (`multi_valued_preferences`.`preference_id` = 2)) ORDER BY position ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT id, name FROM `cluster_groups` WHERE (`cluster_groups`.`id` IN (225,226,227,228,229,230,231,232)) [0m
+Rendered shared/navigation/_sections (5009.8ms)
+Rendered shared/navigation/_my_topics (2.7ms)
+Rendered shared/navigation/_my_authors (2.2ms)
+Rendered shared/_navigation (5018.6ms)
+Rendered shared/_footer (1.5ms)
+Completed in 5053ms (View: 97, DB: 6341) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (208.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (207.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PasswordResetsController#new (for 127.0.0.1 at 2010-03-06 10:27:10) [GET]
+Rendering template within layouts/default
+Rendering password_resets/new
+Rendered shared/_top_navigation (1.0ms)
+Rendered shared/_edition (1.4ms)
+Rendered shared/navigation/_top_stories (2.4ms)
+  [4;36;1mUser Load (211.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'jadmin') LIMIT 1[0m
+  [4;35;1mMultiValuedPreference Load (213.6ms)[0m   [0mSELECT * FROM `multi_valued_preferences` WHERE (((`multi_valued_preferences`.`tag` = 'Region:-1:38' AND `multi_valued_preferences`.`owner_id` = 10000000 AND `multi_valued_preferences`.`owner_type` = 'User')) AND (`multi_valued_preferences`.`preference_id` = 2)) ORDER BY position ASC[0m
+  [4;36;1mClusterGroup Load (318.0ms)[0m   [0;1mSELECT id, name FROM `cluster_groups` WHERE (`cluster_groups`.`id` IN (225,226,227,228,229,230,231,232)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`login` = 'jadmin') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `multi_valued_preferences` WHERE (((`multi_valued_preferences`.`tag` = 'Region:-1:38' AND `multi_valued_preferences`.`owner_id` = 10000000 AND `multi_valued_preferences`.`owner_type` = 'User')) AND (`multi_valued_preferences`.`preference_id` = 2)) ORDER BY position ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT id, name FROM `cluster_groups` WHERE (`cluster_groups`.`id` IN (225,226,227,228,229,230,231,232)) [0m
+Rendered shared/navigation/_sections (885.2ms)
+Rendered shared/navigation/_my_topics (2.8ms)
+Rendered shared/navigation/_my_authors (2.3ms)
+Rendered shared/_navigation (894.2ms)
+Rendered shared/_footer (1.5ms)
+Completed in 924ms (View: 177, DB: 1158) | 200 OK [http://localhost/password_resets/new]
+  [4;36;1mSQL (1333.8ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1430.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-03-06 10:27:37) [GET]
+  Parameters: {"ticket"=>"ST-1267867662r391222B064CD70B2F2"}
+Redirected to https://login.jurnalo.com/login?service=http%3A%2F%2Flocalhost%3A3000%2Faccount%3Fedition%3Dint-en%26locale%3Den
+Filter chain halted as [:authenticate_using_cas_without_gateway] rendered_or_redirected.
+Completed in 6740ms (DB: 2764) | 302 Found [http://localhost/account?ticket=ST-1267867662r391222B064CD70B2F2]
+  [4;36;1mSQL (1740.6ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1842.8ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-03-06 10:27:54) [GET]
+  Parameters: {"ticket"=>"ST-1267867678r27A5E7BCD1035956F7", "edition"=>"int-en", "locale"=>"en"}
+Start Session Info
+cas_extra_attributes: locale_id33nameJustusauthjurnaloedition_region_id81id10000003edition_locale_id33activetrue
+edition: int-en
+service: 
+simple_captcha: b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x214dfa0>
+locale: en
+casfilteruser: ohlhaver
+session_id: c166ab20fdb13243bef85c1d5d9dd082
+previous_redirect_to_cas: Sa Mär 06 10:27:43 +0100 2010
+cas_user: ohlhaver
+jwa: 
+_csrf_token: GBuhVxxprWy7IG4fXWNPqhe/mgoOQd7md5HVb7TcQIA=
+cas_sent_to_gateway: true
+cas_validation_retry_count: 0
+End Session Info
+  [4;36;1mUser Load (1947.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+  [4;35;1mUserRole Load (2042.6ms)[0m   [0mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;36;1mUserRole Columns (511.8ms)[0m   [0;1mSHOW FIELDS FROM `user_roles`[0m
+Rendering template within layouts/default
+Rendering users/show
+Rendered users/_jurnalo_user (12.9ms)
+Rendered shared/_top_navigation (1.0ms)
+Rendered shared/_edition (1.3ms)
+Rendered shared/_navigation (4.0ms)
+Rendered shared/_footer (1.5ms)
+Completed in 12207ms (View: 39, DB: 8085) | 200 OK [http://localhost/account?edition=int-en&locale=en&ticket=ST-1267867678r27A5E7BCD1035956F7]
+  [4;35;1mSQL (208.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (208.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SourcePreferencesController#index (for 127.0.0.1 at 2010-03-06 10:28:26) [GET]
+  Parameters: {"user_id"=>"10000003"}
+  [4;35;1mUser Load (211.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Redirected to https://login.jurnalo.com/login?service=http%3A%2F%2Flocalhost%3A3000%2Fusers%2F10000003%2Fsource_preferences%3Fedition%3Dint-en%26locale%3Den
+Filter chain halted as [:authenticate_using_cas_without_gateway] rendered_or_redirected.
+Completed in 461ms (DB: 628) | 302 Found [http://localhost/users/10000003/source_preferences]
+  [4;36;1mSQL (205.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (205.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SourcePreferencesController#index (for 127.0.0.1 at 2010-03-06 10:28:28) [GET]
+  Parameters: {"ticket"=>"ST-1267867720rED91C2EAE9B4390EF8", "user_id"=>"10000003", "edition"=>"int-en", "locale"=>"en"}
+  [4;36;1mUser Load (209.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+cas_extra_attributes: locale_id33nameJustusauthjurnaloedition_region_id81id10000003edition_locale_id33activetrue
+edition: int-en
+revalidate: 2010-03-06 09:38:26 UTC
+service: 
+simple_captcha: b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x231fc20>
+locale: en
+casfilteruser: ohlhaver
+session_id: c166ab20fdb13243bef85c1d5d9dd082
+previous_redirect_to_cas: Sa Mär 06 10:28:27 +0100 2010
+jwa: 
+cas_user: ohlhaver
+_csrf_token: GBuhVxxprWy7IG4fXWNPqhe/mgoOQd7md5HVb7TcQIA=
+cas_sent_to_gateway: false
+cas_validation_retry_count: 0
+End Session Info
+  [4;35;1mUserRole Load (205.7ms)[0m   [0mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;36;1mSourceSubscription Load (212.9ms)[0m   [0;1mSELECT `source_subscriptions`.* FROM `source_subscriptions` LEFT OUTER JOIN sources ON (sources.id = source_subscriptions.source_id) WHERE (`source_subscriptions`.owner_id = 10000003 AND `source_subscriptions`.owner_type = 'User') ORDER BY source_subscriptions.preference DESC, sources.name ASC LIMIT 0, 30[0m
+  [4;35;1mSourceSubscription Columns (207.1ms)[0m   [0mSHOW FIELDS FROM `source_subscriptions`[0m
+  [4;36;1mSource Columns (206.3ms)[0m   [0;1mSHOW FIELDS FROM `sources`[0m
+  [4;35;1mSource Load (209.3ms)[0m   [0mSELECT * FROM `sources` WHERE (`sources`.`id` IN (33,6,11,22,7,34,8,9,15,49,16,53,147,10)) [0m
+Rendering template within layouts/default
+Rendering source_preferences/index
+Rendered shared/_top_navigation (1.0ms)
+Rendered shared/_edition (1.3ms)
+Rendered shared/_navigation (4.2ms)
+Rendered shared/_footer (1.5ms)
+Completed in 2577ms (View: 63, DB: 1661) | 200 OK [http://localhost/users/10000003/source_preferences?edition=int-en&locale=en&ticket=ST-1267867720rED91C2EAE9B4390EF8]
+  [4;36;1mSQL (205.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (205.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AuthorPreferencesController#index (for 127.0.0.1 at 2010-03-06 10:28:41) [GET]
+  Parameters: {"user_id"=>"10000003"}
+  [4;36;1mUser Load (210.9ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+revalidate: 2010-03-06 09:38:26 UTC
+edition: int-en
+cas_extra_attributes: nameJustuslocale_id33authjurnaloid10000003edition_region_id81edition_locale_id33activetrue
+service: 
+simple_captcha: b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3
+locale: en
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x1a66638>
+casfilteruser: ohlhaver
+previous_redirect_to_cas: Sa Mär 06 10:28:27 +0100 2010
+session_id: c166ab20fdb13243bef85c1d5d9dd082
+jwa: 
+cas_user: ohlhaver
+_csrf_token: GBuhVxxprWy7IG4fXWNPqhe/mgoOQd7md5HVb7TcQIA=
+cas_validation_retry_count: 0
+cas_sent_to_gateway: false
+End Session Info
+  [4;35;1mUserRole Load (204.8ms)[0m   [0mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;36;1mAuthorSubscription Load (210.2ms)[0m   [0;1mSELECT * FROM `author_subscriptions` WHERE (`author_subscriptions`.owner_id = 10000003 AND `author_subscriptions`.owner_type = 'User') LIMIT 0, 30[0m
+  [4;35;1mAuthorSubscription Columns (208.7ms)[0m   [0mSHOW FIELDS FROM `author_subscriptions`[0m
+  [4;36;1mAuthor Load (261.5ms)[0m   [0;1mSELECT * FROM `authors` WHERE (`authors`.`id` IN (9427,9430,9429,1798,6143,5694)) [0m
+Rendering template within layouts/default
+Rendering author_preferences/index
+Rendered shared/_top_navigation (1.0ms)
+Rendered shared/_edition (1.3ms)
+Rendered shared/_navigation (4.3ms)
+Rendered shared/_footer (1.5ms)
+Completed in 1248ms (View: 135, DB: 1507) | 200 OK [http://localhost/users/10000003/author_preferences]
+  [4;35;1mSQL (207.8ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (208.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TopicPreferencesController#index (for 127.0.0.1 at 2010-03-06 10:28:49) [GET]
+  Parameters: {"user_id"=>"10000003"}
+  [4;35;1mUser Load (212.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+cas_extra_attributes: locale_id33nameJustusauthjurnaloedition_region_id81id10000003edition_locale_id33activetrue
+edition: int-en
+revalidate: 2010-03-06 09:38:26 UTC
+service: 
+simple_captcha: b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x22b75f8>
+locale: en
+casfilteruser: ohlhaver
+session_id: c166ab20fdb13243bef85c1d5d9dd082
+previous_redirect_to_cas: Sa Mär 06 10:28:27 +0100 2010
+jwa: 
+cas_user: ohlhaver
+_csrf_token: GBuhVxxprWy7IG4fXWNPqhe/mgoOQd7md5HVb7TcQIA=
+cas_sent_to_gateway: false
+cas_validation_retry_count: 0
+End Session Info
+  [4;36;1mUserRole Load (210.2ms)[0m   [0;1mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;35;1mTopicSubscription Columns (210.7ms)[0m   [0mSHOW FIELDS FROM `topic_subscriptions`[0m
+  [4;36;1mTopicSubscription Load (291.9ms)[0m   [0;1mSELECT * FROM `topic_subscriptions` WHERE (`topic_subscriptions`.owner_id = 10000003 AND `topic_subscriptions`.owner_type = 'User') ORDER BY position ASC LIMIT 0, 30[0m
+Rendering template within layouts/default
+Rendering topic_preferences/index
+Rendered topic_preferences/_js (1.0ms)
+Rendered topic_preferences/_simple_form (2.4ms)
+Rendered shared/_top_navigation (1.1ms)
+Rendered shared/_edition (1.4ms)
+Rendered shared/_navigation (4.3ms)
+Rendered shared/_footer (1.6ms)
+Completed in 1134ms (View: 190, DB: 1341) | 200 OK [http://localhost/users/10000003/topic_preferences]
+  [4;35;1mSQL (217.9ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (233.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PreferencesController#search (for 127.0.0.1 at 2010-03-06 10:28:57) [GET]
+  Parameters: {"id"=>"10000003"}
+  [4;35;1mUser Load (209.8ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+revalidate: 2010-03-06 09:38:26 UTC
+edition: int-en
+cas_extra_attributes: nameJustuslocale_id33authjurnaloid10000003edition_region_id81edition_locale_id33activetrue
+service: 
+simple_captcha: b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3
+locale: en
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x2301144>
+casfilteruser: ohlhaver
+previous_redirect_to_cas: Sa Mär 06 10:28:27 +0100 2010
+session_id: c166ab20fdb13243bef85c1d5d9dd082
+jwa: 
+cas_user: ohlhaver
+_csrf_token: GBuhVxxprWy7IG4fXWNPqhe/mgoOQd7md5HVb7TcQIA=
+cas_validation_retry_count: 0
+cas_sent_to_gateway: false
+End Session Info
+  [4;36;1mUserRole Load (205.4ms)[0m   [0;1mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;35;1mPreference Load (319.6ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.owner_id = 10000003 AND `preferences`.owner_type = 'User') LIMIT 1[0m
+Rendering template within layouts/default
+Rendering preferences/search
+  [4;36;1mMultiValuedPreference Load (210.7ms)[0m   [0;1mSELECT * FROM `multi_valued_preferences` WHERE ((`multi_valued_preferences`.`preference_id` = 1 AND `multi_valued_preferences`.`owner_id` = 10000003 AND `multi_valued_preferences`.`owner_type` = 'User')) ORDER BY position, position ASC[0m
+Rendered shared/_top_navigation (1.2ms)
+Rendered shared/_edition (1.6ms)
+Rendered shared/_navigation (4.6ms)
+Rendered shared/_footer (1.5ms)
+Completed in 1001ms (View: 45, DB: 1397) | 200 OK [http://localhost/preferences/10000003/search]
+  [4;35;1mSQL (305.6ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (204.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PreferencesController#display (for 127.0.0.1 at 2010-03-06 10:29:07) [GET]
+  Parameters: {"id"=>"10000003"}
+  [4;35;1mUser Load (209.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+cas_extra_attributes: locale_id33nameJustusauthjurnaloedition_region_id81id10000003edition_locale_id33activetrue
+edition: int-en
+revalidate: 2010-03-06 09:38:26 UTC
+service: 
+simple_captcha: b49d38aab83e1aaa4c0e3face4ebed65bba8b0d3
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x1d38f3c>
+locale: en
+casfilteruser: ohlhaver
+session_id: c166ab20fdb13243bef85c1d5d9dd082
+previous_redirect_to_cas: Sa Mär 06 10:28:27 +0100 2010
+jwa: 
+cas_user: ohlhaver
+_csrf_token: GBuhVxxprWy7IG4fXWNPqhe/mgoOQd7md5HVb7TcQIA=
+cas_sent_to_gateway: false
+cas_validation_retry_count: 0
+End Session Info
+  [4;36;1mUserRole Load (206.5ms)[0m   [0;1mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;35;1mPreference Load (210.5ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.owner_id = 10000003 AND `preferences`.owner_type = 'User') LIMIT 1[0m
+Rendering template within layouts/default
+Rendering preferences/display
+Rendered shared/_top_navigation (1.0ms)
+Rendered shared/_edition (1.2ms)
+Rendered shared/_navigation (4.1ms)
+Rendered shared/_footer (1.5ms)
+Completed in 672ms (View: 35, DB: 1137) | 200 OK [http://localhost/preferences/10000003/display]
+  [4;36;1mSQL (154.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (156.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (156.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mAuthor Columns (156.3ms)[0m   [0mSHOW FIELDS FROM `authors`[0m
+  [4;36;1mCategory Load (154.2ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`code` IN ('POL','BUS','CUL','SCI','TEC','SPO','MIX','OPI')) [0m
+  [4;35;1mCategory Columns (154.3ms)[0m   [0mSHOW FIELDS FROM `categories`[0m
+  [4;36;1mCategory Load (154.8ms)[0m   [0;1mSELECT * FROM `categories` WHERE (`categories`.`code` IN ('POL','BUS','CUL','SCI','TEC','OPI')) [0m
+  [4;35;1mLanguage Load (154.5ms)[0m   [0mSELECT * FROM `languages` WHERE (`languages`.`code` IN ('de','en')) ORDER BY code ASC[0m
+  [4;36;1mLanguage Columns (155.1ms)[0m   [0;1mSHOW FIELDS FROM `languages`[0m
+  [4;35;1mRegion Load (153.6ms)[0m   [0mSELECT * FROM `regions` WHERE (`regions`.`code` IN ('DE','AT','CH','INT')) ORDER BY id[0m
+  [4;36;1mRegion Columns (168.7ms)[0m   [0;1mSHOW FIELDS FROM `regions`[0m
+  [4;35;1mSQL (155.0ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mStory Columns (156.5ms)[0m   [0;1mSHOW FIELDS FROM `stories`[0m
+  [4;35;1mFeedCategory Columns (154.5ms)[0m   [0mSHOW FIELDS FROM `feed_categories`[0m
+  [4;36;1mUser Columns (156.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (153.9ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (154.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-03-15 18:40:17) [GET]
+Start Session Info
+edition: int-en
+service: 
+locale: en
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+jwa: 
+cas_sent_to_gateway: false
+End Session Info
+Rendering template within layouts/default
+Rendering users/new
+Rendered users/_jurnalo_user (26.4ms)
+DEPRECATION WARNING: ActionController::Session::AbstractStore::SessionHash#session_id has been deprecated. Please use request.session_options[:id] instead.. (called from simple_captcha_key at /Users/justus/JUserInterface/vendor/plugins/simple_captcha/lib/simple_captcha_config.rb:15)
+  [4;35;1mSimpleCaptchaData Columns (156.0ms)[0m   [0mSHOW FIELDS FROM `simple_captcha_data`[0m
+  [4;36;1mSimpleCaptchaData Load (155.2ms)[0m   [0;1mSELECT * FROM `simple_captcha_data` WHERE (`simple_captcha_data`.`key` = '4773d07bfd005463956fc95ea299f1ff295755e8') LIMIT 1[0m
+  [4;35;1mSQL (154.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSimpleCaptchaData Create (175.0ms)[0m   [0;1mINSERT INTO `simple_captcha_data` (`updated_at`, `value`, `key`, `created_at`) VALUES('2010-03-15 17:40:17', 'KKSEME', '4773d07bfd005463956fc95ea299f1ff295755e8', '2010-03-15 17:40:17')[0m
+  [4;35;1mSQL (185.5ms)[0m   [0mCOMMIT[0m
+Rendered simple_captcha/_simple_captcha (15.8ms)
+Rendered shared/_top_navigation (11.6ms)
+Rendered shared/_edition (2.9ms)
+Rendered shared/navigation/_top_stories (21.0ms)
+  [4;36;1mPreference Columns (155.9ms)[0m   [0;1mSHOW FIELDS FROM `preferences`[0m
+  [4;35;1mUser Load (157.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`login` = 'jadmin') LIMIT 1[0m
+  [4;36;1mMultiValuedPreference Load (197.1ms)[0m   [0;1mSELECT * FROM `multi_valued_preferences` WHERE (((`multi_valued_preferences`.`tag` = 'Region:-1:38' AND `multi_valued_preferences`.`owner_id` = 10000000 AND `multi_valued_preferences`.`owner_type` = 'User')) AND (`multi_valued_preferences`.`preference_id` = 2)) ORDER BY position ASC[0m
+  [4;35;1mMultiValuedPreference Columns (155.8ms)[0m   [0mSHOW FIELDS FROM `multi_valued_preferences`[0m
+  [4;36;1mClusterGroup Load (153.7ms)[0m   [0;1mSELECT id, name FROM `cluster_groups` WHERE (`cluster_groups`.`id` IN (225,226,227,228,229,230,231,232)) [0m
+  [4;35;1mClusterGroup Columns (156.2ms)[0m   [0mSHOW FIELDS FROM `cluster_groups`[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'jadmin') LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `multi_valued_preferences` WHERE (((`multi_valued_preferences`.`tag` = 'Region:-1:38' AND `multi_valued_preferences`.`owner_id` = 10000000 AND `multi_valued_preferences`.`owner_type` = 'User')) AND (`multi_valued_preferences`.`preference_id` = 2)) ORDER BY position ASC[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT id, name FROM `cluster_groups` WHERE (`cluster_groups`.`id` IN (225,226,227,228,229,230,231,232)) [0m
+Rendered shared/navigation/_sections (1070.5ms)
+Rendered shared/navigation/_my_topics (7.3ms)
+Rendered shared/navigation/_my_authors (6.0ms)
+Rendered shared/_navigation (1140.0ms)
+Rendered shared/_footer (30.2ms)
+Completed in 2352ms (View: 502, DB: 2110) | 200 OK [http://localhost/]
+  [4;35;1mSQL (155.3ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (183.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SimpleCaptchaController#simple_captcha (for 127.0.0.1 at 2010-03-15 18:40:20) [GET]
+  Parameters: {"time"=>"1268674818", "image_style"=>"blue", "simple_captcha_key"=>"4773d07bfd005463956fc95ea299f1ff295755e8", "distortion"=>"high"}
+  [4;35;1mSimpleCaptchaData Load (157.2ms)[0m   [0mSELECT * FROM `simple_captcha_data` WHERE (`simple_captcha_data`.`key` = '4773d07bfd005463956fc95ea299f1ff295755e8') LIMIT 1[0m
+Sending data simple_captcha.jpg
+Completed in 1186ms (View: 1, DB: 496) | 200 OK [http://localhost/simple_captcha/simple_captcha?distortion=high&image_style=blue&simple_captcha_key=4773d07bfd005463956fc95ea299f1ff295755e8&time=1268674818]
+  [4;36;1mSQL (154.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (153.9ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#login (for 127.0.0.1 at 2010-03-15 18:40:33) [GET]
+Start Session Info
+edition: int-en
+service: 
+simple_captcha: 4773d07bfd005463956fc95ea299f1ff295755e8
+locale: en
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+jwa: 
+_csrf_token: uaxRj9FbkeD/PN70zRArCVPxlNWBb2vcojn4wtne7gY=
+cas_sent_to_gateway: false
+End Session Info
+Rendering template within layouts/default
+Rendering users/login
+Rendered shared/_top_navigation (1.1ms)
+Rendered shared/_edition (1.4ms)
+Rendered shared/navigation/_top_stories (2.3ms)
+  [4;36;1mUser Load (157.9ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`login` = 'jadmin') LIMIT 1[0m
+  [4;35;1mMultiValuedPreference Load (155.4ms)[0m   [0mSELECT * FROM `multi_valued_preferences` WHERE (((`multi_valued_preferences`.`tag` = 'Region:-1:38' AND `multi_valued_preferences`.`owner_id` = 10000000 AND `multi_valued_preferences`.`owner_type` = 'User')) AND (`multi_valued_preferences`.`preference_id` = 2)) ORDER BY position ASC[0m
+  [4;36;1mClusterGroup Load (153.8ms)[0m   [0;1mSELECT id, name FROM `cluster_groups` WHERE (`cluster_groups`.`id` IN (225,226,227,228,229,230,231,232)) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`login` = 'jadmin') LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `multi_valued_preferences` WHERE (((`multi_valued_preferences`.`tag` = 'Region:-1:38' AND `multi_valued_preferences`.`owner_id` = 10000000 AND `multi_valued_preferences`.`owner_type` = 'User')) AND (`multi_valued_preferences`.`preference_id` = 2)) ORDER BY position ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT id, name FROM `cluster_groups` WHERE (`cluster_groups`.`id` IN (225,226,227,228,229,230,231,232)) [0m
+Rendered shared/navigation/_sections (530.5ms)
+Rendered shared/navigation/_my_topics (2.7ms)
+Rendered shared/navigation/_my_authors (2.2ms)
+Rendered shared/_navigation (539.3ms)
+Rendered shared/_footer (1.5ms)
+Completed in 602ms (View: 131, DB: 775) | 200 OK [http://localhost/login]
+  [4;36;1mSQL (153.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (154.4ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#login (for 127.0.0.1 at 2010-03-15 18:40:37) [GET]
+  Parameters: {"ticket"=>"ST-1268674865rAF408B4C5891450849", "edition"=>"int-en", "locale"=>"en"}
+Start Session Info
+cas_extra_attributes: locale_id33nameJustusauthjurnaloedition_region_id81id10000003edition_locale_id33activetrue
+edition: int-en
+service: 
+simple_captcha: 4773d07bfd005463956fc95ea299f1ff295755e8
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x1a8c9f0>
+locale: en
+casfilteruser: ohlhaver
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+cas_user: ohlhaver
+jwa: 
+_csrf_token: uaxRj9FbkeD/PN70zRArCVPxlNWBb2vcojn4wtne7gY=
+cas_sent_to_gateway: false
+End Session Info
+  [4;36;1mUser Load (158.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Redirected to https://login.jurnalo.com:443/login?edition=int-en&locale=en
+Completed in 1088ms (DB: 466) | 302 Found [http://localhost/login?edition=int-en&locale=en&ticket=ST-1268674865rAF408B4C5891450849]
+  [4;35;1mSQL (154.7ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (154.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#login (for 127.0.0.1 at 2010-03-15 18:40:44) [GET]
+  Parameters: {"e"=>"1"}
+  [4;35;1mUser Load (158.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Redirected to https://login.jurnalo.com/login?service=http%3A%2F%2Flocalhost%3A3000%2Flogin%3Fe%3D1%26edition%3Dint-en%26locale%3Den&gateway=true
+Filter chain halted as [:authenticate_using_cas_with_gateway] rendered_or_redirected.
+Completed in 407ms (DB: 467) | 302 Found [http://localhost/login?e=1]
+  [4;36;1mSQL (153.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (153.8ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#login (for 127.0.0.1 at 2010-03-15 18:40:46) [GET]
+  Parameters: {"ticket"=>"ST-1268674874r4DED23C3E05C6A05D1", "e"=>"1", "edition"=>"int-en", "locale"=>"en"}
+  [4;36;1mUser Load (155.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+cas_extra_attributes: locale_id33nameJustusauthjurnaloedition_region_id81id10000003edition_locale_id33activetrue
+edition: int-en
+revalidate: 2010-03-15 17:50:45 UTC
+service: 
+simple_captcha: 4773d07bfd005463956fc95ea299f1ff295755e8
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x2287ed4>
+locale: en
+casfilteruser: ohlhaver
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+previous_redirect_to_cas: Mo Mär 15 18:40:45 +0100 2010
+jwa: 
+cas_user: ohlhaver
+_csrf_token: uaxRj9FbkeD/PN70zRArCVPxlNWBb2vcojn4wtne7gY=
+cas_sent_to_gateway: true
+cas_validation_retry_count: 0
+End Session Info
+Redirected to https://login.jurnalo.com:443/login?e=1&edition=int-en&locale=en
+Completed in 1107ms (DB: 463) | 302 Found [http://localhost/login?e=1&edition=int-en&locale=en&ticket=ST-1268674874r4DED23C3E05C6A05D1]
+  [4;35;1mSQL (153.4ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (153.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#login (for 127.0.0.1 at 2010-03-15 18:40:55) [GET]
+  Parameters: {"ticket"=>"ST-1268674883r4AB0DB738527830D4B", "edition"=>"int-en", "locale"=>"en"}
+  [4;35;1mUser Load (156.8ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+revalidate: 2010-03-15 17:50:45 UTC
+edition: int-en
+cas_extra_attributes: nameJustuslocale_id33authjurnaloid10000003edition_region_id81edition_locale_id33activetrue
+service: 
+simple_captcha: 4773d07bfd005463956fc95ea299f1ff295755e8
+locale: en
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x21af458>
+casfilteruser: ohlhaver
+previous_redirect_to_cas: Mo Mär 15 18:40:45 +0100 2010
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+jwa: 
+cas_user: ohlhaver
+_csrf_token: uaxRj9FbkeD/PN70zRArCVPxlNWBb2vcojn4wtne7gY=
+cas_validation_retry_count: 0
+cas_sent_to_gateway: true
+End Session Info
+Redirected to https://login.jurnalo.com:443/login?edition=int-en&locale=en
+Completed in 165ms (DB: 463) | 302 Found [http://localhost/login?edition=int-en&locale=en&ticket=ST-1268674883r4AB0DB738527830D4B]
+  [4;36;1mSQL (153.8ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (154.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-03-15 18:40:59) [GET]
+  [4;36;1mUser Load (156.4ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+cas_extra_attributes: locale_id33nameJustusauthjurnaloedition_region_id81id10000003edition_locale_id33activetrue
+edition: int-en
+revalidate: 2010-03-15 17:50:45 UTC
+service: 
+simple_captcha: 4773d07bfd005463956fc95ea299f1ff295755e8
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x1d35198>
+locale: en
+casfilteruser: ohlhaver
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+previous_redirect_to_cas: Mo Mär 15 18:40:45 +0100 2010
+jwa: 
+cas_user: ohlhaver
+_csrf_token: uaxRj9FbkeD/PN70zRArCVPxlNWBb2vcojn4wtne7gY=
+cas_sent_to_gateway: true
+cas_validation_retry_count: 0
+End Session Info
+  [4;35;1mUserRole Load (154.6ms)[0m   [0mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;36;1mUserRole Columns (154.3ms)[0m   [0;1mSHOW FIELDS FROM `user_roles`[0m
+Rendering template within layouts/default
+Rendering users/show
+Rendered users/_jurnalo_user (15.8ms)
+Rendered shared/_top_navigation (1.0ms)
+Rendered shared/_edition (1.3ms)
+Rendered shared/_navigation (4.1ms)
+Rendered shared/_footer (1.5ms)
+Completed in 585ms (View: 109, DB: 773) | 200 OK [http://localhost/account]
+  [4;35;1mSQL (153.7ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (153.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PreferencesController#display (for 127.0.0.1 at 2010-03-15 18:41:05) [GET]
+  Parameters: {"id"=>"10000003"}
+  [4;35;1mUser Load (157.4ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+revalidate: 2010-03-15 17:50:45 UTC
+edition: int-en
+cas_extra_attributes: nameJustuslocale_id33authjurnaloid10000003edition_region_id81edition_locale_id33activetrue
+service: 
+simple_captcha: 4773d07bfd005463956fc95ea299f1ff295755e8
+locale: en
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x13dd618>
+casfilteruser: ohlhaver
+previous_redirect_to_cas: Mo Mär 15 18:40:45 +0100 2010
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+jwa: 
+cas_user: ohlhaver
+_csrf_token: uaxRj9FbkeD/PN70zRArCVPxlNWBb2vcojn4wtne7gY=
+cas_validation_retry_count: 0
+cas_sent_to_gateway: true
+End Session Info
+  [4;36;1mUserRole Load (153.8ms)[0m   [0;1mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;35;1mPreference Load (156.6ms)[0m   [0mSELECT * FROM `preferences` WHERE (`preferences`.owner_id = 10000003 AND `preferences`.owner_type = 'User') LIMIT 1[0m
+Rendering template within layouts/default
+Rendering preferences/display
+Rendered shared/_top_navigation (1.1ms)
+Rendered shared/_edition (1.4ms)
+Rendered shared/_navigation (4.4ms)
+Rendered shared/_footer (1.6ms)
+Completed in 616ms (View: 138, DB: 775) | 200 OK [http://localhost/preferences/10000003/display]
+  [4;36;1mSQL (153.7ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (154.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing PreferencesController#search (for 127.0.0.1 at 2010-03-15 18:41:08) [GET]
+  Parameters: {"id"=>"10000003"}
+  [4;36;1mUser Load (156.6ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+cas_extra_attributes: locale_id33nameJustusauthjurnaloedition_region_id81id10000003edition_locale_id33activetrue
+edition: int-en
+revalidate: 2010-03-15 17:50:45 UTC
+service: 
+simple_captcha: 4773d07bfd005463956fc95ea299f1ff295755e8
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x22edfb8>
+locale: en
+casfilteruser: ohlhaver
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+previous_redirect_to_cas: Mo Mär 15 18:40:45 +0100 2010
+jwa: 
+cas_user: ohlhaver
+_csrf_token: uaxRj9FbkeD/PN70zRArCVPxlNWBb2vcojn4wtne7gY=
+cas_sent_to_gateway: true
+cas_validation_retry_count: 0
+End Session Info
+  [4;35;1mUserRole Load (153.9ms)[0m   [0mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;36;1mPreference Load (156.7ms)[0m   [0;1mSELECT * FROM `preferences` WHERE (`preferences`.owner_id = 10000003 AND `preferences`.owner_type = 'User') LIMIT 1[0m
+Rendering template within layouts/default
+Rendering preferences/search
+  [4;35;1mMultiValuedPreference Load (155.8ms)[0m   [0mSELECT * FROM `multi_valued_preferences` WHERE ((`multi_valued_preferences`.`preference_id` = 1 AND `multi_valued_preferences`.`owner_id` = 10000003 AND `multi_valued_preferences`.`owner_type` = 'User')) ORDER BY position, position ASC[0m
+Rendered shared/_top_navigation (1.0ms)
+Rendered shared/_edition (1.4ms)
+Rendered shared/_navigation (4.4ms)
+Rendered shared/_footer (1.7ms)
+Completed in 699ms (View: 67, DB: 931) | 200 OK [http://localhost/preferences/10000003/search]
+  [4;36;1mSQL (154.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (154.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TopicPreferencesController#index (for 127.0.0.1 at 2010-03-15 18:41:14) [GET]
+  Parameters: {"user_id"=>"10000003"}
+  [4;36;1mUser Load (155.7ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+revalidate: 2010-03-15 17:50:45 UTC
+edition: int-en
+cas_extra_attributes: nameJustuslocale_id33authjurnaloid10000003edition_region_id81edition_locale_id33activetrue
+service: 
+simple_captcha: 4773d07bfd005463956fc95ea299f1ff295755e8
+locale: en
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x1d578c4>
+casfilteruser: ohlhaver
+previous_redirect_to_cas: Mo Mär 15 18:40:45 +0100 2010
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+jwa: 
+cas_user: ohlhaver
+_csrf_token: uaxRj9FbkeD/PN70zRArCVPxlNWBb2vcojn4wtne7gY=
+cas_validation_retry_count: 0
+cas_sent_to_gateway: true
+End Session Info
+  [4;35;1mUserRole Load (153.3ms)[0m   [0mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;36;1mTopicSubscription Columns (155.4ms)[0m   [0;1mSHOW FIELDS FROM `topic_subscriptions`[0m
+  [4;35;1mTopicSubscription Load (158.6ms)[0m   [0mSELECT * FROM `topic_subscriptions` WHERE (`topic_subscriptions`.owner_id = 10000003 AND `topic_subscriptions`.owner_type = 'User') ORDER BY position ASC LIMIT 0, 30[0m
+Rendering template within layouts/default
+Rendering topic_preferences/index
+Rendered topic_preferences/_js (12.4ms)
+Rendered topic_preferences/_simple_form (40.1ms)
+Rendered shared/_top_navigation (1.7ms)
+Rendered shared/_edition (1.7ms)
+Rendered shared/_navigation (4.6ms)
+Rendered shared/_footer (1.6ms)
+Completed in 912ms (View: 270, DB: 931) | 200 OK [http://localhost/users/10000003/topic_preferences]
+  [4;36;1mSQL (154.5ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (154.7ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AuthorPreferencesController#index (for 127.0.0.1 at 2010-03-15 18:41:21) [GET]
+  Parameters: {"user_id"=>"10000003"}
+  [4;36;1mUser Load (156.8ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+cas_extra_attributes: locale_id33nameJustusauthjurnaloedition_region_id81id10000003edition_locale_id33activetrue
+edition: int-en
+revalidate: 2010-03-15 17:50:45 UTC
+service: 
+simple_captcha: 4773d07bfd005463956fc95ea299f1ff295755e8
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x1d8c650>
+locale: en
+casfilteruser: ohlhaver
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+previous_redirect_to_cas: Mo Mär 15 18:40:45 +0100 2010
+jwa: 
+cas_user: ohlhaver
+_csrf_token: uaxRj9FbkeD/PN70zRArCVPxlNWBb2vcojn4wtne7gY=
+cas_sent_to_gateway: true
+cas_validation_retry_count: 0
+End Session Info
+  [4;35;1mUserRole Load (153.9ms)[0m   [0mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;36;1mAuthorSubscription Load (155.0ms)[0m   [0;1mSELECT * FROM `author_subscriptions` WHERE (`author_subscriptions`.owner_id = 10000003 AND `author_subscriptions`.owner_type = 'User') LIMIT 0, 30[0m
+  [4;35;1mAuthorSubscription Columns (155.2ms)[0m   [0mSHOW FIELDS FROM `author_subscriptions`[0m
+  [4;36;1mAuthor Load (154.7ms)[0m   [0;1mSELECT * FROM `authors` WHERE (`authors`.`id` IN (9487,2172,1798,6143,2419,5694)) [0m
+Rendering template within layouts/default
+Rendering author_preferences/index
+Rendered shared/_top_navigation (1.0ms)
+Rendered shared/_edition (1.3ms)
+Rendered shared/_navigation (4.2ms)
+Rendered shared/_footer (1.5ms)
+Completed in 881ms (View: 90, DB: 1085) | 200 OK [http://localhost/users/10000003/author_preferences]
+  [4;35;1mSQL (153.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (155.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SourcePreferencesController#index (for 127.0.0.1 at 2010-03-15 18:41:25) [GET]
+  Parameters: {"user_id"=>"10000003"}
+  [4;35;1mUser Load (157.8ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+revalidate: 2010-03-15 17:50:45 UTC
+edition: int-en
+cas_extra_attributes: nameJustuslocale_id33authjurnaloid10000003edition_region_id81edition_locale_id33activetrue
+service: 
+simple_captcha: 4773d07bfd005463956fc95ea299f1ff295755e8
+locale: en
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x10067d8>
+casfilteruser: ohlhaver
+previous_redirect_to_cas: Mo Mär 15 18:40:45 +0100 2010
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+jwa: 
+cas_user: ohlhaver
+_csrf_token: uaxRj9FbkeD/PN70zRArCVPxlNWBb2vcojn4wtne7gY=
+cas_validation_retry_count: 0
+cas_sent_to_gateway: true
+End Session Info
+  [4;36;1mUserRole Load (153.8ms)[0m   [0;1mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;35;1mSourceSubscription Load (156.4ms)[0m   [0mSELECT `source_subscriptions`.* FROM `source_subscriptions` LEFT OUTER JOIN sources ON (sources.id = source_subscriptions.source_id) WHERE (`source_subscriptions`.owner_id = 10000003 AND `source_subscriptions`.owner_type = 'User') ORDER BY source_subscriptions.preference DESC, sources.name ASC LIMIT 0, 30[0m
+  [4;36;1mSourceSubscription Columns (155.0ms)[0m   [0;1mSHOW FIELDS FROM `source_subscriptions`[0m
+  [4;35;1mSource Columns (156.2ms)[0m   [0mSHOW FIELDS FROM `sources`[0m
+  [4;36;1mSource Load (155.6ms)[0m   [0;1mSELECT * FROM `sources` WHERE (`sources`.`id` IN (33,6,11,22,7,12,34,8,9,15,49,16,100,29,53,147,10)) [0m
+Rendering template within layouts/default
+Rendering source_preferences/index
+Rendered shared/_top_navigation (0.9ms)
+Rendered shared/_edition (1.3ms)
+Rendered shared/_navigation (4.1ms)
+Rendered shared/_footer (1.6ms)
+Completed in 1211ms (View: 168, DB: 1243) | 200 OK [http://localhost/users/10000003/source_preferences]
+  [4;35;1mSQL (153.9ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (154.5ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing AuthorPreferencesController#index (for 127.0.0.1 at 2010-03-15 18:41:30) [GET]
+  Parameters: {"user_id"=>"10000003"}
+  [4;35;1mUser Load (157.9ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+cas_extra_attributes: locale_id33nameJustusauthjurnaloedition_region_id81id10000003edition_locale_id33activetrue
+edition: int-en
+revalidate: 2010-03-15 17:50:45 UTC
+service: 
+simple_captcha: 4773d07bfd005463956fc95ea299f1ff295755e8
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x211086c>
+locale: en
+casfilteruser: ohlhaver
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+previous_redirect_to_cas: Mo Mär 15 18:40:45 +0100 2010
+jwa: 
+cas_user: ohlhaver
+_csrf_token: uaxRj9FbkeD/PN70zRArCVPxlNWBb2vcojn4wtne7gY=
+cas_sent_to_gateway: true
+cas_validation_retry_count: 0
+End Session Info
+  [4;36;1mUserRole Load (154.5ms)[0m   [0;1mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+  [4;35;1mAuthorSubscription Load (155.0ms)[0m   [0mSELECT * FROM `author_subscriptions` WHERE (`author_subscriptions`.owner_id = 10000003 AND `author_subscriptions`.owner_type = 'User') LIMIT 0, 30[0m
+  [4;36;1mAuthor Load (155.1ms)[0m   [0;1mSELECT * FROM `authors` WHERE (`authors`.`id` IN (9487,2172,1798,6143,2419,5694)) [0m
+Rendering template within layouts/default
+Rendering author_preferences/index
+Rendered shared/_top_navigation (1.0ms)
+Rendered shared/_edition (1.3ms)
+Rendered shared/_navigation (4.2ms)
+Rendered shared/_footer (1.5ms)
+Completed in 678ms (View: 43, DB: 931) | 200 OK [http://localhost/users/10000003/author_preferences]
+  [4;35;1mSQL (155.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (153.9ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-03-15 18:41:34) [GET]
+  [4;35;1mUser Load (158.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 10000003) LIMIT 1[0m
+Start Session Info
+revalidate: 2010-03-15 17:50:45 UTC
+edition: int-en
+cas_extra_attributes: nameJustuslocale_id33authjurnaloid10000003edition_region_id81edition_locale_id33activetrue
+service: 
+simple_captcha: 4773d07bfd005463956fc95ea299f1ff295755e8
+locale: en
+cas_last_valid_ticket: #<CASClient::ServiceTicket:0x105cc00>
+casfilteruser: ohlhaver
+previous_redirect_to_cas: Mo Mär 15 18:40:45 +0100 2010
+session_id: 5fb01962d4af4502e03ae9018cb6c71f
+jwa: 
+cas_user: ohlhaver
+_csrf_token: uaxRj9FbkeD/PN70zRArCVPxlNWBb2vcojn4wtne7gY=
+cas_validation_retry_count: 0
+cas_sent_to_gateway: true
+End Session Info
+  [4;36;1mUserRole Load (154.4ms)[0m   [0;1mSELECT * FROM `user_roles` WHERE ((`user_roles`.`user_id` = 10000003)) LIMIT 1[0m
+Rendering template within layouts/default
+Rendering users/show
+Rendered users/_jurnalo_user (100.6ms)
+Rendered shared/_top_navigation (1.1ms)
+Rendered shared/_edition (1.4ms)
+Rendered shared/_navigation (4.2ms)
+Rendered shared/_footer (1.6ms)
+Completed in 440ms (View: 119, DB: 621) | 200 OK [http://localhost/account]

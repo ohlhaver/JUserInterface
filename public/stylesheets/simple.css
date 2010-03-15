@@ -103,13 +103,13 @@ font-family: Arial,Helvetica,sans-serif;
 	border-top: 1px solid #CCCCCC;
 	padding-top: 7px;
 
-	margin-top: 30px;
+	margin-top: 10px;
 }
 
 #content {
 
 
-	margin-top: 30px;
+	margin-top: 10px;
 }
 
 #skyscraper {
@@ -259,7 +259,7 @@ h2 a {
 
 .cluster {
 	margin-top: 20px;
-	margin-bottom: 20px;	
+	margin-bottom: 30px;	
 }
 
 .headline {
@@ -276,7 +276,7 @@ h2 a {
  	font-weight: normal;
   	text-decoration: none;
   	font-size: 24px;
-	line-height: 32px;
+	line-height: 31px;
 	font-style: normal;
 }
 
@@ -290,11 +290,10 @@ h2 a {
 }
 
 .info {
-	font-family: Georgia,"Times New Roman",Times,serif;
-	margin-top: 6px;
-	margin-bottom: 6px;
-	font-size: 16px;
-	line-height: 20px;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 12px;
+	line-height: 17px;
+	color: #333333;
 }
 
 
@@ -775,4 +774,6 @@ border: 0px;
 .prefs {
 	margin-bottom: 20px;
 }
+
+
 

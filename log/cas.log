@@ -1552,3 +1552,81 @@ Existing local CAS session detected for "ohlhaver". Previous ticket "ST-12677084
 Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1267708449rBF214B587D18D806BA" will be re-used.
 Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1267708449rBF214B587D18D806BA" will be re-used.
 Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1267708449rBF214B587D18D806BA" will be re-used.
+Returning from CAS gateway without authentication.
+This CAS client is configured to use gatewaying, so we will permit the user to continue without authentication.
+Returning from CAS gateway without authentication.
+This CAS client is configured to use gatewaying, so we will permit the user to continue without authentication.
+Returning from CAS gateway without authentication.
+This CAS client is configured to use gatewaying, so we will permit the user to continue without authentication.
+Guessed service url: "http://localhost:3000/login?edition=int-en&locale=en"
+Generated login url: https://login.jurnalo.com/login?service=http%3A%2F%2Flocalhost%3A3000%2Flogin%3Fedition%3Dint-en%26locale%3Den
+Request contains ticket "ST-1267867662r391222B064CD70B2F2".
+Guessed service url: "http://localhost:3000/account?edition=int-en&locale=en"
+Requesting CAS response for URI https://login.jurnalo.com/proxyValidate?ticket=ST-1267867662r391222B064CD70B2F2&service=http%3A%2F%2Flocalhost%3A3000%2Faccount%3Fedition%3Dint-en%26locale%3Den
+CAS server responded with #<Net::HTTPClientError 422 Unprocessable Entity readbody=true>:
+<cas:serviceResponse xmlns:cas="http://www.yale.edu/tp/cas"><cas:authenticationFailure code="INVALID_SERVICE">The ticket 'ST-1267867662r391222B064CD70B2F2' belonging to user 'ohlhaver' is valid, but the requested service 'http://localhost:3000/account?edition=int-en&amp;locale=en' does not match the service 'http://localhost:3000/account' associated with this ticket.</cas:authenticationFailure></cas:serviceResponse>
+Ticket "ST-1267867662r391222B064CD70B2F2" failed validation -- INVALID_SERVICE: The ticket 'ST-1267867662r391222B064CD70B2F2' belonging to user 'ohlhaver' is valid, but the requested service 'http://localhost:3000/account?edition=int-en&locale=en' does not match the service 'http://localhost:3000/account' associated with this ticket.
+Guessed service url: "http://localhost:3000/account?edition=int-en&locale=en"
+Generated login url: https://login.jurnalo.com/login?service=http%3A%2F%2Flocalhost%3A3000%2Faccount%3Fedition%3Dint-en%26locale%3Den
+Redirecting to "https://login.jurnalo.com/login?service=http%3A%2F%2Flocalhost%3A3000%2Faccount%3Fedition%3Dint-en%26locale%3Den"
+Request contains ticket "ST-1267867678r27A5E7BCD1035956F7".
+Guessed service url: "http://localhost:3000/account?edition=int-en&locale=en"
+Requesting CAS response for URI https://login.jurnalo.com/proxyValidate?ticket=ST-1267867678r27A5E7BCD1035956F7&service=http%3A%2F%2Flocalhost%3A3000%2Faccount%3Fedition%3Dint-en%26locale%3Den
+CAS server responded with #<Net::HTTPOK 200 OK readbody=true>:
+<cas:serviceResponse xmlns:cas="http://www.yale.edu/tp/cas"><cas:authenticationSuccess><cas:user>ohlhaver</cas:user><name>Justus</name><locale_id>33</locale_id><auth>jurnalo</auth><id>10000003</id><edition_region_id>81</edition_region_id><edition_locale_id>33</edition_locale_id><active><![CDATA[--- true
+]]></active></cas:authenticationSuccess></cas:serviceResponse>
+Ticket "ST-1267867678r27A5E7BCD1035956F7" for service "http://localhost:3000/account?edition=int-en&locale=en" belonging to user "ohlhaver" is VALID.
+Extra user attributes provided along with ticket "ST-1267867678r27A5E7BCD1035956F7": {"locale_id"=>33, "name"=>"Justus", "auth"=>"jurnalo", "edition_region_id"=>81, "id"=>10000003, "edition_locale_id"=>33, "active"=>true}.
+Returning from CAS gateway without authentication.
+The CAS client is NOT configured to allow gatewaying, yet this request was gatewayed. Something is not right!
+Guessed service url: "http://localhost:3000/users/10000003/source_preferences?edition=int-en&locale=en"
+Generated login url: https://login.jurnalo.com/login?service=http%3A%2F%2Flocalhost%3A3000%2Fusers%2F10000003%2Fsource_preferences%3Fedition%3Dint-en%26locale%3Den
+Redirecting to "https://login.jurnalo.com/login?service=http%3A%2F%2Flocalhost%3A3000%2Fusers%2F10000003%2Fsource_preferences%3Fedition%3Dint-en%26locale%3Den"
+Request contains ticket "ST-1267867720rED91C2EAE9B4390EF8".
+Guessed service url: "http://localhost:3000/users/10000003/source_preferences?edition=int-en&locale=en"
+Requesting CAS response for URI https://login.jurnalo.com/proxyValidate?ticket=ST-1267867720rED91C2EAE9B4390EF8&service=http%3A%2F%2Flocalhost%3A3000%2Fusers%2F10000003%2Fsource_preferences%3Fedition%3Dint-en%26locale%3Den
+CAS server responded with #<Net::HTTPOK 200 OK readbody=true>:
+<cas:serviceResponse xmlns:cas="http://www.yale.edu/tp/cas"><cas:authenticationSuccess><cas:user>ohlhaver</cas:user><name>Justus</name><locale_id>33</locale_id><auth>jurnalo</auth><id>10000003</id><edition_region_id>81</edition_region_id><edition_locale_id>33</edition_locale_id><active><![CDATA[--- true
+]]></active></cas:authenticationSuccess></cas:serviceResponse>
+Ticket "ST-1267867720rED91C2EAE9B4390EF8" for service "http://localhost:3000/users/10000003/source_preferences?edition=int-en&locale=en" belonging to user "ohlhaver" is VALID.
+Extra user attributes provided along with ticket "ST-1267867720rED91C2EAE9B4390EF8": {"locale_id"=>33, "name"=>"Justus", "auth"=>"jurnalo", "edition_region_id"=>81, "id"=>10000003, "edition_locale_id"=>33, "active"=>true}.
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1267867720rED91C2EAE9B4390EF8" will be re-used.
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1267867720rED91C2EAE9B4390EF8" will be re-used.
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1267867720rED91C2EAE9B4390EF8" will be re-used.
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1267867720rED91C2EAE9B4390EF8" will be re-used.
+Returning from CAS gateway without authentication.
+This CAS client is configured to use gatewaying, so we will permit the user to continue without authentication.
+Returning from CAS gateway without authentication.
+This CAS client is configured to use gatewaying, so we will permit the user to continue without authentication.
+Guessed service url: "http://localhost:3000/login?edition=int-en&locale=en"
+Generated login url: https://login.jurnalo.com/login?service=http%3A%2F%2Flocalhost%3A3000%2Flogin%3Fedition%3Dint-en%26locale%3Den
+Request contains ticket "ST-1268674865rAF408B4C5891450849".
+Guessed service url: "http://localhost:3000/login?edition=int-en&locale=en"
+Requesting CAS response for URI https://login.jurnalo.com/proxyValidate?ticket=ST-1268674865rAF408B4C5891450849&service=http%3A%2F%2Flocalhost%3A3000%2Flogin%3Fedition%3Dint-en%26locale%3Den
+CAS server responded with #<Net::HTTPOK 200 OK readbody=true>:
+<cas:serviceResponse xmlns:cas="http://www.yale.edu/tp/cas"><cas:authenticationSuccess><cas:user>ohlhaver</cas:user><name>Justus</name><locale_id>33</locale_id><auth>jurnalo</auth><id>10000003</id><edition_region_id>81</edition_region_id><edition_locale_id>33</edition_locale_id><active><![CDATA[--- true
+]]></active></cas:authenticationSuccess></cas:serviceResponse>
+Ticket "ST-1268674865rAF408B4C5891450849" for service "http://localhost:3000/login?edition=int-en&locale=en" belonging to user "ohlhaver" is VALID.
+Extra user attributes provided along with ticket "ST-1268674865rAF408B4C5891450849": {"locale_id"=>33, "name"=>"Justus", "auth"=>"jurnalo", "edition_region_id"=>81, "id"=>10000003, "edition_locale_id"=>33, "active"=>true}.
+Guessed service url: "http://localhost:3000/login?e=1&edition=int-en&locale=en"
+Generated login url: https://login.jurnalo.com/login?service=http%3A%2F%2Flocalhost%3A3000%2Flogin%3Fe%3D1%26edition%3Dint-en%26locale%3Den
+Redirecting to "https://login.jurnalo.com/login?service=http%3A%2F%2Flocalhost%3A3000%2Flogin%3Fe%3D1%26edition%3Dint-en%26locale%3Den&gateway=true"
+Request contains ticket "ST-1268674874r4DED23C3E05C6A05D1".
+Guessed service url: "http://localhost:3000/login?e=1&edition=int-en&locale=en"
+Requesting CAS response for URI https://login.jurnalo.com/proxyValidate?ticket=ST-1268674874r4DED23C3E05C6A05D1&service=http%3A%2F%2Flocalhost%3A3000%2Flogin%3Fe%3D1%26edition%3Dint-en%26locale%3Den
+CAS server responded with #<Net::HTTPOK 200 OK readbody=true>:
+<cas:serviceResponse xmlns:cas="http://www.yale.edu/tp/cas"><cas:authenticationSuccess><cas:user>ohlhaver</cas:user><name>Justus</name><locale_id>33</locale_id><auth>jurnalo</auth><id>10000003</id><edition_region_id>81</edition_region_id><edition_locale_id>33</edition_locale_id><active><![CDATA[--- true
+]]></active></cas:authenticationSuccess></cas:serviceResponse>
+Ticket "ST-1268674874r4DED23C3E05C6A05D1" for service "http://localhost:3000/login?e=1&edition=int-en&locale=en" belonging to user "ohlhaver" is VALID.
+Extra user attributes provided along with ticket "ST-1268674874r4DED23C3E05C6A05D1": {"locale_id"=>33, "name"=>"Justus", "auth"=>"jurnalo", "edition_region_id"=>81, "id"=>10000003, "edition_locale_id"=>33, "active"=>true}.
+Request contains ticket "ST-1268674883r4AB0DB738527830D4B".
+Guessed service url: "http://localhost:3000/login?edition=int-en&locale=en"
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1268674874r4DED23C3E05C6A05D1" will be re-used.
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1268674874r4DED23C3E05C6A05D1" will be re-used.
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1268674874r4DED23C3E05C6A05D1" will be re-used.
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1268674874r4DED23C3E05C6A05D1" will be re-used.
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1268674874r4DED23C3E05C6A05D1" will be re-used.
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1268674874r4DED23C3E05C6A05D1" will be re-used.
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1268674874r4DED23C3E05C6A05D1" will be re-used.
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1268674874r4DED23C3E05C6A05D1" will be re-used.
+Existing local CAS session detected for "ohlhaver". Previous ticket "ST-1268674874r4DED23C3E05C6A05D1" will be re-used.
