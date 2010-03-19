@@ -6,7 +6,7 @@
 <% end %>
 <div class='news_block'>
 		<div class = "reading_list_label">
-			<h2><%= t('navigation.main.my_authors', :prefix => my_or_user) %></h2>
+			<h2><span class="page_label"><%= t('navigation.top.settings') %> > <%= t('navigation.main.my_authors', :prefix => my_or_user) %></span></h2>
 		</div>
 </div>
 
@@ -15,11 +15,9 @@
 <% @author_preferences.each do | author_preference | %>
    
 	<div class='my_authors_block'>
-
-
 	
       <span><%= author_preference.author.name %></span>
-      <div class='rater'>
+      <div class='listed_rater'>
         <% form_id = "author_preference_#{author_preference.id}" %>
         <% content_for :custom_javascript do %>
           <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>

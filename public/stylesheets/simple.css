@@ -30,6 +30,7 @@ img {
 
 #top_frame {
 	margin-top: 10px;
+	margin-bottom: 0px;
 }
 
 
@@ -55,7 +56,7 @@ img {
 #searchbutton {
 		margin-left: 2px;
 		margin-top : -24px;
-		font-family: Georgia,"Times New Roman",Times,serif;
+		font-family: Arial,Helvetica,sans-serif;
 		font-weight: normal;
 		text-decoration:none;
 
@@ -200,13 +201,30 @@ span.current{
 .my_authors_block {
 	border-top: 1px solid #CCCCCC;
 	margin-top: 28px;
+	font-family: Georgia,"Times New Roman",Times,serif;
 			
 }
 
 
+.my_topics_block {
+	border-top: 1px solid #CCCCCC;
+	margin-top: 28px;
+	font-family:Arial,Helvetica,sans-serif;
+			
+}
+
+.my_topics_block h2 {
+	
+	font-family:Arial,Helvetica,sans-serif;
+	font-weight: normal;
+  	text-decoration: none;
+  	font-size: 16px;
+	line-height: 19px;
+	color: #333333;		
+}
 
  h2 {
-  	margin-top: 2px;
+  	margin-top: 1px;
 	font-family: Georgia,"Times New Roman",Times,serif;
  	font-weight: normal;
   	text-decoration: none;
@@ -215,13 +233,22 @@ span.current{
 	color: #333333;
 }
 
+h2 .page_label {
+color:#999999;
+font-family:Arial,Helvetica,sans-serif;
+font-size:16px;
+line-height:21px;
+margin-bottom:20px;
+text-transform:uppercase;
+}
+
 
 h2 a {
 	color: #0000b6;	
 }
 
 .news_block h2 a:visited {
-  	font-family: Georgia,"Times New Roman",Times,serif;
+
  	font-weight: normal;
   	text-decoration: none;
   	font-size: 16px;
@@ -229,7 +256,7 @@ h2 a {
 }
 
 .news_block h2 a:link {
-  	font-family: Georgia,"Times New Roman",Times,serif;
+
  	font-weight: normal;
   	text-decoration: none;
   	font-size: 16px;
@@ -237,7 +264,7 @@ h2 a {
 }
 
 .settings_news_block h2 a:visited {
-  	font-family: Georgia,"Times New Roman",Times,serif;
+
  	font-weight: normal;
   	text-decoration: none;
   	font-size: 16px;
@@ -246,7 +273,7 @@ h2 a {
 }
 
 .settings_news_block h2 a:link {
-  	font-family: Georgia,"Times New Roman",Times,serif;
+
  	font-weight: normal;
   	text-decoration: none;
   	font-size: 16px;
@@ -267,15 +294,16 @@ h2 a {
  	font-weight: normal;
   	text-decoration: none;
 	font-style: normal;
+	margin-bottom: 1px;
 }
 
 
 
 .headline .title {
-	font-family: Georgia,"Times New Roman",Times,serif;
+	font-family:Georgia,"Times New Roman",Times,serif;
  	font-weight: normal;
   	text-decoration: none;
-  	font-size: 24px;
+  	font-size: 22px;
 	line-height: 31px;
 	font-style: normal;
 }
@@ -285,7 +313,7 @@ h2 a {
  	font-weight: normal;
   	text-decoration: none;
   	font-size: 16px;
-	line-height: 30px;
+	line-height: 26px;
 	color: #999999;
 }
 
@@ -293,6 +321,7 @@ h2 a {
 	font-family: Arial,Helvetica,sans-serif;
 	font-size: 12px;
 	line-height: 17px;
+	margin-top: 5px;
 	color: #333333;
 }
 
@@ -310,7 +339,7 @@ h2 a {
  	font-weight: normal;
   	text-decoration: none;
   	font-size: 16px;
-	line-height: 20px;
+	line-height: 26px;
 	color: #999999;
 }
 
@@ -320,8 +349,17 @@ h2 a {
  	font-weight: normal;
   	text-decoration: none;
   	font-size: 16px;
-	line-height: 20px;
+	line-height: 26px;
 	color: #999999;
+}
+
+.story {
+	font-family: Georgia,"Times New Roman",Times,serif;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: 16px;
+	line-height: 26px;
+	text-transform:none;
 }
 
 .source a:link {
@@ -348,20 +386,14 @@ h2 a {
 	color: #0000b6;
 }
 
-.story {
-	font-family: Georgia,"Times New Roman",Times,serif;
-	margin-top: 6px;
-	margin-bottom: 6px;
-	font-size: 16px;
-	line-height: 20px;
-}
+
 
 .separator {
 	color: #999999;
 }
 
 .pagination {
-	font-family: Georgia,"Times New Roman",Times,serif;
+	font-family: Arial,Helvetica,sans-serif;
 	font-size: 18px;
 	line-height: 30px;
 	color: #333333;
@@ -388,8 +420,8 @@ h2 a {
 
 .pagination_module {
 	border-top: 1px solid #CCCCCC;
-	margin-top: 30px;
-	margin-bottom: 30px;
+	margin-top: 20px;
+	margin-bottom: 25px;
 }
 
 .footer_module {
@@ -422,40 +454,50 @@ h2 a {
 	color: #0000b6;
 }
 
+#search_preference {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 13px;
+	line-height: 21px;
+}
+
 #search_preference_field_sort_criteria {
-	margin-left: -8px;
-	margin-right: 10px;
-	font-family: Georgia,"Times New Roman",Times,serif;
+
+
 	font-size: 13px;
 	line-height: 21px;
 	color: #0000b6;
+
 }
 
 #search_preference_field_cluster_sort_criteria {
-	margin-left: -8px;
-	margin-right: 10px;
-	font-family: Georgia,"Times New Roman",Times,serif;
+
+
 	font-size: 13px;
 	line-height: 21px;
 	color: #0000b6;
+
 }
 
 
 
 #search_preference_field_subscription_type {
-	font-family: Georgia,"Times New Roman",Times,serif;
+
 	font-size: 13px;
 	line-height: 21px;
 	color: #0000b6;
 }
 
 #search_preference {
-	margin-top: 8px;
+	margin-top: 0px;
+	display: inline;
+	float: right;
+
 }
 
 .add_topic_link {
-float: right;
+
 display: inline;
+float: right;
 
 
 }
@@ -476,11 +518,40 @@ h2 .add_topic_link a:visited {
 	
 }
 
+h2 .keywords_filter {
+	font-size: 16px;
+	font-family:Arial,Helvetica,sans-serif;
+ 	font-weight: normal;
+  	text-decoration: none;
+	display: inline;
+	text-transform:uppercase;
+}
+
+
+h2 .keywords_filter a:link {
+	font-size: 16px;
+
+}
+
+h2 .keywords_filter a:visited {
+	font-size: 16px;
+
+}
+
+
+h2 .keywords_filter a:hover {
+	font-size: 16px;
+
+
+}
+
+
 
 .result_filter {
-	margin-top: 30px;
+	margin-top: 20px;
+	margin-bottom: 35px;
 	font-size: 13px;
-	font-family: Georgia,"Times New Roman",Times,serif;
+	font-family: Arial,Helvetica,sans-serif;
  	font-weight: normal;
   	text-decoration: none;
 }
@@ -489,16 +560,20 @@ h2 .add_topic_link a:visited {
 	color: #FFFFFF;
 	background-color: #0000b6;
 	padding: 6px;
+	font-size: 13px;
+	border: 1px solid #0000b6;
 }
 
 .result_filter a {
-
-	color: #333333;
-	background-color: #FFFFFF;
-	padding: 6px;
 	border: 1px solid #99ccff;
+	color: #333333;
+	padding: 6px;
+	font-size: 13px;
+
 	
 }
+
+
 
 .result_filter a:hover {
 	color: #0000b6;
@@ -507,9 +582,19 @@ h2 .add_topic_link a:visited {
 
 .rater {
 
-	float: right;
+	margin-left: 20px;
 	display: inline;
 }
+
+.listed_rater {
+
+	margin-left: 20px;
+	display: inline;
+	float:right;
+	font-family: Arial,Helvetica,sans-serif;
+}
+
+
 
 h2 .rater a:link {
 	
@@ -546,7 +631,7 @@ h2 .my_authors_links span {
 }
 
 .adv_search_lines {
-	font-family: Georgia,"Times New Roman",Times,serif;
+	font-family: Arial,Helvetica,sans-serif;
 	line-height: 45px;
 	font-size: 16px;
 	color: #333333;
@@ -628,7 +713,7 @@ h2 .my_authors_links span {
 .adv_searchbutton {
 margin-top: 30px;
 margin-bottom: 11px;
-font-family: Georgia,"Times New Roman",Times,serif;
+font-family: Arial,Helvetica,sans-serif;
 font-weight: normal;
 text-decoration:none;
 font-size: 16px;
@@ -651,7 +736,7 @@ border: 0px;
 .about {
 	margin-top: 20px;
 	margin-bottom: 20px;
-	font-family: Georgia,"Times New Roman",Times,serif;
+	font-family: Arial,Helvetica,sans-serif;
  	font-weight: normal;
   	text-decoration: none;
   	font-size: 16px;
@@ -659,6 +744,11 @@ border: 0px;
 	color: #333333;
 
 }
+
+.about h2 {
+	font-family: Arial,Helvetica,sans-serif;
+}
+
 
 /* MouseOvers */
 .dialogBox {
@@ -752,7 +842,7 @@ div.auto_complete ul li{
 .confirmation_button {
 margin-top: 10px;
 margin-bottom: 10px;
-font-family: Georgia,"Times New Roman",Times,serif;
+	font-family: Arial,Helvetica,sans-serif;
 font-weight: normal;
 text-decoration:none;
 font-size: 16px;
@@ -775,5 +865,39 @@ border: 0px;
 	margin-bottom: 20px;
 }
 
+.source_author_results {
+	margin-top: 15px;
+}
 
+.my_elements_block {
+	border-top: 1px solid #CCCCCC;
+	margin-top: 8px;
+	font-family:Arial,Helvetica,sans-serif;
+			
+}
+
+.my_elements_block h2 {
+	
+	font-family:Arial,Helvetica,sans-serif;
+	font-weight: normal;
+  	text-decoration: none;
+  	font-size: 16px;
+	line-height: 19px;
+	color: #333333;		
+}
+
+.add_element_button {
+
+font-family: Arial,Helvetica,sans-serif;
+font-weight: normal;
+text-decoration:none;
+font-size: 12px;
+line-height: 21px;
+color: #FFFFFF;
+background-color: #0000b6;
+vertical-align: middle;
+height: 18px;
+width: 163;
+border: 0px;
+}
 

@@ -1,5 +1,6 @@
-<h1>Edit <%= my_or_user %> Account</h1>
+<h1><h2><span class="page_label">Edit <%= my_or_user %> Account</span></h1>
  
+<div class = "about">
 <% form_for @user, :url => user_path(@user) do |f| %>
   <%= f.error_messages %>
   <% unless @user.third_party? %>
@@ -10,3 +11,4 @@
   <br/>
   <%= f.submit "Update" %>
 <% end %>
+</span>

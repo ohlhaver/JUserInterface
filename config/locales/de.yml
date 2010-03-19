@@ -28,7 +28,7 @@ de:
         body: "Lorem ipsum. blah blah blah."
       now: "sign up now"
       title: "Sign up for Jurnalo"
-      enter_info: "Enter your information below to signup for a new account."
+      enter_info: "Bitte geben Sie Ihre Daten ein:"
       accept_tac: "Accept Jurnalo's Terms and Conditions"
       captcha: "Enter the code below:"
       login: "username"

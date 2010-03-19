@@ -3,7 +3,7 @@
 <% end %>
 <div class='news_group'>
   <div class='news_block'>
-    <h2><%= t('topic.label.new_advanced') %></h2>
+    <h2><span class ="page_label"><%= t('topic.label.new_advanced') %></span></h2>
     <div class='results_module'> </div>
     <div class='adv_search_lines'>
       <% form_for( @topic_preference, :url => user_topic_preferences_path(@user), :html => { :id => 'advance_topic_form' }, :method => :post ) do |f| %>
