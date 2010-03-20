@@ -6,6 +6,11 @@
   <%= render :partial => 'topic_preferences/js', :locals => { :form_path => new_user_topic_preference_path( @user ), :test_path => jurnalo_search_results_stories_path }%>
 <% end %>
 
+<div class='settings_news_block'>
+  <h2><span class = "page_label"><%= t('navigation.top.settings') %> > <%=t( 'navigation.main.search_and_sorting') %></span></h2>
+</div>
+<br><br>
+
 <div class='news_block'>
     <h2><span class="page_label"><%= t('prefs.homepage_preview.elements') %></span></h2>
 

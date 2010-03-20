@@ -45,9 +45,9 @@ en:
     user: "User"
   prefs:
     homepage_preview:
-      elements: "Homepage elements preview"
-      sections: "Homepage sections preview"
-      topics: "My topics preview"
+      elements: "Homepage elements"
+      sections: "Homepage sections"
+      topics: "My topics"
     home_action:
       show: 'show'
       hide: 'hide'
