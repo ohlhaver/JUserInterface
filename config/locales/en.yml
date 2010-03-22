@@ -5,11 +5,11 @@ en:
     downgrade: 'downgrade to'
     basic:
       label: Jurnalo Basic Account
-      info: "one search topic, one favorite author, one source setting"
+      info: "One search topic, one favorite author, one source rating"
       cost: free
     power:
       label: "Jurnalo Power Account"
-      info: "Unlimited topics, authors, and source settings"
+      info: "Unlimited settings and features"
       cost: "EUR 5 per month"
   edition:
     other: "other news edition"
@@ -72,7 +72,7 @@ en:
       interface_language: "Interface language"
       rate: "rate"
       subscribe: "subscribe"
-      email_alerts: "email alerts"
+      email_alerts: "e-mail alerts"
       add_to_list: "add to list"
     image:
       'off': "no"
