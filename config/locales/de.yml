@@ -5,11 +5,11 @@ de:
     downgrade: 'Downgrade zu'
     basic:
       label: "Jurnalo Basis Plan" 
-      info: "Leseliste, 1 Suchthema, 1 Lieblingsautor, 1 Quellen-Einstellung"
+      info: "Ein Suchthema, ein Lieblingsautor, eine Quellen-Einstellung"
       cost: gratis
     power:
       label: "Jurnalo Power Plan"
-      info: "unbegrenzte Themen, Lieblingsautoren, Quellen und Einstellungen"
+      info: "Unbegrenzte Themen, Lieblingsautoren und Quellen-Einstellungen"
       cost: "EUR 5 pro Monat"
   edition:
     other: "Andere Nachrichtenausgaben"
@@ -24,8 +24,8 @@ de:
     register:
       new_user: "Als neuer Benutzer registrieren"
       benefits:
-        header: "Sobald Sie eingeloggt sind, können Sie:"
-        body: "Autoren abonnieren <br> Suchthemen erstellen <br> Quellen und Autoren gewichten <br> Artikel zur Leseliste speichern <br> Default Such- und Display-Einstellungen verändern"
+          header: ""
+          body: "Sobald Sie registriert sind, können Sie: <br><br>- Themen erstellen <br>- jeden Autoren abonnieren <br>- Quellen gewichten <br>- das Layout verändern <br>- Artikel zur Leseliste hinzufügen <br><br>"
       now: "Jetzt registrieren"
       title: "Bei Jurnalo registrieren"
       enter_info: "Bitte geben Sie Ihre Daten ein:"

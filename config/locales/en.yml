@@ -5,11 +5,11 @@ en:
     downgrade: 'downgrade to'
     basic:
       label: Jurnalo Basic Account
-      info: "Reading list, 1 search topic, 1 favorite author, 1 source setting"
+      info: "one search topic, one favorite author, one source setting"
       cost: free
     power:
       label: "Jurnalo Power Account"
-      info: "Unlimited topics, authors, sources, settings and e-mail alerts"
+      info: "Unlimited topics, authors, and source settings"
       cost: "EUR 5 per month"
   edition:
     other: "other news edition"
@@ -26,8 +26,8 @@ en:
     register:
       new_user: "Signup as a new user"
       benefits:
-        header: "Once signed up, you can"
-        body: "Lorem ipsum. blah blah blah."
+        header: ""
+        body: "Once signed-up, you can: <br><br>- create topics <br>- subscribe to any author <br>- weight sources <br>- edit the layout <br>- add articles to your reading list<br><br>"
       now: "sign up now"
       title: "Sign up for Jurnalo"
       enter_info: "Please enter your information below:"
