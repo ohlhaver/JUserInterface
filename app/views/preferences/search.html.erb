@@ -41,22 +41,7 @@
 	</div>
   </div>  
 </div>
-<div class = "about">
-  <div class='settings_news_block'>
-	 <%= f.label :search_language_ids, t('prefs.labels.search_languages') %>
-		<br><br>
-	  
-		<div class = "adv_search_lines">
 
-        <% Preference.for_select( :default_language_id ).each do |language| %>
-          <%= hidden_field_tag( "preference[search_language_ids][#{language.last}]", "0") %>
-          <%= check_box_tag( "preference[search_language_ids][#{language.last}]", "1", f.object.search_language_id_exists?( language.last ) ) %> <%= language.first %>
-       	<br>
-
-        <% end %>
-		</div>
-	  </div>
-</div>
 
   <%= hidden_field_tag( :return_to, request.url ) %>
 <% end %>

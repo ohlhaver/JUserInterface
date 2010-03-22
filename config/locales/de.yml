@@ -1,48 +1,48 @@
 de:
   account:
-    current: 'Current Plan'
-    upgrade: 'upgrade to'
-    downgrade: 'downgrade to'
+    current: 'Jetziger Plan'
+    upgrade: 'Upgrade zu'
+    downgrade: 'Downgrade zu'
     basic:
-      label: Jurnalo Basic Account
-      info: "upto 10 authors, sources and search topics preferences."
-      cost: free
+      label: "Jurnalo Basis Plan" 
+      info: "Leseliste, 1 Suchthema, 1 Lieblingsautor, 1 Quellen-Einstellung"
+      cost: gratis
     power:
-      label: "Jurnalo Power Account"
-      info: "unlimited settings"
-      cost: "EUR 5 per month"
+      label: "Jurnalo Power Plan"
+      info: "unbegrenzte Themen, Lieblingsautoren, Quellen und Einstellungen"
+      cost: "EUR 5 pro Monat"
   edition:
     other: "Andere Nachrichtenausgaben"
   jurnalo:
     login:
-      new_user: "or {{register}} as a new user"
-      existing_user: "Or, use your existing account"
-      username: "username"
-      password: "password"
-      remember_me: "remember me"
-      forgot_password: "forgot password"
+      new_user: "oder als neuer Benutzer {{registrieren}}"
+      existing_user: "Oder beutzen Sie den bestehenden Zugang"
+      username: "Benutzername"
+      password: "Passwort"
+      remember_me: "Auf diesem Computer merken"
+      forgot_password: "Passwort vergessen"
     register:
-      new_user: "Signup as a new user"
+      new_user: "Als neuer Benutzer registrieren"
       benefits:
-        header: "Once signed up, you can"
-        body: "Lorem ipsum. blah blah blah."
-      now: "sign up now"
-      title: "Sign up for Jurnalo"
+        header: "Sobald Sie eingeloggt sind, können Sie:"
+        body: "Autoren abonnieren <br> Suchthemen erstellen <br> Quellen und Autoren gewichten <br> Artikel zur Leseliste speichern <br> Default Such- und Display-Einstellungen verändern"
+      now: "Jetzt registrieren"
+      title: "Bei Jurnalo registrieren"
       enter_info: "Bitte geben Sie Ihre Daten ein:"
-      accept_tac: "Accept Jurnalo's Terms and Conditions"
-      captcha: "Enter the code below:"
-      login: "username"
-      password: "password"
-      change_password: "change password"
-      confirm_password: "confirm password"
-      name: "name"
-      email: "email"
-      active: "active"
+      accept_tac: "Jurnalos rechtliche Bedingungen akzeptieren"
+      captcha: "Bitte geben Sie den unten stehenden Code ein:"
+      login: "Benutzername"
+      password: "Passwort"
+      change_password: "Password ändern"
+      confirm_password: "Password bestätigen"
+      name: "Name"
+      email: "E-mail"
+      active: "Activ"
   more:
-    info: "more info"
+    info: "weitere Informationen"
   prefix:
-    my: "My"
-    user: "User"
+    my: "Mein"
+    user: "Benutzer"
   prefs:
     homepage_preview:
       elements: "Homepage Elemente"
@@ -55,30 +55,30 @@ de:
       up: 'hoch bewegen'
       down: 'runter bewegen'
     labels:
-      per_page: "Results per page"
-      per_cluster_group: "Clusters per section preview"
-      per_cluster: "Headlines per cluster preview"
-      show_images: "Show Images"
-      topic_email: "Topic Emails"
-      author_email: "Author Emails"
-      sort_criteria: "Default sort criteria"
-      time_span: "Default time span"
-      video_pref: "Video preference"
-      blog_pref: "Blog preference"
-      opinion_pref: "Opinion preference"
-      subscription_type: "Default subscription type"
-      search_languages: "Search language(s)"
-      edition: "Default top stories"
-      interface_language: "Interface language"
-      rate: "rate"
-      subscribe: "subscribe"
-      add_to_list: "add to list"
+      per_page: "Ergebnisse pro Seite"
+      per_cluster_group: "Cluster pro Rubriken-Vorschau"
+      per_cluster: "Überschriften pro Cluster-Vorschau"
+      show_images: "Bilder anzeigen"
+      topic_email: "Themen E-mails"
+      author_email: "Autoren E-mails"
+      sort_criteria: "Default Suchkriterien"
+      time_span: "Default Zeitspanne"
+      video_pref: "Video Präferenz"
+      blog_pref: "Blog Präferenz"
+      opinion_pref: "Meinungs Präferenz"
+      subscription_type: "Default Abonnement-typ"
+      search_languages: "Suchsprache(n)"
+      edition: "Default Schlagzeilen"
+      interface_language: "Interface Sprache"
+      rate: "gewichten"
+      subscribe: "abonnieren"
+      add_to_list: "zur Liste hinzufügen"
     image:
-      'off': "no"
-      'on': "yes"
+      'off': "nein"
+      'on': "ja"
     lang:
       english: "English"
-      german: "Deutsch"
+      german: "deutsch"
     country:
       int: 'Global'
       de: 'Deutschland'
@@ -143,16 +143,16 @@ de:
       technology: "Technik"
       top_stories: "Schlagzeilen"
       top_authors: "Top Autoren"
-      back_to_home: "back to home"
-      account_details: "Account Details"
-      my_sources: "{{prefix}} Sources"
-      my_authors: "{{prefix}} Authors"
-      my_search_topics: "{{prefix}} Search Topics"
-      search_and_sorting: "Search and Sorting"
-      display_preferences: "Display Preferences"
-      alert_settings: "Alert Settings"
-      language_and_region: "Language and Region"
-      homepage_settings: "Homepage Settings"
+      back_to_home: "zurück zu Home"
+      account_details: "Konto"
+      my_sources: "{{prefix}} Quellen"
+      my_authors: "{{prefix}} Autoren"
+      my_search_topics: "{{prefix}} Suchthemen"
+      search_and_sorting: "Suche"
+      display_preferences: "Darstellung"
+      alert_settings: "E-mail Meldungen"
+      language_and_region: "Sprache"
+      homepage_settings: "Layout"
     top:
       help: "Hilfe"
       login: "Einloggen"
@@ -192,11 +192,11 @@ de:
         blog: "Blogs:"
   seo:
     page:
-      default_title: "Jurnalo - User Settings"
+      default_title: "Jurnalo - Benutzer Einstellungen"
   topic:
     label:
       new: 'Neues Thema'
-      new_advanced: 'Erweitert Neues Thema'
+      new_advanced: 'erweitertes neues Thema'
     action:
       add: 'Thema hinzufügen'
       test: 'testen'
