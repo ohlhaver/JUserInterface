@@ -1,4 +1,28 @@
 de:
+  activerecord:
+    errors:
+      messages:
+        accepted: "muss akzeptiert werden"
+        blank: "muss angegeben werden"
+        confirmation: "passt nicht zur Bestätigung"
+        empty: "muss angegeben werden"
+        equal_to: "muss {{count}} gleichen"
+        even: "muss gerade sein"
+        exclusion: "ist nicht verfügbar"
+        greater_than: "muss größer sein als {{count}}"
+        greater_than_or_equal_to: "muss gleich oder größer sein als {{count}}"
+        inclusion: "ist nicht in der Liste enthalten"
+        invalid: "ist nicht gültig"
+        invalid_login: "ist nicht gültig. Ihr Benutzername darf kein Leerzeichen enthalten."
+        invalid_url: "ist nicht gültig, sie müssen die Adresse eingeben als http://www.irgendeineseite.de"
+        less_than: "muss kleiner sein als {{count}}"
+        less_than_or_equal_to: "muss gleich oder kleiner sein als {{count}}"
+        not_a_number: "ist keine Zahl"
+        odd: "muss ungerade sein"
+        taken: "ist nicht verfügbar"
+        too_long: "ist zu lang (bitte nicht mehr als {{count}} Buchstaben)"
+        too_short: "ist zu kurz (bitte nicht weniger als {{count}} Buchstaben)"
+        wrong_length: "ist nicht die richtige Länge (es müssen {{count}} Buchstaben sein)"    
   account:
     current: 'Jetziger Plan'
     upgrade: 'Upgrade zu'
@@ -38,6 +62,7 @@ de:
       name: "Name"
       email: "E-mail"
       active: "Activ"
+      legal: "ansehen"
   more:
     info: "weitere Informationen"
   prefix:

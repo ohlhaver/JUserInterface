@@ -41,7 +41,7 @@
     <div class='settings_news_block'>
 	<div class='about'>
       <h2><%= f.check_box :terms_and_conditions_accepted %>
-      <%= f.label :terms_and_conditions_accepted, t('jurnalo.register.accept_tac') %></h2>
+      <%= f.label :terms_and_conditions_accepted, t('jurnalo.register.accept_tac') %> (<%= link_to t( 'jurnalo.register.legal' ), jurnalo_privacy_path %>)</h2>
 	
 		<br>
       <% unless @user.third_party? %>

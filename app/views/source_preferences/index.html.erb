@@ -22,7 +22,7 @@
         <% end %>
 
         <% form_for( source_preference, :url => user_source_preference_path( @user, source_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
-          <%= f.select( :preference, Preference.for_select( :source ), :include_blank => true )%>
+          <%= t('prefs.labels.rate') %> <%= f.select( :preference, Preference.for_select( :source ), :include_blank => true )%>
         <% end %>
 		
  		</div>
