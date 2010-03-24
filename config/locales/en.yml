@@ -27,7 +27,7 @@ en:
       new_user: "Signup as a new user"
       benefits:
         header: ""
-        body: "Once signed-up, you can: <br><br>- create topics <br>- subscribe to any author <br>- weight sources <br>- edit the layout <br>- add articles to your reading list<br><br>"
+        body: "Once signed up, you can: <br><br>- subscribe to any author <br>- create your own topics<br>- weight authors and sources<br>- save interesting articles to your reading list<br><br>"
       now: "sign up now"
       title: "Sign up for Jurnalo"
       enter_info: "Please enter your information below:"
@@ -56,11 +56,11 @@ en:
       down: 'move down'
     labels:
       per_page: "Results per page"
-      per_cluster_group: "Clusters per section preview"
-      per_cluster: "Headlines per cluster preview"
+      per_cluster_group: "News clusters per section preview"
+      per_cluster: "Headlines per news cluster preview"
       show_images: "Show Images"
-      topic_email: "Topic Emails"
-      author_email: "Author Emails"
+      topic_email: "E-mails for new articles on my topics"
+      author_email: "E-mails for new articles by my authors"
       sort_criteria: "Default sort criteria"
       time_span: "Default time span"
       video_pref: "Video preference"
@@ -70,16 +70,16 @@ en:
       search_languages: "Search language(s)"
       edition: "Default top stories"
       interface_language: "Interface language"
-      rate: "rate"
-      subscribe: "subscribe"
-      email_alerts: "e-mail alerts"
+      rate: "rating:"
+      subscribe: "subscribed"
+      email_alerts: "e-mails"
       add_to_list: "add to list"
     image:
       'off': "no"
       'on': "yes"
     lang:
       english: "English"
-      german: "Deutsch"
+      german: "deutsch"
     country:
       int: 'Global'
       de: 'Germany'
@@ -149,9 +149,9 @@ en:
       my_sources: "{{prefix}} sources"
       my_authors: "{{prefix}} authors"
       my_search_topics: "{{prefix}} topics"
-      search_and_sorting: "Search"
+      search_and_sorting: "Search settings"
       display_preferences: "Display"
-      alert_settings: "Email Alerts"
+      alert_settings: "E-mail alerts"
       language_and_region: "Language"
       homepage_settings: "Layout"
     top:
