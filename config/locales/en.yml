@@ -29,11 +29,11 @@ en:
     downgrade: 'downgrade to'
     basic:
       label: Jurnalo Basic Account
-      info: "One search topic, one favorite author, one source rating"
+      info: "Limited to one My Topic, one My Author, and one My Source."
       cost: free
     power:
       label: "Jurnalo Power Account"
-      info: "Unlimited settings and features"
+      info: "Unlimited My Topics, My Authors and My Sources."
       cost: "EUR 5 per month"
   edition:
     other: "other news edition"
@@ -83,7 +83,7 @@ en:
       per_page: "Results per page"
       per_cluster_group: "News clusters per section preview"
       per_cluster: "Headlines per news cluster preview"
-      show_images: "Show Images"
+      show_images: "Show images"
       topic_email: "Articles on my topics"
       author_email: "Articles by my authors"
       sort_criteria: "Default sort criteria"
