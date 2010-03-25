@@ -1,25 +1,4 @@
 <div class='settings_news_block'>
-  <h2><span class="page_label"><%= t('account.current') %></span></h2>
-	<div class = "about">
- <h2> <b><%= t('account.basic.label') %> </b>(<%= t('account.basic.cost') %>)<br/>
-  <%= t('account.basic.info') %></h2>
-	</div>
-</div>
-  <div class='settings_news_block'>
-    <h2><span class="page_label"><%= t('account.upgrade') %></span></h2>
-	<div class = "about">
-   <h2> <b><%= link_to t('account.power.label'), jurnalo_power_path %></b> (<%= t('account.power.cost') -%>)<br>
-    <%= t('account.power.info') %> (<%= link_to t('more.info'), jurnalo_power_path %>)</h2>
-	</div>
-	<% form_for @user, :url => user_path(@user) do |f| %>
-	 <%= f.submit "Upgrade", :class => "confirmation_button" %>
-	<%end%>
-
-  </div>
-
-<br/><br/>
-
-<div class='settings_news_block'>
 <h2>	<span class="page_label"><%= t('navigation.top.settings') %> > <%= t('navigation.main.account_details') %> </span></h2>
 <br>
 <% form_for @user, :url => user_path(@user) do |f| %>
@@ -38,4 +17,22 @@
 
 
 
+<br/><br/>
+<div class='settings_news_block'>
+  <h2><span class="page_label"><%= t('account.current') %></span></h2>
+	<div class = "about">
+ <h2> <b><%= t('account.basic.label') %> </b>(<%= t('account.basic.cost') %>)<br/>
+  <%= t('account.basic.info') %></h2>
+	</div>
+</div>
+  <div class='settings_news_block'>
+    <h2><span class="page_label"><%= t('account.upgrade') %></span></h2>
+	<div class = "about">
+   <h2> <b><%= link_to t('account.power.label'), jurnalo_power_path %></b> (<%= t('account.power.cost') -%>)<br>
+    <%= t('account.power.info') %> (<%= link_to t('more.info'), jurnalo_power_path %>)</h2>
+	</div>
+	<% form_for @user, :url => user_path(@user) do |f| %>
+	 <%= f.submit "Upgrade", :class => "confirmation_button" %>
+	<%end%>
 
+  </div>

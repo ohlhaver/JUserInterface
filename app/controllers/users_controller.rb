@@ -63,5 +63,6 @@ class UsersController < ApplicationController
       render :action => :show
     end
   end
+ 
   
 end

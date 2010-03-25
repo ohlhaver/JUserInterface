@@ -29,11 +29,11 @@ en:
     downgrade: 'downgrade to'
     basic:
       label: Jurnalo Basic Account
-      info: "Limited to one My Topic, one My Author, and one My Source."
+      info: "One personal topic, one author subscription and one source setting."
       cost: free
     power:
       label: "<b>Jurnalo Power Account</b>"
-      info: "Unlimited My Topics, My Authors and My Sources."
+      info: "Unlimited personal topics, author subscriptions and source settings."
       cost: "EUR 5 per month"
   edition:
     other: "other news edition"
