@@ -29,11 +29,11 @@ de:
     downgrade: 'Downgrade zu'
     basic:
       label: "Jurnalo Basis Plan" 
-      info: "Ein Suchthema, ein Lieblings-Autor, eine Quellen-Einstellung"
+      info: "Begrenzt auf ein 'Mein Thema', ein 'Mein Autor' und eine 'Meine Quelle'"
       cost: gratis
     power:
-      label: "Jurnalo Power Plan"
-      info: "Unbegrenzte Einstellungen und Funktionen"
+      label: "<b>Jurnalo Power Plan</b>"
+      info: "Unbegrenzte 'Meine Themen', 'Meine Autoren' und 'Meine Quellen'"
       cost: "EUR 5 pro Monat"
   edition:
     other: "Andere Nachrichtenausgaben"

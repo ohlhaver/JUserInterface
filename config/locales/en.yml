@@ -32,7 +32,7 @@ en:
       info: "Limited to one My Topic, one My Author, and one My Source."
       cost: free
     power:
-      label: "Jurnalo Power Account"
+      label: "<b>Jurnalo Power Account</b>"
       info: "Unlimited My Topics, My Authors and My Sources."
       cost: "EUR 5 per month"
   edition:
