@@ -20,7 +20,7 @@
 	</div>
     </div>
     <div class='settings_news_block'>
-      <h2><span class="page_label">Choose your account:</span></h2>
+      <h2><span class="page_label"><%= t('jurnalo.register.choose') %></span></h2>
       
 	<div class='about'>
 		<h2>
@@ -32,7 +32,7 @@
 		<br>
       <div>
         <%= radio_button_tag( 'account', 'power', false, :disabled => true ) %> 
-        <%= t('account.power.label') %> ( <%= t('account.power.cost') -%>)<br/>
+        <%= t('account.power.label') %> (<%= t('account.power.cost') -%>)<br/>
         <%= t('account.power.info') %> (<%= link_to t('more.info'), jurnalo_power_path %>)
       </div>
 		</h2>

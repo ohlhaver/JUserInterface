@@ -1,15 +1,15 @@
 <div class = "settings_news_block">
-<h2><h2><span class="page_label">Forgot Password</span></h2>
+<h2><h2><span class="page_label"><%= t('jurnalo.forgot_password.label') %></span></h2>
 
 <div class = "about">
-Fill out the form below and instructions to reset your password will be emailed to you:<br />
+<%= t('jurnalo.forgot_password.instruction') %><br />
 <br />
  <div class= 'adv_search_lines'>
 <% form_tag password_resets_path do %>
 
 E-mail:
 <%= text_field_tag "email", params[:email], :id => "settings_field" %>
-<%= submit_tag "Reset my password", :class => "confirmation_button" %>
+<%= submit_tag t('jurnalo.forgot_password.button'), :class => "confirmation_button" %>
 <% end %>
 </div>
 </div>

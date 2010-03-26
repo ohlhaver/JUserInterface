@@ -63,6 +63,11 @@ de:
       email: "E-mail"
       active: "Activ"
       legal: "ansehen"
+      choose: "Wählen Sie Ihren Plan:"
+    forgot_password:
+      label: "Passwort vergessen"
+      instruction: "Bitte füllen Sie das Feld aus. Danach erhalten Sie eine E-mail mit Instruktionen zur Erstellung eines neuen Passworts."
+      button: "Passwort zurücksetzen"
   more:
     info: "mehr Informationen"
   prefix:
@@ -233,3 +238,10 @@ de:
   rate:
     source: 'Quelle gewichten'
     author: 'Autoren gewichten'
+  emails:
+    activation:
+      part1: "Lieber Leser, <br><br>Sie haben einen Zugang für Jurnalo erstellt.<br><br>Wenn Sie kein Login erstellt haben, dann ignorieren Sie bitte diese mail.<br> Falls Sie einen Login erstellt haben, klicken Sie bitte auf den unteren Link um Ihren Zugang zu aktivieren."
+      part2: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren.<br><br>Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail.<br><br> Viele Grüße, Ihr Jurnalo"
+    reset:
+      part1: "Lieber Leser,<br><br>Wir wurden gebeten Ihr Passwort zurückzusetzen.<br><br>Wenn Sie nicht darum gebeten haben, dann ignorieren Sie bitte diese mail.<br>Falls Sie darum gebeten haben, so klicken Sie bitte auf den unteren Link:"  
+      part2: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren.<br><br>Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail.<br><br> Viele Grüße, Ihr Jurnalo"  

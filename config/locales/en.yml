@@ -65,6 +65,11 @@ en:
       email: "E-mail"
       active: "active"
       legal: "view"
+      choose: "Choose your account:"
+    forgot_password:
+      label: "Forgot password"
+      instruction: "Fill out the form below and instructions to reset your password will be emailed to you:"
+      button: "Reset my password"
   prefix:
     my: "My"
     user: "User"
@@ -230,4 +235,10 @@ en:
       simple: 'Simple'
     name: 'Topic label:'
     query: 'Search query:'
-
+  emails:
+    activation:
+      part1: "Dear reader,<br><br>You have created an account on Jurnalo.<br><br>If you did not create an account, simply ignore this email.<br>If you did create an account just click the link below to activate your account:"
+      part2: "If the above URL does not work try copying and pasting it into your browser.<br>If you continue to have problems please feel free to contact us at any time via email.<br><br> Best regards, Jurnalo"
+    reset:
+      part1: "Dear reader,<br><br>A request to reset your password has been made.<br><br>If you did not make this request, simply ignore this email.<br>If you did make this request just click the link below:"  
+      part2: "If the above URL does not work try copying and pasting it into your browser.<br>If you continue to have problems please feel free to contact us at any time via email.<br><br> Best regards, Jurnalo"
