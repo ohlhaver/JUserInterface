@@ -22,7 +22,10 @@ de:
         taken: "ist nicht verfügbar"
         too_long: "ist zu lang (bitte nicht mehr als {{count}} Buchstaben)"
         too_short: "ist zu kurz (bitte nicht weniger als {{count}} Buchstaben)"
-        wrong_length: "ist nicht die richtige Länge (es müssen {{count}} Buchstaben sein)"    
+        wrong_length: "ist nicht die richtige Länge (es müssen {{count}} Buchstaben sein)"
+      template:
+        header: "Fehler bei der Eingabe haben verhindert, dass dieser Benutzer gespeichert werden konnte."
+        body: "Es gab Probleme bei folgenden Feldern:"
   account:
     current: 'Jetziger Plan'
     upgrade: 'Upgrade zu'
@@ -242,7 +245,7 @@ de:
     activation:
       part1: "Lieber Leser,"
       part2: "Sie haben einen Zugang für Jurnalo erstellt."
-      part3: "Wenn Sie kein Login erstellt haben, dann ignorieren Sie bitte diese mail."
+      part3: "Wenn Sie kein Login erstellt haben, dann ignorieren Sie bitte diese E-mail."
       part4: "Falls Sie einen Login erstellt haben, klicken Sie bitte auf den unteren Link um Ihren Zugang zu aktivieren."
       part5: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren."
       part6: "Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail."
@@ -251,7 +254,7 @@ de:
     reset:
       part1: "Lieber Leser,"
       part2: "Wir wurden gebeten Ihr Passwort zurückzusetzen."
-      part3: "Wenn Sie nicht darum gebeten haben, dann ignorieren Sie bitte diese mail."
+      part3: "Wenn Sie nicht darum gebeten haben, dann ignorieren Sie bitte diese E-mail."
       part4: "Falls Sie darum gebeten haben, so klicken Sie bitte auf den unteren Link:"  
       part5: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren."
       part6: "Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail."

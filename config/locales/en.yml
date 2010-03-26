@@ -42,7 +42,7 @@ en:
   jurnalo:
     login:
       new_user: "or {{register}}"
-      existing_user: "Or, use your existing account"
+      existing_user: "Please use your existing account"
       username: "Username"
       password: "Password"
       remember_me: "remember me"
