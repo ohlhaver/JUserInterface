@@ -26,13 +26,13 @@
 		<h2>
 	  <div>
         <%= radio_button_tag( 'account', 'basic', true ) %> 		
-        <%= t('account.basic.label') %> (<%= t('account.basic.cost') %>)<br>
+        <%= t('account.basic.label') %>  (<%= t('account.basic.cost') %>)<br>
         <%= t('account.basic.info') %> 	
       </div>
 		<br>
       <div>
         <%= radio_button_tag( 'account', 'power', false, :disabled => true ) %> 
-        <%= t('account.power.label') %> (<%= t('account.power.cost') -%>)<br/>
+        <b><%= link_to t('account.power.label'), jurnalo_power_path %></b> (<%= t('account.power.cost') -%>)<br/>
         <%= t('account.power.info') %> (<%= link_to t('more.info'), jurnalo_power_path %>)
       </div>
 		</h2>

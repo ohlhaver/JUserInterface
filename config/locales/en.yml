@@ -51,7 +51,7 @@ en:
       new_user: "Signup as a new user"
       benefits:
         header: ""
-        body: "Once signed up, you can: <br><br>- subscribe to any author <br>- create your own topics<br>- weight authors and sources<br>- save interesting articles to your reading list<br><br>"
+        body: "Once logged in, you can: <br><br>- subscribe to any author <br>- create your own topics<br>- weight authors and sources<br>- save interesting articles to your reading list<br><br>"
       now: "sign up now"
       title: "Sign up for Jurnalo"
       enter_info: "Please enter your information below:"

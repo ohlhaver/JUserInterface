@@ -46,7 +46,7 @@ font-size: 13px;
 	line-height: 21px;
 	color: #333333;
 	height: 28px;
-	width: 232px;
+	width: 210px;
 	border: 1px solid #999999;
 	padding: 7px 5px 0;
 	vertical-align: middle;
@@ -585,6 +585,9 @@ h2 .keywords_filter a:hover {
 
 	margin-left: 20px;
 	display: inline;
+	font-size: 13px;
+	float:right;
+	font-family: Arial,Helvetica,sans-serif;
 }
 
 .listed_rater {

@@ -52,7 +52,7 @@ de:
       new_user: "Als neuer Benutzer registrieren"
       benefits:
           header: ""
-          body: "Sobald Sie registriert sind, können Sie: <br><br>- Autoren abonnieren<br>- eigene Themen erschaffen<br>- Autoren und Quellen gewichten<br>- interessante Artikel zu Ihrer Leseliste speichern <br><br>"
+          body: "Sobald Sie eingeloggt sind, können Sie: <br><br>- Autoren abonnieren<br>- eigene Themen erschaffen<br>- Autoren und Quellen gewichten<br>- interessante Artikel zu Ihrer Leseliste speichern <br><br>"
       now: "Jetzt registrieren"
       title: "Bei Jurnalo registrieren"
       enter_info: "Bitte geben Sie Ihre Daten ein:"
