@@ -39,7 +39,7 @@ de:
     other: "Andere Nachrichtenausgaben"
   jurnalo:
     login:
-      new_user: "oder als neuer Benutzer {{register}}"
+      new_user: "oder {{register}}"
       existing_user: "Benutzen Sie bitte Ihren bestehenden Zugang"
       username: "Benutzername"
       password: "Passwort"
@@ -240,8 +240,20 @@ de:
     author: 'Autoren gewichten'
   emails:
     activation:
-      part1: "Lieber Leser, <br><br>Sie haben einen Zugang für Jurnalo erstellt.<br><br>Wenn Sie kein Login erstellt haben, dann ignorieren Sie bitte diese mail.<br> Falls Sie einen Login erstellt haben, klicken Sie bitte auf den unteren Link um Ihren Zugang zu aktivieren."
-      part2: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren.<br><br>Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail.<br><br> Viele Grüße, Ihr Jurnalo"
+      part1: "Lieber Leser,"
+      part2: "Sie haben einen Zugang für Jurnalo erstellt."
+      part3: "Wenn Sie kein Login erstellt haben, dann ignorieren Sie bitte diese mail."
+      part4: "Falls Sie einen Login erstellt haben, klicken Sie bitte auf den unteren Link um Ihren Zugang zu aktivieren."
+      part5: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren."
+      part6: "Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail."
+      part7: "Viele Grüße,"
+      part8: "Ihr Jurnalo"
     reset:
-      part1: "Lieber Leser,<br><br>Wir wurden gebeten Ihr Passwort zurückzusetzen.<br><br>Wenn Sie nicht darum gebeten haben, dann ignorieren Sie bitte diese mail.<br>Falls Sie darum gebeten haben, so klicken Sie bitte auf den unteren Link:"  
-      part2: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren.<br><br>Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail.<br><br> Viele Grüße, Ihr Jurnalo"  
+      part1: "Lieber Leser,"
+      part2: "Wir wurden gebeten Ihr Passwort zurückzusetzen."
+      part3: "Wenn Sie nicht darum gebeten haben, dann ignorieren Sie bitte diese mail."
+      part4: "Falls Sie darum gebeten haben, so klicken Sie bitte auf den unteren Link:"  
+      part5: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren."
+      part6: "Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail."
+      part7: "Viele Grüße," 
+      part8: "Ihr Jurnalo"  

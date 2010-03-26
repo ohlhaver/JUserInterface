@@ -41,7 +41,7 @@ en:
     info: "more info"
   jurnalo:
     login:
-      new_user: "or {{register}} as a new user"
+      new_user: "or {{register}}"
       existing_user: "Or, use your existing account"
       username: "Username"
       password: "Password"
