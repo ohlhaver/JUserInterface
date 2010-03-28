@@ -911,3 +911,11 @@ border: 0px;
 	display: inline;
 }
 
+.errorExplanation {
+	font-family: Arial,Helvetica,sans-serif;	
+}
+
+.errorExplanation h2 {
+	font-family: Arial,Helvetica,sans-serif;
+	
+}
