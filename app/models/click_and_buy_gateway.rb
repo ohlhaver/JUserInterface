@@ -54,8 +54,16 @@ class ClickAndBuyGateway
   self.logo_url = 'http://www.clickandbuy.com/'
   
   def initialize(options = {})
-    requires!( options, :premium_links, :transaction_password, :merchant_id, :success_url, :error_url )
+    requires!( options, :premium_links, :transaction_password, :merchant_id, :success_url, :error_url, :mode )
     @options = options
+  end
+  
+  def mode
+    options[:mode]
+  end
+  
+  def test_mode?
+    mode.to_sym == :test
   end
   
   def success_url( transaction )
@@ -94,8 +102,10 @@ class ClickAndBuyGateway
         gateway_transaction.message ||= :checksum_nok     unless checksum_ok?( gateway_transaction, billing_record.checksum )
         gateway_transaction.message ||= :jurnalo_id_nok   unless jurnalo_id_ok?( gateway_transaction, billing_record.user_id )
         gateway_transaction.message ||= :price_nok        unless price_ok?( gateway_transaction, billing_record.amount )
-        gateway_transaction.message ||= :currency_nok     unless currency_ok?( gateway_transaction, billing_record.currency )
-        gateway_transaction.message ||= :transaction_nok  unless transaction_ok?( gateway_transaction )
+        # Currency Info does not exists for Subscriptions
+        # gateway_transaction.message ||= :currency_nok     unless currency_ok?( gateway_transaction, billing_record.currency )
+        # For Testing Mode TransactionId is always Zero
+        gateway_transaction.message ||= :transaction_nok  unless test_mode? || transaction_ok?( gateway_transaction )
         gateway_transaction.message ||= :success
         gateway_transaction.message == :success ? billing_record.payment_authorized! : billing_record.payment_error!
       end
