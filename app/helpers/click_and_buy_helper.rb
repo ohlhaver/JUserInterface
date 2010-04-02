@@ -1,0 +1,2 @@
+module ClickAndBuyHelper
+end

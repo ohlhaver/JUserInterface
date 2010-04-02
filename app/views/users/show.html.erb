@@ -15,20 +15,30 @@
 <% end %>
 </div>
 <br/><br/>
+<% if ( @user.plan_id == 1 ) %>
 <div class='settings_news_block'>
   <h2>Current Plan:</h2>
-	<div class = "about">
- <h2> <%= link_to t('account.basic.label') %> (<%= t('account.basic.cost') %>)<br/>
-  <%= t('account.basic.info') %> (<%= link_to t('more.info') %>)</h2>
-	</div>
+  <div class = "about">
+    <h2> <%= link_to t('account.power.label') %> (<%= t('account.power.cost') -%>)
+       <%= t('account.power.info') %> (<%= link_to t('more.info') %>)</h2>
+  </div>
+  <div class='settings_news_block'> </div>
+</div>
+<% else %>
+<div class='settings_news_block'>
+ <h2>Current Plan:</h2>
+ <div class = "about">
+   <h2> <%= link_to t('account.basic.label') %> (<%= t('account.basic.cost') %>)<br/>
+   <%= t('account.basic.info') %> (<%= link_to t('more.info') %>)</h2>
+</div>
 </div>
   <div class='settings_news_block'>
-    <h2>Upgrade to:</h2>
-	<div class = "about">
-   <h2> <%= link_to t('account.power.label') %> (<%= t('account.power.cost') -%>)
-    <%= t('account.power.info') %> (<%= link_to t('more.info') %>)</h2>
-	</div>
-	<div class='settings_news_block'> </div>
+    <h2>Upgrade to:</h2> 
+  <div class = "about">
+    <h2> <%= link_to t('account.power.label'), upgrade_account_path %> (<%= t('account.power.cost') -%>)
+       <%= t('account.power.info') %> (<%= link_to t('more.info') %>)</h2>
   </div>
-
+  <div class='settings_news_block'> </div>
+</div>
+<% end %>
 

@@ -56,3 +56,14 @@ CASClient::Frameworks::Rails::Filter.configure(
   :logger => cas_logger,
   :authenticate_on_every_request => false # true will load cas server heavily
 )
+
+#price is in milli cents
+GatewayTransaction.gateway = ClickAndBuyGateway.new( 
+  :premium_links => { 
+    1 => { :url => "http://premium-68z3stewv2iz9n.eu.clickandbuy.com/", :price => 5000, :currency => 'EUR' } 
+  },
+  :merchant_id => 24409753,
+  :transaction_password => 'cy7dofit',
+  :success_url => 'http://accounts.jurnalo.com/click_and_buy/confirm',
+  :error_url => 'http://accounts.jurnalo.com/click_and_buy/error'
+)

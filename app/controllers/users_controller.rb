@@ -1,11 +1,23 @@
 class UsersController < ApplicationController
   
-  jurnalo_login_required :only => [ :index, :show, :edit, :update ]
-  before_filter :set_user_var, :only => [ :show, :edit, :update ]
+  jurnalo_login_required :only => [ :index, :show, :edit, :update, :upgrade, :downgrade, :plan ]
+  before_filter :set_user_var, :only => [ :show, :edit, :update, :upgrade, :downgrade, :plan ]
   
   def index
     redirect_to( :action => :show ) && return unless admin?
     @users = User.paginate( :page => params[:page] || '1' )
+  end
+  
+  def plan
+    render :text => 'plan page'
+  end
+  
+  def upgrade
+    @billing_record = BillingRecord.new( :plan_id => 1 )
+  end
+  
+  def downgrade
+    render :text => 'downgrade page'
   end
   
   def login

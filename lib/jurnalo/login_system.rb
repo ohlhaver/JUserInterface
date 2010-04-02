@@ -164,23 +164,30 @@ module Jurnalo
     
     module ClassMethods
       
+      # :skip => actions where no authentication ( no gateway authentication ) is required
       def jurnalo_login_required( options = {} )
-        before_filter :authenticate_using_single_access
-        before_filter :api_request_validation
-        before_filter :session_check_for_validation
+        filter_options = {}
+        filter_options[:except] = Array( options.delete(:skip) ) if options[:skip]
+        before_filter :authenticate_using_single_access, filter_options
+        before_filter :api_request_validation, filter_options
+        before_filter :session_check_for_validation, filter_options
         if options[:only]
           before_filter :authenticate_using_cas_with_gateway,    :except => options[:only]
           before_filter :authenticate_using_cas_without_gateway, :only => options[:only]
+          skip_before_filter :authenticate_using_cas_with_gateway, :only => filter_options[:except] unless filter_options[:except].blank?
         elsif options[:except]
           before_filter :authenticate_using_cas_with_gateway, :only => options[:except]
           before_filter :authenticate_using_cas_without_gateway, :except => options[:except]
+          skip_before_filter :authenticate_using_cas_without_gateway, :only => filter_options[:except] unless filter_options[:except].blank?
         else
-          before_filter :authenticate_using_cas_without_gateway
+          before_filter :authenticate_using_cas_without_gateway, filter_options
         end
         before_filter :log_session_info
-        before_filter :set_current_user
+        before_filter :set_current_user, filter_options
         before_filter :check_for_new_users, options
+        skip_before_filter :check_for_new_users, :only => filter_options[:except] unless filter_options[:except].blank?
         before_filter :redirect_to_activation_page_if_not_active, options
+        skip_before_filter :redirect_to_activation_page_if_not_active, :only => filter_options[:except] unless filter_options[:except].blank?
       end
       
     end

@@ -67,7 +67,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'users', :action => 'login'
   map.access_denied '/access_denied', :controller => 'application', :action => 'access_denied'
   map.resources :story_searches
-  map.resource :account, :controller => "users"
+  map.resource :account, :controller => "users", :collection => [ :upgrade, :downgrade, :plan ]
   map.resources :preferences, :member => [ :display, :alert, :edition, :search ]
   map.resources :authors
   map.resources :sources
@@ -82,6 +82,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :password_resets
   map.resources :account_activations
+  map.cnb 'click_and_buy/:action', :controller => 'click_and_buy'
   map.connect ':controller/:id', :action => :show
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
