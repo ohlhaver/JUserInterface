@@ -133,13 +133,14 @@ class ClickAndBuyGateway
   def set_confirm_transaction_data( user, request, &block )
     success = true
     billing_record = BillingRecord.find_by_id( param( request, :j_bdr_id ) )
+    bdr_id = test_mode? ? 0 : param( request, :BDRID )
     gateway_transaction = billing_record ? billing_record.gateway_transactions.find( :first, 
-      :conditions => { :transaction_id => param( request, :BDRID ) }, :order => 'created_at DESC' ) : nil
+      :conditions => { :transaction_id => bdr_id }, :order => 'created_at DESC' ) : nil
     gateway_transaction.try( :checksum=, param( request, :j_key ) )
     success = ( gateway_transaction && billing_record &&
       billing_record.user_id == user.id &&
       checksum_ok?( gateway_transaction, billing_record.checksum ) &&
-      billing_record.authorized?
+      billing_record.authorized? &&
       param(request, :result) == "success"
     )
     success = block.call( billing_record, gateway_transaction.transaction_id ) if success
