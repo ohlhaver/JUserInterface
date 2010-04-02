@@ -3,7 +3,7 @@
   <%= observe_form( form_id, :function => "$('#{form_id}').submit();" ) %>
 <% end %>
 <div class='settings_news_block'>
-  <h2><%=t( 'navigation.main.search_and_sorting') %></h2>
+  <h2><span class = "page_label"><%= t('navigation.top.settings') %> > <%=t( 'navigation.main.search_and_sorting') %></span></h2>
 </div>
 
 <% form_for(@preference, :url => preference_path( @user ), :html => { :method => :put, :class => "edit_preference", :id => form_id }  ) do |f| %>
@@ -11,10 +11,10 @@
 <div class = "about">  
 	<div class = "adv_search_lines">
         <%= f.label :default_sort_criteria, t('prefs.labels.sort_criteria') %>
-     	<%= f.select :default_sort_criteria, Preference.for_select( :default_sort_criteria ) %>
+     	<span class = "rater"><%= f.select :default_sort_criteria, Preference.for_select( :default_sort_criteria ) %></span>
 		<br>
         <%= f.label :default_time_span, t('prefs.labels.time_span') %>
-        <%= f.select :default_time_span, Preference.for_select( :default_time_span ) %>
+        <span class = "rater"><%= f.select :default_time_span, Preference.for_select( :default_time_span ) %></span>
 	</div>
   </div>
 
@@ -23,13 +23,13 @@
 		<div class = "adv_search_lines">
 
         <%= f.label :video, t('prefs.labels.video_pref') %>
-        <%= f.select :video, Preference.for_select( :video ) %>
+        <span class = "rater"><%= f.select :video, Preference.for_select( :video ) %></span>
 		<br>
         <%= f.label :opinion, t('prefs.labels.opinion_pref') %>
-        <%= f.select :opinion, Preference.for_select( :opinion ) %>
+        <span class = "rater"><%= f.select :opinion, Preference.for_select( :opinion ) %></span>
 		<br>
         <%= f.label :blog, t('prefs.labels.blog_pref') %>
-        <%= f.select :blog, Preference.for_select( :blog ) %>
+        <span class = "rater"><%= f.select :blog, Preference.for_select( :blog ) %></span>
 	</div>
   </div>
   </div>
@@ -37,24 +37,11 @@
 	<div class = "about">  
 		<div class = "adv_search_lines">
         <%= f.label :subscription_type, t('prefs.labels.subscription_type') %>
-        <%= f.select :subscription_type, Preference.for_select( :subscription_type ) %>
+        <span class = "rater"><%= f.select :subscription_type, Preference.for_select( :subscription_type ) %></span>
 	</div>
   </div>  
 </div>
-  <div class='settings_news_block'>
-	 <h2> <%= f.label :search_language_ids, t('prefs.labels.search_languages') %> </h2>
-	<div class = "about">  
-		<div class = "adv_search_lines">
 
-        <% Preference.for_select( :default_language_id ).each do |language| %>
-          <%= hidden_field_tag( "preference[search_language_ids][#{language.last}]", "0") %>
-          <%= check_box_tag( "preference[search_language_ids][#{language.last}]", "1", f.object.search_language_id_exists?( language.last ) ) %> <%= language.first %>
-       	<br>
-
-        <% end %>
-		</div>
-	  </div>
-</div>
 
   <%= hidden_field_tag( :return_to, request.url ) %>
 <% end %>

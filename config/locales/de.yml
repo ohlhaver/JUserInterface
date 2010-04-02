@@ -1,53 +1,87 @@
 de:
+  activerecord:
+    errors:
+      messages:
+        accepted: "muss akzeptiert werden"
+        blank: "muss angegeben werden"
+        confirmation: "passt nicht zur Bestätigung"
+        empty: "muss angegeben werden"
+        equal_to: "muss {{count}} gleichen"
+        even: "muss gerade sein"
+        exclusion: "ist nicht verfügbar"
+        greater_than: "muss größer sein als {{count}}"
+        greater_than_or_equal_to: "muss gleich oder größer sein als {{count}}"
+        inclusion: "ist nicht in der Liste enthalten"
+        invalid: "ist nicht gültig"
+        invalid_login: "ist nicht gültig. Ihr Benutzername darf kein Leerzeichen enthalten."
+        invalid_url: "ist nicht gültig, sie müssen die Adresse eingeben als http://www.irgendeineseite.de"
+        less_than: "muss kleiner sein als {{count}}"
+        less_than_or_equal_to: "muss gleich oder kleiner sein als {{count}}"
+        not_a_number: "ist keine Zahl"
+        odd: "muss ungerade sein"
+        taken: "ist nicht verfügbar"
+        too_long: "ist zu lang (bitte nicht mehr als {{count}} Buchstaben)"
+        too_short: "ist zu kurz (bitte nicht weniger als {{count}} Buchstaben)"
+        wrong_length: "ist nicht die richtige Länge (es müssen {{count}} Buchstaben sein)"
+      template:
+        header: "Fehler bei der Eingabe haben verhindert, dass dieser Benutzer gespeichert werden konnte."
+        body: "Es gab Probleme bei folgenden Feldern:"
   account:
-    current: 'Current Plan'
-    upgrade: 'upgrade to'
-    downgrade: 'downgrade to'
+    current: 'Jetziger Plan'
+    upgrade: 'Upgrade zu'
+    downgrade: 'Downgrade zu'
     basic:
-      label: Jurnalo Basic Account
-      info: "upto 10 authors, sources and search topics preferences."
-      cost: free
+      label: "Jurnalo Basis Plan" 
+      info: "Ein eigenes Thema, ein Autoren-Abbonement und eine Quellen-Einstellung."
+      cost: gratis
     power:
-      label: "Jurnalo Power Account"
-      info: "unlimited settings"
-      cost: "EUR 5 per month"
+      label: "<b>Jurnalo Power Plan</b>"
+      info: "Unbegrenzte Anzahl von eigenen Themen, Autoren-Abbonements und Quellen-Einstellungen."
+      cost: "EUR 5 pro Monat"
   edition:
     other: "Andere Nachrichtenausgaben"
   jurnalo:
     login:
-      new_user: "or {{register}} as a new user"
-      existing_user: "Or, use your existing account"
-      username: "username"
-      password: "password"
-      remember_me: "remember me"
-      forgot_password: "forgot password"
+      new_user: "oder {{register}}"
+      existing_user: "Benutzen Sie bitte Ihren bestehenden Zugang"
+      username: "Benutzername"
+      password: "Passwort"
+      remember_me: "Auf diesem Computer merken"
+      forgot_password: "Passwort vergessen"
+      signup: "Als neuer Benutzer registrieren!"
     register:
-      new_user: "Signup as a new user"
+      new_user: "Als neuer Benutzer registrieren"
       benefits:
-        header: "Once signed up, you can"
-        body: "Lorem ipsum. blah blah blah."
-      now: "sign up now"
-      title: "Sign up for Jurnalo"
-      enter_info: "Enter your information below to signup for a new account."
-      accept_tac: "Accept Jurnalo's Terms and Conditions"
-      captcha: "Enter the code below:"
-      login: "username"
-      password: "password"
-      change_password: "change password"
-      confirm_password: "confirm password"
-      name: "name"
-      email: "email"
-      active: "active"
+          header: "Sobald Sie registriert sind, können Sie:"
+          body: "- Autoren abonnieren<br>- eigene Themen erschaffen<br>- Autoren und Quellen gewichten<br>- interessante Artikel zu Ihrer Leseliste speichern <br><br>"
+      now: "Jetzt registrieren"
+      title: "Bei Jurnalo registrieren"
+      enter_info: "Bitte geben Sie Ihre Daten ein:"
+      accept_tac: "Jurnalos rechtliche Bedingungen akzeptieren"
+      captcha: "Bitte geben Sie den unten stehenden Code ein:"
+      login: "Benutzername"
+      password: "Passwort"
+      change_password: "Passwort ändern"
+      confirm_password: "Passwort bestätigen"
+      name: "Name"
+      email: "E-mail"
+      active: "Activ"
+      legal: "ansehen"
+      choose: "Wählen Sie Ihren Plan:"
+    forgot_password:
+      label: "Passwort vergessen"
+      instruction: "Bitte füllen Sie das Feld aus. Danach erhalten Sie eine E-mail mit Instruktionen zur Erstellung eines neuen Passworts."
+      button: "Passwort zurücksetzen"
   more:
-    info: "more info"
+    info: "mehr Informationen"
   prefix:
-    my: "My"
-    user: "User"
+    my: "Meine"
+    user: "Benutzer"
   prefs:
     homepage_preview:
-      elements: "Homepage elements preview"
-      sections: "Homepage sections preview"
-      topics: "My topics preview"
+      elements: "Homepage Elemente"
+      sections: "Homepage Rubriken"
+      topics: "Meine Themen"
     home_action:
       show: 'zeigen'
       hide: 'verstecken'
@@ -55,30 +89,31 @@ de:
       up: 'hoch bewegen'
       down: 'runter bewegen'
     labels:
-      per_page: "Results per page"
-      per_cluster_group: "Clusters per section preview"
-      per_cluster: "Headlines per cluster preview"
-      show_images: "Show Images"
-      topic_email: "Topic Emails"
-      author_email: "Author Emails"
-      sort_criteria: "Default sort criteria"
-      time_span: "Default time span"
-      video_pref: "Video preference"
-      blog_pref: "Blog preference"
-      opinion_pref: "Opinion preference"
-      subscription_type: "Default subscription type"
-      search_languages: "Search language(s)"
-      edition: "Default top stories"
-      interface_language: "Interface language"
-      rate: "rate"
-      subscribe: "subscribe"
-      add_to_list: "add to list"
+      per_page: "Ergebnisse pro Seite"
+      per_cluster_group: "Nachrichten-Themen pro Rubriken-Vorschau"
+      per_cluster: "Überschriften pro Nachrichten-Thema-Vorschau"
+      show_images: "Bilder anzeigen"
+      topic_email: "Artikel zu meinen Themen"
+      author_email: "Artikel von meinen Autoren"
+      sort_criteria: "Standard-Suchkriterien"
+      time_span: "Standard-Zeitspanne"
+      video_pref: "Video-Gewichtung"
+      blog_pref: "Blog-Gewichtung"
+      opinion_pref: "Meinungs-Gewichtung"
+      subscription_type: "Standard-Abonnement-Typ"
+      search_languages: "Suchsprache(n)"
+      edition: "Standard-Region für Schlagzeilen"
+      interface_language: "Bedienungs-Sprache"
+      rate: "Gewichtung:"
+      subscribe: "abonniert"
+      add_to_list: "zur Liste hinzufügen"
+      email_alerts: "E-mails"
     image:
-      'off': "no"
-      'on': "yes"
+      'off': "nein"
+      'on': "ja"
     lang:
       english: "English"
-      german: "Deutsch"
+      german: "deutsch"
     country:
       int: 'Global'
       de: 'Deutschland'
@@ -143,16 +178,16 @@ de:
       technology: "Technik"
       top_stories: "Schlagzeilen"
       top_authors: "Top Autoren"
-      back_to_home: "back to home"
-      account_details: "Account Details"
-      my_sources: "{{prefix}} Sources"
-      my_authors: "{{prefix}} Authors"
-      my_search_topics: "{{prefix}} Search Topics"
-      search_and_sorting: "Search and Sorting"
-      display_preferences: "Display Preferences"
-      alert_settings: "Alert Settings"
-      language_and_region: "Language and Region"
-      homepage_settings: "Homepage Settings"
+      back_to_home: "zurück zur Homepage"
+      account_details: "Konto"
+      my_sources: "{{prefix}} Quellen"
+      my_authors: "{{prefix}} Autoren"
+      my_search_topics: "{{prefix}} Themen"
+      search_and_sorting: "Sucheinstellungen"
+      display_preferences: "Darstellung"
+      alert_settings: "E-mails"
+      language_and_region: "Sprache"
+      homepage_settings: "Layout"
     top:
       help: "Hilfe"
       login: "Einloggen"
@@ -192,11 +227,11 @@ de:
         blog: "Blogs:"
   seo:
     page:
-      default_title: "Jurnalo - User Settings"
+      default_title: "Jurnalo - Benutzer Einstellungen"
   topic:
     label:
       new: 'Neues Thema'
-      new_advanced: 'Erweitert Neues Thema'
+      new_advanced: 'erweitertes neues Thema'
     action:
       add: 'Thema hinzufügen'
       test: 'testen'
@@ -207,3 +242,22 @@ de:
   rate:
     source: 'Quelle gewichten'
     author: 'Autoren gewichten'
+  emails:
+    activation:
+      part1: "Lieber Leser,"
+      part2: "Sie haben einen Zugang für Jurnalo erstellt."
+      part3: "Wenn Sie kein Login erstellt haben, dann ignorieren Sie bitte diese E-mail."
+      part4: "Falls Sie einen Login erstellt haben, klicken Sie bitte auf den unteren Link um Ihren Zugang zu aktivieren."
+      part5: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren."
+      part6: "Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail."
+      part7: "Viele Grüße,"
+      part8: "Ihr Jurnalo"
+    reset:
+      part1: "Lieber Leser,"
+      part2: "Wir wurden gebeten Ihr Passwort zurückzusetzen."
+      part3: "Wenn Sie nicht darum gebeten haben, dann ignorieren Sie bitte diese E-mail."
+      part4: "Falls Sie darum gebeten haben, so klicken Sie bitte auf den unteren Link:"  
+      part5: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren."
+      part6: "Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail."
+      part7: "Viele Grüße," 
+      part8: "Ihr Jurnalo"  

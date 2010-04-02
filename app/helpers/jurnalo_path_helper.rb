@@ -117,6 +117,10 @@ module JurnaloPathHelper
     jurnalo_url_for( :controller => '/imprint' )
   end
   
+  def jurnalo_power_path
+    jurnalo_url_for( :controller => '/power' )
+  end
+  
   def jurnalo_url_for( options = {} )
     url_for( options.reverse_merge( :host => service_host, :port => service_port ) )
   end

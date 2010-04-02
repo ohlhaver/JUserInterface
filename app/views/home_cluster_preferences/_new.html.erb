@@ -3,5 +3,5 @@
   <%= f.select( :value, default_section_options( @region_id, @language_id ) ) %>
   <%= hidden_field_tag( :region_id, @region_id ) %>
   <%= hidden_field_tag( :language_id, @language_id ) %>
-  <%= f.submit( t('prefs.labels.add_to_list') ) %>
+  <%= f.submit( t('prefs.labels.add_to_list'), :class => "add_element_button" ) %>
 <% end %>

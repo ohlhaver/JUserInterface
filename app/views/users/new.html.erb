@@ -1,7 +1,9 @@
 <div class='news_group'>
   <div class='settings_news_block'>
-    <h2><%= t('jurnalo.register.title') %></h2>
+    <h2><span class="page_label"><%= t('jurnalo.register.title') %></span></h2>
     <div class = "about">
+		<%= t('jurnalo.register.benefits.header') %>
+	<br><br>
       <%= t('jurnalo.register.benefits.body') %>
     </div>
   </div>
@@ -9,7 +11,7 @@
 
   <% form_for @user, :url => account_path do |f| %>
     <div class='settings_news_block'>
-     <h2> <%= t('jurnalo.register.enter_info') %></h2>
+     <h2><span class="page_label"> <%= t('jurnalo.register.enter_info') %></span></h2>
 	 <div class='about'>
       <%= f.error_messages %>
       <% unless @user.third_party? %>
@@ -20,33 +22,31 @@
 	</div>
     </div>
     <div class='settings_news_block'>
-      <h2>Choose your account:</h2>
+      <h2><span class="page_label"><%= t('jurnalo.register.choose') %></span></h2>
       
 	<div class='about'>
 		<h2>
 	  <div>
         <%= radio_button_tag( 'account', 'basic', true ) %> 		
-        <%= t('account.basic.label') %> (<%= t('account.basic.cost') %>)<br>
-        <%= t('account.basic.info') %> (<%= link_to t('more.info') %>)	
+        <%= t('account.basic.label') %>  (<%= t('account.basic.cost') %>)<br>
+        <%= t('account.basic.info') %> 	
       </div>
 		<br>
       <div>
         <%= radio_button_tag( 'account', 'power', false, :disabled => true ) %> 
-        <%= t('account.power.label') %> ( <%= t('account.power.cost') -%>)<br/>
-        <%= t('account.power.info') %> ( <%= link_to t('more.info') %>)
+        <b><%= link_to t('account.power.label'), jurnalo_power_path %></b> (<%= t('account.power.cost') -%>)<br/>
+        <%= t('account.power.info') %> (<%= link_to t('more.info'), jurnalo_power_path %>)
       </div>
 		</h2>
 	</div>
     </div>
     <div class='settings_news_block'>
-      <h2><%= f.check_box :terms_and_conditions_accepted %>
-      <%= f.label :terms_and_conditions_accepted, t('jurnalo.register.accept_tac') %></h2>
 	<div class='about'>
-		<br>
+
       <% unless @user.third_party? %>
         <%= show_simple_captcha( :object => "user", :image_style => 'blue', :distortion => 'high', :label => t('jurnalo.register.captcha') ) %>
       <% end %>
-    
+    <br>
     <%= f.submit t('navigation.top.register'), :class => 'confirmation_button' %>
 	</div>
 	</div>

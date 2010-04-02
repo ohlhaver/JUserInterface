@@ -3,42 +3,32 @@
   <%= observe_form( form_id, :function => "$('#{form_id}').submit();" ) %>
 <% end %>
 <div class='news_block'>
-  <h2><%=t( 'navigation.main.display_preferences') %></h2>
+  <h2><span class = "page_label"><%= t('navigation.top.settings') %> > <%=t( 'navigation.main.display_preferences') %></span></h2>
 </div>
-<div class='news_block'>
+
+<div class = "about">  
+	<div class = "adv_search_lines">
+
   <% form_for(@preference, :url => preference_path( @user ), :html => { :method => :put, :class => "edit_preference", :id => form_id }  ) do |f| %>
-    <div class='clearfix'>
-      <div class='grid_1'>
+
         <%= f.label :per_page, t('prefs.labels.per_page') %>
-      </div>
-      <div class='grid_1'>
-        <%= f.select :per_page, Preference.for_select( :per_page ) %>
-      </div>
-    </div>
-    <div class='clearfix'>
-      <div class='grid_1'>
+
+        <span class = "rater"><%= f.select :per_page, Preference.for_select( :per_page ) %></span><br>
+
         <%= f.label :headlines_per_cluster_group, t('prefs.labels.per_cluster_group') %>
-      </div>
-      <div class='grid_1'>
-        <%= f.select :headlines_per_cluster_group, Preference.for_select( :headlines_per_cluster_group ) %>
-      </div>
-    </div>
-    <div class='clearfix'>
-      <div class='grid_1'>
+
+        <span class = "rater"><%= f.select :headlines_per_cluster_group, Preference.for_select( :headlines_per_cluster_group ) %></span><br>
+
         <%= f.label :cluster_preview, t('prefs.labels.per_cluster') %>
-      </div>
-      <div class='grid_1'>
-        <%= f.select :cluster_preview, Preference.for_select( :cluster_preview ) %>
-      </div>
-    </div>
-    <div class='clearfix'>
-      <div class='grid_1'>
+
+        <span class = "rater"><%= f.select :cluster_preview, Preference.for_select( :cluster_preview ) %></span><br>
+
         <%= f.label :image, t('prefs.labels.show_images') %>
-      </div>
-      <div class='grid_1'>
-        <%= f.select :image, Preference.for_select( :image ) %>
-      </div>
-    </div>
+
+        <span class = "rater"><%= f.select :image, Preference.for_select( :image ) %></span><br>
+
     <%= hidden_field_tag( :return_to, request.url ) %>
   <% end %>
+
+</div>
 </div>

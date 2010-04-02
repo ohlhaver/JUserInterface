@@ -3,26 +3,22 @@
   <%= observe_form( form_id, :function => "$('#{form_id}').submit();" ) %>
 <% end %>
 <div class='news_block'>
-  <h2><%=t( 'navigation.main.alert_settings') %></h2>
+  <h2><span class = "page_label"><%= t('navigation.top.settings') %> > <%=t( 'navigation.main.alert_settings') %></span></h2>
 </div>
-<div class='news_block'>
+<div class = "about">  
+	<div class = "adv_search_lines">
   <% form_for(@preference, :url => preference_path( @user ), :html => { :method => :put, :class => "edit_preference", :id => form_id }  ) do |f| %>
-    <div class='clearfix'>
-      <div class='grid_1'>
+
         <%= f.label :topic_email, t('prefs.labels.topic_email') %>
-      </div>
-      <div class='grid_1'>
-        <%= f.select :topic_email, Preference.for_select( :topic_email ) %>
-      </div>
-    </div>
-    <div class='clearfix'>
-      <div class='grid_1'>
+
+       <span class = "rater"> <%= f.select :topic_email, Preference.for_select( :topic_email ) %></span><br>
+
         <%= f.label :author_email, t('prefs.labels.author_email') %>
-      </div>
-      <div class='grid_1'>
-        <%= f.select :author_email, Preference.for_select( :author_email ) %>
-      </div>
-    </div>
+
+      <span class = "rater">  <%= f.select :author_email, Preference.for_select( :author_email ) %></span><br>
+    
+    
     <%= hidden_field_tag( :return_to, request.url ) %>
   <% end %>
+</div>
 </div>
