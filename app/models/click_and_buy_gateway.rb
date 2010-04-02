@@ -185,7 +185,7 @@ class ClickAndBuyGateway
     gateway_transaction.remote_addr.to_s[0,11] == '217.22.128.'
   end
   
-  def param( request, key, type = :integer )
+  def param( request, key, type = :string )
     val = request.params[ key ]
     type == :integer ? val.to_i : val
   end
