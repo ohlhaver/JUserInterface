@@ -40,10 +40,7 @@
     </div>
     <div class='settings_news_block'>
 	<div class='about'>
-      <h2><%= f.check_box :terms_and_conditions_accepted %>
-      <%= f.label :terms_and_conditions_accepted, t('jurnalo.register.accept_tac') %> (<%= link_to t( 'jurnalo.register.legal' ), jurnalo_privacy_path %>)</h2>
-	
-		<br>
+
       <% unless @user.third_party? %>
         <%= show_simple_captcha( :object => "user", :image_style => 'blue', :distortion => 'high', :label => t('jurnalo.register.captcha') ) %>
       <% end %>
