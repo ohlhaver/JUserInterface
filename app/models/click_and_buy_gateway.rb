@@ -90,6 +90,8 @@ class ClickAndBuyGateway
       rescue StandardError
       end
     }
+    puri.query = puri.query + "lang=#{Language.find(user.preference.interface_language_id).code.upcase}&" unless user.preference.interface_language_id.blank?
+    puri.query = puri.query + "Nation=#{Region.find(user.preference.region_id).code.upcase}&" unless user.preference.region_id == -1
     billing_record.premium_link = puri.to_s
     return billing_record
   end
@@ -128,22 +130,31 @@ class ClickAndBuyGateway
     end
   end
   
+  def param( request, key, type = :string )
+    val = request.params[ key ]
+    type == :integer ? val.to_i : val
+  end
+  
+  def header( request, key, type = :string )
+    val = request.headers[ self.class::HeaderMapping[key] ]
+    type == :integer ? val.to_i : val
+  end
+  
   protected
   
-  def set_confirm_transaction_data( user, request, &block )
+  def set_confirm_transaction_data( request, &block )
     success = true
     billing_record = BillingRecord.find_by_id( param( request, :j_bdr_id ) )
-    bdr_id = test_mode? ? 0 : param( request, :BDRID )
+    bdr_id = test_mode? ? 0 : header( request, :transaction_id )
     gateway_transaction = billing_record ? billing_record.gateway_transactions.find( :first, 
       :conditions => { :transaction_id => bdr_id }, :order => 'created_at DESC' ) : nil
     gateway_transaction.try( :checksum=, param( request, :j_key ) )
     success = ( gateway_transaction && billing_record &&
-      billing_record.user_id == user.id &&
       checksum_ok?( gateway_transaction, billing_record.checksum ) &&
       billing_record.authorized? &&
       param(request, :result) == "success"
     )
-    success = block.call( billing_record, gateway_transaction.transaction_id ) if success
+    success = block.call( billing_record, gateway_transaction.transaction_id ) if success && !test_mode?
     ( success ? billing_record.payment_confirmed! : billing_record.payment_error! ) if billing_record
     return success
   end
@@ -184,16 +195,6 @@ class ClickAndBuyGateway
   
   def remote_addr_ok?( gateway_transaction )
     gateway_transaction.remote_addr.to_s[0,11] == '217.22.128.'
-  end
-  
-  def param( request, key, type = :string )
-    val = request.params[ key ]
-    type == :integer ? val.to_i : val
-  end
-  
-  def header( request, key, type = :string )
-    val = request.headers[ self.class::HeaderMapping[key] ]
-    type == :integer ? val.to_i : val
   end
   
   private

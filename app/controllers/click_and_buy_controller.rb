@@ -1,6 +1,6 @@
 class ClickAndBuyController < ApplicationController
   
-  jurnalo_login_required :skip => [ :authorize, :ems ]
+  jurnalo_login_required :skip => [ :authorize, :ems, :confirm ]
   
   # Creates an Internal Billing Record and Redirects to Premium Link
   def create
@@ -21,14 +21,14 @@ class ClickAndBuyController < ApplicationController
   
   # From Logs It seems the ems is called with xml as a http get param
   def ems
-    head (:ok)
+    head(:ok)
   end
   
   # Second Handshake
   def confirm
-    success = GatewayTransaction.gateway.confirm( current_user, request )
+    success = GatewayTransaction.gateway.confirm( request )
     if success
-      redirect_to upgrade_account_path
+      redirect_to account_path
     else
       redirect_to :action => :error, :s => 3
     end
