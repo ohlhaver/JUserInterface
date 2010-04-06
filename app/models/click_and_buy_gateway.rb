@@ -117,8 +117,8 @@ class ClickAndBuyGateway
   
   # Second Handshake
   # doing a SOAP Call Confirmation
-  def confirm( user, request )
-    set_confirm_transaction_data( user, request ) do | billing_record, bdr_id |
+  def confirm( request )
+    set_confirm_transaction_data( request ) do | billing_record, bdr_id |
       client = Savon::Client.new("https://services.eu.clickandbuy.com/TMI/1.4/")
       response = client.is_bdrid_committed! do |soap|
         soap.namespace = "TransactionManager.Status"
