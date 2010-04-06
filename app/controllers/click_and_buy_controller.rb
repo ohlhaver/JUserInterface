@@ -28,6 +28,7 @@ class ClickAndBuyController < ApplicationController
   def confirm
     success = GatewayTransaction.gateway.confirm( request )
     if success
+      flash[:notice] = 'Payment transaction successful'
       redirect_to account_path
     else
       redirect_to :action => :error, :s => 3
