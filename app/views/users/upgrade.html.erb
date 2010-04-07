@@ -10,7 +10,7 @@
   </div>
   <div class="about">
     <p>You will pay <strong><%= t('account.power.cost') %></strong></p>
-    <p>Click here to see our <%= link_to( 'billing policy' )%></p>
+    <p>Click here to see our <%= link_to( 'billing policy', billing_policy_path )%></p>
   </div>
   <div class="aboout">
     <% form_for( @billing_record, :url => cnb_path(:action => :create) ) do |f| %>

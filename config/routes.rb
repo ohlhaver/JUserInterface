@@ -66,6 +66,7 @@ ActionController::Routing::Routes.draw do |map|
   map.logout '/logout', :controller => 'application', :action => 'logout'
   map.login '/login', :controller => 'users', :action => 'login'
   map.access_denied '/access_denied', :controller => 'application', :action => 'access_denied'
+  map.billing_policy '/billing_policy', :controller => 'users', :action => 'billing_policy'
   map.resources :story_searches
   map.resource :account, :controller => "users", :collection => [ :upgrade, :downgrade, :plan ]
   map.resources :preferences, :member => [ :display, :alert, :edition, :search ]

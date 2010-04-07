@@ -119,14 +119,18 @@ class ClickAndBuyGateway
   # doing a SOAP Call Confirmation
   def confirm( request )
     set_confirm_transaction_data( request ) do | billing_record, bdr_id |
-      client = Savon::Client.new("https://services.eu.clickandbuy.com/TMI/1.4/")
-      response = client.is_bdrid_committed! do |soap|
-        soap.namespace = "TransactionManager.Status"
-        soap.action    = "TransactionManager.Status#isBDRIDCommitted"
-        soap.input     = "isBDRIDCommitted"
-        soap.body      = { "sellerID" => options[:merchant_id].to_s, "tmPassword" => options[:transaction_password].to_s, "slaveMerchantID" => "0", "BDRID" => bdr_id }
-      end
+      response = soap_call_is_bdrid_committed( bdr_id )
       !response.soap_fault? && response.to_hash[:is_bdrid_committed_response][:return][:is_committed] 
+    end
+  end
+  
+  def soap_call_is_bdrid_committed(bdr_id)
+    client = Savon::Client.new("https://services.eu.clickandbuy.com/TMI/1.4/")
+    response = client.is_bdrid_committed! do |soap|
+      soap.namespace = "TransactionManager.Status"
+      soap.action    = "TransactionManager.Status#isBDRIDCommitted"
+      soap.input     = "isBDRIDCommitted"
+      soap.body      = { "sellerID" => options[:merchant_id].to_s, "tmPassword" => options[:transaction_password].to_s, "slaveMerchantID" => "0", "BDRID" => bdr_id }
     end
   end
   

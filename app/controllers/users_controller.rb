@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
-  jurnalo_login_required :only => [ :index, :show, :edit, :update, :upgrade, :downgrade, :plan ]
-  before_filter :set_user_var, :only => [ :show, :edit, :update, :upgrade, :downgrade, :plan ]
+  jurnalo_login_required :only => [ :index, :show, :edit, :update, :upgrade, :downgrade, :plan, :billing_policy ]
+  before_filter :set_user_var, :only => [ :show, :edit, :update, :upgrade, :downgrade, :plan, :billing_policy ]
   
   def index
     redirect_to( :action => :show ) && return unless admin?
