@@ -163,6 +163,8 @@ class ClickAndBuyGateway
     success = true
     billing_record = BillingRecord.find_by_id( param( request, :j_bdr_id ) )
     bdr_id = header( request, :transaction_id )
+    RAILS_DEFAULT_LOGGER.info( "TRANSACTION_ID: #{bdr_id}")
+    RAILS_DEFAULT_LOGGER.info( "HEADERS: #{request.headers.to_xml}")
     gateway_transaction = billing_record ? billing_record.gateway_transactions.find( :first, 
       :conditions => { :transaction_id => bdr_id }, :order => 'created_at DESC' ) : nil
     gateway_transaction.try( :checksum=, param( request, :j_key ) )
@@ -172,7 +174,7 @@ class ClickAndBuyGateway
       param(request, :result) == "success"
     )
     success = block.call( billing_record, gateway_transaction.transaction_id ) if success
-    billing_record.payment_error! if billing_record && !success
+    billing_record.payment_error! if billing_record && billing_record.authorized? && !success
     return billing_record.try(:state) || 'error'
   end
   
