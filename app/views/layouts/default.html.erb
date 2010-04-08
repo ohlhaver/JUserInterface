@@ -32,6 +32,10 @@
         <%= render :partial => 'shared/edition' %>
       </div>
       <div id="content" class="grid_3">
+        <div class="about">
+          <p style="color: green"><%= flash[:notice] %></p>
+          <p style="color: red"><%= flash[:error] %></p>
+        </div>
         <%= yield %>
         <div>&nbsp;</div>
       </div>
