@@ -173,7 +173,7 @@ class ClickAndBuyGateway
     )
     success = block.call( billing_record, gateway_transaction.transaction_id ) if success
     billing_record.payment_error! if billing_record && !success
-    return success
+    return billing_record.try(:state) || 'error'
   end
   
   def set_authorize_transaction_data( request, &block )
