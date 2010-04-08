@@ -126,7 +126,7 @@ class ClickAndBuyGateway
         billing_record.verification_pending?
       else
         status = response.to_hash[:is_bdrid_committed_response][:return][:is_committed].to_s rescue "0"
-        billing_record.payment_confirm! if status == "1" || status == "true"
+        billing_record.payment_confirmed! if status == "1" || status == "true"
         billing_record.paid?
       end
     end
