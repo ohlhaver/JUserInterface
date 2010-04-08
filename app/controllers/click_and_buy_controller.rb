@@ -27,7 +27,7 @@ class ClickAndBuyController < ApplicationController
   
   # Second Handshake
   def confirm
-    success = GatewayTransaction.gateway.confirm( request )
+    state = GatewayTransaction.gateway.confirm( request )
     case( state ) when 'success'
       flash[:notice] = 'Payment transaction successful'
       redirect_to account_path
