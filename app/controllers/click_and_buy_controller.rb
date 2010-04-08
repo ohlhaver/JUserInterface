@@ -28,8 +28,8 @@ class ClickAndBuyController < ApplicationController
   # Second Handshake
   def confirm
     state = GatewayTransaction.gateway.confirm( request )
-    case( state ) when 'success'
-      flash[:notice] = 'Payment transaction successful'
+    case( state ) when 'paid'
+      flash[:notice] = 'Payment transaction successful. Account upgraded.'
       redirect_to account_path
     when 'verification_pending'
       redirect_to :action => :error, :s => 4
