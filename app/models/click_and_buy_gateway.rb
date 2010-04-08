@@ -159,14 +159,11 @@ class ClickAndBuyGateway
   
   protected
   
+  # TRANSACTION ID IS NOT PROVIDED IN SECOND HANDSHAKE. WE NEED TO TAKE THE STORED TRANSACTION ID.
   def set_confirm_transaction_data( request, &block )
     success = true
     billing_record = BillingRecord.find_by_id( param( request, :j_bdr_id ) )
-    bdr_id = header( request, :transaction_id )
-    RAILS_DEFAULT_LOGGER.info( "TRANSACTION_ID: #{bdr_id}")
-    RAILS_DEFAULT_LOGGER.info( "HEADERS: #{request.headers.to_xml}")
-    gateway_transaction = billing_record ? billing_record.gateway_transactions.find( :first, 
-      :conditions => { :transaction_id => bdr_id }, :order => 'created_at DESC' ) : nil
+    gateway_transaction = billing_record ? billing_record.gateway_transactions.find( :first, :order => 'created_at ASC' ) : nil
     gateway_transaction.try( :checksum=, param( request, :j_key ) )
     success = ( gateway_transaction && billing_record &&
       checksum_ok?( gateway_transaction, billing_record.checksum ) &&
