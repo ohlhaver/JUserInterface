@@ -31,7 +31,7 @@ class ClickAndBuyController < ApplicationController
     case( state ) when 'success'
       flash[:notice] = 'Payment transaction successful'
       redirect_to account_path
-    when 'payment_verification'
+    when 'verification_pending'
       redirect_to :action => :error, :s => 4
     else
       redirect_to :action => :error, :s => 3
