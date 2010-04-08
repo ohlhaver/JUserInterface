@@ -26,7 +26,7 @@ class AccountActivationsController < ApplicationController
   def show
     @user.activate!
     flash[:notice] = 'Your account is activated now.'
-    redirect_to root_url
+    redirect_to login_path( :service => "http://accounts.jurnalo.com", :jwa => 0 )
   end
   
   # Request to activate account using activation token
