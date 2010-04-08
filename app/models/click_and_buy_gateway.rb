@@ -1,5 +1,5 @@
 require 'savon'
-Savon::Request.logger = nil
+Savon::Request.logger.level = 8
 Savon::Response.raise_errors = false
 
 class ClickAndBuyGateway
@@ -107,7 +107,7 @@ class ClickAndBuyGateway
         # Currency Info does not exists for Subscriptions
         # gateway_transaction.message ||= :currency_nok     unless currency_ok?( gateway_transaction, billing_record.currency )
         # For Testing Mode TransactionId is always Zero
-        gateway_transaction.message ||= :transaction_nok  unless test_mode? || transaction_ok?( gateway_transaction )
+        gateway_transaction.message ||= :transaction_nok  unless transaction_ok?( gateway_transaction )
         gateway_transaction.message ||= :success
         gateway_transaction.message == :success ? billing_record.payment_authorized! : billing_record.payment_error!
       end
@@ -120,17 +120,30 @@ class ClickAndBuyGateway
   def confirm( request )
     set_confirm_transaction_data( request ) do | billing_record, bdr_id |
       response = soap_call_is_bdrid_committed( bdr_id )
-      !response.soap_fault? && response.to_hash[:is_bdrid_committed_response][:return][:is_committed] 
+      if response.soap_fault? then
+        code = response.to_hash[:fault][:detail][:transaction_manager_status_status_exception][:id].to_s rescue "0"
+        billing_record.payment_verify! if code == "47" || code == "99" # Timeout Error ( needs manual verification )
+        billing_record.verification_pending?
+      else
+        status = response.to_hash[:is_bdrid_committed_response][:return][:is_committed].to_s rescue "0"
+        billing_record.payment_confirm! if status == "1" || status == "true"
+        billing_record.paid?
+      end
     end
   end
   
+  # Click and Buy TMI Interface is sensitive to the order of the elements
   def soap_call_is_bdrid_committed(bdr_id)
     client = Savon::Client.new("https://services.eu.clickandbuy.com/TMI/1.4/")
     response = client.is_bdrid_committed! do |soap|
       soap.namespace = "TransactionManager.Status"
       soap.action    = "TransactionManager.Status#isBDRIDCommitted"
       soap.input     = "isBDRIDCommitted"
-      soap.body      = { "sellerID" => options[:merchant_id].to_s, "tmPassword" => options[:transaction_password].to_s, "slaveMerchantID" => "0", "BDRID" => bdr_id }
+      soap.body      = ActiveSupport::OrderedHash.new # To preserve the order
+      soap.body["sellerID"] = options[:merchant_id].to_s
+      soap.body["tmPassword"] = options[:transaction_password].to_s
+      soap.body["slaveMerchantID"] = 0
+      soap.body["BDRID"] = bdr_id
     end
   end
   
@@ -149,7 +162,7 @@ class ClickAndBuyGateway
   def set_confirm_transaction_data( request, &block )
     success = true
     billing_record = BillingRecord.find_by_id( param( request, :j_bdr_id ) )
-    bdr_id = test_mode? ? 0 : header( request, :transaction_id )
+    bdr_id = header( request, :transaction_id )
     gateway_transaction = billing_record ? billing_record.gateway_transactions.find( :first, 
       :conditions => { :transaction_id => bdr_id }, :order => 'created_at DESC' ) : nil
     gateway_transaction.try( :checksum=, param( request, :j_key ) )
@@ -158,8 +171,8 @@ class ClickAndBuyGateway
       billing_record.authorized? &&
       param(request, :result) == "success"
     )
-    success = block.call( billing_record, gateway_transaction.transaction_id ) if success && !test_mode?
-    ( success ? billing_record.payment_confirmed! : billing_record.payment_error! ) if billing_record
+    success = block.call( billing_record, gateway_transaction.transaction_id ) if success
+    billing_record.payment_error! if billing_record && !success
     return success
   end
   

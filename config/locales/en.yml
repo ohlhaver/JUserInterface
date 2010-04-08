@@ -238,8 +238,20 @@ en:
     query: 'Search query:'
   emails:
     activation:
-      part1: "Dear reader,<br><br>You have created an account on Jurnalo.<br><br>If you did not create an account, simply ignore this email.<br>If you did create an account just click the link below to activate your account:"
-      part2: "If the above URL does not work try copying and pasting it into your browser.<br>If you continue to have problems please feel free to contact us at any time via email.<br><br> Best regards, Jurnalo"
+      part1: "Dear Reader,"
+      part2: "You have created an account on Jurnalo."
+      part3: "If you did not create an account, simply ignore this email."
+      part4: "If you did create an account just click the link below to activate your account."
+      part5: "If the above URL does not work try copying and pasting it into your browser."
+      part6: "If you continue to have problems please feel free to contact us at any time via email."
+      part7: "Best Regards,"
+      part8: "The Jurnalo"
     reset:
-      part1: "Dear reader,<br><br>A request to reset your password has been made.<br><br>If you did not make this request, simply ignore this email.<br>If you did make this request just click the link below:"  
-      part2: "If the above URL does not work try copying and pasting it into your browser.<br>If you continue to have problems please feel free to contact us at any time via email.<br><br> Best regards, Jurnalo"
+      part1: "Dear Reader,"
+      part2: "A request to reset your password has been made."
+      part3: "If you did not make this request, simply ignore this email."
+      part4: "If you did make this request just click the link below:"  
+      part5: "If the above URL does not work try copying and pasting it into your browser."
+      part6: "If you continue to have problems please feel free to contact us at any time via email."
+      part7: "Best Regards," 
+      part8: "The Jurnalo"

@@ -27,13 +27,13 @@
 	<div class='about'>
 		<h2>
 	  <div>
-        <%= radio_button_tag( 'account', 'basic', true ) %> 		
+        <%= f.radio_button( 'show_upgrade_page', 'false' ) %> 		
         <%= t('account.basic.label') %>  (<%= t('account.basic.cost') %>)<br>
         <%= t('account.basic.info') %> 	
       </div>
 		<br>
       <div>
-        <%= radio_button_tag( 'account', 'power', false, :disabled => true ) %> 
+        <%= f.radio_button( 'show_upgrade_page', 'true' ) %> 
         <b><%= link_to t('account.power.label'), jurnalo_power_path %></b> (<%= t('account.power.cost') -%>)<br/>
         <%= t('account.power.info') %> (<%= link_to t('more.info'), jurnalo_power_path %>)
       </div>
@@ -47,6 +47,7 @@
         <%= show_simple_captcha( :object => "user", :image_style => 'blue', :distortion => 'high', :label => t('jurnalo.register.captcha') ) %>
       <% end %>
     <br>
+    <%= f.hidden_field( :terms_and_conditions_accepted ) %>
     <%= f.submit t('navigation.top.register'), :class => 'confirmation_button' %>
 	</div>
 	</div>

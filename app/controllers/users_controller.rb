@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       redirect_back_or_default account_url
     else
       session[:cas_sent_to_gateway] = true
-      attributes = { :terms_and_conditions_accepted => true }
+      attributes = { :terms_and_conditions_accepted => true, :show_upgrade_page => true }
       attributes.merge!( :email => session[ :cas_user ], :third_party => session[ :cas_extra_attributes ][ 'auth' ] ) if session && session[ :cas_extra_attributes ]
       @user = User.new( attributes )
     end
@@ -61,7 +61,12 @@ class UsersController < ApplicationController
   end
   
   def show
-    render :action => :show
+    if @user.show_upgrade_page?
+      @user.update_attribute( :show_upgrade_page, false )
+      redirect_to :action => :upgrade
+    else
+      render :action => :show
+    end
   end
  
   def edit

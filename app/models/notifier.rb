@@ -1,6 +1,8 @@
 class Notifier < ActionMailer::Base  
   
-  default_url_options[:host] = "accounts.jurnalo.com"  
+  def self.default_url_options
+    ActionMailer::Base.default_url_options.merge( :host => "accounts.jurnalo.com" )
+  end
   
   def password_reset_instructions( user )  
     subject       "Password Reset Instructions"  
