@@ -2,6 +2,7 @@ class ClickAndBuyController < ApplicationController
   
   jurnalo_login_required :skip => [ :authorize, :ems, :confirm ]
   before_filter :set_user_var, :only => [ :error ]
+  skip_before_filter :verify_authenticity_token, :only => [ :ems ]
   
   # Creates an Internal Billing Record and Redirects to Premium Link
   def create
