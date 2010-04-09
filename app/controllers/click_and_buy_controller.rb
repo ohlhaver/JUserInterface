@@ -23,7 +23,8 @@ class ClickAndBuyController < ApplicationController
   
   # From Logs It seems the ems is called with xml as a http get param
   def ems
-    head(:ok)
+    GatewayMessage.store( params[:xml] )
+    render :text => 'OK'
   end
   
   # Second Handshake
