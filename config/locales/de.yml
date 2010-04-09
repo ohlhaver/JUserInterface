@@ -72,6 +72,20 @@ de:
       label: "Passwort vergessen"
       instruction: "Bitte füllen Sie das Feld aus. Danach erhalten Sie eine E-mail mit Instruktionen zur Erstellung eines neuen Passworts."
       button: "Passwort zurücksetzen"
+    power:
+      label: "Jurnalo Power Plan"
+      slogan: "Mit dem Jurnalo Power Plan aktivieren Sie die beste Nachrichten-Lese-Erfahrung, die man für Geld kaufen kann."
+      gives: "Der Jurnalo Power Plan gibt Ihnen alle Funktionen des Basis Plans, plus:"
+      topics: "- unbegrenzt eigene Suchthemen"
+      authors: "- unbegrenzt Autoren-Abbonements"
+      sources: "- unbegrenzt Quellen-Gewichtungen"      
+      cancel: "Die Bezahlung geschieht von Monat zu Monat. Wenn Sie kündigen, wird Ihnen nur noch der laufende Monat in Rechnung gestellt."
+    upgrade:
+      required: "Upgrade Account erforderlich"
+      reason_: "Bitte beachten Sie Jurnalo Power Account Upgrade für unbegrenzten Zugang."
+      reason_1: "So erstellen Sie mehr als ein Thema bitte ein Upgrade auf die Jurnalo Power Account."
+      reason_2: "Um Gewicht mehr als eine Quelle bitte ein Upgrade auf Jurnalo Power Account."
+      reason_3: "Um Gewicht / Abonnieren mehr als einem Autor bitte ein Upgrade auf die Jurnalo Power Account."
   more:
     info: "mehr Informationen"
   prefix:
@@ -260,4 +274,4 @@ de:
       part5: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren."
       part6: "Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail."
       part7: "Viele Grüße," 
-      part8: "Ihr Jurnalo"  
+      part8: "Ihr Jurnalo"

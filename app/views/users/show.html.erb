@@ -38,8 +38,8 @@
 <div class='settings_news_block'>
   <h2><span class="page_label"><%= t('account.upgrade') %></span></h2>
   <div class = "about">
-    <h2> <b><%= link_to t('account.power.label'), jurnalo_power_path %></b> (<%= t('account.power.cost') -%>)<br>
-    <%= t('account.power.info') %> (<%= link_to t('more.info'), jurnalo_power_path %>)</h2>
+    <h2> <b><%= link_to t('account.power.label'), power_plan_account_path %></b> (<%= t('account.power.cost') -%>)<br>
+    <%= t('account.power.info') %> (<%= link_to t('more.info'), power_plan_account_path %>)</h2>
   </div>
   <% form_tag upgrade_account_path do %>
     <%= submit_tag "Upgrade", :class => "confirmation_button" %>

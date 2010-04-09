@@ -5,6 +5,7 @@ class TopicPreferencesController < ApplicationController
   before_filter :set_user_var
   before_filter :merge_attributes
   before_filter :set_topic_preference_var, :only => [ :edit, :show, :destroy, :update, :hide, :unhide ]
+  before_filter :upgrade_required, :only => [ :new, :create ]
   
   required_api_param :user_id, :only => [ :index, :create, :update, :destroy ]
   required_api_param :id, :only => [ :update, :destroy ]
@@ -137,6 +138,13 @@ class TopicPreferencesController < ApplicationController
   
   def single_access_allowed?
     params[:format] == 'xml'
+  end
+  
+  def upgrade_required
+    if !@user.power_plan? && @user.topic_subscriptions.count > 0
+      redirect_to upgrade_required_account_path( :id => 1 )
+      return false
+    end
   end
   
 end

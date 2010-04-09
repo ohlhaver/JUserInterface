@@ -71,6 +71,20 @@ en:
       label: "Forgot password"
       instruction: "Fill out the form below and instructions to reset your password will be emailed to you:"
       button: "Reset my password"
+    power:
+      label: "Jurnalo Power Account"
+      slogan: "The Jurnalo Power Account enables you to enjoy the best possible news reading experience."
+      gives: "The Jurnalo Power Account gives you all the functions of the Basic Account, plus:"
+      topics: "- unlimited search topics"
+      authors: "- unlimited author subscriptions"
+      sources: "- unlimited source settings"      
+      cancel: "Payment is month-to-month. If you cancel you’ll be billed only for the current month."
+    upgrade:
+      required: "Account Upgrade Required"
+      reason_: "Please upgrade to Jurnalo Power Account for unlimited access."
+      reason_1: "To create more than one topic please upgrade to the Jurnalo Power account."
+      reason_2: "To rate more than one source please upgrade to the Jurnalo Power account."
+      reason_3: "To rate/subscribe more than one author please upgrade to the Jurnalo Power account."
   prefix:
     my: "My"
     user: "User"
@@ -236,6 +250,9 @@ en:
       simple: 'Simple'
     name: 'Topic label:'
     query: 'Search query:'
+  rate:
+    source: 'Source preference'
+    author: 'Author preference'
   emails:
     activation:
       part1: "Dear Reader,"
