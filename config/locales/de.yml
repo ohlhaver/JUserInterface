@@ -81,11 +81,11 @@ de:
       sources: "- unbegrenzt Quellen-Gewichtungen"      
       cancel: "Die Bezahlung geschieht von Monat zu Monat. Wenn Sie kündigen, wird Ihnen nur noch der laufende Monat in Rechnung gestellt."
     upgrade:
-      required: "Upgrade Account erforderlich"
-      reason_: "Bitte beachten Sie Jurnalo Power Account Upgrade für unbegrenzten Zugang."
-      reason_1: "So erstellen Sie mehr als ein Thema bitte ein Upgrade auf die Jurnalo Power Account."
-      reason_2: "Um Gewicht mehr als eine Quelle bitte ein Upgrade auf Jurnalo Power Account."
-      reason_3: "Um Gewicht / Abonnieren mehr als einem Autor bitte ein Upgrade auf die Jurnalo Power Account."
+      required: "Account Upgrade erforderlich"
+      reason_: "Für unbegrenzten Zugang upgraden Sie bitte auf den Jurnalo Power Plan."
+      reason_1: "Um mehr als ein eigenes Thema zu erstellen, upgraden Sie bitte auf den Jurnalo Power Plan."
+      reason_2: "Um mehr als eine Quelle zu gewichten, upgraden Sie bitte auf den Jurnalo Power Plan."
+      reason_3: "Um mehr als einen Autoren zu abonnieren, upgraden Sie bitte auf den Jurnalo Power Plan."
   more:
     info: "mehr Informationen"
   prefix:

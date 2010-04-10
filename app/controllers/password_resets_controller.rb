@@ -4,6 +4,7 @@ class PasswordResetsController < ApplicationController
   before_filter :load_user_using_perishable_token, :only => [ :edit, :update ]
   
   def new
+    @user ||= User.new
   end  
     
   def create  
@@ -22,6 +23,7 @@ class PasswordResetsController < ApplicationController
   end
   
   def edit
+    @user ||= User.new
   end
     
   def update  

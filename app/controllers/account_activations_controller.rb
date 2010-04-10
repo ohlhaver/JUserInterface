@@ -4,6 +4,8 @@ class AccountActivationsController < ApplicationController
   
   # Display this page if account is not activated
   def new
+    set_user_var
+    @user ||= User.new
   end
   
   # Request to send activation instructions again
