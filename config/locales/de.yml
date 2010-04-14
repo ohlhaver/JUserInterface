@@ -45,7 +45,7 @@ de:
         click: "Klicken Sie hier zur Ansicht unserer"
         policy: "Abrechnungs-Bestimmungen"
         button: "jetzt bezahlen"
-        sentence: "Es gibt keinen langfristigen Vertrag. Die Bezahlung geschieht von Monat zu Monat. Wenn Sie kündigen, wird Ihnen noch der laufende Monat in Rechnung gestellt, aber kein weiterer."
+        sentence: "Die Bezahlung geschieht von Monat zu Monat. Wenn Sie kündigen, wird Ihnen nur noch der laufende Monat in Rechnung gestellt."
   edition:
     other: "Andere Nachrichtenausgaben"
   jurnalo:
