@@ -701,7 +701,8 @@ h2 .my_authors_links span {
 	border: 1px solid #999999;
 	padding: 4px 5px 0;
 	vertical-align: middle;
-	
+	_margin-right: 100px;
+	*margin-right: 100px;
 }
 
 #user_captcha{
