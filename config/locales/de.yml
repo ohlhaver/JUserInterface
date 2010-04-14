@@ -37,15 +37,15 @@ de:
     power:
       label: "<b>Jurnalo Power Plan</b>"
       info: "Unbegrenzte Anzahl von eigenen Themen, Autoren-Abonnements und Quellen-Einstellungen."
-      cost: "EUR 5 pro Monat"
+      cost: "5 € monatlich"
       upgrade:
         label: "Upgrade zum Power Plan"
         method: "Zahlungs-Methode"
-        pay: "Sie werden folgenden Betrag zahlen:"
+        pay: "Sie zahlen folgenden Betrag:"
         click: "Klicken Sie hier zur Ansicht unserer"
         policy: "Abrechnungs-Bestimmungen"
-        button: "jetzt bezahlen"
-        sentence: "Die Bezahlung geschieht von Monat zu Monat. Kein langfristiger Vertrag. Wenn Sie kündigen, wird Ihnen noch der laufende Monat in Rechnung gestellt, aber kein weiterer Monat."
+        button: "Jetzt kaufen"
+        sentence: "Es gibt keinen langfristigen Vertrag. Die Bezahlung geschieht von Monat zu Monat. Wenn Sie kündigen wird Ihnen kein weiterer Monat mehr in Rechnung gestellt."
   edition:
     other: "Andere Nachrichtenausgaben"
   jurnalo:
