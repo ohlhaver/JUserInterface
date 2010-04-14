@@ -19,26 +19,25 @@
 	
     <%= t('jurnalo.login.existing_user')%>:
 	<br><br>
+	<% form_tag CASClient::Frameworks::Rails::Filter.client.login_url, :id => 'login_form' do %>
    <div class= 'adv_search_lines'>
-    <% form_tag CASClient::Frameworks::Rails::Filter.client.login_url, :id => 'login_form' do %>
-     
-	<div>
-        <span><%= t('jurnalo.login.username')%></span>
-     <span><%= text_field_tag( "username", params[:username], :id => "settings_field")%></span>
-      </div>
-      <div>
-        <span><%= t('jurnalo.login.password')%></span>
-        <span><%= password_field_tag( 'password', params[:password], :id => "settings_field")%></span>
-      </div>
-      <div>
-        <span><%= check_box_tag( 'remember-me', '1' ) %>&nbsp; <%= t('jurnalo.login.remember_me') %></span>
-      </div>
-      <%= hidden_field_tag( 'lt' ) %>
-      <%= hidden_field_tag( 'service', cas_service_url ) %>
-      <%= hidden_field_tag( 'oe', cas_on_error_url ) %>
-      <%= submit_tag( t('navigation.top.login'), :class => 'confirmation_button') %> &nbsp;&nbsp;<%= link_to "#{t('jurnalo.login.forgot_password')}?", new_password_reset_path %>
-    <% end %>
+     <div class="clearfix">
+       <label><%= t('jurnalo.login.username')%></label>
+       <%= text_field_tag( "username", params[:username], :id => "settings_field")%>
+    </div>
+    <div class="clearfix">
+      <label><%= t('jurnalo.login.password')%></label>
+      <%= password_field_tag( 'password', params[:password], :id => "settings_field")%>
+    </div>
+    <div class="clearfix">
+      <%= check_box_tag( 'remember-me', '1' ) %>&nbsp; <%= t('jurnalo.login.remember_me') %>
+    </div>
+    <%= hidden_field_tag( 'lt' ) %>
+    <%= hidden_field_tag( 'service', cas_service_url ) %>
+    <%= hidden_field_tag( 'oe', cas_on_error_url ) %>
+    <%= submit_tag( t('navigation.top.login'), :class => 'confirmation_button') %> &nbsp;&nbsp;<%= link_to "#{t('jurnalo.login.forgot_password')}?", new_password_reset_path %>
 	</div>
+	<% end %>
 	</div>
   </div>
 </div>

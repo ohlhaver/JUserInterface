@@ -685,6 +685,11 @@ h2 .my_authors_links span {
 	
 }
 
+.adv_search_lines div label, .adv_search_lines div div label, .adv_search_lines div span  {
+  display:inline;
+  float: left;
+}
+
 #settings_field, #user_captcha {
 	display: inline;
 	float: right;

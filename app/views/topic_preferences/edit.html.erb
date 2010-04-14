@@ -5,11 +5,11 @@
   <div class='news_block'>
     <h2><span class ="page_label"><%= t('topic.label.new_advanced') %></span></h2>
     <div class='results_module'> </div>
-    <div class='adv_search_lines'>
     <% form_for( @topic_preference, :url => user_topic_preference_path(@user, @topic_preference), :html => { :id => 'advance_topic_form' }, :method => :post ) do |f| %>
+    <div class='adv_search_lines'>
       <%= render :partial => 'form', :locals => { :f => f } %>
       <%= link_to( t('topic.action.test'), jurnalo_topic_path( @topic_preference ) ) %>
-    <% end %>
     </div>
+    <% end %>
   </div>
 </div>
