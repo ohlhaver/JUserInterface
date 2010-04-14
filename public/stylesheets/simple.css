@@ -685,7 +685,7 @@ h2 .my_authors_links span {
 	
 }
 
-#settings_field {
+#settings_field, #user_captcha {
 	display: inline;
 	float: right;
 	margin-right: 140px;
@@ -704,7 +704,11 @@ h2 .my_authors_links span {
 	
 }
 
-
+#user_captcha{
+  display:auto;
+  float:none;
+  margin-right: none;
+}
 
 .form_area {
 	margin-top: 10px;
@@ -914,8 +918,12 @@ border: 0px;
 .errorExplanation {
 	font-family: Arial,Helvetica,sans-serif;	
 }
-
 .errorExplanation h2 {
-	font-family: Arial,Helvetica,sans-serif;
-	
+	font-family: Arial,Helvetica,sans-serif;	
+}
+.fieldWithErrors {
+  display: inline;
+}
+.fieldWithErrors input#settings_field, .fieldWithErrors input#user_captcha, .fieldWithErrors input, .fieldWithErrors select {
+  border: 1px solid red;
 }
