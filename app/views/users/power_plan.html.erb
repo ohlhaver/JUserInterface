@@ -7,7 +7,13 @@
     <%= t('jurnalo.power.sources' ) %> <br/></br><br>
     <%= t('jurnalo.power.cancel') %> <br/>
   </div>
+  <% if logged_in? %>
   <% form_tag upgrade_account_path do %>
     <%= submit_tag "Upgrade", :class => "confirmation_button" %>
   <%end%>
+  <% else %>
+  <% form_tag new_account_path, :method => :get do %>
+    <%= submit_tag t('navigation.top.register'), :class => 'confirmation_button' %>
+  <%end%>
+  <% end %>
 </div>

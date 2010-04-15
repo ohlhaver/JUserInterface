@@ -118,7 +118,7 @@ module JurnaloPathHelper
   end
   
   def jurnalo_power_path
-    jurnalo_url_for( :controller => '/power' )
+    jurnalo_url_for( :controller => '/upgrade' )
   end
   
   def jurnalo_url_for( options = {} )
