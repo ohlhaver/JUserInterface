@@ -277,7 +277,7 @@ en:
       already_registered: 'You are already registered'
       registration_success: 'Registration successful!'
       activate_instruction: "Please check your email account for account activation."
-      activate_instruction_send: "Activation instructions sent."
+      activate_instruction_send: "Instructions to activate your account have been emailed to you. Please check your email."
       password_reset_instruction: "Instructions to reset your password have been emailed to you. Please check your email."
       updated: "Account updated!"
       activated: 'Your account is activated now.'

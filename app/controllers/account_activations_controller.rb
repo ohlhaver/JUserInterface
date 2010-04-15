@@ -13,7 +13,7 @@ class AccountActivationsController < ApplicationController
     @user = User.find_by_email( params[:email] )
     if @user  && !@user.third_party?
       @user.deliver_account_activation_instructions!  
-      flash[:notice] = I18n.t('user.account.activate_instruction_send') + ' ' + I18n.t('user.account.activate_instruction')
+      flash[:notice] = I18n.t('user.account.activate_instruction_send')
       redirect_to new_account_activation_path
     elsif @user && @user.third_party?
       flash[:notice] = I18n.t('user.account.already_activated')
