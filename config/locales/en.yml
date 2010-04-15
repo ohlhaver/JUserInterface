@@ -34,7 +34,15 @@ en:
     power:
       label: "<b>Jurnalo Power Account</b>"
       info: "Unlimited personal topics, author subscriptions and source settings."
-      cost: "EUR 5 per month"
+      cost: "5 € monthly"
+      upgrade:
+        label: "Upgrade to Power Plan"
+        method: "Payment Method"
+        pay: "You will pay"
+        click: "Click here to see our"
+        policy: "billing policy"
+        button: "Buy now"
+        sentence: "There is no long-term contract. Payment is month-to-month. If you cancel, you won’t be billed again."
   edition:
     other: "other news edition"
   more:
