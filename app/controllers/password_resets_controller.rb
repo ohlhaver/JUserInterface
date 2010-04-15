@@ -11,13 +11,13 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by_email( params[:email] )
     if @user  && !@user.third_party?
       @user.deliver_password_reset_instructions!  
-      flash[:notice] = "Instructions to reset your password have been emailed to you. " +  "Please check your email."  
+      flash[:notice] = I18n.t("user.account.password_reset_instruction")
       redirect_to root_url
     elsif @user && @user.third_party?
-      flash[:notice] = "Please login with your #{@user.third_party.capitalize} Account Credentials"
+      flash[:notice] = I18n.t("user.account.third_party_login", :third_party => @user.third_party.capitalize)
       redirect_to root_url
     else
-      flash[:error] = "No user was found with that email address"  
+      flash[:error] = I18n.t("user.account.not_found")
       render :action => :new  
     end  
   end
@@ -30,7 +30,7 @@ class PasswordResetsController < ApplicationController
     @user.password = params[:user][:password]  
     @user.password_confirmation = params[:user][:password_confirmation]  
     if @user.save
-      flash[:notice] = "Password successfully updated. Please login with your new password"
+      flash[:notice] = I18n.t("user.account.password_updated")
       redirect_to root_url
     else  
       render :action => :edit
@@ -42,10 +42,7 @@ class PasswordResetsController < ApplicationController
   def load_user_using_perishable_token  
     @user = User.find_using_perishable_token( params[:id] )
     unless @user  
-      flash[:error] = "We're sorry, but we could not locate your account. " +
-      "If you are having issues try copying and pasting the URL " +
-      "from your email into your browser or restarting the " +
-      "reset password process."
+      flash[:error] = I18n.t("user.account.restart_password_reset_process")
       redirect_to root_url
       return false
     end

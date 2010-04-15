@@ -39,10 +39,11 @@ class SourcePreferencesController < ApplicationController
     @source_preference = @user.source_subscriptions.build( params[:source_preference] )
     respond_to do |format|
       if @source_preference.save
-        flash[:notice] = 'Created Successfully'
+        flash[:notice] = I18n.t('user.pref.create_success')
         format.html{ redirect_to :action => :index }
         format.xml{ rxml_success( @source_preference, :action => :create ) }
       else
+        flash[:notice] = I18n.t('user.pref.create_error')
         format.html{ render :action => :new }
         format.xml{ rxml_error( @source_preference, :action => :create ) }
       end
@@ -52,11 +53,11 @@ class SourcePreferencesController < ApplicationController
   def update
     respond_to do |format|
       if @source_preference.update_attributes( params[:source_preference] )
-        flash[:notice] = 'Update Successfully'
+        flash[:notice] = I18n.t('user.pref.update_success')
         format.html{ redirect_to :action => :index }
         format.xml{ rxml_success( @source_preference, :action => :update ) }
       else
-        flash[:error] = 'Update Failed'
+        flash[:error] = I18n.t('user.pref.update_error')
         format.html{ redirect_to :action => :index }
         format.xml{ rxml_error( @source_preference, :action => :update ) }
       end

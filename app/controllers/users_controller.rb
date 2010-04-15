@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   
   def new
     if current_user
-      flash['notice'] ||= 'You are already registered'
+      flash['notice'] ||= I18n.t('user.account.already_registered')
       redirect_back_or_default account_url
     else
       session[:cas_sent_to_gateway] = true
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     attributes.merge!( :email => session[ :cas_user ], :third_party => session[ :cas_extra_attributes ][ 'auth' ] ) if session && session[ :cas_extra_attributes ]
     @user = User.new( params[:user].merge!( attributes ) )
     if ( @user.third_party? ? @user.save : @user.save_with_captcha )
-      flash[:notice] = @user.third_party? ? "Registration successful!" : "Registration successful! Please check your email account for account activation."
+      flash[:notice] = @user.third_party? ? I18n.t('user.account.registration_success') : I18n.t('user.account.registration_success') + I18n.t('user.account.activate_instruction')
       default_path = @user.third_party? ? account_path : new_account_path
       redirect_back_or_default default_path
     else
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
   
   def update
     if @user.update_attributes( params[:user] )
-      flash[:notice] = "Account updated!"
+      flash[:notice] = I18n.t( 'user.account.updated' )
       redirect_to account_path
     else
       render :action => :show

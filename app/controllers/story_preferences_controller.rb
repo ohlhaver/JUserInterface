@@ -39,7 +39,7 @@ class StoryPreferencesController < ApplicationController
   def destroy
     @story_preference.destroy
     respond_to do |format|
-      flash[:notice] = 'Destroyed Successfully'
+      flash[:notice] = I18n.t('user.pref.remove_success')
       format.html{ redirect_to :action => :index }
       format.xml{ rxml_success( @story_preference, :action => :delete ) }
     end

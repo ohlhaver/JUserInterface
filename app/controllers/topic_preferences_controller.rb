@@ -44,7 +44,7 @@ class TopicPreferencesController < ApplicationController
     @topic_preference = @user.topic_subscriptions.build( params[:topic_preference] )
     respond_to do |format|
       if @topic_preference.save
-        flash[:notice] = 'Created Successfully'
+        flash[:notice] = I18n.t('user.pref.create_success')
         format.html{ redirect_to( base_url?( new_user_topic_preference_path( @user ) ) || request.referer.blank? ? { :action => :index } : request.referer ) }
         format.xml{ rxml_success( @topic_preference, :action => :create ) }
       else
@@ -59,7 +59,7 @@ class TopicPreferencesController < ApplicationController
     @topic_preference.attributes = params[:topic_preference]
     respond_to do |format|
       if @topic_preference.save
-        flash[:notice] = 'Update Successfully'
+        flash[:notice] = I18n.t('user.pref.update_success')
         format.html{ redirect_to :action => :index }
         format.xml{ rxml_success( @topic_preference, :action => :update ) }
       else
@@ -90,7 +90,7 @@ class TopicPreferencesController < ApplicationController
       @topic_preference.move_to_bottom
     end
     respond_to do |format|
-      flash[:notice] = 'Updated Successfully'
+      flash[:notice] = I18n.t('user.pref.update_success')
       format.html{ redirect_to request.referer || { :action => :index } }
       format.xml{ rxml_success( @topic_preference, :action => :update ) }
     end
@@ -99,7 +99,7 @@ class TopicPreferencesController < ApplicationController
   def destroy
     @topic_preference.destroy
     respond_to do |format|
-      flash[:notice] = 'Destroyed Successfully'
+      flash[:notice] = I18n.t('user.pref.remove_success')
       format.html{ redirect_to request.referer || { :action => :index } }
       format.xml{ rxml_success( @topic_preference, :action => :delete ) }
     end

@@ -31,7 +31,7 @@ class ClickAndBuyController < ApplicationController
   def confirm
     state = GatewayTransaction.gateway.confirm( request )
     case( state ) when 'paid'
-      flash[:notice] = 'Payment transaction successful. Account upgraded.'
+      flash[:notice] = I18n.t('cnb.payment.success')
       redirect_to account_path
     when 'verification_pending'
       redirect_to :action => :error, :s => 4
@@ -42,15 +42,15 @@ class ClickAndBuyController < ApplicationController
   
   def error
     @message = case params[:s] when '0'
-      'We are unable to provide subscriptions for the plan you are requesting.'
+     I18n.t('cnb.error.plan_not_found')
     when '1'
-      'You are already subscribed user'
+     I18n.t('cnb.error.already_subscribed')
     when '2'
-      'Payment transaction authorization was unsuccessful'
+     I18n.t('cnb.error.authorization_failed')
     when '3'
-      'Payment transaction confirmation was unsuccessful'
+     I18n.t('cnb.error.confirmation_failed')
     when '4'
-      'Payment transaction could not be confirmed realtime. It is marked for manual verification. Get in touch with <a href="mailto:jurnalo.user.service@jurnalo.com">our customer care</a> for payment verification.'
+     I18n.t('cnb.error.verification_pending')
     else
       redirect_to '/'
       return

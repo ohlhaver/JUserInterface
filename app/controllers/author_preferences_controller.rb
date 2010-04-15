@@ -42,12 +42,12 @@ class AuthorPreferencesController < ApplicationController
     respond_to do |format|
       if @author_preference.save
         if @author_preference.frozen?
-          flash[:error] = 'Please set a preference or add to favorites'
+          flash[:error] = I18n.t('user.pref.create_error')
           format.html{ redirect_to :action => :index, :scope => params[:scope] }
           @author_preference.errors.add('preference', :required)
           format.xml{ rxml_error( @author_preference, :action => :create ) }
         else
-          flash[:notice] = 'Created Successfully'
+          flash[:notice] = I18n.t('user.pref.create_success')
           format.html{ redirect_to :action => :index, :scope => params[:scope] }
           format.xml{ rxml_success( @author_preference, :action => :create ) }
         end
@@ -61,11 +61,11 @@ class AuthorPreferencesController < ApplicationController
   def update
     respond_to do |format|
       if @author_preference.update_attributes( params[:author_preference] )
-        flash[:notice] = 'Update Successfully'
+        flash[:notice] = I18n.t('user.pref.update_success')
         format.html{ redirect_to :action => :index, :scope => params[:scope] }
         format.xml{ rxml_success( @author_preference, :action => :update ) }
       else
-        flash[:error] = 'Update Failed'
+        flash[:error] = I18n.t('user.pref.update_error')
         format.html{ redirect_to :action => :index, :scope => params[:scope] }
         format.xml{ rxml_error( @author_preference, :action => :update ) }
       end

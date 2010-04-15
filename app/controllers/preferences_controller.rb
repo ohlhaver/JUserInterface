@@ -43,7 +43,7 @@ class PreferencesController < ApplicationController
     end
     respond_to do |format|
       if @preference.update_attributes( params[:preference] )
-        flash[:notice] = 'Preference was successfully updated.'
+        flash[:notice] = I18n.t('user.pref.update_success')
         format.html { redirect_to( return_to ) }
         format.xml{ rxml_success( @user, :action => :update ) }
       else
