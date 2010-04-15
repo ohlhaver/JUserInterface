@@ -1,12 +1,15 @@
-<h1><h2><span class="page_label">Change My Password</span></h1>
- 
+<div class = "settings_news_block">
+<h2><span class="page_label"><%= t('user.account.change_my_password')%></span></h1>
+<div class = "about"> 
 <% form_for @user, :url => password_reset_path, :method => :put do |f| %>
   <%= f.error_messages %>
-  <%= f.label :password %><br />
+  <%= f.label :password, t('jurnalo.register.password')  %><br />
   <%= f.password_field :password %><br />
   <br />
-  <%= f.label :password_confirmation %><br />
+  <%= f.label :password, t('jurnalo.register.confirm_password') %><br />
   <%= f.password_field :password_confirmation %><br />
   <br />
-  <%= f.submit "Update My Password" %>
+  <%= f.submit t('user.account.update_my_password_button'), :class => "confirmation_button"  %>
 <% end %>
+</div>
+</div>

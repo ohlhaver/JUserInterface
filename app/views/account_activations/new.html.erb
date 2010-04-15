@@ -1,21 +1,22 @@
-<h1><h2><span class="page_label">Account Activation<span></h1>
-<div class ="about">
-Please enter the activation token to activate your account:<br />
+<div class = "settings_news_block">
+<h2><span class="page_label"><%= t('jurnalo.account_activation.label') %></span></h2>
 
-<% form_tag account_activation_path('update') do %>
-  <label>Token:</label><br/>
-  <%= text_field_tag 'id' %><br/>
-  <%= submit_tag "Activate My Account" %>
-<% end %>
-
+<div class = "about">
+<%= t('jurnalo.account_activation.instruction') %><br />
 <br />
-If you have not received the activation instructions, fill out the form below and instructions to activate your account will be emailed to you: <br/>
- 
-<% form_tag account_activations_path do %>
-  <label>Email:</label><br />
-  <%= text_field_tag "email" %><br />
-  <br />
-  <%= submit_tag "Send Me Activation Instructions" %>
+<% form_tag account_activation_path('update') do %>
+  <label><%= t('jurnalo.account_activation.token') %>:</label><br/>
+  <%= text_field_tag 'id', "", :id => "user_captcha" %><br/>
+  <%= submit_tag t('jurnalo.account_activation.activate_button'), :class => "confirmation_button" %>
 <% end %>
+<br />
 
+<%= t('jurnalo.account_activation.send_instruction') %><br />
+<br/>
+<% form_tag account_activations_path do %>
+  <label><%= t('jurnalo.register.email') %>: </label><br />
+  <%= text_field_tag "email", "", :id => "user_captcha" %><br />
+  <%= submit_tag t('jurnalo.account_activation.send_button'), :class => "confirmation_button" %>
+<% end %>
+</div>
 </div>

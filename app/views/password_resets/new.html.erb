@@ -1,5 +1,5 @@
 <div class = "settings_news_block">
-<h2><h2><span class="page_label"><%= t('jurnalo.forgot_password.label') %></span></h2>
+<h2><span class="page_label"><%= t('jurnalo.forgot_password.label') %></span></h2>
 
 <div class = "about">
 <%= t('jurnalo.forgot_password.instruction') %><br />
@@ -7,7 +7,7 @@
  <div class= 'adv_search_lines'>
 <% form_tag password_resets_path do %>
 
-E-mail:
+<%= jurnalo_user.label :email, t('jurnalo.register.email') %>: 
 <%= text_field_tag "email", params[:email], :id => "settings_field" %>
 <%= submit_tag t('jurnalo.forgot_password.button'), :class => "confirmation_button" %>
 <% end %>

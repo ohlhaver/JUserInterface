@@ -79,6 +79,13 @@ en:
       label: "Forgot password"
       instruction: "Fill out the form below and instructions to reset your password will be emailed to you:"
       button: "Reset my password"
+    account_activation:
+      label: "Account Activation"
+      instruction: "Please enter the activation token to activate your account:"
+      send_instruction: "If you have not received the activation instructions, fill out the form below and instructions to activate your account will be emailed to you:"
+      activate_button: "Activate My Account"
+      send_button: "Send Me Activation Instructions"
+      token: "Token"
     power:
       label: "Jurnalo Power Account"
       slogan: "The Jurnalo Power Account enables you to enjoy the best possible news reading experience."
@@ -295,6 +302,8 @@ en:
       restart_password_reset_process: "We're sorry, we encountered an error with password reset process. Please restart the password reset process."
       third_party_login: "Please login with your {{third_party}} Account Credentials"
       password_updated: "Password successfully updated. Please login with your new password"
+      update_my_password_button: "Update My Password"
+      change_my_password: "Change My Password"
     pref:
       create_success: "Created Successfully!"
       create_error: "Create Action Failed!"
