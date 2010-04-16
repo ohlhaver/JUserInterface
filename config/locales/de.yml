@@ -39,7 +39,7 @@ de:
       info: "Unbegrenzte Anzahl von eigenen Themen, Autoren-Abonnements und Quellen-Einstellungen."
       cost: "5 € monatlich"
       upgrade:
-        label: "Upgrade zum Power Plan"
+        label: "Upgrade zum Jurnalo Power Plan"
         method: "Zahlungs-Methode"
         pay: "Sie zahlen folgenden Betrag:"
         click: "Klicken Sie hier zur Ansicht unserer"

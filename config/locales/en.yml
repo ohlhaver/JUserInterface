@@ -36,7 +36,7 @@ en:
       info: "Unlimited personal topics, author subscriptions and source settings."
       cost: "5 € monthly"
       upgrade:
-        label: "Upgrade to Power Plan"
+        label: "Upgrade to Jurnalo Power Account"
         method: "Payment Method"
         pay: "You will pay"
         click: "Click here to see our"
@@ -97,9 +97,9 @@ en:
     upgrade:
       required: "Account Upgrade Required"
       reason_: "Please upgrade to Jurnalo Power Account for unlimited access."
-      reason_1: "To create more than one topic please upgrade to the Jurnalo Power account."
-      reason_2: "To rate more than one source please upgrade to the Jurnalo Power account."
-      reason_3: "To subscribe to more than one author please upgrade to the Jurnalo Power account."
+      reason_1: "To create more than one topic please upgrade to the Jurnalo Power Account."
+      reason_2: "To rate more than one source please upgrade to the Jurnalo Power Account."
+      reason_3: "To subscribe to more than one author please upgrade to the Jurnalo Power Account."
   prefix:
     my: "My"
     user: "User"
