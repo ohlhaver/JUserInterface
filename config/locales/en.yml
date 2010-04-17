@@ -36,13 +36,13 @@ en:
       info: "Unlimited personal topics, author subscriptions and source settings."
       cost: "5 € monthly"
       upgrade:
-        label: "Upgrade to Power Plan"
+        label: "Upgrade to Jurnalo Power Account"
         method: "Payment Method"
         pay: "You will pay"
         click: "Click here to see our"
         policy: "billing policy"
         button: "Buy now"
-        sentence: "There is no long-term contract. Payment is month-to-month. If you cancel, you won’t be billed again."
+        sentence: "Payment is month-to-month. Whenever you decide to cancel, you won’t be billed again."
   edition:
     other: "other news edition"
   more:
@@ -93,13 +93,13 @@ en:
       topics: "- unlimited search topics"
       authors: "- unlimited author subscriptions"
       sources: "- unlimited source settings"      
-      cancel: "Payment is month-to-month. If you cancel you’ll be billed only for the current month."
+      cancel: "Payment is month-to-month. Whenever you decide to cancel, you won’t be billed again."
     upgrade:
       required: "Account Upgrade Required"
       reason_: "Please upgrade to Jurnalo Power Account for unlimited access."
-      reason_1: "To create more than one topic please upgrade to the Jurnalo Power account."
-      reason_2: "To rate more than one source please upgrade to the Jurnalo Power account."
-      reason_3: "To rate/subscribe more than one author please upgrade to the Jurnalo Power account."
+      reason_1: "To create more than one topic please upgrade to the Jurnalo Power Account."
+      reason_2: "To rate more than one source please upgrade to the Jurnalo Power Account."
+      reason_3: "To subscribe to more than one author please upgrade to the Jurnalo Power Account."
   prefix:
     my: "My"
     user: "User"
@@ -298,8 +298,8 @@ en:
       activated: 'Your account is activated now.'
       already_activated: "Your account is already activated"
       not_found: "No user was found with that email address"
-      restart_activation_process: "We're sorry, we encountered an error with activation process. Please restart the activation process."
-      restart_password_reset_process: "We're sorry, we encountered an error with password reset process. Please restart the password reset process."
+      restart_activation_process: "We're sorry, we encountered an error with the activation process. Please restart the activation process."
+      restart_password_reset_process: "We're sorry, we encountered an error with the password reset process. Please restart the password reset process."
       third_party_login: "Please login with your {{third_party}} Account Credentials"
       password_updated: "Password successfully updated. Please login with your new password"
       update_my_password_button: "Update My Password"
@@ -316,8 +316,8 @@ en:
       success: 'Payment transaction successful. Account upgraded.'
     error:
       plan_not_found:  'We are unable to provide subscriptions for the plan you are requesting.'
-      already_subscribed: 'You are already subscribed user'
+      already_subscribed: 'You are already a subscribed user'
       authorization_failed: 'Payment transaction authorization was unsuccessful'
       confirmation_failed: 'Payment transaction confirmation was unsuccessful'
-      verification_pending: 'Payment transaction could not be confirmed realtime. It is marked for manual verification. Get in touch with <a href="mailto:jurnalo.user.service@jurnalo.com">our customer care</a> for payment verification.'
+      verification_pending: 'Payment transaction could not be confirmed realtime. It is marked for manual verification. Get in touch with <a href="mailto:jurnalo.user.service@jurnalo.com">our customer support</a> for payment verification.'
       

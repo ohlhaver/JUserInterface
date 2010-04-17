@@ -39,13 +39,13 @@ de:
       info: "Unbegrenzte Anzahl von eigenen Themen, Autoren-Abonnements und Quellen-Einstellungen."
       cost: "5 € monatlich"
       upgrade:
-        label: "Upgrade zum Power Plan"
+        label: "Upgrade zum Jurnalo Power Plan"
         method: "Zahlungs-Methode"
         pay: "Sie zahlen folgenden Betrag:"
         click: "Klicken Sie hier zur Ansicht unserer"
         policy: "Abrechnungs-Bestimmungen"
         button: "Jetzt kaufen"
-        sentence: "Es gibt keinen langfristigen Vertrag. Die Bezahlung geschieht von Monat zu Monat. Wenn Sie kündigen wird Ihnen kein weiterer Monat mehr in Rechnung gestellt."
+        sentence: "Die Bezahlung geschieht von Monat zu Monat. Wann immer Sie kündigen, wird Ihnen kein weiterer Monat mehr in Rechnung gestellt."
   edition:
     other: "Andere Nachrichtenausgaben"
   jurnalo:
@@ -81,12 +81,11 @@ de:
       instruction: "Bitte füllen Sie das Feld aus. Danach erhalten Sie eine E-mail mit Instruktionen zur Erstellung eines neuen Passworts."
       button: "Passwort zurücksetzen"
     account_activation:
-      label: "Account Activation"
-      instruction: "Please enter the activation token to activate your account:"
-      send_instruction: "If you have not received the activation instructions, fill out the form below and instructions to activate your account will be emailed to you:"
-      activate_button: "Activate My Account"
-      send_button: "Send Me Activation Instructions"
-      token: "Token"
+      label: "Zugangs-Aktivierung"
+      instruction: "Bitte geben Sie den Aktivierung-Code ein, um Ihren Zugang zu aktivieren:"
+      send_instruction: "Wenn Sie keine Instruktionen zur Aktivierung erhalten haben, so füllen Sie bitte das untere Formular aus. Die Instruktionen zur Aktivierung Ihres Zugangs werden Ihnen dann per E-mail geschickt."
+      send_button: "Aktivierungs-Instruktionen anfordern"
+      token: "Code"
     power:
       label: "Jurnalo Power Plan"
       slogan: "Mit dem Jurnalo Power Plan aktivieren Sie die beste Nachrichten-Lese-Erfahrung, die man für Geld kaufen kann."
@@ -94,7 +93,7 @@ de:
       topics: "- unbegrenzt eigene Suchthemen"
       authors: "- unbegrenzt Autoren-Abonnements"
       sources: "- unbegrenzt Quellen-Gewichtungen"      
-      cancel: "Die Bezahlung geschieht von Monat zu Monat. Wenn Sie kündigen, wird Ihnen nur noch der laufende Monat in Rechnung gestellt."
+      cancel: "Die Bezahlung geschieht von Monat zu Monat. Wann immer Sie kündigen, wird Ihnen kein weiterer Monat mehr in Rechnung gestellt."
     upgrade:
       required: "Account Upgrade erforderlich"
       reason_: "Für unbegrenzten Zugang upgraden Sie bitte auf den Jurnalo Power Plan."
@@ -292,34 +291,34 @@ de:
       part8: "Ihr Jurnalo"
   user:
     account:
-      already_registered: 'You are already registered'
-      registration_success: 'Registration successful!'
-      activate_instruction: "Please check your email account for account activation."
-      activate_instruction_send: "Activation instructions sent."
-      password_reset_instruction: "Instructions to reset your password have been emailed to you. Please check your email."
-      updated: "Account updated!"
-      activated: 'Your account is activated now.'
-      already_activated: "Your account is already activated"
-      not_found: "No user was found with that email address"
-      restart_activation_process: "We're sorry, we encountered an error with activation process. Please restart the activation process."
-      restart_password_reset_process: "We're sorry, we encountered an error with password reset process. Please restart the password reset process."
-      third_party_login: "Please login with your {{third_party}} Account Credentials"
-      password_updated: "Password successfully updated. Please login with your new password"
-      update_my_password_button: "Update My Password"
-      change_my_password: "Change My Password"
+      already_registered: 'Sie sind bereits registriert.'
+      registration_success: 'Registrierung erfolgreich!'
+      activate_instruction: "Bitte checken Sie Ihre E-mail um Ihren Jurnalo Zugang zu aktivieren!"
+      activate_instruction_send: "Die Aktivierungs-Instruktionen wurden abgesandt."
+      password_reset_instruction: "Die Instruktionen um Ihr Passwort zurückzusetzen sind Ihnen soeben per E-mail geschickt worden. Bitte checken Sie Ihre E-mail!"
+      updated: "Ihr Zugang wurde aktualisiert!"
+      activated: 'Ihr Jurnalo Zugang ist jetzt aktiviert.'
+      already_activated: "Ihr Zugang ist bereits aktiviert."
+      not_found: "Es wurde leider kein Benutzer mit dieser E-mail Adresse gefunden."
+      restart_activation_process: "Leider gab es einen Fehler bei der Aktivierung. Bitte wiederholen Sie den Aktivierungs-Vorgang noch einmal."
+      restart_password_reset_process: "Leider gab es einen Fehler beim Zurücksetzen Ihres Passworts. Bitte wiederholen Sie den Vorgang noch einmal."
+      third_party_login: "Bitte loggen Sie sich mit Ihren {{third_party}} Zugangsdaten ein."
+      password_updated: "Ihr Passwort wurde erfolgreich aktualisiert. Bitte loggen Sie sich nun mit Ihrem neuen Passwort ein."
+      update_my_password_button: "Mein Passwort aktualisieren"
+      change_my_password: "Mein Passwort ändern"
     pref:
-      create_success: "Created Successfully!"
-      create_failure: "Create Action Failed!"
-      update_success: "Updated Successfully!"
-      update_error: "Update Action Failed!"
-      remove_success: "Destroyed Successfully!"
-      already_in_list: 'Already In the List'
+      create_success: "Erfolgreich erstellt!"
+      create_failure: "Erstellung leider mislungen!"
+      update_success: "Erfolgreich aktualisiert!"
+      update_error: "Aktualisierung leider mislungen!"
+      remove_success: "Erfolgreich gelöscht!"
+      already_in_list: 'Existiert bereits in der Liste'
   cnb:
     payment:
-      success: 'Payment transaction successful. Account upgraded.'
+      success: 'Die Bezahlung ist erfolgt. Ihr Plan ist upgegraded!'
     error:
-      plan_not_found:  'We are unable to provide subscriptions for the plan you are requesting.'
-      already_subscribed: 'You are already subscribed user'
-      authorization_failed: 'Payment transaction authorization was unsuccessful'
-      confirmation_failed: 'Payment transaction confirmation was unsuccessful'
-      verification_pending: 'Payment transaction could not be confirmed realtime. It is marked for manual verification. Get in touch with <a href="mailto:jurnalo.user.service@jurnalo.com">our customer care</a> for payment verification.'
+      plan_not_found:  'Der nachgefragte Plan wird leider nicht angeboten.'
+      already_subscribed: 'Sie besitzen bereits ein Abonnement.'
+      authorization_failed: 'Die Bezahlung ist leider mislungen.'
+      confirmation_failed: 'Die Bestätigung der Bezahlung ist leider mislungen.'
+      verification_pending: 'Die Bezahlung konnte leider nicht automatisch bestätigt werden. Sie wurde aber für eine manuelle Bestätigung vergemerkt. Kontaktieren Sie bitte <a href="mailto:jurnalo.user.service@jurnalo.com"> unseren Support</a> zur Bestätigung Ihrer Zahlung.'

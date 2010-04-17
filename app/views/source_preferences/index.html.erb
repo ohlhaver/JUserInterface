@@ -4,10 +4,8 @@
     Event.observe($('prefs'), 'mouseout', hideMouseOvers );
   </script>
 <% end %>
-<div class='news_block'>
-	<div class = "reading_list_label">
+<div class='news_block reading_list_label'>
 <h2><span class="page_label"><%= t('navigation.top.settings') %> > <%= t('navigation.main.my_sources', :prefix => my_or_user) %></span></h2>
-</div>
 </div>
 
 <% @source_preferences.each do | source_preference | %>
