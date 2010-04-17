@@ -37,7 +37,7 @@
 <br /><br /><br /><br />
 <%= will_paginate @topic_preferences %>
 <div class='news_block'>
-  <h2><h2><span class="page_label"><%= t('topic.label.new') %>:</span></h2>
+  <h2><span class="page_label"><%= t('topic.label.new') %>:</span></h2>
   <div class= 'adv_search_lines'>
     <% form_for( @topic_preference, :url => user_topic_preferences_path(@user), :html => { :id => 'simple_topic_form' }, :method => :post ) do |f| %>
       <%= render :partial => 'simple_form', :locals => { :f => f } %>
