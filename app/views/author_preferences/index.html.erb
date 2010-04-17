@@ -10,26 +10,21 @@
 		</div>
 </div>
 
-<h2>
-	
 <% @author_preferences.each do | author_preference | %>
-   
-	<div class='my_authors_block'>
-	
-      <span><%= author_preference.author.name %></span>
-      <div class='listed_rater'>
-        <% form_id = "author_preference_#{author_preference.id}" %>
-        <% content_for :custom_javascript do %>
-          <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
-        <% end %>
-        <% form_for( author_preference, :url => user_author_preference_path( @user, author_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
-          <%= f.check_box( :subscribed ) %> <%= t('prefs.labels.subscribe') %> - <%= t('prefs.labels.rate') %> <%= f.select( :preference, Preference.for_select( :author ), :include_blank => true )%>
-        <% end %>
-
+<div class='my_authors_block prefs clearfix'>
+  <div class="grid_1_5 alpha">
+    <span><%= author_preference.author.name %></span>
+  </div>
+  <div class='listed_rater grid_1_5 omega'>
+    <% form_id = "author_preference_#{author_preference.id}" %>
+    <% content_for :custom_javascript do %>
+      <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
+    <% end %>
+    <% form_for( author_preference, :url => user_author_preference_path( @user, author_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
+      <%= f.check_box( :subscribed ) %> <%= t('prefs.labels.subscribe') %> - <%= t('prefs.labels.rate') %> <%= f.select( :preference, Preference.for_select( :author ), :include_blank => true )%>
+    <% end %>
+  </div>
 </div>
-</div>
-  <% end %>
-
-</h2>
+<% end %>
 <br />
 <%= will_paginate @author_preferences %>

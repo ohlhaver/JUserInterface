@@ -10,27 +10,22 @@
 </div>
 </div>
 
-<h2>	
 <% @source_preferences.each do | source_preference | %>
- <div class='prefs'>
-    <div class='my_authors_block'>
-   <span><%= source_preference.source.name %></span> 
- 		<div class = "listed_rater">
-        <% form_id = "source_preference_#{source_preference.id}" %>
-        <% content_for :custom_javascript do %>
-          <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
-        <% end %>
-
-        <% form_for( source_preference, :url => user_source_preference_path( @user, source_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
-          <%= t('prefs.labels.rate') %> <%= f.select( :preference, Preference.for_select( :source ), :include_blank => true )%>
-        <% end %>
-		
- 		</div>
-    </div>
+<div class='my_authors_block prefs clearfix'>
+  <div class="grid_2 alpha">
+    <span><%= source_preference.source.name %></span>
+  </div>
+  <div class="listed_rater grid_1 omega">
+    <% form_id = "source_preference_#{source_preference.id}" %>
+    <% content_for :custom_javascript do %>
+      <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
+    <% end %>
+    <% form_for( source_preference, :url => user_source_preference_path( @user, source_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
+      <%= t('prefs.labels.rate') %> <%= f.select( :preference, Preference.for_select( :source ), :include_blank => true )%>
+    <% end %>
+  </div>
 </div>
-  <% end %>
-
-</h2>
+<% end %>
 
 <br />
 <%= will_paginate @source_preferences %>
