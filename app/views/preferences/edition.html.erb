@@ -13,13 +13,15 @@
 
 <div class='settings_news_block'>
 
-        <%= f.label :default_edition_id, t('prefs.labels.edition') %>
+        
 
-         <span class = "rater"><%= f.select :default_edition_id, edition_options %></span><br>
+         <span class = "rater"><%= f.select :default_edition_id, edition_options %></span>
+         <%= f.label :default_edition_id, t('prefs.labels.edition') %><br>
 
-        <%= f.label :interface_language_id, t('prefs.labels.interface_language') %>
+        
 
-         <span class = "rater"><%= f.select :interface_language_id, Preference.for_select( :interface_language_id ) %></span><br>
+         <span class = "rater"><%= f.select :interface_language_id, Preference.for_select( :interface_language_id ) %></span>
+         <%= f.label :interface_language_id, t('prefs.labels.interface_language') %><br>
 
   </div>
   <div class='settings_news_block'>

@@ -10,11 +10,12 @@
 
 <div class = "about">  
 	<div class = "adv_search_lines">
-        <%= f.label :default_sort_criteria, t('prefs.labels.sort_criteria') %>
+        
      	<span class = "rater"><%= f.select :default_sort_criteria, Preference.for_select( :default_sort_criteria ) %></span>
-		<br>
-        <%= f.label :default_time_span, t('prefs.labels.time_span') %>
+		<%= f.label :default_sort_criteria, t('prefs.labels.sort_criteria') %><br>
+        
         <span class = "rater"><%= f.select :default_time_span, Preference.for_select( :default_time_span ) %></span>
+        <%= f.label :default_time_span, t('prefs.labels.time_span') %>
 	</div>
   </div>
 
@@ -22,22 +23,23 @@
 	<div class = "about">  
 		<div class = "adv_search_lines">
 
-        <%= f.label :video, t('prefs.labels.video_pref') %>
+        
         <span class = "rater"><%= f.select :video, Preference.for_select( :video ) %></span>
-		<br>
-        <%= f.label :opinion, t('prefs.labels.opinion_pref') %>
+		<%= f.label :video, t('prefs.labels.video_pref') %><br>
+        
         <span class = "rater"><%= f.select :opinion, Preference.for_select( :opinion ) %></span>
-		<br>
-        <%= f.label :blog, t('prefs.labels.blog_pref') %>
+		<%= f.label :opinion, t('prefs.labels.opinion_pref') %><br>
+        
         <span class = "rater"><%= f.select :blog, Preference.for_select( :blog ) %></span>
+    <%= f.label :blog, t('prefs.labels.blog_pref') %>
 	</div>
   </div>
   </div>
   <div class='settings_news_block'>
 	<div class = "about">  
 		<div class = "adv_search_lines">
-        <%= f.label :subscription_type, t('prefs.labels.subscription_type') %>
         <span class = "rater"><%= f.select :subscription_type, Preference.for_select( :subscription_type ) %></span>
+      <%= f.label :subscription_type, t('prefs.labels.subscription_type') %>
 	</div>
   </div>  
 </div>

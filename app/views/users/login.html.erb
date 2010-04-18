@@ -22,12 +22,12 @@
 	<% form_tag CASClient::Frameworks::Rails::Filter.client.login_url, :id => 'login_form' do %>
    <div class= 'adv_search_lines'>
      <div class="clearfix">
-       <label><%= t('jurnalo.login.username')%></label>
        <%= text_field_tag( "username", params[:username], :id => "settings_field")%>
+       <label><%= t('jurnalo.login.username')%></label>
     </div>
     <div class="clearfix">
-      <label><%= t('jurnalo.login.password')%></label>
       <%= password_field_tag( 'password', params[:password], :id => "settings_field")%>
+      <label><%= t('jurnalo.login.password')%></label>
     </div>
     <div class="clearfix">
       <%= check_box_tag( 'remember-me', '1' ) %>&nbsp; <%= t('jurnalo.login.remember_me') %>

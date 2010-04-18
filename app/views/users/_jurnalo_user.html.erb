@@ -3,28 +3,28 @@
 <div class= 'adv_search_lines'>
 	
 <div class='clearfix'>
-<%= jurnalo_user.label :login, t('jurnalo.register.login') %> 
 <%= jurnalo_user.text_field :login, :id => "settings_field" %> 
+<%= jurnalo_user.label :login, t('jurnalo.register.login') %> 
 </div>
 
 <div class="clearfix">
-<%= jurnalo_user.label :email, t('jurnalo.register.email') %>
 <%= jurnalo_user.text_field :email, :id => "settings_field" %>
+<%= jurnalo_user.label :email, t('jurnalo.register.email') %>
 </div>
 
 <div class="clearfix">
-<%= jurnalo_user.label :name, t('jurnalo.register.name') %>
 <%= jurnalo_user.text_field :name, :id => "settings_field" %>
+<%= jurnalo_user.label :name, t('jurnalo.register.name') %>
 </div>
 
 <div class="clearfix">
-<%= jurnalo_user.label :password, jurnalo_user.object.new_record? ? t('jurnalo.register.password') : t('jurnalo.register.change_password') %>
 <%= jurnalo_user.password_field :password, :id => "settings_field" %>
+<%= jurnalo_user.label :password, jurnalo_user.object.new_record? ? t('jurnalo.register.password') : t('jurnalo.register.change_password') %>
 </div>
 
 <div class="clearfix">
-<%= jurnalo_user.label :password_confirmation, t('jurnalo.register.confirm_password') %>
 <%= jurnalo_user.password_field :password_confirmation, :id => "settings_field" %>
+<%= jurnalo_user.label :password_confirmation, t('jurnalo.register.confirm_password') %>
 </div>
 
 <% if admin?  %>

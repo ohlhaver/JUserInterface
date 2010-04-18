@@ -5,18 +5,26 @@
 <%= t('jurnalo.account_activation.instruction') %><br />
 <br />
 <% form_tag account_activation_path('update') do %>
-  <label><%= t('jurnalo.account_activation.token') %>:</label><br/>
-  <%= text_field_tag 'id', "", :id => "user_captcha" %><br/>
-  <%= submit_tag t('jurnalo.account_activation.activate_button'), :class => "confirmation_button" %>
+  <div class="adv_search_lines">
+    <div class="clear_fix">
+      <%= text_field_tag 'id', "", :class => "settings_field_right" %>
+      <label><%= t('jurnalo.account_activation.token') %>:</label>
+    </div>
+    <%= submit_tag t('jurnalo.account_activation.activate_button'), :class => "confirmation_button" %>
+  </div>
 <% end %>
 <br />
 
 <%= t('jurnalo.account_activation.send_instruction') %><br />
 <br/>
 <% form_tag account_activations_path do %>
-  <label><%= t('jurnalo.register.email') %>: </label><br />
-  <%= text_field_tag "email", "", :id => "user_captcha" %><br />
-  <%= submit_tag t('jurnalo.account_activation.send_button'), :class => "confirmation_button" %>
+  <div class="adv_search_lines">
+    <div class="clear_fix">
+      <%= text_field_tag "email", "", :class => "settings_field_right" %>
+      <label><%= t('jurnalo.register.email') %>: </label>
+    </div>
+    <%= submit_tag t('jurnalo.account_activation.send_button'), :class => "confirmation_button" %>
+  </div>
 <% end %>
 </div>
 </div>

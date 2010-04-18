@@ -4,13 +4,14 @@
 <div class = "about">
 <%= t('jurnalo.forgot_password.instruction') %><br />
 <br />
- <div class= 'adv_search_lines'>
 <% form_tag password_resets_path do %>
-
-<%= jurnalo_user.label :email, t('jurnalo.register.email') %>: 
-<%= text_field_tag "email", params[:email], :id => "settings_field" %>
-<%= submit_tag t('jurnalo.forgot_password.button'), :class => "confirmation_button" %>
+  <div class= 'adv_search_lines'>
+    <div class="clearfix">
+      <%= text_field_tag "email", params[:email], :class => "settings_field_right" %>
+      <span><%= label_tag :email, t('jurnalo.register.email') %>:</span>
+    </div>
+    <%= submit_tag t('jurnalo.forgot_password.button'), :class => "confirmation_button" %>
+    </div>
 <% end %>
-</div>
 </div>
 </div>

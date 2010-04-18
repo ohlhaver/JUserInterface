@@ -44,7 +44,7 @@
 	<div class='about'>
 
       <% unless @user.third_party? %>
-        <%= show_simple_captcha( :object => "user", :image_style => 'blue', :distortion => 'high', :label => t('jurnalo.register.captcha') ) %>
+        <%= show_simple_captcha( :object => "user", :image_style => 'blue', :distortion => 'high', :label => t('jurnalo.register.captcha'), :class => 'settings_field' ) %>
       <% end %>
     <br>
     <%= f.hidden_field( :terms_and_conditions_accepted ) %>

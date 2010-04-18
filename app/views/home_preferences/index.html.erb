@@ -19,7 +19,6 @@
 	
 <div class='my_elements_block'>
        <h2> 
-          <span><%= hp.homepage_element %></span>
           <span class='dialogBox'>
             <%= link_to( image_tag('up.gif'), user_home_display_preference_path( :user_id => @user, :id => hp, :reorder => 'up' ), :method => :put ) %>
             &nbsp;&nbsp;
@@ -27,6 +26,7 @@
             &nbsp;&nbsp;
             <%= link_to( image_tag('close.gif'), user_home_display_preference_path( @user, hp ), :method => :delete, :confirm => 'Are you sure?' ) %>
           </span>
+          <span><%= hp.homepage_element %></span>
        </h2>
 		</div>
     <% end -%>
@@ -39,7 +39,6 @@
     <% @home_cluster_preferences.each do |hp| %>
         <div class='my_elements_block'>
 		       <h2>
-          <span><%= t("prefs.category.#{hp.cluster_group.name.underscore}") %></span>
           <span class='dialogBox'>
             <%= link_to( image_tag('up.gif'), user_home_cluster_preference_path( :user_id => @user, :id => hp, :reorder => 'up' ), :method => :put ) %>
             &nbsp;&nbsp;
@@ -47,6 +46,7 @@
             &nbsp;&nbsp;
             <%= link_to( image_tag('close.gif'), user_home_cluster_preference_path( @user, hp ), :method => :delete, :confirm => 'Are you sure?' ) %>
           </span>
+          <span><%= t("prefs.category.#{hp.cluster_group.name.underscore}") %></span>
 		</h2>
         </div>
     <% end %>

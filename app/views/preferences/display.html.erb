@@ -11,21 +11,25 @@
 
   <% form_for(@preference, :url => preference_path( @user ), :html => { :method => :put, :class => "edit_preference", :id => form_id }  ) do |f| %>
 
-        <%= f.label :per_page, t('prefs.labels.per_page') %>
+        
 
-        <span class = "rater"><%= f.select :per_page, Preference.for_select( :per_page ) %></span><br>
+        <span class = "rater"><%= f.select :per_page, Preference.for_select( :per_page ) %></span>
+        <%= f.label :per_page, t('prefs.labels.per_page') %><br>
 
-        <%= f.label :headlines_per_cluster_group, t('prefs.labels.per_cluster_group') %>
+        
 
-        <span class = "rater"><%= f.select :headlines_per_cluster_group, Preference.for_select( :headlines_per_cluster_group ) %></span><br>
+        <span class = "rater"><%= f.select :headlines_per_cluster_group, Preference.for_select( :headlines_per_cluster_group ) %></span>
+        <%= f.label :headlines_per_cluster_group, t('prefs.labels.per_cluster_group') %><br>
 
-        <%= f.label :cluster_preview, t('prefs.labels.per_cluster') %>
+        
 
-        <span class = "rater"><%= f.select :cluster_preview, Preference.for_select( :cluster_preview ) %></span><br>
+        <span class = "rater"><%= f.select :cluster_preview, Preference.for_select( :cluster_preview ) %></span>
+        <%= f.label :cluster_preview, t('prefs.labels.per_cluster') %><br>
 
-        <%= f.label :image, t('prefs.labels.show_images') %>
+        
 
-        <span class = "rater"><%= f.select :image, Preference.for_select( :image ) %></span><br>
+        <span class = "rater"><%= f.select :image, Preference.for_select( :image ) %></span>
+        <%= f.label :image, t('prefs.labels.show_images') %><br>
 
     <%= hidden_field_tag( :return_to, request.url ) %>
   <% end %>
