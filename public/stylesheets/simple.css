@@ -200,6 +200,10 @@ span.current{
 	border-top: 7px solid #99CCFF;	
 }
 
+.thin_settings_news_block {
+	border-top: 1px solid #99CCFF;	
+}
+
 
 .topic_preview_block {
 	border-top: 1px solid #99CCFF;
@@ -470,6 +474,13 @@ h2 a {
 	margin-top: 26px;
 	margin-bottom: -10px;
 }
+
+.thin_results_module {
+	border-top: 1px solid #99CCFF;
+	margin-top: 26px;
+	margin-bottom: -10px;
+}
+
 
 .story_results_module {
 	border-top: 1px solid #99CCFF;

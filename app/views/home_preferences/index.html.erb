@@ -7,11 +7,11 @@
 <% end %>
 
 <div class='settings_news_block'>
-  <h2><span class = "page_label"><%= t('navigation.top.settings') %> > <%=t( 'navigation.main.search_and_sorting') %></span></h2>
+  <h2><span class = "page_label"><%= t('navigation.top.settings') %> > <%=t( 'navigation.main.homepage_settings') %></span></h2>
 </div>
 <br><br>
 
-<div class='news_block'>
+<div class='thin_settings_news_block'>
     <h2><span class="page_label"><%= t('prefs.homepage_preview.elements') %>:</span></h2>
 
 
@@ -34,7 +34,7 @@
     <%= render :partial => 'home_display_preferences/new' %>
 
   <br><br>
-  <div class='news_block'>
+  <div class='thin_settings_news_block'>
     <h2><span class = "page_label"> <%=t('prefs.homepage_preview.sections') %>:</span></h2>
     <% @home_cluster_preferences.each do |hp| %>
         <div class='my_elements_block'>

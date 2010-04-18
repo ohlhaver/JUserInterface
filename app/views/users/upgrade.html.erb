@@ -12,11 +12,9 @@
     <p><%= t('account.power.upgrade.pay') -%> <strong><%= t('account.power.cost') %></strong></p>
 	<br><p><%= t('account.power.upgrade.sentence') -%></p>
   </div>
-  <div class="aboout">
+  <div class="about">
     <% form_for( @billing_record, :url => cnb_path(:action => :create) ) do |f| %>
       <%= f.hidden_field :plan_id  %>
       <%= f.submit t('account.power.upgrade.button'), :class => 'confirmation_button' %>
     <% end %>
   </div>
-<div class='settings_news_block'> </div>
-</div>

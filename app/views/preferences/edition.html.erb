@@ -11,7 +11,7 @@
 <% form_for(@preference, :url => preference_path( @user ), :html => { :method => :put, :class => "edit_preference", :id => form_id }  ) do |f| %>
   
 
-<div class='settings_news_block'>
+<div class='thin_settings_news_block'>
 
         
 
@@ -24,7 +24,7 @@
          <%= f.label :interface_language_id, t('prefs.labels.interface_language') %><br>
 
   </div>
-  <div class='settings_news_block'>
+  <div class='thin_settings_news_block'>
         <%= f.label :search_language_ids, t('prefs.labels.search_languages') %>:<br>
         <% Preference.for_select( :default_language_id ).each do |language| %>
           <%= hidden_field_tag( "preference[search_language_ids][#{language.last}]", "0") %>

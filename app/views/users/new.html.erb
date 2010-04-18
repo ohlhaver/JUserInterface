@@ -10,7 +10,7 @@
 </div>
 
   <% form_for @user, :url => account_path do |f| %>
-    <div class='settings_news_block'>
+    <div class='thin_settings_news_block'>
      <h2><span class="page_label"> <%= t('jurnalo.register.enter_info') %></span></h2>
 	 <div class='about'>
       <%= f.error_messages %>
@@ -21,7 +21,7 @@
       <% end %>
 	</div>
     </div>
-    <div class='settings_news_block'>
+    <div class='thin_settings_news_block'>
       <h2><span class="page_label"><%= t('jurnalo.register.choose') %></span></h2>
       
 	<div class='about'>
@@ -40,7 +40,7 @@
 		</h2>
 	</div>
     </div>
-    <div class='settings_news_block'>
+    <div class='thin_settings_news_block'>
 	<div class='about'>
 
       <% unless @user.third_party? %>

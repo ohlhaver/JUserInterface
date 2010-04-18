@@ -19,23 +19,23 @@
 
 <br/><br/>
 <% if ( @user.plan_id == 1 ) %>
-<div class='settings_news_block'>
+<div class='thin_settings_news_block'>
   <h2><span class="page_label"><%= t('account.current') %></span></h2>
   <div class = "about">
     <h2> <%= link_to t('account.power.label') %> (<%= t('account.power.cost') -%>)
        <%= t('account.power.info') %> (<%= link_to t('more.info') %>)</h2>
   </div>
-  <div class='settings_news_block'> </div>
+  <div class='thin_settings_news_block'> </div>
 </div>
 <% else %>
-<div class='settings_news_block'>
+<div class='thin_settings_news_block'>
   <h2><span class="page_label"><%= t('account.current') %></span></h2>
   <div class = "about">
     <h2> <%= t('account.basic.label') %>&nbsp;(<%= t('account.basic.cost') %>)<br/>
     <%= t('account.basic.info') %></h2>
   </div>
 </div>
-<div class='settings_news_block'>
+<div class='thin_settings_news_block'>
   <h2><span class="page_label"><%= t('account.upgrade') %></span></h2>
   <div class = "about">
     <h2> <b><%= link_to t('account.power.label'), power_plan_account_path %></b> (<%= t('account.power.cost') -%>)<br>
