@@ -1,3 +1,6 @@
+ram:
+  service: http://192.168.0.2:3000
+  cas_server: https://192.168.0.2
 development:
   service: http://192.168.0.2:3000
   cas_server: https://192.168.0.2

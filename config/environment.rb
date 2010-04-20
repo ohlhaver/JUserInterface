@@ -68,3 +68,5 @@ GatewayTransaction.gateway = ClickAndBuyGateway.new(
   :success_url => 'http://accounts.jurnalo.com/click_and_buy/confirm',
   :error_url => 'http://accounts.jurnalo.com/click_and_buy/error'
 )
+
+require 'app/models/user'
