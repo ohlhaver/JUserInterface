@@ -29,7 +29,9 @@ class AuthorsController < ApplicationController
   protected
   
   def list( conditions )
-    @authors = Author.paginate( :page => params[:page] || 1, :conditions => conditions, :order => 'name ASC' )
+    @per_page = params[:per_page]
+    @per_page = 10 if @per_page.blank?
+    @authors = Author.paginate( :page => params[:page] || 1, :per_page => @per_page.to_i, :conditions => conditions, :order => 'name ASC' )
   end
   
   def auto_complete( conditions )
