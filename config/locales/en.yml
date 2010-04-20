@@ -221,6 +221,7 @@ en:
       reading_list: "Reading list"
       register: "Sign Up"
       settings: "Settings"
+      upgrade: "Upgrade"
   search:
     page:
       title: "Search results For: {{query}}"

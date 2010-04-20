@@ -223,6 +223,7 @@ de:
       reading_list: "Leseliste"
       register: "Registrieren"
       settings: "Einstellungen"
+      upgrade: "Upgrade"
   search:
     results:
       per_page: "{{count}} Ergebnisse pro Seite"
