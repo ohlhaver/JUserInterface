@@ -9,8 +9,8 @@
     <%= image_tag( 'cnb.png', :title => "ClickandBuy bietet Ihnen weltweit sicheres und einfaches Bezahlen im Internet. Ob per Abbuchung von Ihrem Bankkonto, Kreditkarte oder ClickandBuy Guthaben: Wählen Sie einfach Ihr bevorzugtes Zahlungsmittel aus." ) %>
   </div>
   <div class="about">
-    <p><%= t('account.power.upgrade.pay') -%> <strong><%= t('account.power.cost') %></strong></p>
-	<br><p><%= t('account.power.upgrade.sentence') -%></p>
+    <p><%= t('account.power.upgrade.pay') -%> <strong><%= t('account.power.cost') %></strong></p><br>
+    <p><%= t('account.power.upgrade.sentence') -%></p>
   </div>
   <div class="about">
     <% form_for( @billing_record, :url => cnb_path(:action => :create) ) do |f| %>
@@ -18,3 +18,4 @@
       <%= f.submit t('account.power.upgrade.button'), :class => 'confirmation_button' %>
     <% end %>
   </div>
+</div>
