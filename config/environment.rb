@@ -69,4 +69,4 @@ GatewayTransaction.gateway = ClickAndBuyGateway.new(
   :error_url => 'http://accounts.jurnalo.com/click_and_buy/error'
 )
 
-require 'app/models/user'
+require 'app/models/user' if RAILS_ENV == 'development' || RAILS_ENV == 'justus'
