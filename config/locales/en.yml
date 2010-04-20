@@ -219,7 +219,7 @@ en:
       login: "Login"
       logout: "{{name}} (logout)"
       reading_list: "Reading list"
-      register: "Sign Up"
+      register: "Sign up"
       settings: "Settings"
       upgrade: "Upgrade"
   search:
