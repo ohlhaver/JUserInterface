@@ -280,6 +280,7 @@ de:
       part6: "Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail."
       part7: "Viele Grüße,"
       part8: "Ihr Jurnalo"
+      part9: "Zugangs-Aktivierungs-Code (wenn benötigt): {{token}}"
     reset:
       part1: "Lieber Leser,"
       part2: "Wir wurden gebeten Ihr Passwort zurückzusetzen."
@@ -289,6 +290,7 @@ de:
       part6: "Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail."
       part7: "Viele Grüße," 
       part8: "Ihr Jurnalo"
+      part9: "Ihr Benutzername: {{login}}"
   user:
     account:
       already_registered: 'Sie sind bereits registriert.'

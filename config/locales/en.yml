@@ -278,6 +278,7 @@ en:
       part6: "If you continue to have problems please feel free to contact us at any time via email."
       part7: "Best Regards,"
       part8: "The Jurnalo"
+      part9: "Account activation token (if required): {{token}}"
     reset:
       part1: "Dear Reader,"
       part2: "A request to reset your password has been made."
@@ -287,6 +288,7 @@ en:
       part6: "If you continue to have problems please feel free to contact us at any time via email."
       part7: "Best Regards," 
       part8: "The Jurnalo"
+      part9: "Your username: {{login}}"
   user:
     account:
       already_registered: 'You are already registered'
