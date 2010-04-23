@@ -1,5 +1,7 @@
 en:
   activerecord:
+    field:
+      required: "required"
     errors:
       messages:
         accepted: "must be accepted"
@@ -100,6 +102,15 @@ en:
       reason_1: "To create more than one topic please upgrade to the Jurnalo Power Account."
       reason_2: "To rate more than one source please upgrade to the Jurnalo Power Account."
       reason_3: "To subscribe to more than one author please upgrade to the Jurnalo Power Account."
+    contact:
+      label: "Contact"
+      phone_info: "Call us in Germany at +49 (0)170 4713446."
+      user_message_label: "Or, Enter your questions or comments below:"
+      service_time_info: "We’ll get back to you within a few hours."
+      send_button: "Send"
+      guest_message_label: "Please enter your questions or comments below:"
+      guest_email_label: "Please provide your email. We will respond within a few hours:"
+      confirmation: "Your message was sent to Jurnalo."
   prefix:
     my: "My"
     user: "User"
@@ -290,6 +301,9 @@ en:
       part7: "Best Regards," 
       part8: "The Jurnalo"
       part9: "Your username: {{login}}"
+    user_feedback:
+      user_wrote: "<JurnaloId:{{user_id}}> {{user_login}} wrote:"
+      guest_wrote: "{{email}} wrote:"
   user:
     account:
       already_registered: 'You are already registered'

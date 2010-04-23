@@ -730,7 +730,7 @@ h2 .my_authors_links span {
 	
 }
 
-#settings_field, input.settings_field, input.settings_field_right, #user_captcha{
+#settings_field, input.settings_field, textarea.settings_field, input.settings_field_right, #user_captcha, #user_feedback_captcha{
 	display: inline;
 	float: right;
 	margin-right: 140px;
@@ -748,10 +748,16 @@ h2 .my_authors_links span {
 	vertical-align: middle;
 }
 
-input.settings_field, #user_captcha{
+input.settings_field, textarea.settings_field, #user_captcha, #user_feedback_captcha{
   display:auto;
   float:none;
   margin-right: none;
+}
+
+textarea.settings_field{
+  margin-right: none;
+  height: auto;
+  width: auto;
 }
 
 .form_area {

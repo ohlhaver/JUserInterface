@@ -22,4 +22,15 @@ class Notifier < ActionMailer::Base
     body          :account_activation_url => account_activation_url( user.perishable_token ), :token => user.perishable_token
   end
   
+  def feedback( options = {} )
+    user  = options[:user]
+    options[:email] =  user.email if options[:email].blank? && user
+    subject       "#{user.nil? ? 'Jurnalo Guest' : 'Jurnalo User'} Feedback"
+    from          "Jurnalo.com Account Services <jurnalo.user.service@jurnalo.com>"
+    headers       "return-path" => options[:email]
+    recipients    "Jurnalo.com Support <contact.jurnalo@jurnalo.com>"
+    sent_on       Time.now
+    body          options
+  end
+  
 end

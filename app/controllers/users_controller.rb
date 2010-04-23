@@ -8,6 +8,22 @@ class UsersController < ApplicationController
     @users = User.paginate( :page => params[:page] || '1' )
   end
   
+  def contact
+    if params[:jar] == '1'
+      authenticate_using_cas_without_gateway 
+      set_current_user
+    end
+    set_user_var if logged_in?
+    @user_feedback = UserFeedback.new( params[:user_feedback] || {} )
+    @user_feedback.email ||= @user.try(:email)
+    @user_feedback.user = @user
+    if request.post? && ( ( logged_in? && @user_feedback.valid? ) ||  ( !logged_in? && @user_feedback.valid_with_captcha? ) )
+      flash[:notice] = I18n.t('jurnalo.contact.confirmation')
+      @user_feedback.deliver_support_email!
+      redirect_to '/'
+    end
+  end
+  
   def power_plan
     if params[:jar] == '1'
       authenticate_using_cas_without_gateway 
