@@ -9,7 +9,10 @@ class UsersController < ApplicationController
   end
   
   def power_plan
-    jurnalo_login_required if params[:jar] == '1'
+    if params[:jar] == '1'
+      authenticate_using_cas_without_gateway 
+      set_current_user
+    end
     set_user_var if logged_in?
   end
   
