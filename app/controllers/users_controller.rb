@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
   
   def power_plan
+    jurnalo_login_required if params[:jar] == '1'
     set_user_var if logged_in?
   end
   

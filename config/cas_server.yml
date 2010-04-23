@@ -1,9 +1,9 @@
 ram:
-  service: http://192.168.0.2:3000
-  cas_server: https://192.168.0.2
+  service: http://localhost:3000
+  cas_server: https://localhost
 development:
-  service: http://192.168.0.2:3000
-  cas_server: https://192.168.0.2
+  service: http://localhost:3000
+  cas_server: https://localhost
 production:
   service: http://accounts.jurnalo.com
   cas_server: https://login.jurnalo.com
