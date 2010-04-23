@@ -762,7 +762,7 @@ h2 .my_authors_links span {
 	vertical-align: middle;
 }
 
-input.settings_field, #user_captcha, #user_feedback_captcha{
+input.settings_field, textarea.settings_field, #user_captcha, #user_feedback_captcha{
   display:auto;
   float:none;
   margin-right: none;
