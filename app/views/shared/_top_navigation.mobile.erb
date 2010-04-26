@@ -14,13 +14,8 @@
 
 <br>
 <%= link_to( t( 'navigation.top.reading_list' ), jurnalo_reading_list_path ) -%> -
-<% if logged_in? %>
-<span class='current'>
-  <%= t( 'navigation.top.settings' ) %>
-</span>
-<% else %>
   <%= link_to( t('navigation.top.settings'), account_path ) %>
-<% end %>
+
 
 
 <div id ="edition">
