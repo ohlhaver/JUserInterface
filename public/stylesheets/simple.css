@@ -766,12 +766,15 @@ input.settings_field, textarea.settings_field, #user_captcha, #user_feedback_cap
   display:auto;
   float:none;
   margin-right: none;
+
 }
+
+
 
 textarea.settings_field{
   margin-right: none;
   height: auto;
-  width: auto;
+  width: 100%;
 }
 
 .form_area {
