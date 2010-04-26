@@ -1,0 +1,38 @@
+<% form_id = "edit_preference_#{@user.id}" %>
+<% content_for :custom_javascript do %>
+  <%= observe_form( form_id, :function => "$('#{form_id}').submit();" ) %>
+<% end %>
+<div class='news_block'>
+  <h2><span class = "page_label"><%= link_to( t('navigation.top.settings'), account_path ) %> > <%=t( 'navigation.main.display_preferences') %></span></h2>
+</div>
+
+<div class = "about">  
+	<div class = "adv_search_lines">
+
+  <% form_for(@preference, :url => preference_path( @user ), :html => { :method => :put, :class => "edit_preference", :id => form_id }  ) do |f| %>
+
+        
+
+        <span class = "rater"><%= f.select :per_page, Preference.for_select( :per_page ) %></span>
+        <%= f.label :per_page, t('prefs.labels.per_page') %><br>
+
+        
+
+        <span class = "rater"><%= f.select :headlines_per_cluster_group, Preference.for_select( :headlines_per_cluster_group ) %></span>
+        <%= f.label :headlines_per_cluster_group, t('prefs.labels.per_cluster_group') %><br>
+
+        
+
+        <span class = "rater"><%= f.select :cluster_preview, Preference.for_select( :cluster_preview ) %></span>
+        <%= f.label :cluster_preview, t('prefs.labels.per_cluster') %><br>
+
+        
+
+        <span class = "rater"><%= f.select :image, Preference.for_select( :image ) %></span>
+        <%= f.label :image, t('prefs.labels.show_images') %><br>
+
+    <%= hidden_field_tag( :return_to, request.url ) %>
+  <% end %>
+
+</div>
+</div>

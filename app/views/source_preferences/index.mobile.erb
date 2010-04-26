@@ -1,0 +1,29 @@
+<% content_for :custom_javascript do %>
+  <script type='text/javascript'>
+    Event.observe($('prefs'), 'mouseover', showMouseOvers );
+    Event.observe($('prefs'), 'mouseout', hideMouseOvers );
+  </script>
+<% end %>
+<div class='news_block'>
+	<div class = "reading_list_label">
+<h2><span class="page_label"><%= link_to( t('navigation.top.settings'), account_path ) %> > <%= t('navigation.main.my_sources', :prefix => my_or_user) %></span></h2>
+</div>
+</div>
+
+<% @source_preferences.each do | source_preference | %>
+<div class='prefs my_authors_block'><h2>
+  <div class = "listed_rater">
+    <% form_id = "source_preference_#{source_preference.id}" %>
+    <% content_for :custom_javascript do %>
+      <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
+    <% end %>
+    <% form_for( source_preference, :url => user_source_preference_path( @user, source_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
+      <%= t('prefs.labels.rate') %> <%= f.select( :preference, Preference.for_select( :source ), :include_blank => true )%>
+    <% end %>
+  </div>
+  <span><%= source_preference.source.name %></span> 
+</h2></div>
+<% end %>
+
+<br />
+<%= will_paginate @source_preferences %>

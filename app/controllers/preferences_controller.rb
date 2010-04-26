@@ -12,6 +12,7 @@ class PreferencesController < ApplicationController
   
   def index
     respond_to do |format|
+      format.mobile{ redirect_to :action => :edit }
       format.html{ redirect_to :action => :edit }
       format.xml{ 
         preferences = case( params[:preference_id] ) when 'homepage_cluster_groups', 'homepage_cluster_group' :
@@ -27,6 +28,7 @@ class PreferencesController < ApplicationController
     options = params[:only] ? { :only => params[:only] } : {}
     options.merge!( :set => :long ) if params[:details] == '1' 
     respond_to do |format|
+      format.mobile{ redirect_to :action => :edit }
       format.html{ redirect_to :action => :edit }
       format.xml{ rxml_data( @preference, options ) }
     end
@@ -44,9 +46,11 @@ class PreferencesController < ApplicationController
     respond_to do |format|
       if @preference.update_attributes( params[:preference] )
         flash[:notice] = I18n.t('user.pref.update_success')
+        format.mobile { redirect_to( return_to ) }
         format.html { redirect_to( return_to ) }
         format.xml{ rxml_success( @user, :action => :update ) }
       else
+        format.mobile{ render :action => "edit" }
         format.html{ render :action => "edit" }
         format.xml{ rxml_error( @preference, :action => :update ) }
       end

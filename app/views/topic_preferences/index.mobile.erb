@@ -1,0 +1,41 @@
+<% content_for :custom_javascript do %>
+  <script type='text/javascript'>
+    Event.observe($('prefs'), 'mouseover', showMouseOvers );
+    Event.observe($('prefs'), 'mouseout', hideMouseOvers );
+  </script>
+  <%= render :partial => 'js', :locals => { :form_path => new_user_topic_preference_path( @user ), :test_path => jurnalo_search_results_stories_path }%>
+<% end %>
+<div class='news_block'>
+<h2><h2><span class="page_label"><%= link_to( t('navigation.top.settings'), account_path ) %> > <%= t('navigation.main.my_search_topics', :prefix => my_or_user) %></span></h2>
+</div>
+
+<% @topic_preferences.each do | topic_preference | %>
+<div class='my_topics_block'><h2>
+  <span class='dialogBox'>
+    <% form_id = "topic_preference_#{topic_preference.id}" %>
+    <% content_for :custom_javascript do %>
+      <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
+    <% end %>
+    <% form_for( topic_preference, :url => user_topic_preference_path( @user, topic_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
+      <%= f.check_box( :email_alert ) %> <%= t('prefs.labels.email_alerts') %>
+    <% end %>
+    &nbsp;&nbsp; 
+    <%= link_to( image_tag('up.gif'), user_topic_preference_path(:user_id => @user, :id => topic_preference, :reorder => 'up'), :method => :put ) %>
+    &nbsp;&nbsp;
+    <%= link_to( image_tag('down.gif'), user_topic_preference_path(:user_id => @user, :id => topic_preference, :reorder => 'down'), :method => :put ) %>
+    &nbsp;&nbsp;
+    <%= link_to( image_tag('close.gif'), user_topic_preference_path( @user, topic_preference ), :method => :delete, :confirm => 'Are you sure?' ) %>
+  </span>
+  <span><%= link_to( topic_preference.name, edit_user_topic_preference_path( @user, topic_preference ) ) %></span>
+</h2></div>
+<% end %>
+<br /><br /><br /><br />
+<%= will_paginate @topic_preferences %>
+<div class='news_block'>
+  <h2><span class="page_label"><%= t('topic.label.new') %>:</span></h2>
+  <div class= 'adv_search_lines'>
+    <% form_for( @topic_preference, :url => user_topic_preferences_path(@user), :html => { :id => 'simple_topic_form' }, :method => :post ) do |f| %>
+      <%= render :partial => 'simple_form', :locals => { :f => f } %>
+    <% end %>
+  </div>
+</div>

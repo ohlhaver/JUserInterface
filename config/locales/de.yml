@@ -243,6 +243,7 @@ de:
     topic:
       add: "zu meinem Thema machen"
     simple: "suche Nachrichten"
+    simple_mobile: "suche"
     advance: 
       label: "Erweiterte Suche"
       find: 

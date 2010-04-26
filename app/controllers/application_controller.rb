@@ -16,8 +16,9 @@ class ApplicationController < ActionController::Base
   before_filter :set_service_session_var
   before_filter :set_edition_session_var
   before_filter :set_locale
+  before_filter :prepare_for_mobile
   
-  helper_method :base_url, :base_url?
+  helper_method :base_url, :base_url?, :mobile_device?
   
   def logout
     # returns to the application registration page
@@ -78,5 +79,15 @@ class ApplicationController < ActionController::Base
     params[:edition] ||= session[:edition]
     session[:edition] = params[:edition] || 'int-en'
   end
+  
+  private
+
+   def mobile_device?
+     request.user_agent =~ /Mobile|webOS/    
+   end
+
+   def prepare_for_mobile
+     request.format = :mobile if mobile_device?
+   end
   
 end

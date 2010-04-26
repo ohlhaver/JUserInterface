@@ -1,0 +1,89 @@
+<%= f.error_messages %>
+<div id = "topic_label" class="clearfix">
+  <span><%= f.text_field(:name, :id => "adv_searchfield" ) %></span>
+  <span><%= t('topic.name') -%> </span>
+</div>
+<div class = "thin_results_module"></div>
+<%= t('search.advance.find.label') -%>
+<div class="clearfix">
+  <span><%= f.text_field(:search_any, :id => "adv_searchfield") %></span>
+  <span><%= t('search.advance.find.at_least') -%></span>
+</div>
+<div class="clearfix">
+  <span><%= f.text_field(:search_all, :id => "adv_searchfield") %></span>
+  <span><%= t('search.advance.find.all') -%></span>
+</div>
+<div class="clearfix">
+  <span><%= f.text_field(:search_exact_phrase, :id => "adv_searchfield") %></span>
+  <span><%= t('search.advance.find.exact') -%></span>
+</div>
+<div class="clearfix">
+  <span><%= f.text_field(:search_except, :id => "adv_searchfield") %></span>
+  <span><%= t('search.advance.find.without') -%></span>
+</div>
+<div class = 'form_area'>
+  <div class="clearfix">
+    <span class='adv_search_menu rater'>
+      <%= f.select( :sort_criteria, Preference.for_select(:sort_criteria), :include_blank => true ) %>
+    </span>
+    <%= t('search.advance.sorting') -%>
+  </div>
+  <div class="clearfix">
+    <span class='adv_search_menu rater'>
+      <%= f.select( :time_span, Preference.for_select( :time_span), :include_blank => true ) %>
+    </span>
+    <%= t('search.advance.timespan') -%>
+  </div>
+</div>
+<div class = "thin_results_module"></div>
+<%= t('search.advance.filter.label') -%>
+<div class="">
+  <span class='adv_search_menu rater'>
+    <%= source_auto_complete_field( 'topic_preference', 'source_id', @topic_preference.source ) %>
+  </span>
+  <%= t('search.advance.filter.source') -%>
+</div>
+<div class="">
+  <span class='adv_search_menu rater'>
+    <%= author_auto_complete_field( 'topic_preference', 'author_id', @topic_preference.author ) %>
+  </span>
+  <%= t('search.advance.filter.author') -%>
+</div>
+<div class = 'form_area'>
+  <div class="clearfix">
+    <span class='adv_search_menu rater'>
+      <%= f.select( :region_id, Preference.for_select( :region_id ), :include_blank => true ) %>
+    </span>
+    <%= t('search.advance.filter.region') -%>
+  </div>
+  <div class="clearfix">
+    <span class='adv_search_menu rater'>
+      <%= f.select(:category_id, Preference.for_select( :category_id ), :include_blank => true ) %>
+    </span>
+    <%= t('search.advance.filter.category') -%>
+  </div>
+  <div>
+    <span class='adv_search_menu rater'>
+      <%= f.select( :subscription_type, Preference.for_select( :subscription_type), :include_blank => true ) %>
+    </span>
+    <%= t('search.advance.filter.subscription') -%>
+  </div>
+</div>
+<div class = "thin_results_module"></div>
+<%= t('search.advance.preferences.label') -%>
+<div class = 'form_area'>
+  <div class="clearfix">
+    <span class='adv_search_menu rater'><%= f.select(:video, Preference.for_select( :video ), :include_blank => true ) %></span>
+    <%= t('search.advance.preferences.video') -%>
+  </div>
+  <div class="clearfix">
+    <span class='adv_search_menu rater'><%= f.select(:opinion, Preference.for_select( :opinion ), :include_blank => true ) %></span>
+    <%= t('search.advance.preferences.opinion') -%>
+  </div>
+  <div class="clearfix">
+    <span class='adv_search_menu rater'><%= f.select(:blog, Preference.for_select( :blog ), :include_blank => true ) %></span>
+    <%= t('search.advance.preferences.blog') -%>
+  </div>
+</div>
+
+<%= submit_tag( t('topic.action.add'), :class => "adv_searchbutton" ) %><br>

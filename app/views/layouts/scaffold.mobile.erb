@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Jurnalo User Interface: <%= controller.controller_name.capitalize %>: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= javascript_include_tag :defaults %>
+</head>
+<body>
+<div id="top_nav">
+  <% if logged_in? %>
+    <%= link_to("Logout", logout_path) %>
+    <% if current_user %>
+      | <%= link_to( "Account Home", account_path ) %>
+      <% if admin? %>
+        | <%= link_to( 'Users Index', users_path ) %>
+      <% end %>
+    <% end %>
+  <% end %> 
+</div>
+<p style="color: green"><%= flash[:notice] %></p>
+<p style="color: red"><%= flash[:error] %></p>
+<%= yield %>
+<br />
+<div id="bottom_nav">
+  <% if admin? && @user %>
+    <%= link_to( 'User Profile', user_path( @user ) ) %> 
+  <% elsif current_user %>
+    <%= link_to( 'My Profile', account_path ) %>
+  <% end %>
+</div>
+<% if RAILS_ENV != 'production' %>
+<div id="debug">
+  <%= params[:country] %><br/>
+  <%= params[:locale]%>
+</div>
+<% end %>
+</body>
+</html>

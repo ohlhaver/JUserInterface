@@ -1,0 +1,19 @@
+<h1>New Author Preference</h1>
+
+<% form_for @author_preference, :url => user_author_preferences_path( @user ) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :author_id %>
+    <%= author_auto_complete_field( 'author_preference', 'author_id' ) %>
+  </p>
+  <p>
+    <%= f.label :preference %>
+    <%= f.select( :preference, Preference.for_select( :author ), :include_blank => true ) %>
+  </p>
+  <p>
+    <%= f.label :subscribed, 'Favorite' %>
+    <%= f.check_box( :subscribed ) %>
+  </p>
+  <%= hidden_field_tag( :scope, params[:scope] ) %>
+  <%= f.submit 'Create' %>
+<% end %>

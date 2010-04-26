@@ -1,0 +1,12 @@
+<% mouse_over( :dialog ) do | dialogEventClass, dialogItemClass | %>
+  <li class='<%= dialogEventClass -%>'>
+    <%= link_to t('navigation.main.my_topics'), jurnalo_topics_path %>
+    <span class='navDialogBox <%= dialogItemClass -%>'>
+      <%= link_to image_tag('up.gif'), jurnalo_up_topic_path( 'my' ) %>
+      <%= link_to image_tag('down.gif'), jurnalo_down_topic_path( 'my' ) %>
+    </span>
+  </li>
+<% end %>
+<li class="grey">
+  <%= link_to( t('navigation.main.add_topic'), jurnalo_new_topic_path )%>
+</li>

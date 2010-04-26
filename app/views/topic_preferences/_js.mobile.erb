@@ -1,0 +1,18 @@
+<script type='text/javascript'>
+  function test_topic( form_id ){
+    var form = $( form_id );
+    form.action = '<%= test_path %>';
+    form.method = 'GET';
+    var field = form.getElementsBySelector('input').first();
+    field.remove();
+    form.submit();
+  }
+  function advance_topic( form_id ){
+    var form = $( form_id );
+    form.action = '<%= form_path %>';
+    form.method = 'GET';
+    var field = form.getElementsBySelector('input').first();
+    field.remove();
+    form.submit();
+  }
+</script>

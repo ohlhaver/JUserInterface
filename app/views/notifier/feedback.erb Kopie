@@ -1,0 +1,7 @@
+<% if @user -%>
+<%= t('emails.user_feedback.user_wrote', :user_id => @user.id, :user_login => @user.login ) %>
+<% else  -%>
+<%= t('emails.user_feedback.guest_wrote', :email => @email ) %>
+<% end -%>
+
+<%= @message %>

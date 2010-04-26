@@ -1,0 +1,8 @@
+<div id = "topic_label" class="clearfix">
+  <span><%= f.text_field(:search_any,  :id => "adv_searchfield") %></span>
+	<span><%= t('topic.query') -%></span>
+</div>
+<span><%= submit_tag( t('topic.action.add'), :class => "adv_searchbutton" ) %></span>
+<br>
+<%= link_to_function( t('topic.action.advance'), "advance_topic( 'simple_topic_form' )" ) %> |
+<%= link_to_function( t('topic.action.test'), "test_topic( 'simple_topic_form' )" ) %>

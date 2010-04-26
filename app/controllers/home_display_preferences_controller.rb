@@ -15,6 +15,7 @@ class HomeDisplayPreferencesController < ApplicationController
     @home_display_preference = @user.multi_valued_preferences.preference( :homepage_boxes ).build
     @home_display_preferences = @user.multi_valued_preferences.preference( :homepage_boxes ).all
     respond_to do |format|
+      format.mobile
       format.html
       format.xml{ rxml_data( @home_display_preferences, :set => :homepage_boxes, :root => 'home_display_preferences' ) }
     end
@@ -26,6 +27,7 @@ class HomeDisplayPreferencesController < ApplicationController
       new_record = @home_display_preference.new_record?
       if @home_display_preference.save
         flash[:notice] = new_record ? I18n.t('user.pref.create_success') : I18n.t('user.pref.already_in_list')
+        format.mobile{ redirect_to :controller => :home_preferences, :action => :index }
         format.html{ redirect_to :controller => :home_preferences, :action => :index }
         format.xml{ rxml_success( @home_display_preference, :action => :create ) }
       else
@@ -33,6 +35,10 @@ class HomeDisplayPreferencesController < ApplicationController
           @home_display_preferences = @user.multi_valued_preferences.preference( :homepage_boxes ).all
           render :action => :index 
         }
+         format.mobile{ 
+            @home_display_preferences = @user.multi_valued_preferences.preference( :homepage_boxes ).all
+            render :action => :index 
+          }
         format.xml{ rxml_error( @home_display_preference, :action => :create ) }
       end
     end
@@ -50,6 +56,7 @@ class HomeDisplayPreferencesController < ApplicationController
     end
     respond_to do |format|
       flash[:notice] = I18n.t('user.pref.update_success')
+      format.mobile{ redirect_to :controller => :home_preferences, :action => :index }
       format.html{ redirect_to :controller => :home_preferences, :action => :index }
       format.xml{ rxml_success( @home_display_preference, :action => :update ) }
     end
@@ -59,6 +66,7 @@ class HomeDisplayPreferencesController < ApplicationController
     @home_display_preference.destroy
     respond_to do |format|
       flash[:notice] = I18n.t('user.pref.remove_success')
+      format.mobile { redirect_to :controller => :home_preferences, :action => :index }
       format.html { redirect_to :controller => :home_preferences, :action => :index }
       format.xml{ rxml_success( @home_display_preference, :action => :delete ) }
     end

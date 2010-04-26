@@ -23,6 +23,7 @@ class SourcePreferencesController < ApplicationController
       :include => :source 
     )
     respond_to do |format|
+      format.mobile
       format.html
       format.xml{ rxml_data( @source_preferences, :root => 'source_preferences', :with_pagination => true ) }
     end
@@ -30,6 +31,7 @@ class SourcePreferencesController < ApplicationController
   
   def show
     respond_to do |format|
+      format.mobile{ redirect_to :action => :index }
       format.html{ redirect_to :action => :index }
       format.xml{ rxml_data( @source_preference, :root => 'source_preference' ) }
     end
@@ -40,10 +42,12 @@ class SourcePreferencesController < ApplicationController
     respond_to do |format|
       if @source_preference.save
         flash[:notice] = I18n.t('user.pref.create_success')
+        format.mobile{ redirect_to :action => :index }
         format.html{ redirect_to :action => :index }
         format.xml{ rxml_success( @source_preference, :action => :create ) }
       else
         flash[:notice] = I18n.t('user.pref.create_error')
+        format.mobile{ render :action => :new }
         format.html{ render :action => :new }
         format.xml{ rxml_error( @source_preference, :action => :create ) }
       end
@@ -54,10 +58,12 @@ class SourcePreferencesController < ApplicationController
     respond_to do |format|
       if @source_preference.update_attributes( params[:source_preference] )
         flash[:notice] = I18n.t('user.pref.update_success')
+        format.mobile{ redirect_to :action => :index }
         format.html{ redirect_to :action => :index }
         format.xml{ rxml_success( @source_preference, :action => :update ) }
       else
         flash[:error] = I18n.t('user.pref.update_error')
+        format.mobile{ redirect_to :action => :index }
         format.html{ redirect_to :action => :index }
         format.xml{ rxml_error( @source_preference, :action => :update ) }
       end
@@ -66,6 +72,7 @@ class SourcePreferencesController < ApplicationController
   
   def destroy
     respond_to do |format|
+      format.mobile{ redirect_to :action => :index }
       format.html{ redirect_to :action => :index }
       format.xml{ super }
     end

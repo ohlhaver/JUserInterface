@@ -1,0 +1,19 @@
+<div class = "settings_news_block">
+<h2><span class="page_label"><%= t('user.account.change_my_password')%></span></h1>
+<div class = "about"> 
+<% form_for @user, :url => password_reset_path, :method => :put do |f| %>
+  <%= f.error_messages %>
+  <div class= 'adv_search_lines'>
+    <div class="clearfix">
+      <%= f.password_field :password, :class => 'settings_field_right' %>
+      <%= f.label :password, t('jurnalo.register.password')  %>
+    </div>
+    <div class="clearfix">
+      <%= f.password_field :password_confirmation, :class => 'settings_field_right' %>
+      <%= f.label :password, t('jurnalo.register.confirm_password') %>
+    </div>
+    <%= f.submit t('user.account.update_my_password_button'), :class => "confirmation_button"  %>
+  </div>
+<% end %>
+</div>
+</div>

@@ -1,0 +1,54 @@
+<div class='news_group'>
+  <div class='settings_news_block'>
+    <h2><span class="page_label"><%= t('jurnalo.register.title') %></span></h2>
+    <div class = "about">
+		<%= t('jurnalo.register.benefits.header') %>
+	<br><br>
+      <%= t('jurnalo.register.benefits.body') %>
+    </div>
+  </div>
+</div>
+
+  <% form_for @user, :url => account_path do |f| %>
+    <div class='thin_settings_news_block'>
+     <h2><span class="page_label"> <%= t('jurnalo.register.enter_info') %></span></h2>
+	 <div class='about'>
+      <%= f.error_messages %>
+      <% unless @user.third_party? %>
+        <%= render :partial => 'jurnalo_user', :object => f %>
+      <% else %>
+        <%= render :partial => 'third_party_user', :object => f %>  
+      <% end %>
+	</div>
+    </div>
+    <div class='thin_settings_news_block'>
+      <h2><span class="page_label"><%= t('jurnalo.register.choose') %></span></h2>
+      
+	<div class='about'>
+		<h2>
+	  <div>
+        <%= f.radio_button( 'show_upgrade_page', 'false' ) %> 		
+        <%= t('account.basic.label') %>  (<%= t('account.basic.cost') %>)<br>
+        <%= t('account.basic.info') %> 	
+      </div>
+		<br>
+      <div>
+        <%= f.radio_button( 'show_upgrade_page', 'true' ) %> 
+        <b><%= link_to t('account.power.label'), jurnalo_power_path %></b> (<%= t('account.power.cost') -%>)<br/>
+        <%= t('account.power.info') %> (<%= link_to t('more.info'), power_plan_account_path %>)
+      </div>
+		</h2>
+	</div>
+    </div>
+    <div class='thin_settings_news_block'>
+	<div class='about'>
+
+      <% unless @user.third_party? %>
+        <%= show_simple_captcha( :object => "user", :image_style => 'blue', :distortion => 'high', :label => t('jurnalo.register.captcha'), :class => 'settings_field' ) %>
+      <% end %>
+    <br>
+    <%= f.hidden_field( :terms_and_conditions_accepted ) %>
+    <%= f.submit t('navigation.top.register'), :class => 'confirmation_button' %>
+	</div>
+	</div>
+  <% end %>

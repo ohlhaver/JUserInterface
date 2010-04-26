@@ -1,0 +1,57 @@
+<% content_for :custom_javascript do %>
+  <script type='text/javascript'>
+    Event.observe($('prefs'), 'mouseover', showMouseOvers );
+    Event.observe($('prefs'), 'mouseout', hideMouseOvers );
+  </script>
+  <%= render :partial => 'topic_preferences/js', :locals => { :form_path => new_user_topic_preference_path( @user ), :test_path => jurnalo_search_results_stories_path }%>
+<% end %>
+
+<div class='settings_news_block'>
+  <h2><span class = "page_label"><%= link_to( t('navigation.top.settings'), account_path ) %> > <%=t( 'navigation.main.homepage_settings') %></span></h2>
+</div>
+<br><br>
+
+<div class='thin_settings_news_block'>
+    <h2><span class="page_label"><%= t('prefs.homepage_preview.elements') %>:</span></h2>
+
+
+    <% @home_display_preferences.each do |hp| %>
+	
+<div class='my_elements_block'>
+       <h2> 
+          <span class='dialogBox'>
+            <%= link_to( image_tag('up.gif'), user_home_display_preference_path( :user_id => @user, :id => hp, :reorder => 'up' ), :method => :put ) %>
+            &nbsp;&nbsp;
+            <%= link_to( image_tag('down.gif'), user_home_display_preference_path( :user_id => @user, :id => hp, :reorder => 'down' ), :method => :put ) %>
+            &nbsp;&nbsp;
+            <%= link_to( image_tag('close.gif'), user_home_display_preference_path( @user, hp ), :method => :delete, :confirm => 'Are you sure?' ) %>
+          </span>
+          <span><%= hp.homepage_element %></span>
+       </h2>
+		</div>
+    <% end -%>
+	<br>
+    <%= render :partial => 'home_display_preferences/new' %>
+
+  <br><br>
+  <div class='thin_settings_news_block'>
+    <h2><span class = "page_label"> <%=t('prefs.homepage_preview.sections') %>:</span></h2>
+    <% @home_cluster_preferences.each do |hp| %>
+        <div class='my_elements_block'>
+		       <h2>
+          <span class='dialogBox'>
+            <%= link_to( image_tag('up.gif'), user_home_cluster_preference_path( :user_id => @user, :id => hp, :reorder => 'up' ), :method => :put ) %>
+            &nbsp;&nbsp;
+            <%= link_to( image_tag('down.gif'), user_home_cluster_preference_path( :user_id => @user, :id => hp, :reorder => 'down' ), :method => :put ) %>
+            &nbsp;&nbsp;
+            <%= link_to( image_tag('close.gif'), user_home_cluster_preference_path( @user, hp ), :method => :delete, :confirm => 'Are you sure?' ) %>
+          </span>
+          <span><%= t("prefs.category.#{hp.cluster_group.name.underscore}") %></span>
+		</h2>
+        </div>
+    <% end %>
+	<br>
+    <%= render :partial => 'home_cluster_preferences/new' %>
+  </div>
+  <br/>
+</div>

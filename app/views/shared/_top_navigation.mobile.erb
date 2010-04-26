@@ -1,0 +1,28 @@
+<% content_for :user_actions do -%>
+  <% if logged_in? -%>
+    <%= link_to( t( 'navigation.top.logout', :name => current_user.name ), logout_path ) %>
+
+  <% else -%>
+     <%= link_to( t( 'navigation.top.login' ), login_path ) -%>
+  <% end %>
+<% end %>
+    <% if logged_in? -%><% unless current_user.power_plan? %>
+    <br> <%= link_to( t( 'navigation.top.upgrade'), upgrade_account_path ) %> -
+    <% end %> 
+<% end %>
+<%= yield :user_actions -%>
+
+<br>
+<%= link_to( t( 'navigation.top.reading_list' ), jurnalo_reading_list_path ) -%> -
+<% if logged_in? %>
+<span class='current'>
+  <%= t( 'navigation.top.settings' ) %>
+</span>
+<% else %>
+  <%= link_to( t('navigation.top.settings'), account_path ) %>
+<% end %>
+
+
+<div id ="edition">
+<%= render :partial => 'shared/edition' %>		
+</div>

@@ -1,0 +1,22 @@
+<% form_id = "edit_preference_#{@user.id}" %>
+<% content_for :custom_javascript do %>
+  <%= observe_form( form_id, :function => "$('#{form_id}').submit();" ) %>
+<% end %>
+<div class='news_block'>
+  <h2><span class = "page_label"><%= link_to( t('navigation.top.settings'), account_path ) %> > <%=t( 'navigation.main.alert_settings') %></span></h2>
+</div>
+<div class = "about">  
+  <% form_for(@preference, :url => preference_path( @user ), :html => { :method => :put, :class => "edit_preference", :id => form_id }  ) do |f| %>
+  <div class = "adv_search_lines">
+    <div class="clearfix">
+      <span class="rater"><%= f.select :topic_email, Preference.for_select( :topic_email ) %></span>
+      <%= f.label :topic_email, t('prefs.labels.topic_email') %>
+    </div>
+    <div class="clearfix">
+      <span class = "rater">  <%= f.select :author_email, Preference.for_select( :author_email ) %></span>
+      <%= f.label :author_email, t('prefs.labels.author_email') %>
+    </div>
+    <%= hidden_field_tag( :return_to, request.url ) %>
+  </div>
+  <% end %>
+</div>

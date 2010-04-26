@@ -1,0 +1,5 @@
+<% form_for @home_display_preference, :url => user_home_display_preferences_path( @user )  do |f| %>
+  <%= f.error_messages %>
+  <%= f.select( :value, Preference.for_select( :homepage_boxes ) ) %>
+  <%= f.submit( t('prefs.labels.add_to_list'), :class => "add_element_button" ) %>
+<% end %>

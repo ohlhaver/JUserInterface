@@ -25,6 +25,7 @@ class AuthorPreferencesController < ApplicationController
       else  @user.author_subscriptions.paginate( :all, :page => params[:page] || '1', :include => :author )
     end
     respond_to do |format|
+      format.mobile
       format.html
       format.xml{ rxml_data( @author_preferences, :root => 'author_preferences', :with_pagination => true ) }
     end
@@ -32,6 +33,7 @@ class AuthorPreferencesController < ApplicationController
   
   def show
     respond_to do |format|
+      format.mobile{ redirect_to :action => :index }
       format.html{ redirect_to :action => :index }
       format.xml{ rxml_data( @author_preference, :root => 'author_preference' ) }
     end
@@ -43,15 +45,18 @@ class AuthorPreferencesController < ApplicationController
       if @author_preference.save
         if @author_preference.frozen?
           flash[:error] = I18n.t('user.pref.create_error')
+          format.mobile{ redirect_to :action => :index, :scope => params[:scope] }
           format.html{ redirect_to :action => :index, :scope => params[:scope] }
           @author_preference.errors.add('preference', :required)
           format.xml{ rxml_error( @author_preference, :action => :create ) }
         else
           flash[:notice] = I18n.t('user.pref.create_success')
+          format.mobile{ redirect_to :action => :index, :scope => params[:scope] }
           format.html{ redirect_to :action => :index, :scope => params[:scope] }
           format.xml{ rxml_success( @author_preference, :action => :create ) }
         end
       else
+        format.mobile{ render :action => :new }
         format.html{ render :action => :new }
         format.xml{ rxml_error( @author_preference, :action => :create ) }
       end
@@ -62,10 +67,12 @@ class AuthorPreferencesController < ApplicationController
     respond_to do |format|
       if @author_preference.update_attributes( params[:author_preference] )
         flash[:notice] = I18n.t('user.pref.update_success')
+        format.mobile{ redirect_to :action => :index, :scope => params[:scope] }
         format.html{ redirect_to :action => :index, :scope => params[:scope] }
         format.xml{ rxml_success( @author_preference, :action => :update ) }
       else
         flash[:error] = I18n.t('user.pref.update_error')
+        format.mobile{ redirect_to :action => :index, :scope => params[:scope] }
         format.html{ redirect_to :action => :index, :scope => params[:scope] }
         format.xml{ rxml_error( @author_preference, :action => :update ) }
       end
@@ -74,6 +81,7 @@ class AuthorPreferencesController < ApplicationController
   
   def destroy
     respond_to do |format|
+      format.mobile{ redirect_to :action => :index }
       format.html{ redirect_to :action => :index }
       format.xml{ super }
     end

@@ -1,0 +1,15 @@
+<% content_for :custom_javascript do %>
+  <%= render :partial => 'js', :locals => { :form_path => new_user_topic_preference_path( @user ), :test_path => jurnalo_search_results_stories_path } %>
+<% end %>
+<div class='news_group'>
+  <div class='news_block'>
+    <h2><span class ="page_label"><%= t('topic.label.new_advanced') %></span></h2>
+    <div class='thin_results_module'> </div>
+    <% form_for( @topic_preference, :url => user_topic_preferences_path(@user), :html => { :id => 'advance_topic_form' }, :method => :post ) do |f| %>
+    <div class='adv_search_lines'>
+        <%= render :partial => 'form', :locals => { :f => f } %>
+        <%= link_to_function( t('topic.action.test'), "test_topic( 'advance_topic_form' )"  ) %>
+    </div>
+    <% end %>
+  </div>
+</div>

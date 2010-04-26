@@ -16,6 +16,7 @@ class HomeClusterPreferencesController < ApplicationController
     @home_cluster_preference = @user.multi_valued_preferences.preference( :homepage_clusters ).build
     @home_cluster_preferences = @user.homepage_cluster_group_preferences( :include => :cluster_group, :region_id => @region_id, :language_id => @language_id )
     respond_to do |format|
+      format.mobile
       format.html
       format.xml{ rxml_data( @home_cluster_preferences, :set => :homepage_clusters, :root => 'home_cluster_preferences' ) }
     end
@@ -27,9 +28,14 @@ class HomeClusterPreferencesController < ApplicationController
       new_record = @home_cluster_preference.new_record?
       if @home_cluster_preference.save
         flash[:notice] = new_record ? I18n.t('user.pref.create_success') : I18n.t('user.pref.already_in_list')
+        format.mobile{ redirect_to :controller => :home_preferences, :action => :index }
         format.html{ redirect_to :controller => :home_preferences, :action => :index }
         format.xml{ rxml_success( @home_cluster_preference, :action => :create ) }
       else
+        format.mobile{ 
+          @home_cluster_preferences = @user.homepage_cluster_group_preferences( :include => :cluster_group )
+          render :action => :index 
+        }
         format.html{ 
           @home_cluster_preferences = @user.homepage_cluster_group_preferences( :include => :cluster_group )
           render :action => :index 
@@ -51,6 +57,7 @@ class HomeClusterPreferencesController < ApplicationController
     end
     respond_to do |format|
       flash[:notice] = I18n.t('user.pref.update_success')
+      format.mobile{ redirect_to :controller => :home_preferences, :action => :index }
       format.html{ redirect_to :controller => :home_preferences, :action => :index }
       format.xml{ rxml_success( @home_cluster_preference, :action => :update ) }
     end
@@ -60,7 +67,8 @@ class HomeClusterPreferencesController < ApplicationController
     @home_cluster_preference.destroy
     respond_to do |format|
       flash[:notice] = I18n.t('user.pref.remove_success')
-      format.html { redirect_to :controller => :home_preferences, :action => :index }
+      format.mobile{ redirect_to :controller => :home_preferences, :action => :index }
+      format.html{ redirect_to :controller => :home_preferences, :action => :index }
       format.xml{ rxml_success( @home_cluster_preference, :action => :delete ) }
     end
   end

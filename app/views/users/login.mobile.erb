@@ -1,0 +1,56 @@
+<% content_for :header_javascript do %>
+  <script src="<%= cas_login_js_url %>" type="text/javascript"></script>
+<% end %>
+<% content_for :custom_javascript do %>
+  <script text='type/javascript'>
+    Event.observe( window, 'load', function() {
+      $('lt').value = window.login_ticket;
+    });
+  </script>
+<% end %>
+<div class='news_group'>
+  <div class='settings_news_block'>
+    <h2><span class="page_label"><%= t('navigation.top.login') %> (<%= t( 'jurnalo.login.new_user', :register => link_to( t('navigation.top.register').downcase, new_user_path ) ) %>)</span></h2>
+  </div>
+</div>
+<div class='news_group'>
+	<div class ="about">
+  		<div class='thin_settings_news_block'>
+	
+    <%= t('jurnalo.login.existing_user')%>:
+	<br><br>
+	<% form_tag CASClient::Frameworks::Rails::Filter.client.login_url, :id => 'login_form' do %>
+   <div class= 'adv_search_lines'>
+     <div class="clearfix">
+       <%= text_field_tag( "username", params[:username], :id => "settings_field")%>
+       <label><%= t('jurnalo.login.username')%></label>
+    </div>
+    <div class="clearfix">
+      <%= password_field_tag( 'password', params[:password], :id => "settings_field")%>
+      <label><%= t('jurnalo.login.password')%></label>
+    </div>
+    <div class="clearfix">
+      <%= check_box_tag( 'remember-me', '1' ) %>&nbsp; <%= t('jurnalo.login.remember_me') %>
+    </div>
+    <%= hidden_field_tag( 'lt' ) %>
+    <%= hidden_field_tag( 'service', cas_service_url ) %>
+    <%= hidden_field_tag( 'oe', cas_on_error_url ) %>
+    <%= submit_tag( t('navigation.top.login'), :class => 'confirmation_button') %> &nbsp;&nbsp;<%= link_to "#{t('jurnalo.login.forgot_password')}?", new_password_reset_path %>
+	</div>
+	<% end %>
+	</div>
+  </div>
+</div>
+	<div class = "about">
+  <div class='thin_settings_news_block'>
+     <%= t('jurnalo.register.benefits.header') %>
+<br><br>
+
+
+    <%= t('jurnalo.register.benefits.body') %>
+
+<h2><%= link_to t('jurnalo.login.signup'), new_user_path  %></h2>
+  </div>
+  </div>
+
+

@@ -241,6 +241,7 @@ en:
     topic:
       add: "add to My Topics"
     simple: "search news"
+    simple_mobile: "search"
     advance: 
       label: "Advanced search"
       find: 

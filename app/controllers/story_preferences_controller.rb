@@ -13,6 +13,7 @@ class StoryPreferencesController < ApplicationController
   def index
     @story_preferences = @user.story_subscriptions.paginate( :all, :page => params[:page], :include => :story )
     respond_to do |format|
+      format.mobile
       format.html 
       format.xml{ rxml_data( @story_preferences, :root => 'story_preferences', :with_pagination => true ) }
     end
@@ -20,6 +21,7 @@ class StoryPreferencesController < ApplicationController
   
   def show
     respond_to do |format|
+      format.mobile{ redirect_to :action => :index }
       format.html{ redirect_to :action => :index }
       format.xml{ rxml_data( @story_preference, :root => 'story_preference' ) }
     end
@@ -40,6 +42,7 @@ class StoryPreferencesController < ApplicationController
     @story_preference.destroy
     respond_to do |format|
       flash[:notice] = I18n.t('user.pref.remove_success')
+      format.mobile{ redirect_to :action => :index }
       format.html{ redirect_to :action => :index }
       format.xml{ rxml_success( @story_preference, :action => :delete ) }
     end
