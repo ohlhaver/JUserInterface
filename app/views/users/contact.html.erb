@@ -12,7 +12,7 @@
         <% else %>
           <%= t( 'jurnalo.contact.guest_message_label') %>
           <%= f.text_area 'message',:size => "40x10", :class => 'settings_field' %><br><br>
-          <%= t( 'jurnalo.contact.guest_email_label') %>
+          <%= t( 'jurnalo.contact.guest_email_label') %><br>
           <%= f.text_field 'email', :class => "settings_field" %> <br>
 (<%= t('activerecord.field.required') %>)
 <br><br>
