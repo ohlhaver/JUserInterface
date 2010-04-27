@@ -104,7 +104,7 @@ en:
       reason_3: "To subscribe to more than one author please upgrade to the Jurnalo Power Account."
     contact:
       label: "Contact"
-      phone_info: "Call us in Germany at +49 451 293 5990."
+      phone_info: "Call us at +49 451 293 5990 (Germany) or +44 586 6587 (Switzerland)."
       user_message_label: "Or enter your questions or comments below:"
       service_time_info: "We’ll get back to you within a few hours."
       send_button: "Send"
@@ -309,9 +309,9 @@ en:
     account:
       already_registered: 'You are already registered'
       registration_success: 'Registration successful!'
-      activate_instruction: "Please check your email account for account activation."
-      activate_instruction_send: "Instructions to activate your account have been emailed to you. Please check your email."
-      password_reset_instruction: "Instructions to reset your password have been emailed to you. Please check your email."
+      activate_instruction: "You have received a new email from Jurnalo. Please check your email inbox to activate your Jurnalo account."
+      activate_instruction_send: "Instructions to activate your account have been emailed to you. Please check your email inbox."
+      password_reset_instruction: "Instructions to reset your password have been emailed to you. Please check your email inbox."
       updated: "Account updated!"
       activated: 'Your account is activated now.'
       already_activated: "Your account is already activated"
@@ -319,7 +319,7 @@ en:
       restart_activation_process: "We're sorry, we encountered an error with the activation process. Please restart the activation process."
       restart_password_reset_process: "We're sorry, we encountered an error with the password reset process. Please restart the password reset process."
       third_party_login: "Please login with your {{third_party}} Account Credentials"
-      password_updated: "Password successfully updated. Please login with your new password"
+      password_updated: "Password successfully updated. Please login with your new password!"
       update_my_password_button: "Update My Password"
       change_my_password: "Change My Password"
     pref:
