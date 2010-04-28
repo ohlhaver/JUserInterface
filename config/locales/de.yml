@@ -61,6 +61,7 @@ de:
       signup: "Als neuer Benutzer registrieren!"
     register:
       new_user: "Als neuer Benutzer registrieren"
+      success: "Erfolgreich Registriert"
       benefits:
           header: "Sobald Sie registriert sind, können Sie:"
           body: "- Autoren abonnieren<br>- eigene Themen erschaffen<br>- Autoren und Quellen gewichten<br>- interessante Artikel zu Ihrer Leseliste speichern <br><br>"

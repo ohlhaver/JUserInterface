@@ -75,8 +75,11 @@ class UsersController < ApplicationController
     @user = User.new( params[:user].merge!( attributes ) )
     @user.name ||= @user.login
     if ( @user.third_party? ? @user.save : @user.save_with_captcha )
-      flash[:notice] = @user.third_party? ? I18n.t('user.account.registration_success') : I18n.t('user.account.registration_success') + I18n.t('user.account.activate_instruction')
-      default_path = @user.third_party? ? account_path : new_account_path
+      default_path = { :action => :created }
+      if @user.third_party?
+        flash[:notice] = I18n.t('user.account.registration_success')
+        default_path = account_path
+      end
       redirect_back_or_default default_path
     else
       session[:cas_sent_to_gateway] = true

@@ -68,7 +68,7 @@ ActionController::Routing::Routes.draw do |map|
   map.access_denied '/access_denied', :controller => 'application', :action => 'access_denied'
   map.billing_policy '/billing_policy', :controller => 'users', :action => 'billing_policy'
   map.resources :story_searches
-  map.resource :account, :controller => "users", :collection => [ :upgrade, :downgrade, :power_plan, :contact], :member => [ :upgrade_required ]
+  map.resource :account, :controller => "users", :collection => [ :upgrade, :downgrade, :power_plan, :contact, :created ], :member => [ :upgrade_required ]
   map.resources :preferences, :member => [ :display, :alert, :edition, :search ]
   map.resources :authors
   map.resources :sources

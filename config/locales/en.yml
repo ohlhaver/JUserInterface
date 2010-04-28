@@ -60,6 +60,7 @@ en:
       signup: "Click here to sign up!"
     register:
       new_user: "Sign up as a new user"
+      success: "Registered Successfully"
       benefits:
         header: "Once signed up, you can:"
         body: "- subscribe to any author <br>- create your own topics<br>- weight authors and sources<br>- save interesting articles to your reading list<br><br>"
