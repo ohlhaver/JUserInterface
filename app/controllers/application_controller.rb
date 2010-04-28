@@ -83,7 +83,7 @@ class ApplicationController < ActionController::Base
   private
 
    def mobile_device?
-     request.user_agent =~ /Mobile|webOS/    
+     request.user_agent =~ /(Mobile)|(webOS)|(SymbianOS)|(MIDP-\d\.\d)|(PalmSource)|(SAMSUNG-SGH)/
    end
 
    def prepare_for_mobile
