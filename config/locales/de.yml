@@ -105,7 +105,7 @@ de:
       reason_3: "Um mehr als einen Autoren zu abonnieren, upgraden Sie bitte auf den Jurnalo Power Plan."
     contact:
       label: "Kontakt"
-      phone_info: "Rufen Sie uns an unter: +49 451 293 5990 (Deutschland) oder +44 586 6587 (Schweiz)."
+      phone_info: "Rufen Sie uns an: <br><br>+49 451 293 5990 in Deutschland <br><br>+41 44 586 6587 in der Schweiz"
       user_message_label: "Oder senden Sie uns Ihre Fragen und Kommentare:"
       service_time_info: "Wir antworten Ihnen innerhalb weniger Stunden."
       send_button: "Senden"
