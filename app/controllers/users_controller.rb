@@ -44,7 +44,8 @@ class UsersController < ApplicationController
   end
   
   def login
-    if current_user
+    # fl means forced login form
+    if current_user && params[:fl] != '1'
       uri = URI.parse CASClient::Frameworks::Rails::Filter.client.login_url
       options = params.dup
       options.delete(:ticket)

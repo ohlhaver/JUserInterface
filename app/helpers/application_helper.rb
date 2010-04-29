@@ -85,7 +85,10 @@ module ApplicationHelper
   end
   
   def edition_options
-    [ ['Global', 'int-en'], [ 'Deutschland', 'de-de'], [ 'Schweiz', 'ch-de'], [ 'Österreich', 'at-de' ] ]
+    editions= case I18n.locale 
+    when 'de' : [ 'int-en', 'de-de', 'at-de', 'ch-de', 'in-en', 'sg-en', 'gb-en', 'us-en' ]
+    else  [ 'int-en', 'in-en', 'sg-en', 'gb-en', 'us-en', 'de-de', 'at-de', 'ch-de' ] end
+    editions.collect!{ |e| [ I18n.t( "prefs.edition.#{e.split('-').first}"), e ] }
   end
   
 end

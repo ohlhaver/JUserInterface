@@ -154,11 +154,24 @@ de:
     lang:
       english: "English"
       german: "deutsch"
+    edition:
+      int: 'Global'
+      de: 'Deutschland'
+      at: 'Österreich'
+      ch: 'Schweiz'
+      in: 'India'
+      us: 'U.S.'
+      gb: 'U.K.'
+      sg: 'Singapore'
     country:
       int: 'Global'
       de: 'Deutschland'
       at: 'Österreich'
       ch: 'Schweiz'
+      in: 'Indien'
+      us: 'USA'
+      gb: 'Großbritannien'
+      sg: 'Singapur'
     val:
       nil: 'nicht gewichtet'
       none: 'ignorieren'
