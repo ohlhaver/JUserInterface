@@ -38,7 +38,7 @@ module Jurnalo
       end
       
       def logged_in?
-        session && session[:cas_user ] && session[:cas_extra_attributes]
+        session && session[:cas_user ] && session[:cas_user_attrs]
       end
       
       def current_user
@@ -71,8 +71,8 @@ module Jurnalo
       def session_check_for_validation
         last_st = session.try( :[], :cas_last_valid_ticket )
         unless last_st
-          if session[ :cas_extra_attributes ]
-            session[ :cas_extra_attributes ] = nil
+          if session[ :cas_user_attrs ]
+            session[ :cas_user_attrs ] = nil
             session[ CASClient::Frameworks::Rails::Filter.client.username_session_key ] = nil
           else
             session[ :cas_sent_to_gateway ] = true unless base_url?( login_path )
@@ -86,10 +86,10 @@ module Jurnalo
       end
 
       def set_current_user
-        return unless session && session[:cas_extra_attributes]
-        @current_user ||= case( session[:cas_extra_attributes]['auth'] )
+        return unless session && session[:cas_user_attrs]
+        @current_user ||= case( session[:cas_user_attrs]['auth'] )
         when 'jurnalo' :
-          User.find( :first, :conditions => { :id => session[:cas_extra_attributes]['id'] } )
+          User.find( :first, :conditions => { :id => session[:cas_user_attrs]['id'] } )
         when 'google', 'facebook' :
           User.find( :first, :conditions => { :email => session[:cas_user] } )
         end

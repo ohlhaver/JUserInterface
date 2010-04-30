@@ -5,10 +5,11 @@
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
-  :key         => '_JUserInterface_session',
-  :secret      => 'fadf299c400886d135372dcfce0c4ce0d9605ed35e14af84871d2e0947b0bbe5784ad07ce272c46624239a1fa0efbae033b98d1f6c835044c10ab1b1580348ee'
+  :domain       => ( RAILS_ENV != 'production' ? nil : '.jurnalo.com' ),
+  :key          => '_js1',
+  :secret       => 'fed8479e43a7a897aa6ca18df2dcb9afae22dfde17adbe054f15e8736a23bcdad5002994041494eec5e9d6c4ac9fe38f4ee26fbfa71baa9348f94ac8a5e403e2',
+  :expire_after => 30.days
 }
-
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
 # (create the session table with "rake db:sessions:create")

@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_edition_session_var
   before_filter :set_locale
   before_filter :prepare_for_mobile
+  after_filter :reset_session_params
   
   helper_method :base_url, :base_url?, :mobile_device?
   
@@ -34,11 +35,17 @@ class ApplicationController < ActionController::Base
   
   protected
   
+  def reset_session_params
+    params[:locale] = nil
+    params[:edition] = nil
+    params[:ticket] = nil
+    params[:authenticity_token] = nil
+  end
+  
   def set_locale
     params[:locale] = session[:locale] if params[:locale].blank?
     session[:locale] = params[:locale]
-    session[:locale] ||= 'en'
-    I18n.locale = session[:locale]
+    I18n.locale = session[:locale] || 'en'
     params[:locale] = session[:locale] unless params[:locale].blank?
   end
   

@@ -52,7 +52,7 @@ cas_logger.level = ActiveRecord::Base.logger.level
 CASClient::Frameworks::Rails::Filter.configure(
   :cas_base_url => CasServerConfig[RAILS_ENV]['cas_server'],
   :username_session_key => :cas_user,
-  :extra_attributes_session_key => :cas_extra_attributes,
+  :extra_attributes_session_key => :cas_user_attrs,
   :logger => cas_logger,
   :authenticate_on_every_request => false # true will load cas server heavily
 )
