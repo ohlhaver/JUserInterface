@@ -299,13 +299,13 @@ en:
     activation:
       part1: "Dear Reader,"
       part2: "Welcome to Jurnalo! You have just created your account on Jurnalo."  
-      part3: "Now please click the link below to activate your account."
+      part3: "Please click the link below to activate your account."
       part4: "If the above link does not work try copying and pasting it into your browser."
       part5: "If you did not create an account, simply ignore this email."
       part6: "Please feel free to contact us via email if you have any problems."
       part7: "Best regards and enjoy reading the news!"
       part8: "Justus Ohlhaver"
-      part9: "Jurnalo"
+      part9: "CEO"
       part10: "Account activation token (if required): {{token}}"
     reset:
       part1: "Dear Reader,"

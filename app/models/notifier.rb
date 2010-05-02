@@ -15,7 +15,7 @@ class Notifier < ActionMailer::Base
   
   def account_activation_instructions( user )  
     subject       "Account Activiation Instructions"
-    from          "Jurnalo User Service <justus@jurnalo.com>"
+    from          "Jurnalo <justus@jurnalo.com>"
     headers       "return-path" => 'justus@jurnalo.com'
     recipients    user.email
     sent_on       Time.now
