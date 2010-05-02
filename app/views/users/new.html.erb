@@ -1,15 +1,28 @@
 <div class='news_group'>
   <div class='settings_news_block'>
-    <h2><span class="page_label"><%= t('jurnalo.register.title') %></span></h2>
-    <div class = "about">
-		<%= t('jurnalo.register.benefits.header') %>
-	<br><br>
-      <%= t('jurnalo.register.benefits.body') %>
-    </div>
+    <h2><span class="page_label"><%= t('jurnalo.register.title') %></span></h2>   
   </div>
 </div>
 
   <% form_for @user, :url => account_path do |f| %>
+
+	<div class='about'>
+		<h2>
+	      <div>
+	        <%= f.radio_button( 'show_upgrade_page', 'true' ) %> 
+	        <%= link_to t('account.power.label'), power_plan_account_path %> (<%= t('account.power.cost') -%>)<br/>
+	        <%= t('account.power.info') %><br><span>(<%= link_to t('more.info'), power_plan_account_path %>)</span>
+	      </div>
+	<br>  
+	<div class = "basic_option">
+        <%= f.radio_button( 'show_upgrade_page', 'false' ) %> 		
+        <%= t('account.basic.label') %>  (<%= t('account.basic.cost') %>) <br>
+        <%= t('account.basic.info') %> 	
+      </div>
+		</h2>
+	</div>
+
+
     <div class='thin_settings_news_block'>
      <h2><span class="page_label"> <%= t('jurnalo.register.enter_info') %></span></h2>
 	 <div class='about'>
@@ -21,25 +34,7 @@
       <% end %>
 	</div>
     </div>
-    <div class='thin_settings_news_block'>
-      <h2><span class="page_label"><%= t('jurnalo.register.choose') %></span></h2>
-      
-	<div class='about'>
-		<h2>
-	  <div>
-        <%= f.radio_button( 'show_upgrade_page', 'false' ) %> 		
-        <%= t('account.basic.label') %>  (<%= t('account.basic.cost') %>)<br>
-        <%= t('account.basic.info') %> 	
-      </div>
-		<br>
-      <div>
-        <%= f.radio_button( 'show_upgrade_page', 'true' ) %> 
-        <b><%= link_to t('account.power.label'), power_plan_account_path %></b> (<%= t('account.power.cost') -%>)<br/>
-        <%= t('account.power.info') %> (<%= link_to t('more.info'), power_plan_account_path %>)
-      </div>
-		</h2>
-	</div>
-    </div>
+   
     <div class='thin_settings_news_block'>
 	<div class='about'>
 

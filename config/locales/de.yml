@@ -58,13 +58,13 @@ de:
       password: "Passwort"
       remember_me: "Auf diesem Computer merken"
       forgot_password: "Passwort vergessen"
-      signup: "Als neuer Benutzer registrieren!"
+      signup: "<b>Als neuer Benutzer registrieren!</b>"
     register:
       new_user: "Als neuer Benutzer registrieren"
       success: "Erfolgreich Registriert"
       benefits:
           header: "Sobald Sie registriert sind, können Sie:"
-          body: "- Autoren abonnieren<br>- eigene Themen erschaffen<br>- Autoren und Quellen gewichten<br>- interessante Artikel zu Ihrer Leseliste speichern <br><br>"
+          body: "- eigene Themen erschaffen<br>- Autoren abonnieren<br>- Autoren und Quellen gewichten<br>- interessante Artikel zu Ihrer Leseliste speichern <br><br>"
       now: "Jetzt registrieren"
       title: "Bei Jurnalo registrieren"
       enter_info: "Bitte geben Sie Ihre Daten ein:"
