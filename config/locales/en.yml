@@ -153,7 +153,7 @@ en:
       english: "English"
       german: "deutsch"
     edition:
-      int: 'Global'
+      int: 'International'
       de: 'Deutschland'
       at: 'Österreich'
       ch: 'Schweiz'
@@ -162,7 +162,7 @@ en:
       gb: 'U.K.'
       sg: 'Singapore'
     country:
-      int: 'Global'
+      int: 'International'
       de: 'Germany'
       at: 'Austria'
       ch: 'Switzerland'
@@ -298,23 +298,24 @@ en:
   emails:
     activation:
       part1: "Dear Reader,"
-      part2: "You have created an account on Jurnalo."
-      part3: "If you did not create an account, simply ignore this email."
-      part4: "If you did create an account just click the link below to activate your account."
-      part5: "If the above URL does not work try copying and pasting it into your browser."
-      part6: "If you continue to have problems please feel free to contact us at any time via email."
-      part7: "Best Regards,"
-      part8: "The Jurnalo"
-      part9: "Account activation token (if required): {{token}}"
+      part2: "Welcome to Jurnalo! You have just created your account on Jurnalo."  
+      part3: "Now please click the link below to activate your account."
+      part4: "If the above link does not work try copying and pasting it into your browser."
+      part5: "If you did not create an account, simply ignore this email."
+      part6: "Please feel free to contact us via email if you have any problems."
+      part7: "Best regards and enjoy reading the news!"
+      part8: "Justus Ohlhaver"
+      part9: "Jurnalo"
+      part10: "Account activation token (if required): {{token}}"
     reset:
       part1: "Dear Reader,"
       part2: "A request to reset your password has been made."
       part3: "If you did not make this request, simply ignore this email."
       part4: "If you did make this request just click the link below:"  
-      part5: "If the above URL does not work try copying and pasting it into your browser."
+      part5: "If the above link does not work try copying and pasting it into your browser."
       part6: "If you continue to have problems please feel free to contact us at any time via email."
       part7: "Best Regards," 
-      part8: "The Jurnalo"
+      part8: "Jurnalo"
       part9: "Your username: {{login}}"
     user_feedback:
       user_wrote: "<JurnaloId:{{user_id}}> {{user_login}} wrote:"

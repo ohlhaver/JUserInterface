@@ -155,7 +155,7 @@ de:
       english: "English"
       german: "deutsch"
     edition:
-      int: 'Global'
+      int: 'International'
       de: 'Deutschland'
       at: 'Österreich'
       ch: 'Schweiz'
@@ -164,7 +164,7 @@ de:
       gb: 'U.K.'
       sg: 'Singapore'
     country:
-      int: 'Global'
+      int: 'International'
       de: 'Deutschland'
       at: 'Österreich'
       ch: 'Schweiz'
@@ -300,21 +300,22 @@ de:
   emails:
     activation:
       part1: "Lieber Leser,"
-      part2: "Sie haben einen Zugang für Jurnalo erstellt."
-      part3: "Wenn Sie kein Login erstellt haben, dann ignorieren Sie bitte diese E-mail."
-      part4: "Falls Sie einen Login erstellt haben, klicken Sie bitte auf den unteren Link um Ihren Zugang zu aktivieren."
-      part5: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren."
-      part6: "Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail."
-      part7: "Viele Grüße,"
-      part8: "Ihr Jurnalo"
-      part9: "Zugangs-Aktivierungs-Code (wenn benötigt): {{token}}"
+      part2: "Herzlich willkommen bei Jurnalo! Sie haben soeben Ihren Zugang für Jurnalo erstellt."
+      part3: "Klicken Sie nun bitte auf den unteren Link um Ihren Zugang zu aktivieren."
+      part4: "Sollte dieser Link nicht funktionieren, so versuchen Sie ihn bitte in Ihren Browser zu kopieren."
+      part5: "Falls Sie sich überhaupt nicht registriert haben, dann ignorieren Sie bitte diese E-mail."
+      part6: "Kontaktieren Sie uns bitte jederzeit per E-mail, falls es Probleme gibt."
+      part7: "Viele Grüße und viel Spaß beim Nachrichtenlesen!"
+      part8: "Justus Ohlhaver"
+      part9: "Jurnalo"
+      part10: "Zugangs-Aktivierungs-Code (wenn benötigt): {{token}}"
     reset:
       part1: "Lieber Leser,"
       part2: "Wir wurden gebeten Ihr Passwort zurückzusetzen."
-      part3: "Wenn Sie nicht darum gebeten haben, dann ignorieren Sie bitte diese E-mail."
-      part4: "Falls Sie darum gebeten haben, so klicken Sie bitte auf den unteren Link:"  
-      part5: "Sollte diese Url nicht funktionieren, so versuchen Sie sie bitte in Ihren Browser zu kopieren."
-      part6: "Wenn Sie weiterhin Probleme damit haben sollten, so kontaktieren Sie uns bitte jederzeit per E-mail."
+      part3: "Falls Sie überhaupt nicht darum gebeten haben, dann ignorieren Sie bitte diese E-mail."
+      part4: "Klicken Sie bitte auf den unteren Link um ein neues Passwort zu erstellen:"  
+      part5: "Sollte dieser Link nicht funktionieren, so versuchen Sie ihn bitte in Ihren Browser zu kopieren."
+      part6: "Kontaktieren Sie uns bitte jederzeit per E-mail, falls es Probleme gibt."
       part7: "Viele Grüße," 
       part8: "Ihr Jurnalo"
       part9: "Ihr Benutzername: {{login}}"
