@@ -4,7 +4,7 @@
 <div class = "about">
 <%= t('jurnalo.account_activation.instruction') %><br />
 <br />
-<% form_tag account_activation_path('update') do %>
+<% form_tag activate_account_activations_path do %>
   <div class="adv_search_lines">
     <div class="clear_fix">
       <%= text_field_tag 'id', "", :class => "settings_field_right" %>
