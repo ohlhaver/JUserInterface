@@ -242,6 +242,7 @@ de:
       alert_settings: "E-mails"
       language_and_region: "Sprache"
       homepage_settings: "Layout"
+      all_users: "Alle Benutzer"
     top:
       help: "Hilfe"
       login: "Einloggen"
