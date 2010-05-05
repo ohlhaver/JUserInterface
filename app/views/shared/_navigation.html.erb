@@ -4,6 +4,9 @@
   </div>
   <div id="settings_navigation" >
     <ul class='nav_block'>
+      <% if admin? %>
+        <li><%= navigation_link_to( [ 'navigation.main.all_users', users_path ] ) %></li>
+      <% end %>
       <% navigation_links.each do |link| %>
         <li><%= navigation_link_to( link ) %></li>
       <% end %>

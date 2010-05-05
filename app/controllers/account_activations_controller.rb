@@ -1,6 +1,6 @@
 class AccountActivationsController < ApplicationController
   
-  before_filter :load_user_using_perishable_token, :only => [ :show, :update ]
+  before_filter :load_user_using_perishable_token, :only => [ :show, :activate ]
   
   # Display this page if account is not activated
   def new
@@ -32,7 +32,7 @@ class AccountActivationsController < ApplicationController
   end
   
   # Request to activate account using activation token
-  def update
+  def activate
     @user.activate!
     flash[:notice] = I18n.t('user.account.activated')
     redirect_to root_url

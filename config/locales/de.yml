@@ -86,6 +86,7 @@ de:
     account_activation:
       label: "Zugangs-Aktivierung"
       instruction: "Bitte geben Sie den Aktivierung-Code ein, um Ihren Zugang zu aktivieren:"
+      activate_button: "meinen Zugang aktivieren"
       send_instruction: "Wenn Sie keine Instruktionen zur Aktivierung erhalten haben, so füllen Sie bitte das untere Formular aus. Die Instruktionen zur Aktivierung Ihres Zugangs werden Ihnen dann per E-mail geschickt."
       send_button: "Aktivierungs-Instruktionen anfordern"
       token: "Code"
@@ -241,6 +242,7 @@ de:
       alert_settings: "E-mails"
       language_and_region: "Sprache"
       homepage_settings: "Layout"
+      all_users: "Alle Benutzer"
     top:
       help: "Hilfe"
       login: "Einloggen"

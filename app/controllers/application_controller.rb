@@ -43,9 +43,11 @@ class ApplicationController < ActionController::Base
   end
   
   def set_locale
-    params[:locale] = session[:locale] if params[:locale].blank?
-    session[:locale] = params[:locale]
-    I18n.locale = session[:locale] || 'en'
+    params[:locale] = nil if params[:locale].blank?
+    session[:locale] = params[:locale] 
+    session[:locale] ||= current_user.default_locale if current_user
+    session[:locale] ||= (session[:edition] || 'int-en').split('-').last 
+    I18n.locale = session[:locale]
     params[:locale] = session[:locale] unless params[:locale].blank?
   end
   

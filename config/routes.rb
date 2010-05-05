@@ -82,7 +82,7 @@ ActionController::Routing::Routes.draw do |map|
     users.resources :home_display_preferences
   end
   map.resources :password_resets
-  map.resources :account_activations
+  map.resources :account_activations, :collection => [ :activate ]
   map.cnb 'click_and_buy/:action', :controller => 'click_and_buy'
   map.connect ':controller/:id', :action => :show
   map.connect ':controller/:action/:id'

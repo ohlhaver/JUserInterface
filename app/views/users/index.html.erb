@@ -1,19 +1,22 @@
-<h2><h2><span class="page_label">User Listing</span></h2>
-<div class = "about">
-<table>
+<div class='settings_news_block'>
+<h2><span class="page_label"><%= t('navigation.top.settings') %> > <%= t('navigation.main.all_users') %> </span></h2>
+<div class='about'>
+<table width='100%'>
   <tr>
     <th>Login</th>
     <th>Email</th>
   </tr>
   <% @users.each do |user| %>
   <tr>
-    <td><%= user.login %></td>
-    <td><%= user.email %></td>
+    <td width='20%'><%= user.login %></td>
+    <td width='40%'><%= user.email %></td>
     <td><%= link_to 'Profile', user_path( user ) %></td>
+    <td><%= link_to 'Delete', user_path( user ), :method => :delete, :confirm => 'Are you sure?' %></td>
   </tr>
   <% end %>
 </table>
-
+</div>
+<div class="about">
 <%= will_paginate @users %>
-
+</div>
 </div>

@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   
-  jurnalo_login_required :only => [ :index, :show, :edit, :update, :upgrade, :downgrade, :plan, :billing_policy, :upgrade_required ]
-  before_filter :set_user_var, :only => [ :show, :edit, :update, :upgrade, :downgrade, :plan, :billing_policy, :upgrade_required ]
+  jurnalo_login_required :only => [ :index, :show, :destroy, :edit, :update, :upgrade, :downgrade, :plan, :billing_policy, :upgrade_required ]
+  before_filter :set_user_var, :only => [ :show, :edit, :destroy, :update, :upgrade, :downgrade, :plan, :billing_policy, :upgrade_required ]
   
   def index
     redirect_to( :action => :show ) && return unless admin?
     @users = User.paginate( :page => params[:page] || '1' )
+    @user = current_user
   end
   
   def contact
@@ -107,6 +108,16 @@ class UsersController < ApplicationController
     else
       render :action => :show
     end
+  end
+  
+  def destroy
+    if @user && @user.login != 'jadmin'
+      @user.destroy 
+      flash[:notice] = 'User deleted successfully.'
+    elsif @user
+      flash[:notice] = 'Please do not delete me.'
+    end
+    redirect_to request.referer || { :action => :index }
   end
  
   
