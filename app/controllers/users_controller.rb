@@ -84,6 +84,7 @@ class UsersController < ApplicationController
       end
       redirect_back_or_default default_path
     else
+      @user.login = @user.login_original
       session[:cas_sent_to_gateway] = true
       render :action => :new
     end
