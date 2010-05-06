@@ -28,14 +28,14 @@ class AccountActivationsController < ApplicationController
   def show
     @user.activate!
     flash[:notice] = I18n.t('user.account.activated')
-    redirect_to login_path( :service => "http://accounts.jurnalo.com", :jwa => 0 )
+    redirect_to login_path( :service => "http://accounts.jurnalo.com/account?ga=emCyamsW", :jwa => 0, :ga => "emCyamsW" )
   end
   
   # Request to activate account using activation token
   def activate
     @user.activate!
     flash[:notice] = I18n.t('user.account.activated')
-    redirect_to root_url
+    redirect_to login_path( :service => "http://accounts.jurnalo.com/account?ga=emCyamsW", :jwa => 0, :ga => "emCyamsW" )
   end
   
   protected

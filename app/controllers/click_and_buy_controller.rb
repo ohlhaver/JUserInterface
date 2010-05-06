@@ -32,7 +32,7 @@ class ClickAndBuyController < ApplicationController
     state = GatewayTransaction.gateway.confirm( request )
     case( state ) when 'paid'
       flash[:notice] = I18n.t('cnb.payment.success')
-      redirect_to account_path
+      redirect_to account_path( :ga => 'cpsXaZow' )
     when 'verification_pending'
       redirect_to :action => :error, :s => 4
     else
