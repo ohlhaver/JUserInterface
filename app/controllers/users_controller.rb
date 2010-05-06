@@ -71,8 +71,8 @@ class UsersController < ApplicationController
   end
   
   def create
-    attributes = {}
-    attributes.merge!( :language_id => params[:locale], :region_id => params[:country] )
+    ed = ( session[:edition] || 'int-en' ).split('-')
+    attributes = { :language_id => ed.last, :region_id => ed.first }
     attributes.merge!( :email => session[ :cas_user ], :third_party => session[ :cas_extra_attributes ][ 'auth' ] ) if session && session[ :cas_extra_attributes ]
     @user = User.new( params[:user].merge!( attributes ) )
     @user.name ||= @user.login
