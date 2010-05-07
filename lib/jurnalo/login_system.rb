@@ -182,8 +182,9 @@ module Jurnalo
         else
           before_filter :authenticate_using_cas_without_gateway, filter_options
         end
-        before_filter :log_session_info
         before_filter :set_current_user, filter_options
+        before_filter :set_locale, filter_options
+        before_filter :log_session_info
         before_filter :check_for_new_users, options
         skip_before_filter :check_for_new_users, :only => filter_options[:except] unless filter_options[:except].blank?
         before_filter :redirect_to_activation_page_if_not_active, options
