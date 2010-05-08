@@ -154,11 +154,24 @@ module Jurnalo
         CASClient::Frameworks::Rails::Filter.filter( self ) if cas_filter_allowed?
       end
       
+      def restore_mem_cache_cas_last_valid_ticket
+        return unless cas_filter_allowed? && TICKET_STORE
+        last_ticket = TICKET_STORE.get( session[:session_id] )
+        session[:cas_last_valid_ticket] = last_ticket
+      end
+      
+      def store_to_mem_cache_cas_last_valid_ticket
+        return unless cas_filter_allowed? && TICKET_STORE
+        TICKET_STORE.set( session[:session_id], session[:cas_last_valid_ticket], 15.minutes.to_i ) if session[:cas_last_valid_ticket]
+        session.delete( :cas_last_valid_ticket )
+      end
+      
       protected( :authenticate_using_cas_without_gateway, :authenticate_using_cas_with_gateway, 
         :authenticate_using_single_access, :cas_filter_allowed?, :single_access_allowed?, 
         :redirect_to_activation_page_if_not_active, :require_no_user, :current_user,
         :log_session_info, :redirect_back_or_default, :store_location, :check_for_new_users,
-        :set_current_user, :session_check_for_validation, :set_user_var)
+        :set_current_user, :session_check_for_validation, :set_user_var, :restore_mem_cache_cas_last_valid_ticket,
+        :store_to_mem_cache_cas_last_valid_ticket )
       
     end
     
@@ -170,6 +183,7 @@ module Jurnalo
         filter_options[:except] = Array( options.delete(:skip) ) if options[:skip]
         before_filter :authenticate_using_single_access, filter_options
         before_filter :api_request_validation, filter_options
+        before_filter :restore_mem_cache_cas_last_valid_ticket
         before_filter :session_check_for_validation, filter_options
         if options[:only]
           before_filter :authenticate_using_cas_with_gateway,    :except => options[:only]
@@ -182,6 +196,7 @@ module Jurnalo
         else
           before_filter :authenticate_using_cas_without_gateway, filter_options
         end
+        before_filter :store_to_mem_cache_cas_last_valid_ticket
         before_filter :set_current_user, filter_options
         before_filter :set_locale, filter_options
         before_filter :log_session_info

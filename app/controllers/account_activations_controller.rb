@@ -28,6 +28,7 @@ class AccountActivationsController < ApplicationController
   def show
     @user.activate!
     flash[:notice] = I18n.t('user.account.activated')
+    session_activate
     redirect_to login_path( :service => "http://accounts.jurnalo.com/account?ga=emCyamsW", :jwa => 0, :ga => "emCyamsW" )
   end
   
@@ -35,10 +36,18 @@ class AccountActivationsController < ApplicationController
   def activate
     @user.activate!
     flash[:notice] = I18n.t('user.account.activated')
+    session_activate
     redirect_to login_path( :service => "http://accounts.jurnalo.com/account?ga=emCyamsW", :jwa => 0, :ga => "emCyamsW" )
   end
   
   protected
+  
+  def session_activate
+    if logged_in? && @user.id == session[ :cas_user_attrs ][ :id ].to_i
+      session[ :cas_user_attrs ][ :active ] = true
+      current_user.reload if current_user
+    end
+  end
   
   def load_user_using_perishable_token  
     @user = User.find_using_perishable_token( params[:id] )

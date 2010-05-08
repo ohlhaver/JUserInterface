@@ -14,3 +14,12 @@ ActionController::Base.session = {
 # which shouldn't be used to store highly confidential information
 # (create the session table with "rake db:sessions:create")
 # ActionController::Base.session_store = :active_record_store
+
+JTicketStoreConfig = YAML.load_file( "#{RAILS_ROOT}/config/tickets.yml" )
+
+unless JTicketStoreConfig[RAILS_ENV]['servers'].blank?
+  require 'memcache'
+  TICKET_STORE = MemCache.new( JTicketStoreConfig[RAILS_ENV]['servers'], :multithread => true )
+else
+  TICKET_STORE = nil
+end
