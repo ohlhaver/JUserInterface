@@ -50,7 +50,8 @@ class AccountActivationsController < ApplicationController
   end
   
   def load_user_using_perishable_token  
-    @user = User.find_using_perishable_token( params[:id] )
+    # As of now the perishable tokens are not expired
+    @user = User.find_using_perishable_token( params[:id], 0 )
     unless @user  
       flash[:error] = I18n.t('user.account.restart_activation_process')
       redirect_to root_url
