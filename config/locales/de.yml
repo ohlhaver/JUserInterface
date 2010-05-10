@@ -73,7 +73,7 @@ de:
       login: "Benutzername"
       password: "Passwort"
       change_password: "Passwort ändern"
-      confirm_password: "Passwort bestätigen"
+      confirm_password: "Passwort wiederholen"
       name: "Name"
       email: "E-mail"
       active: "Activ"
@@ -241,7 +241,7 @@ de:
       display_preferences: "Darstellung"
       alert_settings: "E-mails"
       language_and_region: "Sprache"
-      homepage_settings: "Layout"
+      homepage_settings: "Rubriken"
       all_users: "Alle Benutzer"
     top:
       help: "Hilfe"
@@ -290,7 +290,7 @@ de:
       new: 'Neues Thema'
       new_advanced: 'erweitertes neues Thema'
     action:
-      add: 'Thema hinzufügen'
+      add: 'Thema speichern'
       test: 'testen'
       advance: 'Erweitert'
       simple: 'Einfach'
