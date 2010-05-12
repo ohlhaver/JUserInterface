@@ -238,7 +238,7 @@ en:
       display_preferences: "Display"
       alert_settings: "E-mail alerts"
       language_and_region: "Language"
-      homepage_settings: "Layout"
+      homepage_settings: "Sections"
       all_users: "All Users"
     top:
       help: "Help"
@@ -287,7 +287,7 @@ en:
       new: 'New Topic'
       new_advanced: 'Advanced New Topic'
     action:
-      add: 'Add Topic'
+      add: 'Save Topic'
       test: 'test'
       advance: 'Advanced'
       simple: 'Simple'

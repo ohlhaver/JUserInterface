@@ -39,14 +39,14 @@ module ApplicationHelper
   
   def navigation_links
     @nav_links = [ 
-      [ 'navigation.main.my_sources', user_source_preferences_path( @user ) ],
-      [ 'navigation.main.my_authors', user_author_preferences_path( @user ) ],
       [ 'navigation.main.my_search_topics', user_topic_preferences_path( @user ) ],
-      [ 'navigation.main.search_and_sorting', search_preference_path( @user ) ],
-      [ 'navigation.main.display_preferences', display_preference_path( @user ) ],
-      [ 'navigation.main.alert_settings', alert_preference_path( @user ) ],
+      [ 'navigation.main.my_authors', user_author_preferences_path( @user ) ],
+      [ 'navigation.main.my_sources', user_source_preferences_path( @user ) ],
+      [ 'navigation.main.homepage_settings', user_home_preferences_path( @user ) ],
       [ 'navigation.main.language_and_region', edition_preference_path( @user ) ],
-      [ 'navigation.main.homepage_settings', user_home_preferences_path( @user ) ]
+      [ 'navigation.main.alert_settings', alert_preference_path( @user ) ],
+      [ 'navigation.main.search_and_sorting', search_preference_path( @user ) ],
+      [ 'navigation.main.display_preferences', display_preference_path( @user ) ]            
     ]
     if my_page? then
       @nav_links.unshift( [ 'navigation.main.account_details', account_path ])
