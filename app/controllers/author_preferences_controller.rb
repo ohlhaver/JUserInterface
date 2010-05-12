@@ -50,6 +50,7 @@ class AuthorPreferencesController < ApplicationController
           @author_preference.errors.add('preference', :required)
           format.xml{ rxml_error( @author_preference, :action => :create ) }
         else
+          PriorityAuthor.add_to_list( @author_preference.author_id ) if params[:jap] == '1'
           flash[:notice] = I18n.t('user.pref.create_success')
           format.mobile{ redirect_to :action => :index, :scope => params[:scope] }
           format.html{ redirect_to :action => :index, :scope => params[:scope] }
@@ -66,6 +67,7 @@ class AuthorPreferencesController < ApplicationController
   def update
     respond_to do |format|
       if @author_preference.update_attributes( params[:author_preference] )
+        PriorityAuthor.add_to_list( @author_preference.author_id ) if params[:jap] == '1'
         flash[:notice] = I18n.t('user.pref.update_success')
         format.mobile{ redirect_to :action => :index, :scope => params[:scope] }
         format.html{ redirect_to :action => :index, :scope => params[:scope] }

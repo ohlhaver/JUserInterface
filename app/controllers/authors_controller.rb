@@ -23,6 +23,9 @@ class AuthorsController < ApplicationController
   end
   
   def show
+    if @author && params[:jap] == '1'
+      PriorityAuthor.add_to_list( @author ) 
+    end
     rxml_data( @author, :root => 'author' )
   end
   
