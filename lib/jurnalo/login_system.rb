@@ -70,13 +70,17 @@ module Jurnalo
       
       def session_check_for_validation
         last_st = session.try( :[], :cas_last_valid_ticket )
-        unless last_st
-          if session[ :cas_user_attrs ]
-            session[ :cas_user_attrs ] = nil
-            session[ CASClient::Frameworks::Rails::Filter.client.username_session_key ] = nil
-          else
-            session[ :cas_sent_to_gateway ] = true unless base_url?( login_path )
-          end
+        # unless last_st
+        #   if session[ :cas_user_attrs ]
+        #     session[ :cas_user_attrs ] = nil
+        #     session[ CASClient::Frameworks::Rails::Filter.client.username_session_key ] = nil
+        #   else
+        #     session[ :cas_sent_to_gateway ] = true unless base_url?( login_path )
+        #   end
+        #   return
+        # end
+        if last_st.nil? && session[ :cas_user_attrs ].nil?
+          session[ :cas_sent_to_gateway ] = true unless base_url?( login_path )
           return
         end
         if request.get? && !request.xhr? && ( session[:revalidate].nil? || session[:revalidate] < Time.now.utc )
