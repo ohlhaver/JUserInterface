@@ -11,7 +11,7 @@ class StoryPreferencesController < ApplicationController
   required_api_param :story_preference, :only => [ :create ]
   
   def index
-    @story_preferences = @user.story_subscriptions.paginate( :all, :page => params[:page], :include => :story )
+    @story_preferences = @user.story_subscriptions.paginate( :all, :page => params[:page], :per_page => 10, :include => :story, :order => 'id DESC' )
     respond_to do |format|
       format.mobile
       format.html 
