@@ -11,7 +11,7 @@ class AuthorsController < ApplicationController
   # /api/list/authors?q=james
   #
   def index
-    conditions = {}
+    conditions = { :block => false }
     conditions.merge!( :is_opinion => true ) if params[:opinion] == '1'
     conditions.merge!( :is_agency => true )  if params[:agency] == '1'
     unless params[:author_id].blank? && params[:author_ids].blank?
@@ -66,6 +66,7 @@ class AuthorsController < ApplicationController
   
   def set_author_var
     @author = Author.find( params[:id] )
+    raise ActiveRecord::RecordNotFound if @author.block?
   end
   
   def single_access_allowed?
