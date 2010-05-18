@@ -3,8 +3,8 @@
 <div class='settings_news_block'>
   <h2><span class="page_label"><%= t('account.current') %></span></h2>
   <div class = "about">
-    <h2> <%= link_to t('account.power.label'), power_plan_account_path %> (<%= t('account.power.cost') -%>)
-       <%= t('account.power.info') %> (<%= link_to t('more.info'), power_plan_account_path %>)</h2>
+    <h2> <b><%= t('account.power.label')%></b> (<%= t('account.power.cost') -%>)
+       <%= t('account.power.info') %></h2>
   </div>
 </div>
 <% else %>
@@ -27,7 +27,7 @@
 </div>
 <% end %>
 
-<br/><br/>
+<br/>
 
 <div class='thin_settings_news_block'>
 <h2>	<span class="page_label"><%= t('navigation.top.settings') %> > <%= t('navigation.main.account_details') %> </span></h2>
