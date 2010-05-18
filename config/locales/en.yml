@@ -37,8 +37,8 @@ en:
     upgrade: 'upgrade to'
     downgrade: 'downgrade to'
     basic:
-      label: Jurnalo Basic Account
-      info: "One personal topic, one author subscription, and one source setting."
+      label: "<b>Jurnalo Basic Account</b>"
+      info: "Five personal topics, author subscriptions, and source settings."
       cost: free
     power:
       label: "<b>Jurnalo Power Account</b>"
@@ -62,14 +62,14 @@ en:
         label: "Payment Method"
       by_invoice: 
         label: "Payment by invoice."
-        info: "You will receive a monthly invoice of 3.95 € payable via electronic bank transfer."
-        upgrade_info: "Your account will be upgraded to Power Account immediately."
-        cancel_info: "Payment is monthly. Whenever you decide to cancel, you won’t be invoiced again."
-        email_info: "Please check your email for the invoice."
+        info: "You do a monthly electronic bank transfer of 3.95 €."
+        upgrade_info: "IMPORTANT: Your Power Account will be activated immediately."
+        cancel_info: "Whenever you decide to cancel, you won’t be invoiced again."
+        email_info: "Your invoice will be emailed to you. Please ensure to pay within 15 days."
     billing:
-      label: "Please enter your payment details below:"
-      account_holder: "Account Holder*"
-      address: "Street Address"
+      label: "Please enter your name and address:"
+      account_holder: "First and last name"
+      address: "Street address"
       city: "City"
       country: "Country"
       zip: "Postal Code"
