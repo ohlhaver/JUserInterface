@@ -48,12 +48,12 @@ de:
       info: "Unbegrenzt eigene Themen, Autoren-Abonnements und Quellen-Einstellungen."
       cost: "3.95 € monatlich"
       upgrade:
-        label: "Upgrade zum Jurnalo Power Plan"
+        label: "Upgrade zum:"
         method: "Zahlungs-Methode"
         pay: "Sie zahlen folgenden Betrag:"
         click: "Klicken Sie hier zur Ansicht unserer"
         policy: "Abrechnungs-Bestimmungen"
-        button: "Jetzt kaufen"
+        button: "Jetzt bestellen"
         sentence: "Die Bezahlung geschieht von Monat zu Monat. Wann immer Sie kündigen, wird Ihnen kein weiterer Monat mehr in Rechnung gestellt."
   edition:
     other: "Andere Nachrichtenausgaben"
@@ -70,7 +70,7 @@ de:
     billing:
       label: "Bitte geben Sie Ihren Namen und Ihre Adresse ein:"
       account_holder: 'Vor- und Nachname'
-      city: 'Stadt'
+      city: 'Ort'
       country: 'Land'
       zip: 'Postleitzahl'
       address: 'Straße'
@@ -116,7 +116,7 @@ de:
       token: "Code"
     power:
       label: "Jurnalo Power Plan"
-      slogan: "Mit dem Jurnalo Power Plan aktivieren Sie die beste Nachrichten-Lese-Erfahrung, die man für Geld kaufen kann."
+      slogan: '<b>"Mit dem Jurnalo Power Plan sind Sie besser informiert als der amerikanische Präsident."</b> - <em>die Jurnalo Gründer </em>'
       gives: "Der Jurnalo Power Plan gibt Ihnen alle Funktionen des Basis Plans, plus:"
       topics: "- unbegrenzt eigene Suchthemen"
       authors: "- unbegrenzt Autoren-Abonnements"

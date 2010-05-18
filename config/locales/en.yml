@@ -45,12 +45,12 @@ en:
       info: "Unlimited personal topics, author subscriptions and source settings."
       cost: "3.95 € monthly"
       upgrade:
-        label: "Upgrade to Jurnalo Power Account"
+        label: "Upgrade to:"
         method: "Payment Method"
         pay: "You will pay"
         click: "Click here to see our"
         policy: "billing policy"
-        button: "Buy now"
+        button: "Upgrade now"
         sentence: "Payment is month-to-month. Whenever you decide to cancel, you won’t be billed again."
   edition:
     other: "other news edition"
@@ -65,7 +65,7 @@ en:
         info: "You do a monthly electronic bank transfer of 3.95 €."
         upgrade_info: "IMPORTANT: Your Power Account will be activated immediately."
         cancel_info: "Whenever you decide to cancel, you won’t be invoiced again."
-        email_info: "Your invoice will be emailed to you. Please ensure to pay within 15 days."
+        email_info: "An invoice will be emailed to you. Please ensure to pay within 15 days."
     billing:
       label: "Please enter your name and address:"
       account_holder: "First and last name"
@@ -115,7 +115,7 @@ en:
       token: "Token"
     power:
       label: "Jurnalo Power Account"
-      slogan: "The Jurnalo Power Account enables you to enjoy the best possible news reading experience."
+      slogan: '"<b>With the Jurnalo Power Account you are better informed than the American President.</b>" - <em> the Jurnalo founders</em>'
       gives: "The Jurnalo Power Account gives you all the functions of the Basic Account, plus:"
       topics: "- unlimited search topics"
       authors: "- unlimited author subscriptions"
