@@ -1,5 +1,12 @@
 de:
   activerecord:
+    attributes:
+      paid_by_invoice:
+        account_name: 'Name des Kontoinhabers'
+        city: 'Stadt'
+        country: 'Land'
+        zip: 'Postleitzahl'
+        address: 'Hausnummer'
     field:
       required: "notwendig"
     errors:
@@ -39,7 +46,7 @@ de:
     power:
       label: "<b>Jurnalo Power Plan</b>"
       info: "Unbegrenzte Anzahl von eigenen Themen, Autoren-Abonnements und Quellen-Einstellungen."
-      cost: "5 € monatlich"
+      cost: "3.95 € monatlich"
       upgrade:
         label: "Upgrade zum Jurnalo Power Plan"
         method: "Zahlungs-Methode"
@@ -51,6 +58,23 @@ de:
   edition:
     other: "Andere Nachrichtenausgaben"
   jurnalo:
+    pay:
+      options:
+        label: "Zahlungs-Methode"
+      by_invoice: 
+        label: "Zahlung per Rechnung."
+        info: "Sie werden eine monatliche Rechnung von 3.95 € erhalten, die Sie per Banküberweisung bezahlen."
+        upgrade_info: "Ihr Zugang wird jetzt sofort - schon vor Erhalt der Zahlung -  zum Power Plan aufgewertet."
+        cancel_info: "Die Bezahlung geschieht monatlich. Wann immer sie sich entscheiden zu kündigen, werden Ihnen keine weiteren Rechnungen mehr gestellt."
+        email_info: "Sie erhalten Ihre Rechnung per Email."
+    billing:
+      label: "Bitte geben Sie hier Ihre Zahlungsinformationen ein:"
+      account_holder: 'Name des Kontoinhabers*'
+      city: 'Stadt'
+      country: 'Land'
+      zip: 'Postleitzahl'
+      address: 'Hausnummer'
+      account_holder_note: "*Kontoinhaber ist der Name der Person oder Firma, welche das Bankkonto besitzt, von welchem die Überweisungen getätigt werden."
     login:
       new_user: "oder {{register}}"
       existing_user: "Benutzen Sie bitte Ihren bestehenden Zugang"

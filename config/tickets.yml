@@ -2,7 +2,7 @@ ram:
   servers:
 development: 
   servers: 
-  - "localhost:11211"
+  #- "localhost:11211"
 production:
   servers:
   - "10.176.238.17:11211"

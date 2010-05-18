@@ -64,7 +64,7 @@ class UsersController < ApplicationController
       redirect_back_or_default account_url
     else
       session[:cas_sent_to_gateway] = true
-      attributes = { :terms_and_conditions_accepted => true, :show_upgrade_page => true }
+      attributes = { :terms_and_conditions_accepted => true, :show_upgrade_page => false }
       attributes.merge!( :email => session[ :cas_user ], :third_party => session[ :cas_extra_attributes ][ 'auth' ] ) if session && session[ :cas_extra_attributes ]
       @user = User.new( attributes )
     end

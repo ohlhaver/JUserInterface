@@ -1,0 +1,34 @@
+<div class= 'adv_search_lines'>
+
+<div class='clearfix'>
+<%= pay_by_invoice.text_field :account_name, :id => "settings_field" %> 
+<%= pay_by_invoice.label :account_name, t('jurnalo.billing.account_holder') %> 
+</div>
+
+<div class="clearfix">
+<%= pay_by_invoice.text_field :address, :id => "settings_field" %>
+<%= pay_by_invoice.label :address, t('jurnalo.billing.address') %>
+</div>
+
+<div class="clearfix">
+<%= pay_by_invoice.text_field :city, :id => "settings_field" %>
+<%= pay_by_invoice.label :address, t('jurnalo.billing.city') %>
+</div>
+
+<div class="clearfix">
+<%= pay_by_invoice.text_field :country, :id => "settings_field" %>
+<%= pay_by_invoice.label :address, t('jurnalo.billing.country') %>
+</div>
+
+<div class="clearfix">
+<%= pay_by_invoice.text_field :zip, :id => "settings_field" %>
+<%= pay_by_invoice.label :address, t('jurnalo.billing.zip') %>
+</div>
+</div>
+
+<ul style="line-height:15px;font-size:12px;">
+  <li style="margin-top:5px;"><%= t('jurnalo.billing.account_holder_note') %></li>
+  <li style="margin-top:5px;"><%= t('jurnalo.pay.by_invoice.upgrade_info')%></li>
+  <li style="margin-top:5px;"><%= t('jurnalo.pay.by_invoice.cancel_info')%></li>
+  <li style="margin-top:5px;"><%= t('jurnalo.pay.by_invoice.email_info')%></li> 
+</ul>

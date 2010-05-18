@@ -1,0 +1,26 @@
+<div class='settings_news_block'>
+  <h2><span class="page_label"><%= t('account.power.upgrade.label') -%></span></h2>
+  <div class = "about">
+    <h2>Plan</h2>
+    <%= t('account.power.label') %> (<%= t('account.power.cost') -%>)
+  </div>
+  <div class="about">
+    <h2><%= t('account.power.upgrade.method') -%></h2><br>
+    <b><%= t('jurnalo.pay.by_invoice.label') %></b><br/>
+    <%= t('jurnalo.pay.by_invoice.info') %>
+  </div>
+  <div class="about">
+    <p><%= t('account.power.upgrade.pay') -%> <strong><%= t('account.power.cost') %></strong></p><br>
+    <p><%= t('account.power.upgrade.sentence') -%></p>
+  </div>
+  <div class='thin_settings_news_block'>
+    <h2><span class="page_label"> <%= t('jurnalo.billing.label') %></span></h2>
+    <div class='about'>
+      <% form_for( @paid_by_invoice, :url => power_upgrade_path( :id => :invoice ) ) do |f| %>
+        <%= f.error_messages %>
+        <%= render :partial => 'signups/pay_by_invoice', :object => f %>
+        <%= f.submit t('account.power.upgrade.button'), :class => 'confirmation_button' %>
+      <% end %>
+    </div>
+  </div>
+</div>

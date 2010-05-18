@@ -69,4 +69,8 @@ GatewayTransaction.gateway = ClickAndBuyGateway.new(
   :error_url => 'http://accounts.jurnalo.com/click_and_buy/error'
 )
 
+PaidByInvoice.plans = {  
+  :power => { :id => 5814899, :price => 395000, :currency => 'EUR' }
+}
+
 require 'app/models/user' if RAILS_ENV == 'development' || RAILS_ENV == 'justus'

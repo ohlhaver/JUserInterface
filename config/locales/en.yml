@@ -1,5 +1,12 @@
 en:
   activerecord:
+    attributes:
+      paid_by_invoice:
+        account_name: 'Account Holder'
+        city: 'City'
+        country: 'Country'
+        zip: 'Postal Code'
+        address: 'Street Address'
     field:
       required: "required"
     errors:
@@ -36,7 +43,7 @@ en:
     power:
       label: "<b>Jurnalo Power Account</b>"
       info: "Unlimited personal topics, author subscriptions and source settings."
-      cost: "5 € monthly"
+      cost: "3.95 € monthly"
       upgrade:
         label: "Upgrade to Jurnalo Power Account"
         method: "Payment Method"
@@ -50,6 +57,23 @@ en:
   more:
     info: "more information"
   jurnalo:
+    pay:
+      options:
+        label: "Payment Method"
+      by_invoice: 
+        label: "Payment by invoice."
+        info: "You will receive a monthly invoice of 3.95 € payable via electronic bank transfer."
+        upgrade_info: "Your account will be upgraded to Power Account immediately."
+        cancel_info: "Payment is monthly. Whenever you decide to cancel, you won’t be invoiced again."
+        email_info: "Please check your email for the invoice."
+    billing:
+      label: "Please enter your payment details below:"
+      account_holder: "Account Holder*"
+      address: "Street Address"
+      city: "City"
+      country: "Country"
+      zip: "Postal Code"
+      account_holder_note: "*Account Holder is the Name of the Person / Company associated with the Bank Account through which the electronic transfer will be made."
     login:
       new_user: "or {{register}}"
       existing_user: "Please use your existing account"
