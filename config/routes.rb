@@ -70,7 +70,7 @@ ActionController::Routing::Routes.draw do |map|
   map.billing_policy '/billing_policy', :controller => 'users', :action => 'billing_policy'
   map.resources :story_searches
   map.resources :signups, :member => [ :power ], :path_prefix => '/account'
-  map.resources :upgrades, :member => [ :power ], :path_prefix => '/account'
+  map.resources :upgrades, :member => [ :power, :error ], :path_prefix => '/account'
   map.resource :account, :controller => "users", :collection => [ :upgrade, :downgrade, :power_plan, :contact, :created ], :member => [ :upgrade_required ]
   map.resources :preferences, :member => [ :display, :alert, :edition, :search ]
   map.resources :authors
