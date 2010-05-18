@@ -1,29 +1,10 @@
-<div class='settings_news_block'>
-<h2>	<span class="page_label"><%= t('navigation.top.settings') %> > <%= t('navigation.main.account_details') %> </span></h2>
-<br>
-<% form_for @user, :url => user_path(@user) do |f| %>
-  <%= f.error_messages %>
-  <% unless @user.third_party? %>
-    <%= render :partial => 'jurnalo_user', :object => f %>
-  <% else %>
-    <%= render :partial => 'third_party_user', :object => f %>  
-  <% end %>
 
-
-  <%= f.submit "Update", :class => "confirmation_button" %>
-
-<% end %>
-</div>
-
-
-
-<br/><br/>
 <% if ( @user.plan_id == 1 ) %>
-<div class='thin_settings_news_block'>
+<div class='settings_news_block'>
   <h2><span class="page_label"><%= t('account.current') %></span></h2>
   <div class = "about">
-    <h2> <%= link_to t('account.power.label') %> (<%= t('account.power.cost') -%>)
-       <%= t('account.power.info') %> (<%= link_to t('more.info') %>)</h2>
+    <h2> <%= link_to t('account.power.label'), power_plan_account_path %> (<%= t('account.power.cost') -%>)
+       <%= t('account.power.info') %> (<%= link_to t('more.info'), power_plan_account_path %>)</h2>
   </div>
 </div>
 <% else %>
@@ -45,3 +26,25 @@
   <%end%>
 </div>
 <% end %>
+
+<br/><br/>
+
+<div class='thin_settings_news_block'>
+<h2>	<span class="page_label"><%= t('navigation.top.settings') %> > <%= t('navigation.main.account_details') %> </span></h2>
+<br>
+<% form_for @user, :url => user_path(@user) do |f| %>
+  <%= f.error_messages %>
+  <% unless @user.third_party? %>
+    <%= render :partial => 'jurnalo_user', :object => f %>
+  <% else %>
+    <%= render :partial => 'third_party_user', :object => f %>  
+  <% end %>
+
+
+  <%= f.submit "Update", :class => "confirmation_button" %>
+
+<% end %>
+</div>
+
+
+
