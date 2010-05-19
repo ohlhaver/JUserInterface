@@ -74,3 +74,5 @@ PaidByInvoice.plans = {
 }
 
 require 'app/models/user' if RAILS_ENV == 'development' || RAILS_ENV == 'justus'
+# For emails when upgrade and signup is done then the invoice send immediately
+InvoiceNotifier.delivery_method = :smtp
