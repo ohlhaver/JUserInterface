@@ -4,7 +4,8 @@ class Notifier < ActionMailer::Base
     ActionMailer::Base.default_url_options.merge( :host => "accounts.jurnalo.com" )
   end
   
-  def password_reset_instructions( user )  
+  def password_reset_instructions( user )
+    I18n.locale = user.default_locale
     subject       "Password Reset Instructions"  
     from          "Jurnalo User Service <jurnalo.user.service@jurnalo.com>"  
     headers       "return-path" => 'jurnalo.user.service@jurnalo.com'
@@ -13,7 +14,8 @@ class Notifier < ActionMailer::Base
     body          :edit_password_reset_url => edit_password_reset_url( user.perishable_token ), :login => user.login
   end
   
-  def account_activation_instructions( user )  
+  def account_activation_instructions( user )
+    I18n.locale = user.default_locale
     subject       "Account Activiation Instructions"
     from          "Jurnalo <justus@jurnalo.com>"
     headers       "return-path" => 'justus@jurnalo.com'
@@ -24,6 +26,7 @@ class Notifier < ActionMailer::Base
   
   def feedback( options = {} )
     user  = options[:user]
+    I18n.locale = user.default_locale
     options[:email] =  user.email if options[:email].blank? && user
     subject       "#{user.nil? ? 'Jurnalo Guest' : 'Jurnalo User'} Feedback"
     from          "Jurnalo.com Account Services <jurnalo.user.service@jurnalo.com>"

@@ -32,6 +32,7 @@ class UpgradesController < ApplicationController
     set_new_paid_by_invoice_var
     @paid_by_invoice.user_id = current_user.id
     if @paid_by_invoice.save
+      flash[:notice] = I18n.t('cnb.payment.success')
       redirect_to account_path( :ga => 'pbiDtZsQ' )
     else
       session[:cas_sent_to_gateway] = true
