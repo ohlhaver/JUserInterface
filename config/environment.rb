@@ -15,6 +15,8 @@ Rails::Initializer.run do |config|
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
   config.gem( 'authlogic', :version => '2.1.3', :lib => 'authlogic' )
   config.gem( 'rubycas-client', :version => '2.1.0' )
+  config.gem( 'httpclient', :version => '2.1.5.2' )
+  config.gem( 'log4r', :version => '1.1.7')
   require 'casclient'
   require 'casclient/frameworks/rails/filter'
 

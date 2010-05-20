@@ -2,9 +2,10 @@ class UpgradesController < ApplicationController
   
   jurnalo_login_required
   before_filter :set_user_var
+  before_filter :check_if_basic_user, :except => [ :error ]
   
   def index
-    new_power_by_invoice
+    new_power_by_paypal
   end
   
   def power
@@ -19,16 +20,28 @@ class UpgradesController < ApplicationController
   
   protected
   
+  def check_if_basic_user
+    return if @user && ( @user.paid_by_paypals.empty? && @user.paid_by_invoice.nil? )
+    redirect_to( :action => :error, :id => :invoice )
+    return false
+  end
+  
   def error_power_by_invoice
     @message = "Already Power User/Your Payment Is Due"
     render :action => :error
   end
   
+  def error_power_by_paypal
+    @message = "Already Power User/Your Payment Is Due"
+    render :action => :error
+  end
+  
+  def new_power_by_paypal
+    @user.payment_method = 'paypal'
+    render :action => :new_power_by_paypal
+  end
+  
   def create_power_by_invoice
-    if @user.paid_by_invoice || current_user.nil?
-      redirect_to( :action => :error, :id => :invoice )
-      return false
-    end
     set_new_paid_by_invoice_var
     @paid_by_invoice.user_id = current_user.id
     if @paid_by_invoice.save
@@ -41,10 +54,7 @@ class UpgradesController < ApplicationController
   end
   
   def new_power_by_invoice
-    if @user.paid_by_invoice || current_user.nil?
-      redirect_to( :action => :error, :id => :invoice )
-      return false
-    end
+    @user.payment_method = 'invoice'
     set_new_paid_by_invoice_var
     render :action => :new_power_by_invoice
   end

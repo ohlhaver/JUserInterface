@@ -56,6 +56,9 @@ en:
     other: "other news edition"
   more:
     info: "more information"
+  shared:
+    month: "month"
+    months: "months"
   jurnalo:
     pay:
       options:
@@ -66,6 +69,10 @@ en:
         upgrade_info: "IMPORTANT: Your Power Account will be activated immediately."
         cancel_info: "Whenever you decide to cancel, you won’t be invoiced again."
         email_info: "An invoice will be emailed to you. Please ensure to pay within 15 days."
+      by_paypal:
+        label: "Pay by PayPal."
+        choose_plan: "Select Your Payment Plan"
+        button_title: "PayPal - The safer, easier way to pay online!"
     billing:
       label: "Please enter your name and address:"
       account_holder: "First and last name"
@@ -372,6 +379,8 @@ en:
   cnb:
     payment:
       success: 'Payment transaction successful. Account upgraded.'
+      cancel: 'Payment transaction was cancelled. Account not upgraded!'
+      failure: 'Payment transaction was unsuccessful. Account not upgraded!'
     error:
       plan_not_found:  'We are unable to provide subscriptions for the plan you are requesting.'
       already_subscribed: 'You are already a subscribed user'

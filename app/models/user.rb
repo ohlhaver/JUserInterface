@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   
   apply_simple_captcha
-  attr_accessor :login_original
+  attr_accessor :login_original, :payment_method
   
   before_validation_on_create :do_login_trick
   before_create :set_active_true_for_third_party_users

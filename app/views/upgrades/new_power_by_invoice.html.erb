@@ -1,25 +1,36 @@
+<% content_for :custom_javascript do %>
+  <%= observe_field( "user_payment_method_paypal", :function => "window.open('#{power_upgrade_path( :id => :paypal)}', '_self');")%>
+<% end %>
 <div class='settings_news_block'>
   <h2><span class="page_label"><%= t('account.power.upgrade.label') -%></span></h2>
   <div class = "about">
      <%= link_to t('account.power.label'), power_plan_account_path %> (<%= t('account.power.cost') -%>)<br/>
         <%= t('account.power.info') %><br><span>(<%= link_to t('more.info'), power_plan_account_path %>)</span>
-      </div>
   </div>
-  <div class='thin_settings_news_block'>
-    <h2><span class="page_label"> <%= t('jurnalo.pay.options.label') %></span></h2>
-    <div class='about'>
-      <b><%= t('jurnalo.pay.by_invoice.label') %></b><br/>
-      <%= t('jurnalo.pay.by_invoice.info') %>
-    </div>
-  <div class='thin_settings_news_block'>
-    <h2><span class="page_label"> <%= t('jurnalo.billing.label') %></span></h2>
-    <div class='about'>
-      <% form_for( @paid_by_invoice, :url => power_upgrade_path( :id => :invoice ) ) do |f| %>
-        <%= f.error_messages %>
-        <%= render :partial => 'signups/pay_by_invoice', :object => f %>
-		<br>
-        <%= f.submit t('account.power.upgrade.button'), :class => 'confirmation_button' %>
-      <% end %>
-    </div>
+</div>
+<div class='thin_settings_news_block'>
+  <h2><span class="page_label"> <%= t('jurnalo.pay.options.label') %></span></h2>
+  <% form_for( @user ) do |f| %>
+  <div class = "basic_option">
+    <%= f.radio_button( 'payment_method', 'paypal' ) %>
+    <b><%= t('jurnalo.pay.by_paypal.label') %></b>
+  </div><br/>
+  <div>
+    <%= f.radio_button( 'payment_method', 'invoice' ) %> 
+    <b><%= t('jurnalo.pay.by_invoice.label') %></b><br/>
+    <%= t('jurnalo.pay.by_invoice.info') %>
+  </div>
+  <% end %>
+</div>
+<br/><br/>
+<div class='thin_settings_news_block'>
+  <h2><span class="page_label"> <%= t('jurnalo.billing.label') %></span></h2>
+  <div class='about'>
+    <% form_for( @paid_by_invoice, :url => power_upgrade_path( :id => :invoice ) ) do |f| %>
+      <%= f.error_messages %>
+      <%= render :partial => 'signups/pay_by_invoice', :object => f %>
+      <br>
+      <%= f.submit t('account.power.upgrade.button'), :class => 'confirmation_button' %>
+    <% end %>
   </div>
 </div>

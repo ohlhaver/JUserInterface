@@ -57,6 +57,9 @@ de:
         sentence: "Die Bezahlung geschieht von Monat zu Monat. Wann immer Sie kündigen, wird Ihnen kein weiterer Monat mehr in Rechnung gestellt."
   edition:
     other: "Andere Nachrichtenausgaben"
+  shared:
+    month: "Monat"
+    months: "Monate"
   jurnalo:
     pay:
       options:
@@ -67,6 +70,10 @@ de:
         upgrade_info: "WICHTIG: Ihr Power Plan Zugang wird sofort freigeschaltet."
         cancel_info: "Wann immer Sie kündigen wird Ihnen kein weiterer Monat mehr in Rechnung gestellt."
         email_info: "Sie erhalten Ihre Rechnung per Email. Bitte zahlen Sie spätestens innerhalb von 15 Tagen."
+      by_paypal:
+        label: "Zahlung per PayPal"
+        choose_plan: "Wählen Sie Ihren Bezahlungsplan"
+        button_title: "Jetzt einfach, schnell und sicher online bezahlen – mit PayPal."
     billing:
       label: "Bitte geben Sie Ihren Namen und Ihre Adresse ein:"
       account_holder: 'Vor- und Nachname'
@@ -375,6 +382,8 @@ de:
   cnb:
     payment:
       success: 'Die Bezahlung ist erfolgt. Ihr Plan ist upgegraded!'
+      cancel: 'Die Bezahlung wurde abgebrochen. Ihr Zugang wurde nicht upgegradet.'
+      failure: 'Die Bezahlung ist leider fehlgeschlagen. Ihr Zugang wurde nicht upgegradet.'
     error:
       plan_not_found:  'Der nachgefragte Plan wird leider nicht angeboten.'
       already_subscribed: 'Sie besitzen bereits ein Abonnement.'

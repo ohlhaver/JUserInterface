@@ -17,10 +17,28 @@ class SignupsController < ApplicationController
   
   protected
   
+  def new_power_by_paypal
+    set_new_user_var
+    render :action => :new_power_by_paypal
+  end
+  
   def new_power_by_invoice
     set_new_user_var
     set_new_paid_by_invoice_var
     render :action => :new_power_by_invoice
+  end
+  
+  def create_power_by_paypal
+    set_create_user_var
+    unless @user.save_with_captcha
+      @user.login = @user.login_original
+      session[:cas_sent_to_gateway] = true
+      render :action => :new_power_by_paypal
+    else
+      @user.update_attribute( :show_upgrade_page, false )
+      session[:return_to] = created_account_path
+      render :action => :create_power_by_paypal
+    end
   end
   
   def create_power_by_invoice
@@ -57,6 +75,7 @@ class SignupsController < ApplicationController
     session[:cas_sent_to_gateway] = true
     attributes = { :terms_and_conditions_accepted => true, :show_upgrade_page => true }
     @user = User.new( attributes )
+    @user.payment_method = params[:id]
   end
   
   def set_create_user_var
