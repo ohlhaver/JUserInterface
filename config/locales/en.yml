@@ -89,6 +89,7 @@ en:
       remember_me: "remember me"
       forgot_password: "forgot password"
       signup: "<b>Click here to sign up!</b>"
+      failure: "Incorrect Username or Password!"
     register:
       continue_to_pay: 'Continue to payment'
       new_user: "Sign up as a new user"

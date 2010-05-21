@@ -56,6 +56,9 @@ class UsersController < ApplicationController
       params[:service] = session[:service]
       CASClient::Frameworks::Rails::GatewayFilter.logout( self, request.request_uri )
     end
+    if params[:e] == '1'
+      flash.now[:error] = I18n.t('jurnalo.login.failure')
+    end
   end
   
   def new
