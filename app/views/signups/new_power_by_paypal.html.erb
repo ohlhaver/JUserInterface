@@ -1,6 +1,6 @@
 <% content_for :custom_javascript do %>
   <%= observe_field( "user_show_upgrade_page_false", :function => "window.open('#{new_account_path}', '_self');" ) %>
-  <%= observe_field( "user_payment_method_invoice", :function => "window.open('#{power_signup_path( :id => :invoice)}', '_self');")%>
+  <% #observe_field( "user_payment_method_invoice", :function => "window.open('#{power_signup_path( :id => :invoice)}', '_self');")%>
 <% end %>
 <div class='news_group'>
   <div class='settings_news_block'>
@@ -32,24 +32,25 @@
       <%= render :partial => 'users/jurnalo_user', :object => f %>
     </div>
   </div>
+  <% if false #commenting this block %>
   <div class='thin_settings_news_block about'>
     <h2><span class="page_label"> <%= t('jurnalo.pay.options.label') %></span></h2>
-    <div>
-      <%= f.radio_button( 'payment_method', 'paypal' ) %>
-      <b><%= t('jurnalo.pay.by_paypal.label') %></b><br/>
+    <div><%= f.radio_button( 'payment_method', 'paypal' ) %>
+    <b><%= t('jurnalo.pay.by_paypal.label') %></b><br/>
     </div><br/>
     <div class="basic_option">
-      <%= f.radio_button( 'payment_method', 'invoice' ) %> 
-      <b><%= t('jurnalo.pay.by_invoice.label') %></b><br/>
-      <%= t('jurnalo.pay.by_invoice.info') %>
+    <%= f.radio_button( 'payment_method', 'invoice' ) %> 
+    <b><%= t('jurnalo.pay.by_invoice.label') %></b><br/>
+    <%= t('jurnalo.pay.by_invoice.info') %>
     </div>
   </div>
+  <% end %>
   <div class='thin_settings_news_block'>
     <div class='about'>
       <%= show_simple_captcha( :object => "user", :image_style => 'blue', :distortion => 'high', :label => t('jurnalo.register.captcha'), :class => 'settings_field' ) %>
       <br>
       <%= f.hidden_field( :terms_and_conditions_accepted ) %>
-      <%= f.submit t('navigation.top.register'), :class => 'confirmation_button' %>
+      <%= f.submit t('jurnalo.register.continue_to_pay'), :class => 'confirmation_button' %>
     </div>
   </div>
 <% end %>

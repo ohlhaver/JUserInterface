@@ -90,6 +90,21 @@ class UsersController < ApplicationController
     end
   end
   
+  def created
+    @msg = case( params[:id] ) when 'pps' :
+      flash.clear
+      I18n.t( 'user.account.power_registration_success')
+    when 'ppf' :
+      flash.clear
+      I18n.t( 'user.account.power_registration_failed')
+    when 'ppc' :
+      flash.clear
+      I18n.t( 'user.account.power_registration_canceled')
+    else
+      I18n.t( 'user.account.registration_success')
+    end
+  end
+  
   def show
     if @user.show_upgrade_page?
       @user.update_attribute( :show_upgrade_page, false )

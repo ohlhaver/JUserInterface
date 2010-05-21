@@ -1,5 +1,5 @@
 <% content_for :custom_javascript do %>
-  <%= observe_field( "user_payment_method_invoice", :function => "window.open('#{power_upgrade_path( :id => :invoice)}', '_self');")%>
+  <%# observe_field( "user_payment_method_invoice", :function => "window.open('#{power_upgrade_path( :id => :invoice)}', '_self');")%>
 <% end %>
 <div class='settings_news_block'>
   <h2><span class="page_label"><%= t('account.power.upgrade.label') -%></span></h2>
@@ -8,6 +8,7 @@
         <%= t('account.power.info') %><br><span>(<%= link_to t('more.info'), power_plan_account_path %>)</span>
   </div>
 </div>
+<% if false #commenting the block of code %>
 <div class='thin_settings_news_block'>
   <h2><span class="page_label"> <%= t('jurnalo.pay.options.label') %></span></h2>
   <% form_for( @user ) do |f| %>
@@ -22,33 +23,8 @@
   </div>
   <% end %>
 </div>
+<% end %>
 <br/><br/>
 <div class='thin_settings_news_block'>
-  <h2><span class="page_label"><%= t('jurnalo.pay.by_paypal.choose_plan') %></span></h2>
-  <form action="<%= PayPalWPSToolkit::Credentials.action_url %>" method="post">
-    <div class='about'>
-      <input type="hidden" name="cmd" value="_s-xclick">
-      <input type="hidden" name="hosted_button_id" value="<%= PayPalWPSToolkit::Credentials.hosted_button_id %>">
-      <h2><input type="hidden" name="on0" value="Jurnalo Power Plan"><%= t( 'jurnalo.power.label' ) %>
-      <span class='adv_search_menu rater'>
-        <select name="os0">
-          <option value="1 month">1 <%= t( 'shared.month' )%> €3,95</option>
-          <option value="3 months">3 <%= t( 'shared.months' )%> €9,95</option>
-          <option value="6 months">6 <%= t( 'shared.months' )%> €17,95</option>
-          <option value="12 months">12 <%= t( 'shared.months' )%> €29,95</option>
-        </select>
-      </span>
-      </h2>
-      <input type="hidden" name="on1" value="Jurnalo User Id">
-      <input type="hidden" name="os1" value="<%= @user.id %>">
-      <input type="hidden" name="on2" value="Subscription Status">
-      <input type="hidden" name="os2" value="Upgrade">
-      <input type="hidden" name="currency_code" value="EUR">
-      <br/><br/>
-      <span class="adv_search_menu rater">
-        <input type="image" src="<%= PayPalWPSToolkit::Credentials.button_image( I18n.locale ) %>" border="0" name="submit" alt="<%= t('jurnalo.pay.by_paypal.button_title') %>">
-        <img alt="" border="0" src="<%= PayPalWPSToolkit::Credentials.button_pixel( I18n.locale ) %>" width="1" height="1">
-      </span>
-    </div>
-  </form>
+  <%= render :partial => 'upgrades/paypal_form' %>
 </div>

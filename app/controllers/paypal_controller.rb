@@ -15,11 +15,14 @@ class PaypalController < ApplicationController
       @paid_by_paypal = PaidByPaypal.create_by_pdt_response( @pdt_vars )
       if @paid_by_paypal.success?
         flash[:notice] = I18n.t('cnb.payment.success')
+        session[:return_to] = created_account_path( :id => :pps ) if new_user_signup?
       else
         flash[:error] = I18n.t('cnb.payment.failure')
+        session[:return_to] = created_account_path( :id => :ppf ) if new_user_signup?
       end
     else
       flash[:error] = I18n.t('cnb.payment.failure')
+      session[:return_to] = created_account_path( :id => :ppf ) if new_user_signup?
     end
     redirect_back_or_default( account_path( :ga => 'pbpPzUkr' ) )
     rescue Exception => exception
@@ -37,7 +40,14 @@ class PaypalController < ApplicationController
   
   def cancel
     flash[:error] = I18n.t('cnb.payment.cancel')
+    session[:return_to] = created_account_path( :id => :ppc ) if new_user_signup?
     redirect_back_or_default( account_path )
+  end
+  
+  protected
+  
+  def new_user_signup?
+    session[:return_to] == created_account_path
   end
   
 end

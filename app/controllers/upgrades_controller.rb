@@ -54,6 +54,8 @@ class UpgradesController < ApplicationController
   end
   
   def new_power_by_invoice
+    redirect_to power_upgrade_path( :id => :paypal )
+    return
     @user.payment_method = 'invoice'
     set_new_paid_by_invoice_var
     render :action => :new_power_by_invoice

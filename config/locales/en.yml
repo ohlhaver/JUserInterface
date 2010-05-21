@@ -90,6 +90,7 @@ en:
       forgot_password: "forgot password"
       signup: "<b>Click here to sign up!</b>"
     register:
+      continue_to_pay: 'Continue to payment'
       new_user: "Sign up as a new user"
       success: "Registered Successfully"
       benefits:
@@ -355,7 +356,10 @@ en:
   user:
     account:
       already_registered: 'You are already registered'
-      registration_success: 'Registration successful!'
+      registration_success: 'Registration for Jurnalo Basic Account successful!'
+      power_registration_success: "Registration for Jurnalo Power Account successful!"
+      power_registration_failed: "Payment for Jurnalo Power Account failed. <br/><br/>Registration for Jurnalo Basic Account successful!"
+      power_registration_canceled: "Payment for Jurnalo Power Account canceled. <br/><br/>Registration for Jurnalo Basic Account successful!"
       activate_instruction: "You have received a new email from Jurnalo. Please check your email inbox to activate your Jurnalo account."
       activate_instruction_send: "Instructions to activate your account have been emailed to you. Please check your email inbox."
       password_reset_instruction: "Instructions to reset your password have been emailed to you. Please check your email inbox."
