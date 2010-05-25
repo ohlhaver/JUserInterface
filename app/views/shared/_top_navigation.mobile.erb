@@ -7,7 +7,7 @@
   <% end %>
 <% end %>
     <% if logged_in? -%><% unless current_user.power_plan? %>
-    <br> <%= link_to( t( 'navigation.top.upgrade'), upgrade_account_path ) %> -
+    <%= link_to( t( 'navigation.top.upgrade'), upgrade_account_path ) %> -
     <% end %> 
 <% end %>
 <%= yield :user_actions -%>
