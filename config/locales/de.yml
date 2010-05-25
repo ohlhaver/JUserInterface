@@ -83,13 +83,13 @@ de:
       address: 'Straße'
       account_holder_note: "*Kontoinhaber ist der Name der Person oder Firma, welche das Bankkonto besitzt, von welchem die Überweisungen getätigt werden."
     login:
-      new_user: "oder {{register}}"
+      new_user: "oder hier {{register}}"
       existing_user: "Benutzen Sie bitte Ihren bestehenden Zugang"
       username: "Benutzername"
       password: "Passwort"
       remember_me: "Auf diesem Computer merken"
       forgot_password: "Passwort vergessen"
-      signup: "<b>Als neuer Benutzer registrieren!</b>"
+      signup: "<b>Hier als neuer Benutzer registrieren!</b>"
       failure: "Benutzername oder Passwort ist falsch!"
     register:
       continue_to_pay: 'Weiter zur Bezahlung'

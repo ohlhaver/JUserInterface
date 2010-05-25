@@ -82,7 +82,7 @@ en:
       zip: "Postal Code"
       account_holder_note: "*Account Holder is the Name of the Person / Company associated with the Bank Account through which the electronic transfer will be made."
     login:
-      new_user: "or {{register}}"
+      new_user: "or {{register}} here"
       existing_user: "Please use your existing account"
       username: "Username"
       password: "Password"
