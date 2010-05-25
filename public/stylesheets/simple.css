@@ -1014,11 +1014,14 @@ border: 0px;
 }
 
 .errorExplanation {
-	font-family: Arial,Helvetica,sans-serif;	
+	font-family: Arial,Helvetica,sans-serif;
+	color: #ff0000;	
+	line-height: 21px;
 }
 
 .errorExplanation h2 {
 	font-family: Arial,Helvetica,sans-serif;
+	
 	
 }
 

@@ -23,14 +23,15 @@
     <%= link_to 'Home', jurnalo_root_path %> &nbsp;
   </div>
   <div id="navigation" >
-    <ul class='nav_block'>
-      <%= render :partial => 'shared/navigation/top_stories' %>
-    </ul>
+
     <ul class='nav_block'>
       <%= render :partial => 'shared/navigation/my_authors' %>
     </ul>
     <ul class='nav_block'>
       <%= render :partial => 'shared/navigation/my_topics'%>
+    </ul>
+    <ul class='nav_block'>
+      <%= render :partial => 'shared/navigation/top_stories' %>
     </ul>
     <ul class='nav_block'>
       <%= render :partial => 'shared/navigation/sections' %>

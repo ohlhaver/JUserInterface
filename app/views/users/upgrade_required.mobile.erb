@@ -10,9 +10,9 @@
     <%= t('account.power.info') %> (<%= link_to t('more.info'), power_plan_account_path %>)</h2>
   </div>
   
-  <% form_tag upgrade_account_path do %>
-    <%= submit_tag "Upgrade", :class => "confirmation_button" %>
-  <%end%>
+  <div class="about">
+    <%= render :partial => 'upgrades/paypal_form' %>
+  </div>
 
 </div>
 </div>

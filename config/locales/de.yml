@@ -90,7 +90,7 @@ de:
       remember_me: "Auf diesem Computer merken"
       forgot_password: "Passwort vergessen"
       signup: "<b>Als neuer Benutzer registrieren!</b>"
-      failure: "Falsches Benutzername oder Passwort!"
+      failure: "Benutzername oder Passwort ist falsch!"
     register:
       continue_to_pay: 'Weiter zur Bezahlung'
       new_user: "Als neuer Benutzer registrieren"
