@@ -5,7 +5,7 @@ class AuthorPreferencesController < ApplicationController
   before_filter :set_user_var
   before_filter :merge_attributes
   before_filter :set_author_preference_var, :only => [ :edit, :show, :update, :destroy ]
-  before_filter :upgrade_required, :only => [ :new, :create ]
+  before_filter :upgrade_required, :only => [ :new ]
   
   required_api_param :user_id, :only => [ :index, :create, :update ]
   required_api_param :id, :only => [ :show, :update ], :if => Proc.new{ |p|  p[ :author_id ].blank? }
@@ -92,7 +92,7 @@ class AuthorPreferencesController < ApplicationController
   protected
   
   def upgrade_required
-    if !@user.power_plan? && @user.author_subscriptions.count > 0
+    if !@user.power_plan? && @user.out_of_limit?
       redirect_to upgrade_required_account_path( :id => 3 )
       return false
     end
