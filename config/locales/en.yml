@@ -132,8 +132,9 @@ en:
       cancel: "Payment is month-to-month. Whenever you decide to cancel, you won’t be billed again."
     upgrade:
       required: "Account Upgrade Required"
-      reason_: "Please upgrade to Jurnalo Power Account for unlimited access."
-      reason_1: "To create more than one topic please upgrade to the Jurnalo Power Account."
+      reason_: 
+        "To create more than a total of 5 topics, author subscriptions and source settings please upgrade to the Jurnalo Power Account."
+      reason_1: "To create more than a total of  5 topics, author subscriptions or source settings please upgrade to the Jurnalo Power Account."
       reason_2: "To rate more than one source please upgrade to the Jurnalo Power Account."
       reason_3: "To subscribe to more than one author please upgrade to the Jurnalo Power Account."
     contact:
