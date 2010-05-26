@@ -1,12 +1,16 @@
 ram:
   service: http://localhost:3000
   cas_server: https://localhost
+  app_server: http://localhost:4000
 development:
   service: http://localhost:3000
   cas_server: https://localhost
+  app_server: http://localhost:4000
 production:
   service: http://accounts.jurnalo.com
   cas_server: https://login.jurnalo.com
+  app_server: http://beta.jurnalo.com
 justus:
   service: http://localhost:3000
   cas_server: https://login.jurnalo.com
+  app_server: http://beta.jurnalo.com

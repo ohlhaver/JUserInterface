@@ -59,6 +59,8 @@ CASClient::Frameworks::Rails::Filter.configure(
   :authenticate_on_every_request => false # true will load cas server heavily
 )
 
+JWebApp = CasServerConfig[ RAILS_ENV ]['app_server'].freeze
+
 #price is in milli cents
 GatewayTransaction.gateway = ClickAndBuyGateway.new( 
   :mode => :production,
