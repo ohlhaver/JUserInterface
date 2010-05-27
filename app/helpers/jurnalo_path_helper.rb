@@ -1,7 +1,7 @@
 module JurnaloPathHelper
   
   def default_service
-    "http://beta.jurnalo.com"
+    JWebApp
   end
   
   # service is jurnalo web app?
