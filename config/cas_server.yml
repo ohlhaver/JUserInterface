@@ -9,8 +9,8 @@ development:
 production:
   service: http://accounts.jurnalo.com
   cas_server: https://login.jurnalo.com
-  app_server: http://beta.jurnalo.com
+  app_server: http://www.jurnalo.com
 justus:
   service: http://localhost:3000
   cas_server: https://login.jurnalo.com
-  app_server: http://beta.jurnalo.com
+  app_server: http://www.jurnalo.com
