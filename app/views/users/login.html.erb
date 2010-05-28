@@ -2,7 +2,7 @@
   <script src="<%= cas_login_js_url %>" type="text/javascript"></script>
 <% end %>
 <% content_for :custom_javascript do %>
-  <script text='type/javascript'>
+  <script>
     Event.observe( window, 'load', function() {
       $('lt').value = window.login_ticket;
     });
@@ -14,11 +14,14 @@
   </div>
 </div>
 <div class='news_group'>
-	<div class ="about">
-  		<div class='thin_settings_news_block'>
-	
-    <%= t('jurnalo.login.existing_user')%>:
-	<br><br>
+  <div class ="about">
+    <div class='thin_settings_news_block'>
+      <%= t('jurnalo.login.facebook') %>:<br/><br/>
+      <a class="fb_button fb_button_large" onclick="facebook_onlogin();" href="#" ><span class="fb_button_text"><%= t('jurnalo.login.fb_button') %></span></a>
+    </div>
+    <br/><br/>
+    <div class='thin_settings_news_block'>
+      <%= t('jurnalo.login.existing_user')%>:<br/><br/>
 	<% form_tag CASClient::Frameworks::Rails::Filter.client.login_url, :id => 'login_form' do %>
    <div class= 'adv_search_lines'>
      <div class="clearfix">

@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_edition_session_var
   before_filter :set_locale
   before_filter :prepare_for_mobile
+  before_filter :set_facebook_login_url
   after_filter :reset_session_params
   
   helper_method :base_url, :base_url?, :mobile_device?
@@ -90,6 +91,11 @@ class ApplicationController < ActionController::Base
   end
   
   private
+  
+  def set_facebook_login_url
+    display = mobile_device? ? 'wap' : 'page'
+    @facebook_login_url =  MiniFB.oauth_url(FB.app_id, JUserApp + "/fb/callback", :scope=> "email", :display => display)
+  end
 
    def mobile_device?
      request.user_agent =~ /(Mobile)|(webOS)|(SymbianOS)|(MIDP-\d\.\d)|(PalmSource)|(SAMSUNG-SGH)/

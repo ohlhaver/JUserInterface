@@ -17,6 +17,9 @@ Rails::Initializer.run do |config|
   config.gem( 'rubycas-client', :version => '2.1.0' )
   config.gem( 'httpclient', :version => '2.1.5.2' )
   config.gem( 'log4r', :version => '1.1.7')
+  config.gem( 'hashie', :version => '0.2.0' )
+  config.gem( 'rest-client', :version => '1.5.1', :lib => 'restclient')
+  
   require 'casclient'
   require 'casclient/frameworks/rails/filter'
 
@@ -60,6 +63,7 @@ CASClient::Frameworks::Rails::Filter.configure(
 )
 
 JWebApp = CasServerConfig[ RAILS_ENV ]['app_server'].freeze
+JUserApp = CasServerConfig[ RAILS_ENV ]['service'].freeze
 
 #price is in milli cents
 GatewayTransaction.gateway = ClickAndBuyGateway.new( 

@@ -1,0 +1,76 @@
+--- !ruby/object:Gem::Specification 
+name: mini_fb
+version: !ruby/object:Gem::Version 
+  prerelease: false
+  segments: 
+  - 1
+  - 0
+  - 3
+  version: 1.0.3
+platform: ruby
+authors: 
+- Travis Reeder
+- Aaron Hurley
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2010-05-07 00:00:00 +05:30
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: rest-client
+  prerelease: false
+  requirement: &id001 !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        segments: 
+        - 0
+        version: "0"
+  type: :runtime
+  version_requirements: *id001
+description: Tiny facebook library
+email: travis@appoxy.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- README.markdown
+files: 
+- lib/mini_fb.rb
+- README.markdown
+has_rdoc: true
+homepage: http://github.com/appoxy/mini_fb
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --charset=UTF-8
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      segments: 
+      - 0
+      version: "0"
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      segments: 
+      - 0
+      version: "0"
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.6
+signing_key: 
+specification_version: 3
+summary: Tiny facebook library
+test_files: 
+- test/test_mini_fb.rb
+

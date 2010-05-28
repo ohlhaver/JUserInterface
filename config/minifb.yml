@@ -1,0 +1,16 @@
+ram:
+  fb_api_key: 187ea3dbeef41f64986b64d917c2894f
+  fb_secret: 9cae718145bc9e587a8088087540b496
+  fb_app_id: 130865143593826
+development:
+  fb_api_key: 485eedc714e52c0c545c3d41d0bfba77
+  fb_secret: bf6b215dd960b16dad14c73eb727dfe4
+  fb_app_id: 126008440757863
+justus:
+  fb_api_key: 187ea3dbeef41f64986b64d917c2894f
+  fb_secret: 9cae718145bc9e587a8088087540b496
+  fb_app_id: 130865143593826
+production:
+  fb_api_key: 187ea3dbeef41f64986b64d917c2894f
+  fb_secret: 9cae718145bc9e587a8088087540b496
+  fb_app_id: 130865143593826

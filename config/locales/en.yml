@@ -84,12 +84,15 @@ en:
     login:
       new_user: "or {{register}} here"
       existing_user: "Please use your existing account"
+      facebook: "Please use your Facebook account"
+      fb_button: "Login"
       username: "Username"
       password: "Password"
       remember_me: "remember me"
       forgot_password: "forgot password"
       signup: "<b>Click here to sign up!</b>"
       failure: "Incorrect Username or Password!"
+      facebook_failure: "Login via Facebook Failed!"
     register:
       continue_to_pay: 'Continue to payment'
       new_user: "Sign up as a new user"
@@ -99,7 +102,7 @@ en:
         body: "- create your own topics<br>- subscribe to any author <br>- weight authors and sources<br>- save interesting articles to your reading list<br><br>"
       now: "sign up now"
       title: "Sign up for Jurnalo"
-      enter_info: "Please enter your information below:"
+      enter_info: "Or, Please enter your information below:"
       accept_tac: "View Jurnalo's privacy policy."
       captcha: "Enter the code below:"
       login: "Username"

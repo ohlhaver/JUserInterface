@@ -88,6 +88,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :account_activations, :collection => [ :activate ]
   map.cnb 'click_and_buy/:action', :controller => 'click_and_buy'
   map.paypal 'paypal/:action', :controller => 'paypal'
+  map.fb 'fb/:action', :controller => 'facebook'
   map.connect ':controller/:id', :action => :show
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'

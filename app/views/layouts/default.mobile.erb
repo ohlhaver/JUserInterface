@@ -10,13 +10,10 @@
     <meta name="verify-v1" content="uktXEFRkC4oLS3pjPi7ZkolIVksbOF8D7PRiyCDs+fM=" />
 	<meta name="viewport" content="initial-scale=0.9; maximum-scale=0.9; user-scalable=0;" />
     <%= yield :header_javascript %>
-    <%= stylesheet_link_tag 'reset' %>
-    <%= stylesheet_link_tag 'grid_mobile' %>
-    <%= stylesheet_link_tag 'simple_mobile' %>
+    <%= stylesheet_link_tag 'reset', 'grid4b', 'simple', 'fb', :cache => 'base' %>
   </head>
   <body>
-    
-      	<div id= "top_frame">
+    <div id= "top_frame">
 
 		<%= link_to( image_tag( 'logo.gif'), jurnalo_root_path ) %>
 		<div id="top_navigation" >
@@ -58,6 +55,9 @@
   <%= yield :custom_javascript %>
 
 <script type="text/javascript">
+function facebook_onlogin(){
+  document.location.href = "<%= @facebook_login_url %>";
+}
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>

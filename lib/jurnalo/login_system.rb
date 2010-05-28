@@ -38,7 +38,7 @@ module Jurnalo
       end
       
       def logged_in?
-        session && session[:cas_user ] && session[:cas_user_attrs]
+        session && session[:cas_user] && session[:cas_user_attrs]
       end
       
       def current_user
@@ -92,9 +92,9 @@ module Jurnalo
       def set_current_user
         return unless session && session[:cas_user_attrs]
         @current_user ||= case( session[:cas_user_attrs]['auth'] )
-        when 'jurnalo' :
+        when 'jurnalo', 'facebook' :
           User.find( :first, :conditions => { :id => session[:cas_user_attrs]['id'] } )
-        when 'google', 'facebook' :
+        when 'google' :
           User.find( :first, :conditions => { :email => session[:cas_user] } )
         end
       end
