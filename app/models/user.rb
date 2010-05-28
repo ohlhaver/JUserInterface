@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   
   def do_login_trick
     self.login_original = self.login
-    self.login = self.login.to_s.downcase.gsub(' ', '_')
+    self.login = self.login.to_s.downcase.gsub(' ', '_') unless self.login_original.blank?
   end
   
   def set_active_true_for_third_party_users
