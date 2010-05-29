@@ -94,7 +94,8 @@ class ApplicationController < ActionController::Base
   
   def set_facebook_login_url
     display = mobile_device? ? 'wap' : 'page'
-    @facebook_login_url =  MiniFB.oauth_url(FB.app_id, JUserApp + "/fb/callback", :scope=> "email", :display => display)
+    #@facebook_login_url =  MiniFB.oauth_url(FB.app_id, JUserApp + "/fb/callback", :scope=> "email", :display => display)
+    @facebook_login_url = fb_path( :action => :login )
   end
 
    def mobile_device?

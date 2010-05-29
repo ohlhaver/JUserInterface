@@ -2,8 +2,14 @@ require 'pp'
 
 class FacebookController < ApplicationController
   
-  jurnalo_login_required :except => [ :callback, :callback2 ]
+  jurnalo_login_required :except => [ :login, :callback, :callback2 ]
   before_filter :require_no_user
+  
+  def login
+    display = mobile_device? ? 'wap' : 'page'
+    callback = params[:p] == '1' ? "/fb/callback2": "/fb/callback"
+    redirect_to MiniFB.oauth_url(FB.app_id, JUserApp + callback, :scope=> "email", :display => display)
+  end
   
   # Profile looks like
   #

@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="verify-v1" content="uktXEFRkC4oLS3pjPi7ZkolIVksbOF8D7PRiyCDs+fM=" />
-	<meta name="viewport" content="initial-scale=0.9; maximum-scale=0.9; user-scalable=0;" />
+    <meta name="viewport" content="initial-scale=0.9; maximum-scale=0.9; user-scalable=0;" />
     <%= yield :header_javascript %>
     <%= stylesheet_link_tag 'reset', 'grid4b', 'simple', 'fb', :cache => 'base' %>
   </head>
@@ -48,10 +48,7 @@
       <%= render :partial => 'shared/footer' %>
     </div>
   </div>
-  <%= javascript_include_tag 'prototype' %>
-  <%= javascript_include_tag 'effects' %>
-  <%= javascript_include_tag 'controls' %>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'prototype', 'effects', 'controls', 'application', :cache => 'jbase' %>
   <%= yield :custom_javascript %>
 
 <script type="text/javascript">

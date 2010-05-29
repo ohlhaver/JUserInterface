@@ -20,7 +20,7 @@ class SignupsController < ApplicationController
   def new_power_by_paypal
     set_new_user_var
     display = mobile_device? ? 'wap' : 'page'
-    @facebook_login_url =  MiniFB.oauth_url(FB.app_id, JUserApp + "/fb/callback2", :scope=> "email", :display => display)
+    @facebook_login_url = fb_path( :action => :login, :p => 1 )
     render :action => :new_power_by_paypal
   end
   

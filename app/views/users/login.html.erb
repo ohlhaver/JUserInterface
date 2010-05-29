@@ -17,7 +17,7 @@
   <div class ="about">
     <div class='thin_settings_news_block'>
       <%= t('jurnalo.login.facebook') %>:<br/><br/>
-      <a class="fb_button fb_button_large" onclick="facebook_onlogin();" href="#" ><span class="fb_button_text"><%= t('jurnalo.login.fb_button') %></span></a>
+      <a class="fb_button fb_button_large" rel="nofollow" onclick="facebook_onlogin();return false" href="<%= @facebook_login_url %>" ><span class="fb_button_text"><%= t('jurnalo.login.fb_button') %></span></a>
     </div>
     <br/><br/>
     <div class='thin_settings_news_block'>

@@ -4,6 +4,7 @@
     
   <% else -%>
     <br> <%= link_to( t( 'navigation.top.login' ), login_path ) -%> - <%= link_to( t('navigation.top.register'), new_account_path )%>
+    - <a class="fb_button fb_button_small" rel="nofollow" onclick="facebook_onlogin();return false" href="<%= @facebook_login_url %>" ><span class="fb_button_text"><%= t('jurnalo.login.fb_button') %></span></a>
   <% end %>
 <% end %>
 <%= link_to( t( 'navigation.top.reading_list' ), jurnalo_reading_list_path ) -%> <br>
