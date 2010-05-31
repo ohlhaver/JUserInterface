@@ -334,6 +334,9 @@ en:
     source: 'Source preference'
     author: 'Author preference'
   emails:
+    alerts:
+      using_fb_proxy: "You are using Facebook Proxy for Emails"
+      not_working: "Not Receiving Email Alerts?"
     activation:
       part1: "Dear Reader,"
       part2: "Welcome to Jurnalo! You have just created your account on Jurnalo."  

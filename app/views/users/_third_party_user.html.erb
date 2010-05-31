@@ -1,12 +1,21 @@
-<%= third_party_user.label :name %><br />
-<%= third_party_user.text_field :name %><br />
-<br />
-<% if third_party_user.object.new_record? %>
-<%= third_party_user.check_box :terms_and_conditions_accepted %>
-<%= third_party_user.label :terms_and_conditions_accepted, 'Accept Jurnalo Terms And Conditions'%><br />
-<% end -%>
-
-
-
-
-
+<div class= 'adv_search_lines'>
+  <div class="clearfix">
+    <%= third_party_user.text_field :name, :id => "settings_field" %>
+    <%= third_party_user.label :name, t('jurnalo.register.name') %>
+  </div>
+  <% if third_party_user.object.has_fb_proxy_email? %>
+    <% if third_party_user.object.second_email.blank? %>
+      <%= t('emails.alerts.using_fb_proxy') %><br/>
+      <strong><%= t('emails.alerts.not_working') %></strong>
+    <% end %>
+    <div class="clearfix">
+      <%= third_party_user.text_field :second_email, :id => "settings_field" %>
+      <%= third_party_user.label :second_email, t('jurnalo.register.email') %>
+    </div>
+  <% else %>
+    <div class="clearfix">
+      <%= third_party_user.text_field :email, :id => "settings_field" %>
+      <%= third_party_user.label :email, t('jurnalo.register.email') %>
+    </div>
+  <% end %>
+</div>
