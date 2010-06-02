@@ -27,7 +27,7 @@ class StoriesController < ApplicationController
     @stories.collect{ |x| x.group_to_serialize = cluster_hash[ x.active_story_group_membership.try(:group_id) ] }
     # by default the ids order is preserve
     map = @stories.inject({}){ |s,x| s[x.id] = x; s }
-    @stories = Array( story_ids ).uniq.collect{ |s| map[s.to_i] }
+    @stories = Array( story_ids ).uniq.collect{ |s| map[s.to_i] }.select{ |x| !x.nil? }
     rxml_data( @stories, :root => 'stories' )
   end
   
