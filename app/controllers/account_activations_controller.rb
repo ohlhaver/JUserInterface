@@ -29,7 +29,7 @@ class AccountActivationsController < ApplicationController
     @user.activate!
     flash[:notice] = I18n.t('user.account.activated')
     session_activate
-    redirect_to login_path( :service => "#{JWebApp}/?ga=emCyamsW&fl=1", :jwa => 0, :ga => "emCyamsW" )
+    redirect_to login_path( :service => cas_service_url( "#{JWebApp}/?ga=emCyamsW&fl=1" ), :jwa => 0, :ga => "emCyamsW" )
   end
   
   # Request to activate account using activation token
@@ -37,7 +37,7 @@ class AccountActivationsController < ApplicationController
     @user.activate!
     flash[:notice] = I18n.t('user.account.activated')
     session_activate
-    redirect_to login_path( :service => "#{JWebApp}/?ga=emCyamsW&fl=1", :jwa => 0, :ga => "emCyamsW" )
+    redirect_to login_path( :service => cas_service_url( "#{JWebApp}/?ga=emCyamsW&fl=1" ), :jwa => 0, :ga => "emCyamsW" )
   end
   
   protected

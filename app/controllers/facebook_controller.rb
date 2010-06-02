@@ -46,7 +46,7 @@ class FacebookController < ApplicationController
     service_url = if !u.power_plan? && params[:p] == '1'
       JUserApp + power_upgrade_path( :id => :paypal )
     else
-      default_service
+      cas_service_url( default_service )
     end
     redirect_to CASClient::Frameworks::Rails::Filter.client.login_url+"?service=#{CGI.escape(service_url)}&u=#{u.facebook_uid}&fb=1&p=#{u.fb_auth_digest}&s=#{Authlogic::Random.hex_token}"
     rescue Exception => exception

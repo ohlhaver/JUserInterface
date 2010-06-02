@@ -12,10 +12,6 @@ module ApplicationHelper
     CASClient::Frameworks::Rails::Filter.login_url(controller) + "&format=js&v=#{Time.now.to_i}"
   end
   
-  def cas_service_url
-    session[:service] ? service_return_path : CasServerConfig[RAILS_ENV]['service']+account_path
-  end
-  
   def cas_on_error_url
     CasServerConfig[RAILS_ENV]['service']+login_path(:e => '1')
   end

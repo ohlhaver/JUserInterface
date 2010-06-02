@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_facebook_login_url
   after_filter :reset_session_params
   
-  helper_method :base_url, :base_url?, :mobile_device?
+  helper_method :base_url, :base_url?, :mobile_device?, :cas_service_url
   
   def logout
     # returns to the application registration page
@@ -104,6 +104,10 @@ class ApplicationController < ActionController::Base
 
    def prepare_for_mobile
      request.format = :mobile if mobile_device?
+   end
+   
+   def cas_service_url( default = nil )
+     session[:service] ? service_return_path : ( default || CasServerConfig[RAILS_ENV]['service']+account_path )
    end
   
 end
