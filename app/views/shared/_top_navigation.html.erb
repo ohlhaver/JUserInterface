@@ -1,24 +1,19 @@
 <% content_for :user_actions do -%>
   <% if logged_in? -%>
-    <br> <%= link_to( t( 'navigation.top.logout', :name => current_user.name ), logout_path ) %>
+    <%= link_to( t( 'navigation.top.logout', :name => current_user.name ), logout_path ) %>
     
   <% else -%>
+	<a class="fb_button fb_button_small" rel="nofollow" onclick="facebook_onlogin();return false" href="<%= @facebook_login_url %>" ><span class="fb_button_text"><%= t('jurnalo.login.fb_button') %></span></a>
     <br> <%= link_to( t( 'navigation.top.login' ), login_path ) -%> - <%= link_to( t('navigation.top.register'), new_account_path )%>
-    - <a class="fb_button fb_button_small" rel="nofollow" onclick="facebook_onlogin();return false" href="<%= @facebook_login_url %>" ><span class="fb_button_text"><%= t('jurnalo.login.fb_button') %></span></a>
   <% end %>
 <% end %>
-<%= link_to( t( 'navigation.top.reading_list' ), jurnalo_reading_list_path ) -%> <br>
-<% if logged_in? %>
-<span class='current'>
-  <%= t( 'navigation.top.settings' ) %></span>
+
+<%= yield :user_actions -%>
+<br>
+<%= link_to( t( 'navigation.top.reading_list' ), jurnalo_reading_list_path ) -%> - <%= link_to( t('navigation.top.settings'), account_path ) %>
   <% if logged_in? -%>
 	<% unless current_user.power_plan? %>
-  - <%= link_to( t( 'navigation.top.upgrade'), upgrade_account_path ) %>
+  <br> <%= link_to( t( 'navigation.top.upgrade'), upgrade_account_path ) %>
   <% end %>
 <% end %>
 
-
-<% else %>
-  <%= link_to( t('navigation.top.settings'), account_path ) %>
-<% end %>
-<%= yield :user_actions -%>
