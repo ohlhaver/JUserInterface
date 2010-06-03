@@ -41,7 +41,12 @@ class StoriesController < ApplicationController
     set_user_var unless params[:user_id].blank?
     params[:author_ids] = scan_multiple_value_param( :author_ids, :first) || scan_multiple_value_param( :author_id, :first )
     return by_top_authors if params[:author_ids] == 'top'
-    @stories ||= StorySearch.new( @user, :author, params ).results
+    if params[:all] == '1' # all means no time limit the articles
+      @author = Author.find( :first, :conditions => { :id => params[:author_ids], :block => false } )
+      @stories ||= @author.stories.paginate( :page => params[:page], :order => 'created_at DESC', :per_page => per_page ) if @author
+    else
+      @stories ||= StorySearch.new( @user, :author, params ).results
+    end
     rxml_stories
   end
   
