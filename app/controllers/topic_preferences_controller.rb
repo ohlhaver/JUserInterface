@@ -11,6 +11,13 @@ class TopicPreferencesController < ApplicationController
   required_api_param :id, :only => [ :update, :destroy ]
   required_api_param :topic_preference, :only => [ :create, :update ]
   
+  
+  caches_action :index, :cache_path => { :cache_key => [ :@user, :home_group, :page, :per_page ] }, 
+    :expires_in => 24.hours, :if => Proc.new{ |c| c.params[:format] == 'xml' }
+    
+  caches_action :show, :cache_path => { :cache_key => [ :@user, :id ] }, 
+      :expires_in => 24.hours, :if => Proc.new{ |c| c.params[:format] == 'xml' }
+    
   def new
     @topic_preference = @user.topic_subscriptions.build( params[:topic_preference] )
   end

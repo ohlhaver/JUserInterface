@@ -6,3 +6,5 @@ production:
   path: /home/jurnalo/apps/JModels/current
 justus:
   path: /Users/justus/JModels
+cached:
+  path: /Users/ram/Workspace/jurnalo/JModels

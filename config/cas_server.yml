@@ -14,3 +14,7 @@ justus:
   service: http://localhost:3000
   cas_server: https://login.jurnalo.com
   app_server: http://www.jurnalo.com
+cached:
+  service: http://localhost:3000
+  cas_server: https://localhost
+  app_server: http://localhost:4000

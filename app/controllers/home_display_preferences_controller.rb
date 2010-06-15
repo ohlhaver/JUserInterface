@@ -11,6 +11,9 @@ class HomeDisplayPreferencesController < ApplicationController
   required_api_param :reorder, :only => [ :update ]
   required_api_param :home_display_preference, :only => [ :create ]
   
+  caches_action :index, :cache_path => { :cache_key => [ :@user ] }, 
+    :expires_in => 24.hours, :if => Proc.new{ |c| c.params[:format] == 'xml' }
+  
   def index
     @home_display_preference = @user.multi_valued_preferences.preference( :homepage_boxes ).build
     @home_display_preferences = @user.multi_valued_preferences.preference( :homepage_boxes ).all

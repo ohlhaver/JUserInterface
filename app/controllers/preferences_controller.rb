@@ -10,6 +10,12 @@ class PreferencesController < ApplicationController
   required_api_param :id, :only => [ :show, :update, :create ]
   required_api_param :preference, :only => [ :update, :create ]
   
+  caches_action :index, :cache_path => { :cache_key => [ :preference_id, :region_id, :language_id ] },
+    :expires_in => 24.hours, :if => :single_access_allowed?
+    
+  caches_action :show, :cache_path => { :cache_key => [ :@user, :only, :details ] },
+    :expires_in => 24.hours, :if => :single_access_allowed?
+  
   def index
     respond_to do |format|
       format.mobile{ redirect_to :action => :edit }

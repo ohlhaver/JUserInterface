@@ -13,6 +13,14 @@ development:
     username: root
     password: 
     host: localhost
+    
+cached:
+  adapter: mysql
+  encoding: utf8
+  database: tier2_db_dev
+  username: root
+  password: 
+  host: localhost
 
 production:
     adapter: mysql

@@ -12,6 +12,9 @@ class HomeClusterPreferencesController < ApplicationController
   required_api_param :reorder, :only => [ :update ]
   required_api_param :home_cluster_preference, :only => [ :create ]
   
+  caches_action :index, :cache_path => { :cache_key => [ :@user, :region_id, :language_id ] }, 
+    :expires_in => 24.hours, :if => Proc.new{ |c| c.params[:format] == 'xml' }
+  
   def index
     @home_cluster_preference = @user.multi_valued_preferences.preference( :homepage_clusters ).build
     @home_cluster_preferences = @user.homepage_cluster_group_preferences( :include => :cluster_group, :region_id => @region_id, :language_id => @language_id )
