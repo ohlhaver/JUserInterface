@@ -5,7 +5,7 @@ class StoriesController < ApplicationController
   before_filter :set_story_var, :only => [ :edit, :show, :update, :destroy ]
   before_filter :set_cluster_group_vars, :only => :by_cluster_groups
   before_filter :set_topic_vars, :only => :by_user_topics
-  before_filter :set_author_vars, :only => :by_authors
+  before_filter :set_user_vars, :only => [ :by_authors, :index ]
   
   required_api_param :id, :only => [ :show ]
   required_api_param :story_ids, :only => [ :by_story_ids ], :if => Proc.new{ |p| p[:story_id].blank? }
@@ -24,9 +24,12 @@ class StoriesController < ApplicationController
     
   caches_action :by_authors, :cache_path => { :cache_key => [ :@user, :author_ids, :page, :per_page, :time_span, :all ] },
     :expires_in => 5.minutes, :if => Proc.new{ |c| c.params[:format] == 'xml' }
+    
+  caches_action :index, :cache_path => { :cache_key => [ :q, :@user, :page, :per_page, :blog, :opinion, :video, :sort_criteria, :subscription_type, :time_span, :language_id ] }, 
+    :expires_in => 5.minutes, :if => Proc.new{ |c| c.params[:format] == 'xml' }
   
   def index
-    set_user_var unless params[:user_id].blank?
+    #set_user_var unless params[:user_id].blank?
     @stories = StorySearch.new( @user, :simple, params ).results
     rxml_stories
   end
@@ -259,7 +262,7 @@ class StoriesController < ApplicationController
     set_user_var
   end
   
-  def set_author_vars
+  def set_user_vars
     set_user_var unless params[:user_id].blank?
   end
   
