@@ -4,7 +4,7 @@ class StoriesController < ApplicationController
   
   before_filter :set_story_var, :only => [ :edit, :show, :update, :destroy ]
   before_filter :set_cluster_group_vars, :only => :by_cluster_groups
-  before_filter :set_topic_vars, :only => :by_topics
+  before_filter :set_topic_vars, :only => :by_user_topics
   before_filter :set_author_vars, :only => :by_authors
   
   required_api_param :id, :only => [ :show ]
