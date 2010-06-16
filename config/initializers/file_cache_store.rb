@@ -43,7 +43,7 @@ ActionController::Caching::Actions::ActionCachePath.class_eval do
     path = controller.url_for(options).split('://').last
     normalize!( path )
     add_extension!(path, @extension)
-    path << "/" << Array( cache_key ).collect{ |s| ( s.to_s[0] == ?@ ? controller.instance_variable_get( s ).cache_key : controller.params[s] ) || 'nil' }.join('-')
+    path << "/" << Array( cache_key ).collect{ |s| ( s.to_s[0] == ?@ ? controller.instance_variable_get( s ).try(:cache_key) : controller.params[s] ) || 'nil' }.join('-')
     @path = URI.unescape(path)
   end
 

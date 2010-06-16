@@ -3,6 +3,9 @@ class StoriesController < ApplicationController
   jurnalo_login_required
   
   before_filter :set_story_var, :only => [ :edit, :show, :update, :destroy ]
+  before_filter :set_cluster_group_vars, :only => :by_cluster_groups
+  before_filter :set_topic_vars, :only => :by_topics
+  before_filter :set_author_vars, :only => :by_authors
   
   required_api_param :id, :only => [ :show ]
   required_api_param :story_ids, :only => [ :by_story_ids ], :if => Proc.new{ |p| p[:story_id].blank? }
@@ -12,6 +15,15 @@ class StoriesController < ApplicationController
   required_api_param :cluster_id, :only => [ :by_clusters ], :if => Proc.new{ |p| p[:cluster_ids].blank? }
   required_api_param :user_id, :only => [ :by_user_topics ]
   required_api_param :topic_id, :only => [ :by_user_topics ], :if => Proc.new{ |p| p[:topic_ids].blank? }
+  
+  caches_action :by_cluster_groups, :cache_path => { :cache_key => [ :@bj_session, :@user, :cluster_group_id, :page, :per_page, :region_id, :language_id, :top, :preview ] },
+    :expires_in => 24.hours, :if => Proc.new{ |c| c.params[:format] == 'xml' }
+  
+  caches_action :by_topics, :cache_path => { :cache_key => [ :@user, :topic_id, :page, :per_page, :blog, :opinion, :video, :time_span, :sort_criteria, :subscription_type ] },
+    :expires_in => 5.minutes, :if => Proc.new{ |c| c.params[:format] == 'xml' }
+    
+  caches_action :by_authors, :cache_path => { :cache_key => [ :@user, :author_ids, :page, :per_page, :time_span, :all ] },
+    :expires_in => 5.minutes, :if => Proc.new{ |c| c.params[:format] == 'xml' }
   
   def index
     set_user_var unless params[:user_id].blank?
@@ -38,7 +50,6 @@ class StoriesController < ApplicationController
   end
   
   def by_authors
-    set_user_var unless params[:user_id].blank?
     params[:author_ids] = scan_multiple_value_param( :author_ids, :first) || scan_multiple_value_param( :author_id, :first )
     return by_top_authors if params[:author_ids] == 'top'
     if params[:all] == '1' # all means no time limit the articles
@@ -93,7 +104,6 @@ class StoriesController < ApplicationController
   end
   
   def by_cluster_groups
-    set_user_var unless params[:user_id].blank?
     param_value = scan_multiple_value_param( :cluster_group_id, :first ) || scan_multiple_value_param( :cluster_group_ids )
     case param_value when 'all'
       params[:preview] = 1
@@ -164,7 +174,6 @@ class StoriesController < ApplicationController
   end
   
   def by_user_topics
-    set_user_var
     param_value = scan_multiple_value_param( :topic_id, :first ) || scan_multiple_value_param( :topic_ids )
     return by_multiple_user_topics( param_value ) if param_value.is_a?( Array ) || param_value == 'all' || param_value == 'my'
     topic = @user.topic_subscriptions.find( params[:topic_id] )
@@ -239,6 +248,19 @@ class StoriesController < ApplicationController
   
   def single_access_allowed?
     params[:format] == 'xml'
+  end
+  
+  def set_cluster_group_vars
+    @bj_session = BjSession.current( BjSession::Jobs::GroupGeneration ) # used for validating and invalidating cache
+    set_user_var unless params[:user_id].blank?
+  end
+  
+  def set_topic_vars
+    set_user_var
+  end
+  
+  def set_author_vars
+    set_user_var unless params[:user_id].blank?
   end
   
 end
