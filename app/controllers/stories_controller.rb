@@ -16,7 +16,7 @@ class StoriesController < ApplicationController
   required_api_param :user_id, :only => [ :by_user_topics ]
   required_api_param :topic_id, :only => [ :by_user_topics ], :if => Proc.new{ |p| p[:topic_ids].blank? }
   
-  caches_action :by_cluster_groups, :cache_path => { :cache_key => [ :@bj_session, :@user, :cluster_group_id, :page, :per_page, :region_id, :language_id, :top, :preview ] },
+  caches_action :by_cluster_groups, :cache_path => { :cache_key => [ :@bj_session, :@user, :cluster_group_id, :page, :per_page, :region_id, :language_id, :top, :preview, :top_cluster_ids ] },
     :expires_in => 24.hours, :if => Proc.new{ |c| c.params[:format] == 'xml' }
   
   caches_action :by_user_topics, :cache_path => { :cache_key => [ :@user, :topic_id, :page, :per_page, :blog, :opinion, :video, :time_span, :sort_criteria, :subscription_type ] },
@@ -125,7 +125,9 @@ class StoriesController < ApplicationController
       cluster_group_hash = { :id => cluster_group.id, :name => cluster_group.name, :stories => stories }
       rxml_data( cluster_group_hash, :root => 'cluster_group', :pagination_results => stories , :with_pagination => true )
     else
-      story_groups = StoryGroup.active_session.by_cluster_group_id( cluster_group.id ).paginate( options )
+      cluster_options = { :top_cluster_ids => params[:top_cluster_ids] }
+      cluster_options.delete( :top_cluster_ids ) if @user && !@user.show_top_stories_cluster_group?
+      story_groups = StoryGroup.active_session.by_cluster_group_id( cluster_group.id, cluster_options ).paginate( options )
       StoryGroup.populate_stories_to_serialize( @user, story_groups, per_cluster )
       cluster_group_hash = { :id => cluster_group.id, :name => cluster_group.name, :clusters => story_groups } 
       rxml_data( cluster_group_hash, :root => 'cluster_group', :pagination_results => story_groups , :with_pagination => true )
