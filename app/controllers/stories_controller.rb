@@ -19,7 +19,7 @@ class StoriesController < ApplicationController
   caches_action :by_cluster_groups, :cache_path => { :cache_key => [ :@bj_session, :@user, :cluster_group_id, :page, :per_page, :region_id, :language_id, :top, :preview, :top_cluster_ids ] },
     :expires_in => 24.hours, :if => Proc.new{ |c| c.params[:format] == 'xml' }
   
-  caches_action :by_user_topics, :cache_path => { :cache_key => [ :@user, :topic_id, :page, :per_page, :blog, :opinion, :video, :time_span, :sort_criteria, :subscription_type ] },
+  caches_action :by_user_topics, :cache_path => { :cache_key => [ :@user, :topic_id, :page, :per_page, :blog, :opinion, :video, :time_span, :sort_criteria, :subscription_type, :preview ] },
     :expires_in => 5.minutes, :if => Proc.new{ |c| c.params[:format] == 'xml' }
     
   caches_action :by_authors, :cache_path => { :cache_key => [ :@user, :author_ids, :page, :per_page, :time_span, :all ] },
@@ -182,6 +182,10 @@ class StoriesController < ApplicationController
     param_value = scan_multiple_value_param( :topic_id, :first ) || scan_multiple_value_param( :topic_ids )
     return by_multiple_user_topics( param_value ) if param_value.is_a?( Array ) || param_value == 'all' || param_value == 'my'
     topic = @user.topic_subscriptions.find( params[:topic_id] )
+    if params[:preview] == '1'
+      params[:page] = 1
+      params[:per_page] = per_cluster_group
+    end
     topic.stories_to_serialize = topic.stories( params )
     rxml_data( topic, :pagination_results => topic.stories_to_serialize, :with_pagination => true, :root => 'topic' )
   end
