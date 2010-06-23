@@ -5,7 +5,7 @@ namespace :cache do
     if Rails.cache.respond_to?( :cache_path )
       dirs = Dir[ "#{Rails.cache.cache_path}/views/*/api/*/" ]
       dirs.each do |dir|
-        pp dir_list
+        dir_list = Dir[ dir+'*/' ]
         if dir_list.any?
           delete_dir = dir + 'to_delete'
           FileUtils.mkdir_p( delete_dir )
