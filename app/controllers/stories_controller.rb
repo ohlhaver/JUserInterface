@@ -57,7 +57,7 @@ class StoriesController < ApplicationController
     return by_top_authors if params[:author_ids] == 'top'
     if params[:all] == '1' # all means no time limit the articles
       @author = Author.find( :first, :conditions => { :id => params[:author_ids], :block => false } )
-      @stories ||= @author.stories.paginate( :page => params[:page], :order => 'created_at DESC', :per_page => per_page ) if @author
+      @stories ||= @author.stories_paginate( :page => params[:page], :order => 'story_created_at DESC', :per_page => per_page, :include => { :story => [ :source, :authors ] } ) if @author
     else
       @stories ||= StorySearch.new( @user, :author, params ).results
     end
