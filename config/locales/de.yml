@@ -287,6 +287,7 @@ de:
       register: "Registrieren"
       settings: "Einstellungen"
       upgrade: "Upgrade"
+      renew: "Erneuern"
   search:
     results:
       per_page: "{{count}} Ergebnisse pro Seite"

@@ -285,6 +285,7 @@ en:
       register: "Sign up"
       settings: "Settings"
       upgrade: "Upgrade"
+      renew: "Renew"
   search:
     page:
       title: "Search results For: {{query}}"
