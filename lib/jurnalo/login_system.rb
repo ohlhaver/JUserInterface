@@ -4,8 +4,12 @@ class CASClient::Frameworks::Rails::GatewayFilter
     referer = service || controller.request.referer
     st = controller.session[:cas_last_valid_ticket]
     delete_service_session_lookup( st ) if st
-    controller.send( :reset_session )
-    controller.send(:redirect_to, client.logout_url(referer)+"&gateway=1" )
+    begin
+      TICKET_STORE.delete( session[:session_id] ) if TICKET_STORE
+    ensure
+      controller.send( :reset_session )
+      controller.send( :redirect_to, client.logout_url(referer)+"&gateway=1" )
+    end
   end
   
 end
@@ -160,13 +164,19 @@ module Jurnalo
       
       def restore_mem_cache_cas_last_valid_ticket
         return unless cas_filter_allowed? && TICKET_STORE
-        last_ticket = TICKET_STORE.get( session[:session_id] )
-        session[:cas_last_valid_ticket] = last_ticket
+        @last_cas_ticket = TICKET_STORE.get( session[:session_id] )
+        session[:cas_last_valid_ticket] = @last_cas_ticket
       end
       
       def store_to_mem_cache_cas_last_valid_ticket
         return unless cas_filter_allowed? && TICKET_STORE
-        TICKET_STORE.set( session[:session_id], session[:cas_last_valid_ticket], 15.minutes.to_i ) if session[:cas_last_valid_ticket]
+        if @last_cas_ticket != session[:cas_last_valid_ticket] && session[:cas_last_valid_ticket]
+          if @last_cas_ticket
+            TICKET_STORE.replace( session[:session_id], session[:cas_last_valid_ticket], 48.hours.to_i )
+          else
+            TICKET_STORE.add( session[:session_id], session[:cas_last_valid_ticket], 48.hours.to_i )
+          end
+        end
         session.delete( :cas_last_valid_ticket )
       end
       
