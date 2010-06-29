@@ -5,7 +5,7 @@ class CASClient::Frameworks::Rails::GatewayFilter
     st = controller.session[:cas_last_valid_ticket]
     delete_service_session_lookup( st ) if st
     begin
-      TICKET_STORE.delete( session[:session_id] ) if TICKET_STORE
+      TICKET_STORE.delete( controller.session[:session_id] ) if TICKET_STORE
     ensure
       controller.send( :reset_session )
       controller.send( :redirect_to, client.logout_url(referer)+"&gateway=1" )
