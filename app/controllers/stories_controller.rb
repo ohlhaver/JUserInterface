@@ -185,6 +185,7 @@ class StoriesController < ApplicationController
     if params[:preview] == '1'
       params[:page] = 1
       params[:per_page] = per_cluster_group
+      params[:timespan] = Preference.select_value_by_name_and_code( :time_span, :last_day )[ :id ]
     end
     topic.stories_to_serialize = topic.stories( params )
     rxml_data( topic, :pagination_results => topic.stories_to_serialize, :with_pagination => true, :root => 'topic' )
@@ -193,6 +194,7 @@ class StoriesController < ApplicationController
   def by_multiple_user_topics( topic_ids )
     params[:page] = 1
     params[:per_page] = per_cluster_group
+    params[:timespan] = Preference.select_value_by_name_and_code( :time_span, :last_day )[ :id ]
     @topics = @user.topic_subscriptions.home_group if topic_ids == 'all'
     @topics = @user.topic_subscriptions.all if topic_ids == 'my'
     @topics ||= @user.topic_subscriptions.find( :all, :conditions => { :id => topic_ids } )
