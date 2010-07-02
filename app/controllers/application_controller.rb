@@ -103,8 +103,9 @@ class ApplicationController < ActionController::Base
    end
 
    def prepare_for_mobile
-     request.format = :mobile if mobile_device? 
-     request.format ||= :html unless params[:format] == 'xml'
+     return if params[:format] == 'xml'
+     request.format = :html
+     request.format = :mobile if mobile_device?
    end
    
    def cas_service_url( default = nil )
