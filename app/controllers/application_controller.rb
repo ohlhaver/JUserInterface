@@ -103,7 +103,7 @@ class ApplicationController < ActionController::Base
    end
 
    def prepare_for_mobile
-     request.format = ( mobile_device? ? :mobile  : :html )
+     request.format = :mobile if mobile_device? 
    end
    
    def cas_service_url( default = nil )
