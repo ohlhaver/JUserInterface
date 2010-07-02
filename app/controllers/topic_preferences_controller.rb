@@ -35,16 +35,16 @@ class TopicPreferencesController < ApplicationController
       @topic_preferences = @user.topic_subscriptions.paginate( :all, :page => params[:page] || '1', :include => [ :source, :category, :region, :author ] )
     end
     respond_to do |format|
-      format.mobile
       format.html
+      format.mobile
       format.xml{ rxml_data( @topic_preferences, :root => 'topic_preferences', :with_pagination => true ) }
     end
   end
   
   def show
     respond_to do |format|
-      format.mobile{ redirect_to :action => :index }
       format.html{ redirect_to :action => :index }
+      format.mobile{ redirect_to :action => :index }
       format.xml{ rxml_data( @topic_preference, :root => 'topic_preference' ) }
     end
   end
@@ -54,12 +54,12 @@ class TopicPreferencesController < ApplicationController
     respond_to do |format|
       if @topic_preference.save
         flash[:notice] = I18n.t('user.pref.create_success')
-        format.mobile{ redirect_to( base_url?( new_user_topic_preference_path( @user ) ) || request.referer.blank? ? { :action => :index } : request.referer ) }
         format.html{ redirect_to( base_url?( new_user_topic_preference_path( @user ) ) || request.referer.blank? ? { :action => :index } : request.referer ) }
+        format.mobile{ redirect_to( base_url?( new_user_topic_preference_path( @user ) ) || request.referer.blank? ? { :action => :index } : request.referer ) }
         format.xml{ rxml_success( @topic_preference, :action => :create ) }
       else
-        format.mobile{ render :action => :new }
         format.html{ render :action => :new }
+        format.mobile{ render :action => :new }
         format.xml{ rxml_error( @topic_preference, :action => :create ) }
       end
     end
@@ -71,12 +71,12 @@ class TopicPreferencesController < ApplicationController
     respond_to do |format|
       if @topic_preference.save
         flash[:notice] = I18n.t('user.pref.update_success')
-        format.mobile{ redirect_to :action => :index }
         format.html{ redirect_to :action => :index }
+        format.mobile{ redirect_to :action => :index }
         format.xml{ rxml_success( @topic_preference, :action => :update ) }
       else
-        format.mobile{ render :action => :edit }
         format.html{ render :action => :edit }
+        format.mobile{ render :action => :edit }
         format.xml{ rxml_error( @topic_preference, :action => :update ) }
       end
     end
@@ -104,8 +104,8 @@ class TopicPreferencesController < ApplicationController
     end
     respond_to do |format|
       flash[:notice] = I18n.t('user.pref.update_success')
-      format.mobile{ redirect_to request.referer || { :action => :index } }
       format.html{ redirect_to request.referer || { :action => :index } }
+      format.mobile{ redirect_to request.referer || { :action => :index } }
       format.xml{ rxml_success( @topic_preference, :action => :update ) }
     end
   end
@@ -114,8 +114,8 @@ class TopicPreferencesController < ApplicationController
     @topic_preference.destroy
     respond_to do |format|
       flash[:notice] = I18n.t('user.pref.remove_success')
-      format.mobile{ redirect_to request.referer || { :action => :index } }
       format.html{ redirect_to request.referer || { :action => :index } }
+      format.mobile{ redirect_to request.referer || { :action => :index } }
       format.xml{ rxml_success( @topic_preference, :action => :delete ) }
     end
   end
