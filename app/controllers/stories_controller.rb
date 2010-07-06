@@ -22,7 +22,7 @@ class StoriesController < ApplicationController
   caches_action :by_user_topics, :cache_path => { :cache_key => [ :@user, :topic_id, :page, :per_page, :blog, :opinion, :video, :time_span, :sort_criteria, :subscription_type, :preview ] },
     :expires_in => 5.minutes, :if => Proc.new{ |c| c.params[:format] == 'xml' }
     
-  caches_action :by_authors, :cache_path => { :cache_key => [ :@user, :author_ids, :page, :per_page, :time_span, :all ] },
+  caches_action :by_authors, :cache_path => { :cache_key => [ :@user, :author_ids, :page, :per_page, :time_span, :all, :preview, :language_id ] },
     :expires_in => 5.minutes, :if => Proc.new{ |c| c.params[:format] == 'xml' }
     
   caches_action :index, :cache_path => { :cache_key => [ :q, :@user, :page, :per_page, :blog, :opinion, :video, :sort_criteria, :subscription_type, :time_span, :language_id ] }, 
