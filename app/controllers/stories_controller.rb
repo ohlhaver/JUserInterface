@@ -6,6 +6,7 @@ class StoriesController < ApplicationController
   before_filter :set_cluster_group_vars, :only => :by_cluster_groups
   before_filter :set_topic_vars, :only => :by_user_topics
   before_filter :set_user_vars, :only => [ :by_authors, :index ]
+  before_filter :set_bj_session_vars, :only => [ :show ]
   
   required_api_param :id, :only => [ :show ]
   required_api_param :story_ids, :only => [ :by_story_ids ], :if => Proc.new{ |p| p[:story_id].blank? }
@@ -27,6 +28,8 @@ class StoriesController < ApplicationController
     
   caches_action :index, :cache_path => { :cache_key => [ :q, :@user, :page, :per_page, :blog, :opinion, :video, :sort_criteria, :subscription_type, :time_span, :language_id ] }, 
     :expires_in => 5.minutes, :if => Proc.new{ |c| c.params[:format] == 'xml' }
+    
+  caches_action :show, :cache_path => { :cache_key => [ :@bj_session, :@story ] }, :expires => 24.hours, :if => Proc.new{ |c| c.params[:format] == 'xml' }
   
   def index
     #set_user_var unless params[:user_id].blank?
@@ -217,6 +220,8 @@ class StoriesController < ApplicationController
   end
   
   def show
+    @story.group_to_serialize = @story.story_groups.current_session.first rescue nil
+    @story.group_to_serialize.stories_to_serialize ||= [] if @story.group_to_serialize
     rxml_data( @story, :root => 'story' )
   end
   
@@ -261,8 +266,12 @@ class StoriesController < ApplicationController
     params[:format] == 'xml'
   end
   
-  def set_cluster_group_vars
+  def set_bj_session_vars
     @bj_session = BjSession.current( BjSession::Jobs::GroupGeneration ) # used for validating and invalidating cache
+  end
+  
+  def set_cluster_group_vars
+    set_bj_session_vars
     set_user_var unless params[:user_id].blank?
   end
   
