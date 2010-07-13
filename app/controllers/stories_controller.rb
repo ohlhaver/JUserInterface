@@ -27,7 +27,7 @@ class StoriesController < ApplicationController
     :expires_in => 5.minutes, :if => Proc.new{ |c| c.params[:format] == 'xml' }
     
   caches_action :index, :cache_path => { :cache_key => [ :q, :@user, :page, :per_page, :blog, :opinion, :video, :sort_criteria, :subscription_type, :time_span, :language_id ] }, 
-    :expires_in => 5.minutes, :if => Proc.new{ |c| c.params[:format] == 'xml' }
+    :expires_in => 5.minutes, :if => Proc.new{ |c| c.params[:format] == 'xml' && c.params[:skip_story_ids].blank? }
     
   caches_action :show, :cache_path => { :cache_key => [ :@bj_session, :@story ] }, :expires => 24.hours, :if => Proc.new{ |c| c.params[:format] == 'xml' }
   
