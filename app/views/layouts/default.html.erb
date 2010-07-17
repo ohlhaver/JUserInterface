@@ -9,11 +9,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="verify-v1" content="uktXEFRkC4oLS3pjPi7ZkolIVksbOF8D7PRiyCDs+fM=" />
     <%= yield :header_javascript %>
-    <%= stylesheet_link_tag 'reset', 'grid4b', 'simple', 'fb', :cache => 'base' %>
+   
+ <%= stylesheet_link_tag 'reset', 'grid10', 'simple', 'fb', :cache => 'base10' %>
   </head>
   <body>
-    <div class="container_4">
-      <div id= "top_frame" class = "grid_3">
+    <div class="container_10">
+      <div id= "top_frame" class = "grid_8">
         <%= link_to( image_tag( 'logo.gif'), jurnalo_root_path ) %>
         <% form_tag( jurnalo_stories_path, :id => 'search_form', :method => :get, :class => 'inline_form' ) do -%>
           <input type="text" title="Search News" autocomplete="off" tabindex="1" name="q" id = 'searchfield' class ="text"  value="<%= params[:q] -%>" />
@@ -23,13 +24,13 @@
           </div>
         <% end -%>
       </div>
-      <div id="top_navigation" class="grid_1">
+      <div id="top_navigation" class="grid_2">
         <%= render :partial => 'shared/top_navigation' %>
       </div>
-      <div id="edition" class="prefix_3 grid_1">
+      <div id="edition" class="prefix_8 grid_2">
         <%= render :partial => 'shared/edition' %>
       </div>
-      <div id="content" class="grid_3">
+      <div id="content" class="grid_8">
         <% if flash[:notice] %>
           <div class="flash" style="color:green" ><%= flash[:notice] %></div>
         <% end %>
@@ -39,10 +40,10 @@
         <%= yield %>
         <div>&nbsp;</div>
       </div>
-      <div id="module" class="grid_1">
+      <div id="module" class="grid_2">
         <%= render :partial => 'shared/navigation' %>
       </div>
-    <div id="footer" class = "grid_4">
+    <div id="footer" class = "grid_8">
       <%= render :partial => 'shared/footer' %>
     </div>
   </div>
