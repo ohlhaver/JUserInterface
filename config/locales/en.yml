@@ -142,7 +142,7 @@ en:
       reason_3: "To subscribe to more than one author please upgrade to the Jurnalo Power Account."
     contact:
       label: "Contact"
-      phone_info: "Call us: <br><br>+49 451 293 5990 in Germany<br><br>+41 44 586 6587 in Switzerland"
+      phone_info: "Call us: <br><br>+49 451 293 5990 in Germany"
       user_message_label: "Or enter your questions or comments below:"
       service_time_info: "We’ll get back to you within a few hours."
       send_button: "Send"
