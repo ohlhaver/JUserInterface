@@ -42,7 +42,7 @@ class SourcePreferencesController < ApplicationController
     respond_to do |format|
       if @source_preference.save
         if params[:format].to_s == 'xml'
-          @source = @source_preference.author
+          @source = @source_preference.source
           expire_action( :controller => :sources, :action => :show, :cache_key => [ :@source ] )
         end
         flash[:notice] = I18n.t('user.pref.create_success')
@@ -62,7 +62,7 @@ class SourcePreferencesController < ApplicationController
     respond_to do |format|
       if @source_preference.update_attributes( params[:source_preference] )
         if params[:format].to_s == 'xml'
-          @source = @source_preference.author
+          @source = @source_preference.source
           expire_action( :controller => :sources, :action => :show, :cache_key => [ :@source ] )
         end
         flash[:notice] = I18n.t('user.pref.update_success')
