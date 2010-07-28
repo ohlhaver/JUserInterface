@@ -402,3 +402,17 @@ de:
       authorization_failed: 'Die Bezahlung ist leider mislungen.'
       confirmation_failed: 'Die Bestätigung der Bezahlung ist leider mislungen.'
       verification_pending: 'Die Bezahlung konnte leider nicht automatisch bestätigt werden. Sie wurde aber für eine manuelle Bestätigung vergemerkt. Kontaktieren Sie bitte <a href="mailto:jurnalo.user.service@jurnalo.com"> unseren Support</a> zur Bestätigung Ihrer Zahlung.'
+  source:
+    like:
+      info: "diese Publikation gefällt mir"
+      by_you: "Dir gefällt diese Publikation"
+    dislike:
+      info: "diese Publikation missfällt mir"
+      by_you: "Dir missfällt diese Publikation"
+  author:
+    like:
+      info: "dieser Autor gefällt mir"
+      by_you: "Dir gefällt dieser Autor"
+    dislike:
+      info: "dieser Autor missfällt mir"
+      by_you: "Dir missfällt dieser Autor"

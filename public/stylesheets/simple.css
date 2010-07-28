@@ -1034,6 +1034,24 @@ border: 0px;
   height:24px;
   vertical-align: middle;
 }
-
+span.thumb {
+  vertical-align:top;
+  background:#EFEFEF none repeat scroll 0 0;
+  border:1px solid #AAAAAA;
+  display:inline-block;
+  height:16px;
+  padding-bottom:2px;
+  text-align:center;
+  vertical-align:top;
+  width:16px;
+}
+.listed_rater span.thumb{
+ padding-top:2px;
+ padding-bottom:0; 
+}
+span.stars{
+  display:inline-block;
+  vertical-align:top;
+}
 
 
