@@ -10,7 +10,11 @@
     <meta name="verify-v1" content="uktXEFRkC4oLS3pjPi7ZkolIVksbOF8D7PRiyCDs+fM=" />
     <%= yield :header_javascript %>
    
- <%= stylesheet_link_tag 'reset', 'grid10', 'simple', 'fb', :cache => 'base10' %>
+ 	<!--[if !lte IE 8]><![IGNORE[--><![IGNORE[]]><%= stylesheet_link_tag 'reset', 'grid10', 'grid10ff', :cache => 'base_g10' %><!--<![endif]-->
+    <!--[if lte IE 8]>
+      <%= stylesheet_link_tag 'reset', 'grid10ie', :cache => 'base_g10ie' %>
+    <![endif]-->
+    <%= stylesheet_link_tag 'simple', 'fb', :cache => 'base_app' %>
   </head>
   <body>
     <div class="container_10">
