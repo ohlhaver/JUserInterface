@@ -33,6 +33,17 @@ module ApplicationHelper
     ClusterGroup.for_select( :tag => tag ).collect{ |x| [ t("navigation.main.#{x.first.underscore}"), x.last ] }
   end
   
+  def render_thumbs_rating_form( source_or_author_preference )
+    if source_or_author_preference.is_a?( AuthorSubscription )
+      url = user_author_preference_path( @user, source_or_author_preference )
+      source = "author"
+    else
+      url = user_source_preference_path( @user, source_or_author_preference )
+      source = "source"
+    end
+    render :partial => 'shared/thumbs_rating', :locals => { :preference => source_or_author_preference, :source => source, :url => url  }
+  end
+  
   def navigation_links
     @nav_links = [ 
       [ 'navigation.main.my_search_topics', user_topic_preferences_path( @user ) ],

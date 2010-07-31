@@ -41,6 +41,10 @@ class SourcePreferencesController < ApplicationController
     @source_preference = @user.source_subscriptions.build( params[:source_preference] )
     respond_to do |format|
       if @source_preference.save
+        if params[:format].to_s == 'xml'
+          @source = @source_preference.source
+          expire_action( :controller => :sources, :action => :show, :cache_key => [ :@source ] )
+        end
         flash[:notice] = I18n.t('user.pref.create_success')
         format.mobile{ redirect_to :action => :index }
         format.html{ redirect_to :action => :index }
@@ -57,6 +61,10 @@ class SourcePreferencesController < ApplicationController
   def update
     respond_to do |format|
       if @source_preference.update_attributes( params[:source_preference] )
+        if params[:format].to_s == 'xml'
+          @source = @source_preference.source
+          expire_action( :controller => :sources, :action => :show, :cache_key => [ :@source ] )
+        end
         flash[:notice] = I18n.t('user.pref.update_success')
         format.mobile{ redirect_to :action => :index }
         format.html{ redirect_to :action => :index }

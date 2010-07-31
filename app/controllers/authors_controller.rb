@@ -31,7 +31,8 @@ class AuthorsController < ApplicationController
     if @author && params[:jap] == '1'
       PriorityAuthor.add_to_list( @author ) 
     end
-    rxml_data( @author, :root => 'author' )
+    @author.set_user_preference_metrics
+    rxml_data( @author, :set => :user_preference, :root => 'author' )
   end
   
   protected

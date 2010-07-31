@@ -400,4 +400,17 @@ en:
       authorization_failed: 'Payment transaction authorization was unsuccessful'
       confirmation_failed: 'Payment transaction confirmation was unsuccessful'
       verification_pending: 'Payment transaction could not be confirmed realtime. It is marked for manual verification. Get in touch with <a href="mailto:jurnalo.user.service@jurnalo.com">our customer support</a> for payment verification.'
-      
+  source:
+    like:
+      info: "like this publication"
+      by_you: "you like this publication"
+    dislike:
+      info: "dislike this publication"
+      by_you: "you dislike this publication"
+  author:
+    like:
+      info: "like this author"
+      by_you: "you like this author"
+    dislike:
+      info: "dislike this author"
+      by_you: "you dislike this author"

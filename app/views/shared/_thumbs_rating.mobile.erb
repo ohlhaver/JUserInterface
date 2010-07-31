@@ -1,0 +1,30 @@
+<% show_down_link = true %>
+<% show_up_link = true %>
+<% show_down_link = false if preference.preference && preference.preference < 2 %>
+<% show_up_link = false if preference.preference && preference.preference > 1 %>
+<% form_dom_id = "tu_#{source}_preference_#{preference.id}" %>
+<% title_tag = show_up_link ? "#{source}.like.info" : "#{source}.like.by_you" %>
+<% form_for( preference, :url => url, :html => { :id => form_dom_id, :class => 'inline_form', :title => t(title_tag) } ) do |f| %>
+  <% if show_up_link %>
+    <%= f.hidden_field :preference, :value => 3 %>
+    <span class="img1 thumb"><%= image_submit_tag( 'tupg.png' ) %></span>
+    <span class="img2 thumb" style="display:none"><%= image_submit_tag( 'tupb.png' ) %></span>
+  <% else %>
+    <%= f.hidden_field :preference, :value => '' %>
+    <span class="img1 thumb"><%= image_submit_tag( 'tupb.png' ) %></span>
+    <span class="img2 thumb" style="display:none"><%= image_submit_tag( 'tupg.png' ) %></span>
+  <% end %>
+<% end %>
+<% form_dom_id = "td_#{source}_preference_#{preference.id}" %>
+<% title_tag = show_down_link ? "#{source}.dislike.info" : "#{source}.dislike.by_you" %>
+<% form_for( preference, :url => url, :html => { :id => form_dom_id, :class => 'inline_form', :title => t(title_tag) } ) do |f| %>
+  <% if show_down_link %>
+    <%= f.hidden_field :preference, :value => 1 %>
+    <span class="img1 thumb"><%= image_submit_tag( 'tdng.png' ) %></span>
+    <span class="img2 thumb" style="display:none"><%= image_submit_tag( 'tdnb.png' ) %></span>
+  <% else %>
+    <%= f.hidden_field :preference, :value => '' %>
+    <span class="img1 thumb"><%= image_submit_tag( 'tdnb.png' ) %></span>
+    <span class="img2 thumb" style="display:none"><%= image_submit_tag( 'tdng.png' ) %></span>
+  <% end %>
+<% end %>

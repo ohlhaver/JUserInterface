@@ -6,6 +6,8 @@ class SourcesController < ApplicationController
   
   required_api_param :id, :only => [ :show ]
   
+  caches_action :show, :cache_path => { :cache_key => [ :@source ] }, :expires_in => 1.hour, :if => Proc.new{ |c| c.params[:format] == 'xml' }
+      
   def index
     conditions = {}
     params[:q] ? search( conditions ) : list( conditions )
@@ -13,7 +15,8 @@ class SourcesController < ApplicationController
   end
   
   def show
-    rxml_data( @source, :root => 'source' )
+    @source.set_user_preference_metrics
+    rxml_data( @source, :set => :user_preference, :root => 'source' )
   end
   
   protected

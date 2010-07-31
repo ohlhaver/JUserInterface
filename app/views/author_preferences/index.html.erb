@@ -18,8 +18,9 @@
       <%= observe_form( form_id, :function => "$('#{form_id}').submit();" )%>
     <% end %>
     <% form_for( author_preference, :url => user_author_preference_path( @user, author_preference ), :html => { :id => form_id, :class => 'inline_form' } ) do |f| %>
-      <%= f.check_box( :subscribed ) %> <%= t('prefs.labels.subscribe') %> - <%= t('prefs.labels.rate') %> <%= f.select( :preference, Preference.for_select( :author ), :include_blank => true )%>
-    <% end %>
+      <%= f.check_box( :subscribed ) %> <%= t('prefs.labels.subscribe') %>
+    <% end %> - 
+    <%= render_thumbs_rating_form( author_preference ) %>
   </div>
   <span><%= author_preference.author.name %></span>
 </h2></div>

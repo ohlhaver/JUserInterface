@@ -51,6 +51,10 @@ class AuthorPreferencesController < ApplicationController
           format.xml{ rxml_error( @author_preference, :action => :create ) }
         else
           PriorityAuthor.add_to_list( @author_preference.author_id ) if params[:jap] == '1'
+          if params[:format].to_s == 'xml'
+            @author = @author_preference.author
+            expire_action( :controller => :authors, :action => :show, :cache_key => [ :@author ] )
+          end
           flash[:notice] = I18n.t('user.pref.create_success')
           format.mobile{ redirect_to :action => :index, :scope => params[:scope] }
           format.html{ redirect_to :action => :index, :scope => params[:scope] }
@@ -69,6 +73,10 @@ class AuthorPreferencesController < ApplicationController
       if @author_preference.update_attributes( params[:author_preference] )
         PriorityAuthor.add_to_list( @author_preference.author_id ) if params[:jap] == '1'
         flash[:notice] = I18n.t('user.pref.update_success')
+        if params[:format].to_s == 'xml'
+          @author = @author_preference.author
+          expire_action( :controller => :authors, :action => :show, :cache_key => [ :@author ] )
+        end
         format.mobile{ redirect_to :action => :index, :scope => params[:scope] }
         format.html{ redirect_to :action => :index, :scope => params[:scope] }
         format.xml{ rxml_success( @author_preference, :action => :update ) }

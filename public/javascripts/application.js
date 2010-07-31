@@ -37,3 +37,19 @@ function hideMouseOverData(event, class_name ) {
     if( element ) element.setStyle({display:'none'});
   }
 }
+function thumbs_up_highlight( elem ){
+  var img1 = $(elem).getElementsBySelector( 'span.img1' ).first();
+  var img2 = $(elem).getElementsBySelector( 'span.img2' ).first();
+  if ( img1 != null && img2 != null ){
+    Element.hide( img1 );
+    Element.show( img2 );
+  }
+}
+function thumbs_up_reset( elem ){
+  var img1 = $(elem).getElementsBySelector( 'span.img1' ).first();
+  var img2 = $(elem).getElementsBySelector( 'span.img2' ).first();
+  if ( img1 != null && img2 != null ){
+    Element.hide( img2 );
+    Element.show( img1 );
+  }
+}

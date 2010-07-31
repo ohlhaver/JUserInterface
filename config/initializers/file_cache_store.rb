@@ -24,7 +24,7 @@ end
 
 ActionController::Caching::Actions::ActionCachePath.class_eval do
   class << self
-    def path_for(controller, options)
+    def path_for(controller, options, infer_extension = true)
       new(controller, options).path
     end
   end
