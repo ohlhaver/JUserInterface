@@ -7,7 +7,7 @@ class AuthorsController < ApplicationController
   required_api_param :id, :only => [ :show ]
   
   caches_action :index, :cache_path => { :cache_key => [ :author_id, :author_ids, :top, :q, :page, :per_page, :opinion, :agency, :ac ] },
-    :expires_in => 1.hour, :if => Proc.new{ |c| c.params[:format] == 'xml' && params[:cf].blank? }
+    :expires_in => 1.hour, :if => Proc.new{ |c| c.params[:format] == 'xml' && c.params[:cf].blank? }
     
   caches_action :show,   :cache_path => { :cache_key => [ :@author ] },
       :expires_in => 1.hour, :if => Proc.new{ |c| c.params[:format] == 'xml' }
