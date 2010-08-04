@@ -7,7 +7,7 @@ class AuthorsController < ApplicationController
   required_api_param :id, :only => [ :show ]
   
   caches_action :index, :cache_path => { :cache_key => [ :author_id, :author_ids, :top, :q, :page, :per_page, :opinion, :agency, :ac ] },
-    :expires_in => 1.hour, :if => Proc.new{ |c| c.params[:format] == 'xml' }
+    :expires_in => 1.hour, :if => Proc.new{ |c| c.params[:format] == 'xml' && params[:cf].blank? }
     
   caches_action :show,   :cache_path => { :cache_key => [ :@author ] },
       :expires_in => 1.hour, :if => Proc.new{ |c| c.params[:format] == 'xml' }
@@ -24,6 +24,7 @@ class AuthorsController < ApplicationController
       conditions.merge!( :id => author_ids )
     end
     params[:top] == '1' ? top() : ( !params[:q].blank? ? search( conditions ) : list( conditions ) )
+    @authors.delete_if{ |a| a.story_authors.count < 2 } if params[:cf] == '1'
     rxml_data( @authors, :root => 'authors', :with_pagination => true )
   end
   
