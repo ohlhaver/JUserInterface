@@ -38,7 +38,7 @@ en:
     downgrade: 'downgrade to'
     basic:
       label: "<b>Jurnalo Basic Account</b>"
-      info: "Five personal topics, author subscriptions, and source settings."
+      info: "Three personal topics, unlimited author subscriptions and source settings."
       cost: free
     power:
       label: "<b>Jurnalo Power Account</b>"
@@ -83,14 +83,14 @@ en:
       account_holder_note: "*Account Holder is the Name of the Person / Company associated with the Bank Account through which the electronic transfer will be made."
     login:
       new_user: "or {{register}} here"
-      existing_user: "Or use your existing account"
-      facebook: "Simply use your Facebook account"
+      existing_user: "Or use your Jurnalo account"
+      facebook: "<b>Login now within 3 seconds via Facebook</b>"
       fb_button: "Login"
       username: "Username"
       password: "Password"
       remember_me: "remember me"
       forgot_password: "forgot password"
-      signup: "<b>Click here to sign up!</b>"
+      signup: "<b>Click here to sign up! &raquo;</b>"
       failure: "Incorrect Username or Password!"
       facebook_failure: "Login via Facebook Failed!"
     register:
@@ -98,11 +98,11 @@ en:
       new_user: "Sign up as a new user"
       success: "Registered Successfully"
       benefits:
-        header: "Once signed up, you can:"
-        body: "- create your own topics<br>- subscribe to any author <br>- weight authors and sources<br>- save interesting articles to your reading list<br><br>"
+        header: "Once logged in, you can:"
+        body: "- create your own topics<br>- subscribe to any author <br>- rate authors and sources<br>"
       now: "sign up now"
       title: "Sign up for Jurnalo"
-      enter_info: "Or, Please enter your information below:"
+      enter_info: "Or please enter your information below:"
       accept_tac: "View Jurnalo's privacy policy."
       captcha: "Enter the code below:"
       login: "Username"
@@ -129,14 +129,14 @@ en:
       label: "Jurnalo Power Account"
       slogan: '"<b>With the Jurnalo Power Account you are among the best informed inhabitants of the planet.</b>" - <em> the Jurnalo founders</em>'
       gives: "The Jurnalo Power Account gives you all the functions of the Basic Account, plus:"
-      topics: "- unlimited search topics"
+      topics: "unlimited search topics"
       authors: "- unlimited author subscriptions"
       sources: "- unlimited source settings"      
       cancel: "Payment is month-to-month. Whenever you decide to cancel, you won’t be billed again."
     upgrade:
       required: "Account Upgrade Required"
       reason_: 
-        "To create more than a total of 5 topics, author subscriptions and source settings please upgrade to the Jurnalo Power Account."
+        "To create more than a total of 3 topics please upgrade to the Jurnalo Power Account."
       reason_1: "To create more than a total of  5 topics, author subscriptions or source settings please upgrade to the Jurnalo Power Account."
       reason_2: "To rate more than one source please upgrade to the Jurnalo Power Account."
       reason_3: "To subscribe to more than one author please upgrade to the Jurnalo Power Account."

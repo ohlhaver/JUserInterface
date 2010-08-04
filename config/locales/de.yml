@@ -41,7 +41,7 @@ de:
     downgrade: 'Downgrade zu'
     basic:
       label: "<b>Jurnalo Basis Plan</b>" 
-      info: "Fünf eigene Themen, Autoren-Abonnements und Quellen-Einstellungen."
+      info: "Drei eigene Themen, unbegrenzt Autoren-Abonnements und Quellen-Einstellungen."
       cost: gratis
     power:
       label: "<b>Jurnalo Power Plan</b>"
@@ -84,14 +84,14 @@ de:
       account_holder_note: "*Kontoinhaber ist der Name der Person oder Firma, welche das Bankkonto besitzt, von welchem die Überweisungen getätigt werden."
     login:
       new_user: "oder hier {{register}}"
-      facebook: "Benutzen Sie einfach Ihren Facebook Zugang"
+      facebook: "<b>Loggen Sie sich jetzt in 3 Sekunden über Facebook ein: </b>"
       fb_button: "Anmelden"
-      existing_user: "Oder benutzen Sie Ihren bestehenden Zugang"
+      existing_user: "Oder benutzen Sie Ihren Jurnalo Zugang"
       username: "Benutzername"
       password: "Passwort"
       remember_me: "Auf diesem Computer merken"
       forgot_password: "Passwort vergessen"
-      signup: "<b>Hier als neuer Benutzer registrieren!</b>"
+      signup: "<b>Hier als neuer Benutzer registrieren! &raquo;</b>"
       failure: "Benutzername oder Passwort ist falsch!"
       facebook_failure: "Login via Facebook Failed!"
     register:
@@ -99,11 +99,11 @@ de:
       new_user: "Als neuer Benutzer registrieren"
       success: "Erfolgreich Registriert"
       benefits:
-          header: "Sobald Sie registriert sind, können Sie:"
-          body: "- eigene Themen erschaffen<br>- Autoren abonnieren<br>- Autoren und Quellen gewichten<br>- interessante Artikel zu Ihrer Leseliste speichern <br><br>"
+          header: "Sobald Sie eingeloggt sind, können Sie:"
+          body: "- eigene Themen erstellen<br>- Autoren abonnieren<br>- Autoren und Publikationen bewerten<br>"
       now: "Jetzt registrieren"
       title: "Bei Jurnalo registrieren"
-      enter_info: "Oder, Bitte geben Sie Ihre Daten ein:"
+      enter_info: "Oder geben Sie bitte Ihre Daten ein:"
       accept_tac: "Jurnalos rechtliche Bedingungen akzeptieren"
       captcha: "Bitte geben Sie den unten stehenden Code ein:"
       login: "Benutzername"
@@ -128,15 +128,15 @@ de:
       token: "Code"
     power:
       label: "Jurnalo Power Plan"
-      slogan: '<b>"Mit dem Jurnalo Power Plan gehören Sie zu den bestinformierten Bewohnern des Planeten."</b> - <em>die Jurnalo Gründer </em>'
+      slogan: '<b>"Mit dem Jurnalo Power Plan gehören Sie zu den bestinformierten Bewohnern des Planeten."</b>'
       gives: "Der Jurnalo Power Plan gibt Ihnen alle Funktionen des Basis Plans, plus:"
-      topics: "- unbegrenzt eigene Suchthemen"
+      topics: "unbegrenzt eigene Suchthemen"
       authors: "- unbegrenzt Autoren-Abonnements"
       sources: "- unbegrenzt Quellen-Gewichtungen"      
       cancel: "Die Bezahlung geschieht von Monat zu Monat. Wann immer Sie kündigen, wird Ihnen kein weiterer Monat mehr in Rechnung gestellt."
     upgrade:
       required: "Account Upgrade erforderlich"
-      reason_: "Um mehr als insgesamt 5 Themen, Autoren-Abos oder Quellen-Gewichtungen zu erstellen, upgraden Sie bitte auf den Jurnalo Power Account."
+      reason_: "Um mehr als 3 eigene Themen zu erstellen, upgraden Sie bitte auf den Jurnalo Power Account."
       reason_1: "Um mehr als ein eigenes Thema zu erstellen, upgraden Sie bitte auf den Jurnalo Power Plan."
       reason_2: "Um mehr als eine Quelle zu gewichten, upgraden Sie bitte auf den Jurnalo Power Plan."
       reason_3: "Um mehr als einen Autoren zu abonnieren, upgraden Sie bitte auf den Jurnalo Power Plan."
