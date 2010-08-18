@@ -242,12 +242,12 @@ class StoriesController < ApplicationController
   
   def per_cluster
     per_cluster = params[:per_cluster].blank? ? nil : params[:per_cluster]
-    Integer( per_cluster || @user.try(:preference).try( :cluster_preview ) || 3 ) rescue 3
+    Integer( per_cluster || @user.try(:preference).try( :cluster_preview ) || Preference::DefaultValues[ :cluster_preview ] ) rescue Preference::DefaultValues[ :cluster_preview ]
   end
   
   def per_cluster_group
     per_cluster_group = params[:per_cluster_group].blank? ? nil : params[:per_cluster_group]
-    Integer( per_cluster_group || @user.try(:preference).try( :headlines_per_cluster_group ) || 2 ) rescue 2
+    Integer( per_cluster_group || @user.try(:preference).try( :headlines_per_cluster_group ) || Preference::DefaultValues[ :headlines_per_cluster_group ] ) rescue Preference::DefaultValues[ :headlines_per_cluster_group ]
   end
   
   # def set_user_var
