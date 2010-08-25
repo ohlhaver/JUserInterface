@@ -223,15 +223,17 @@ class StoriesController < ApplicationController
   
   # returns only 20 results
   def by_mixed_authors
-    my_stories = @user ? StorySearch.new( @user, :author, { :timespan => 24.hours.to_i, :per_page => 13 } ).results : []
+    my_stories = @user ? StorySearch.new( @user, :author, { :time_span => 24.hours.to_i, :per_page => 13 } ).results : []
     top_author_stories_count = ( 20 - my_stories.size )
     conditions = params[:language_id].blank? ? {} : { :language_id => params[:language_id] }
     pagination_options = { :page => 1, :per_page => top_author_stories_count }
     skip_ids = my_stories.collect( &:id )
+    logger.info( skip_ids )
     @stories = Story.by_top_authors.skip_ids( skip_ids ).paginate( pagination_options.merge( :conditions => conditions, :include => [ :authors, :source ] ) )
     my_stories.inject( @stories ){ |s,x| s.push( x ) }
     @stories.sort!{ |a,b| b.created_at <=> a.created_at }
     @stories.total_entries = @stories.size
+    logger.info( @stories.collect(&:id) )
     rxml_stories
   end
   
