@@ -58,6 +58,7 @@ class StoriesController < ApplicationController
   def by_authors
     params[:author_ids] = scan_multiple_value_param( :author_ids, :first) || scan_multiple_value_param( :author_id, :first )
     return by_top_authors if params[:author_ids] == 'top'
+    return by_mixed_authors if params[:author_ids] == 'mixed'
     if params[:all] == '1' # all means no time limit the articles
       @author = Author.find( :first, :conditions => { :id => params[:author_ids], :block => false } )
       @stories ||= @author.stories_paginate( :page => params[:page], :order => 'story_created_at DESC', :per_page => per_page, :include => { :story => [ :source, :authors ] } ) if @author
@@ -213,9 +214,24 @@ class StoriesController < ApplicationController
   end
   
   def by_top_authors
+    # conditions = params[:language_id].blank? ? {} : { :language_id => params[:language_id] }
+    # pagination_options = params[:preview] == '1' ? { :page => 1, :per_page => per_cluster_group } : { :page => page, :per_page => per_page }
+    # @stories = Story.by_top_authors.paginate( pagination_options.merge( :conditions => conditions, :include => [ :authors, :source ] ) )
+    @stories = by_opinions
+    rxml_stories
+  end
+  
+  # returns only 20 results
+  def by_mixed_authors
+    my_stories = @user ? StorySearch.new( @user, :author, { :timespan => 24.hours.to_i, :per_page => 13 } ).results : []
+    top_author_stories_count = ( 20 - my_stories.size )
     conditions = params[:language_id].blank? ? {} : { :language_id => params[:language_id] }
-    pagination_options = params[:preview] == '1' ? { :page => 1, :per_page => per_cluster_group } : { :page => page, :per_page => per_page }
-    @stories = Story.by_top_authors.paginate( pagination_options.merge( :conditions => conditions, :include => [ :authors, :source ] ) )
+    pagination_options = { :page => 1, :per_page => top_author_stories_count }
+    skip_ids = my_stories.collect( &:id )
+    @stories = Story.by_top_authors.skip_ids( skip_ids ).paginate( pagination_options.merge( :conditions => conditions, :include => [ :authors, :source ] ) )
+    my_stories.inject( @stories ){ |s,x| s.push( x ) }
+    @stories.sort!{ |a,b| b.created_at <=> a.created_at }
+    @stories.total_pages = 1
     rxml_stories
   end
   
