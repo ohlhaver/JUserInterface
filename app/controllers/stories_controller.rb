@@ -231,7 +231,7 @@ class StoriesController < ApplicationController
     @stories = Story.by_top_authors.skip_ids( skip_ids ).paginate( pagination_options.merge( :conditions => conditions, :include => [ :authors, :source ] ) )
     my_stories.inject( @stories ){ |s,x| s.push( x ) }
     @stories.sort!{ |a,b| b.created_at <=> a.created_at }
-    @stories.total_pages = 1
+    @stories.total_entries = @stories.size
     rxml_stories
   end
   
