@@ -26,7 +26,7 @@ class Notifier < ActionMailer::Base
   
   def feedback( options = {} )
     user  = options[:user]
-    I18n.locale = user.default_locale
+    I18n.locale = user.try( :default_locale ) || I18n.locale || 'en'
     options[:email] =  user.email if options[:email].blank? && user
     subject       "#{user.nil? ? 'Jurnalo Guest' : 'Jurnalo User'} Feedback"
     from          "Jurnalo.com Account Services <jurnalo.user.service@jurnalo.com>"
