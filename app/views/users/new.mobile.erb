@@ -7,21 +7,7 @@
   </div>
 </div>
 <% form_for @user, :url => account_path do |f| %>
-  <div class='about'>
-    <h2>
-      <div>
-        <%= f.radio_button( 'show_upgrade_page', 'false' ) %> 		
-        <%= t('account.basic.label') %>  (<%= t('account.basic.cost') %>) <br>
-        <%= t('account.basic.info') %> 	
-      </div>
-      <br> 
-      <div class = "basic_option">
-        <%= f.radio_button( 'show_upgrade_page', 'true' ) %> 
-        <%= link_to t('account.power.label'), power_plan_account_path %> (<%= t('account.power.cost') -%>)<br/>
-        <%= t('account.power.info') %><br><span>(<%= link_to t('more.info'), power_plan_account_path %>)</span>
-      </div>
-    </h2>
-  </div>
+  
 	<div class ="about">
   <div class='thin_settings_news_block'>
 	<br>

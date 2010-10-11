@@ -40,9 +40,9 @@ de:
     upgrade: 'Upgrade zu'
     downgrade: 'Downgrade zu'
     basic:
-      label: "<b>Jurnalo Basis Plan</b>" 
-      info: "Drei eigene Themen, unbegrenzt Autoren-Abonnements und Quellen-Einstellungen."
-      cost: gratis
+      label: "<b>Jurnalo Zugang</b>" 
+      info: "Unbegrenzt eigene Themen, Autoren-Abonnements und Quellen-Einstellungen."
+      cost: "für immer kostenlos"
     power:
       label: "<b>Jurnalo Power Plan</b>"
       info: "Unbegrenzt eigene Themen, Autoren-Abonnements und Quellen-Einstellungen."
@@ -91,17 +91,17 @@ de:
       password: "Passwort"
       remember_me: "Auf diesem Computer merken"
       forgot_password: "Passwort vergessen"
-      signup: "<b>Hier als neuer Benutzer registrieren! &raquo;</b>"
+      signup: "<b>Hier kostenlos als neuer Benutzer registrieren! &raquo;</b>"
       failure: "Benutzername oder Passwort ist falsch!"
       facebook_failure: "Login via Facebook Failed!"
     register:
       continue_to_pay: 'Weiter zur Bezahlung'
-      new_user: "Als neuer Benutzer registrieren"
+      new_user: "Kostenlos als neuer Benutzer registrieren"
       success: "Erfolgreich Registriert"
       benefits:
           header: "Sobald Sie eingeloggt sind, können Sie:"
           body: "- eigene Themen erstellen<br>- Autoren abonnieren<br>- Autoren und Publikationen bewerten<br>"
-      now: "Jetzt registrieren"
+      now: "Jetzt kostenlos registrieren"
       title: "Bei Jurnalo registrieren"
       enter_info: "Oder geben Sie bitte Ihre Daten ein:"
       accept_tac: "Jurnalos rechtliche Bedingungen akzeptieren"

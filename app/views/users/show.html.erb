@@ -1,35 +1,7 @@
 
-<% if ( @user.plan_id == 1 ) %>
+
+
 <div class='settings_news_block'>
-  <h2><span class="page_label"><%= t('account.current') %></span></h2>
-  <div class = "about">
-    <h2> <b><%= t('account.power.label')%></b> (<%= t('account.power.cost') -%>)
-       <%= t('account.power.info') %></h2>
-  </div>
-</div>
-<% else %>
-<div class='thin_settings_news_block'>
-  <h2><span class="page_label"><%= t('account.current') %></span></h2>
-  <div class = "about">
-    <h2> <%= t('account.basic.label') %>&nbsp;(<%= t('account.basic.cost') %>)<br/>
-    <%= t('account.basic.info') %></h2>
-  </div>
-</div>
-<div class='thin_settings_news_block'>
-  <h2><span class="page_label"><%= t('account.upgrade') %></span></h2>
-  <div class = "about">
-    <h2> <b><%= link_to t('account.power.label'), power_plan_account_path %></b> (<%= t('account.power.cost') -%>)<br>
-    <%= t('account.power.info') %> (<%= link_to t('more.info'), power_plan_account_path %>)</h2>
-  </div>
-  <% form_tag upgrade_account_path do %>
-    <%= submit_tag "Upgrade", :class => "confirmation_button" %>
-  <%end%>
-</div>
-<% end %>
-
-<br/>
-
-<div class='thin_settings_news_block'>
 <h2>	<span class="page_label"><%= t('navigation.top.settings') %> > <%= t('navigation.main.account_details') %> </span></h2>
 <br>
 <% form_for @user, :url => user_path(@user) do |f| %>

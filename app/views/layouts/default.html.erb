@@ -10,31 +10,32 @@
     <meta name="verify-v1" content="uktXEFRkC4oLS3pjPi7ZkolIVksbOF8D7PRiyCDs+fM=" />
     <%= yield :header_javascript %>
    
- 	<!--[if !lte IE 8]><![IGNORE[--><![IGNORE[]]><%= stylesheet_link_tag 'reset', 'grid10', 'grid10ff', :cache => 'base_g10' %><!--<![endif]-->
-    <!--[if lte IE 8]>
-      <%= stylesheet_link_tag 'reset', 'grid10ie', :cache => 'base_g10ie' %>
-    <![endif]-->
+ <%= stylesheet_link_tag 'reset', 'grid8', 'grid10ff', :cache => 'base_g10' %>
+
+
     <%= stylesheet_link_tag 'simple', 'fb', :cache => 'base_app' %>
   </head>
   <body>
-    <div class="container_10">
-      <div id= "top_frame" class = "grid_8">
+    <div class="container_8">
+      <div id= "top_frame" class = "grid_6">
         <%= link_to( image_tag( 'logo.gif'), jurnalo_root_path ) %>
         <% form_tag( jurnalo_stories_path, :id => 'search_form', :method => :get, :class => 'inline_form' ) do -%>
           <input type="text" title="Search News" autocomplete="off" tabindex="1" name="q" id = 'searchfield' class ="text"  value="<%= params[:q] -%>" />
           <input type="submit" value="<%= t( 'search.simple' ) -%>" tabindex="2" id = 'searchbutton' class ="button"/>
-          <div class='search-box-link'>
-            <%= link_to( t( 'search.advance.label' ), jurnalo_advanced_stories_path ) %>
-          </div>
+         
         <% end -%>
       </div>
       <div id="top_navigation" class="grid_2">
         <%= render :partial => 'shared/top_navigation' %>
+        <div id="edition">
+          <%= render :partial => 'shared/edition' %>
+        </div>
       </div>
-      <div id="edition" class="prefix_8 grid_2">
-        <%= render :partial => 'shared/edition' %>
-      </div>
-      <div id="content" class="grid_8">
+		<% if logged_in? %>
+      <div id="content" class="grid_6">
+		<% else%>
+		<div id="content" class="grid_8">
+		<%end%>		
         <% if flash[:notice] %>
           <div class="flash" style="color:green" ><%= flash[:notice] %></div>
         <% end %>
@@ -44,10 +45,17 @@
         <%= yield %>
         <div>&nbsp;</div>
       </div>
+	<% if logged_in? %>
       <div id="module" class="grid_2">
         <%= render :partial => 'shared/navigation' %>
       </div>
-    <div id="footer" class = "grid_8">
+	<% end %>
+		<% if logged_in? %>
+    <div id="footer" class = "grid_6">
+	<%else%>
+	<div id="footer" class = "grid_8">
+	<%end%>
+	
       <%= render :partial => 'shared/footer' %>
     </div>
   </div>

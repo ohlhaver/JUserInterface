@@ -37,9 +37,9 @@ en:
     upgrade: 'upgrade to'
     downgrade: 'downgrade to'
     basic:
-      label: "<b>Jurnalo Basic Account</b>"
-      info: "Three personal topics, unlimited author subscriptions and source settings."
-      cost: free
+      label: "<b>Jurnalo Account</b>"
+      info: "Unlimited personal topics, author subscriptions and source settings."
+      cost: "free"
     power:
       label: "<b>Jurnalo Power Account</b>"
       info: "Unlimited personal topics, author subscriptions and source settings."
