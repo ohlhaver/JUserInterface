@@ -10,9 +10,5 @@
 <%= yield :user_actions -%>
 <br>
 <%= link_to( t( 'navigation.top.reading_list' ), jurnalo_reading_list_path ) -%> - <%= link_to( t('navigation.top.settings'), account_path ) %>
-  <% if logged_in? -%>
-	<% unless current_user.power_plan? %>
-  <br> <%= link_to( t( current_user.renew? ? 'navigation.top.renew' : 'navigation.top.upgrade' ), upgrade_account_path ) %>
-  <% end %>
-<% end %>
+  
 
